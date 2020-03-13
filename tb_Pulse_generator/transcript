@@ -1,0 +1,34 @@
+# Reading C:/intelFPGA_pro/19.4/modelsim_ase/tcl/vsim/pref.tcl
+# OpenFile C:/20200313_tb_pulse/tb_Pulse_generator/Tb_pulse.mpf
+# Loading project Tb_pulse
+# Compile of Pulse_Emulator.vhd was successful.
+# Compile of Pulse_LUT_function.vhd was successful.
+# Compile of Tb_Pulse.vhd was successful.
+# Compile of athena_package.vhd was successful.
+# 4 compiles, 0 failed with no errors.
+vsim -gui work.tb_pulse
+# vsim -gui work.tb_pulse 
+# Start time: 17:47:42 on Mar 13,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.athena_package
+# Loading work.tb_pulse(behavior)
+# Loading work.pulse_emulator(behavioral)
+# Loading work.lut_func(behavioral)
+add wave -position insertpoint  \
+sim:/tb_pulse/uut/LUT_func_I/Pulse_Ram
+add wave -position insertpoint  \
+sim:/tb_pulse/Sig_out
+run -all
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 25 ns  Iteration: 1  Instance: /tb_pulse/uut/LUT_func_I
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 75 ns  Iteration: 1  Instance: /tb_pulse/uut/LUT_func_I
+# Break key hit
+# Break in Process P_ONE_pulse at C:/tb_pulse/tb_Pulse_generator/Pulse_Emulator.vhd line 98
+# End time: 17:48:34 on Mar 13,2020, Elapsed time: 0:00:52
+# Errors: 0, Warnings: 2
