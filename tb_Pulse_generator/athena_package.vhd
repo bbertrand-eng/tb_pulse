@@ -150,7 +150,7 @@ type t_unsigned_8_array 				is array (C_Nb_channel-1 downto 0) of unsigned(7 dow
 type t_std_logic_12_array 				is array (C_Nb_channel-1 downto 0) of std_logic_vector(11 downto 0);
 type t_signed_12_array 					is array (C_Nb_channel-1 downto 0) of signed(11 downto 0);
 type t_std_logic_16_array 				is array (C_Nb_channel-1 downto 0) of std_logic_vector(15 downto 0);
-type t_Pulse_Ram is array ((2**C_REF_SINE_Depth)-1 downto 0) of std_logic_vector(31 downto 0);
+type t_Pulse_Ram is array (1023 downto 0) of std_logic_vector(31 downto 0);
 
 -- CONTROL and STATUS of CLOCK AND CDCM7005
 type t_CONTROL_CMM

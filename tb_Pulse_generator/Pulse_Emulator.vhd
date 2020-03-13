@@ -43,10 +43,11 @@ entity Pulse_Emulator is
 			Pulse_amplitude 	: in  unsigned (7 downto 0);
 			Send_Pulse 			: in  STD_LOGIC;
 			WE_Pulse_Ram 		: in std_logic;
-			Pulse_Ram_ADDRESS	: in unsigned (10 downto 0);
+			Pulse_Ram_ADDRESS	: in unsigned (9 downto 0);
+			Pulse_Ram_ADDRESS_RD: in unsigned (9 downto 0);
 			Pulse_Ram_Data		: in STD_LOGIC_VECTOR (31 downto 0);
 			Sig_in 				: in  signed (C_Size_DDS-1 downto 0);
-        	Sig_out 			: out signed (C_Size_DDS-1 downto 0)
+        	Sig_out 			: out STD_LOGIC_VECTOR (31 downto 0)
         );
 end Pulse_Emulator;
 
@@ -63,16 +64,16 @@ type 	t_state is(idle,pulse);
 signal 	state : t_state;
 
 signal 	counter				: unsigned(C_PluseLUT_Size_in-1 downto 0);
-signal 	counter_prev		: unsigned(C_PluseLUT_Size_in-1 downto 0);
-signal 	LUT_out				: unsigned(C_PluseLUT_Size_out-1 downto 0);
-signal 	pulse_amp_buf		: unsigned(LUT_out'length + Pulse_amplitude'length -1 downto 0);
-signal 	pulse_amp			: unsigned(LUT_out'length -1 downto 0);
-signal 	pulse_amp_offset	: unsigned(LUT_out'length -1 downto 0);
-signal 	Bias_Pulse_buf		: signed(pulse_amp_offset'length+Sig_out'length+1 -1 downto 0);
-signal 	Bias_Pulse			: signed(Sig_out'length -1 downto 0);
+-- signal 	counter_prev		: unsigned(C_PluseLUT_Size_in-1 downto 0);
+-- signal 	LUT_out				: STD_LOGIC_VECTOR (31 downto 0);
+-- signal 	pulse_amp_buf		: unsigned(LUT_out'length + Pulse_amplitude'length -1 downto 0);
+-- signal 	pulse_amp			: unsigned(LUT_out'length -1 downto 0);
+-- signal 	pulse_amp_offset	: unsigned(LUT_out'length -1 downto 0);
+-- signal 	Bias_Pulse_buf		: signed(pulse_amp_offset'length+Sig_out'length+1 -1 downto 0);
+-- signal 	Bias_Pulse			: signed(Sig_out'length -1 downto 0);
 signal 	one_pulse 			: STD_LOGIC;
 signal 	one_pulsed 			: STD_LOGIC;
-signal Pulse_amplitude_reg : unsigned (7 downto 0);
+-- signal Pulse_amplitude_reg : unsigned (7 downto 0);
 
 BEGIN
 
@@ -87,9 +88,10 @@ LUT_func_I: entity work.LUT_func
 		ENABLE_CLK_1X		=> ENABLE_CLK_1X,
 		WE_Pulse_Ram 		=> WE_Pulse_Ram ,
 		Pulse_Ram_ADDRESS	=> Pulse_Ram_ADDRESS,
+		Pulse_Ram_ADDRESS_RD=> Pulse_Ram_ADDRESS_RD,	
 		Pulse_Ram_Data		=> Pulse_Ram_Data,
 		Func_in				=> counter,
-		Func_out			=> LUT_out
+		Func_out			=> Sig_out
 );
 
 
@@ -117,48 +119,48 @@ P_ONE_pulse: process(CLK_4X)
 			end if;
 		end if;
 end process; 
-P_sig_gene: process(CLK_4X)
-begin
-	if rising_edge(CLK_4X) then
-		if (Reset = '1') then
-			pulse_amp_buf		<= (others=>'0');
-			pulse_amp_offset	<= (others=>'0');
-			Bias_Pulse_buf		<= (others=>'0');
-			Sig_out 			<= (others=>'0');
-			state				<= idle;
-			Pulse_amplitude_reg <= (others=>'0');
-			counter 			<= (others=>'0');
-			counter_prev 		<= (others=>'0');
-		elsif (ENABLE_CLK_1X ='1') then
-			Pulse_amplitude_reg <= Pulse_amplitude;
-			pulse_amp_buf		<= LUT_out*Pulse_amplitude_reg;
-			pulse_amp_offset	<= to_unsigned((2**(LUT_out'length))-1,LUT_out'length) - pulse_amp;
-			Bias_Pulse_buf		<= signed('0' & pulse_amp_offset) * Sig_in;
-			Sig_out	<= Bias_Pulse;
-			Case state is
-			when idle	=>
-				if one_pulse = '1' then
-					counter 		<= (others=>'0');
-					counter_prev 	<= (others=>'0');
-					state			<= pulse;
-				else 
-					state		<= idle;
-				end if;
-			when pulse	=>
-				if (counter < C_MaxCount) and (counter >= counter_prev) then
-					counter_prev	<= counter;
-					counter			<= resize(counter+Pulse_timescale,counter'length);
-					state			<= pulse;
-				else
-					state			<= idle;
-				end if;		
-			end case;
-		end if;
-	end if;
-end process;
+-- P_sig_gene: process(CLK_4X)
+-- begin
+	-- if rising_edge(CLK_4X) then
+		-- if (Reset = '1') then
+			-- pulse_amp_buf		<= (others=>'0');
+			-- pulse_amp_offset	<= (others=>'0');
+			-- Bias_Pulse_buf		<= (others=>'0');
+			-- Sig_out 			<= (others=>'0');
+			-- state				<= idle;
+			-- Pulse_amplitude_reg <= (others=>'0');
+			-- counter 			<= (others=>'0');
+			-- counter_prev 		<= (others=>'0');
+		-- elsif (ENABLE_CLK_1X ='1') then
+			-- Pulse_amplitude_reg <= Pulse_amplitude;
+			-- pulse_amp_buf		<= LUT_out*Pulse_amplitude_reg;
+			-- pulse_amp_offset	<= to_unsigned((2**(LUT_out'length))-1,LUT_out'length) - pulse_amp;
+			-- Bias_Pulse_buf		<= signed('0' & pulse_amp_offset) * Sig_in;
+			-- Sig_out	<= Bias_Pulse;
+			-- Case state is
+			-- when idle	=>
+				-- if one_pulse = '1' then
+					-- counter 		<= (others=>'0');
+					-- counter_prev 	<= (others=>'0');
+					-- state			<= pulse;
+				-- else 
+					-- state		<= idle;
+				-- end if;
+			-- when pulse	=>
+				-- if (counter < C_MaxCount) and (counter >= counter_prev) then
+					-- counter_prev	<= counter;
+					-- counter			<= resize(counter+Pulse_timescale,counter'length);
+					-- state			<= pulse;
+				-- else
+					-- state			<= idle;
+				-- end if;		
+			-- end case;
+		-- end if;
+	-- end if;
+-- end process;
 
-pulse_amp			<= pulse_amp_buf(pulse_amp_buf'length-1 downto pulse_amp_buf'length-LUT_out'length);
-Bias_Pulse			<= Bias_Pulse_buf(Bias_Pulse_buf'length-1 -1 downto Bias_Pulse_buf'length-1 - Sig_out'length);
+-- pulse_amp			<= pulse_amp_buf(pulse_amp_buf'length-1 downto pulse_amp_buf'length-LUT_out'length);
+-- Bias_Pulse			<= Bias_Pulse_buf(Bias_Pulse_buf'length-1 -1 downto Bias_Pulse_buf'length-1 - Sig_out'length);
 
 
 end Behavioral;
