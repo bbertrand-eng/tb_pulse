@@ -85,15 +85,17 @@ write_proc1: process
 
 file Sig_out_file	: text;
 variable l : line;
-variable Value : std_logic_vector(write_sig_1'length-1 downto 0);
+variable Value : std_logic_vector(Sig_out'length-1 downto 0);
 
 begin
 	file_open(Sig_out_file, "Output_signal.txt", WRITE_MODE);
+	Pulse_Ram_ADDRESS_RD	<= (others=>'0');
 	loop
-  	wait until (CLK='1' and CLK'event);  			  
-  	   Value:= std_logic_vector(write_sig_1);
+  	wait until (CLK='1' and CLK'event); 
+	Pulse_Ram_ADDRESS_RD <= Pulse_Ram_ADDRESS_RD +1;	
+	Value:= std_logic_vector(Sig_out);
    	write(l, Value); 
-      writeline(Sig_out_file, l);
+	writeline(Sig_out_file, l);
     end loop;
 end process;
 
@@ -114,7 +116,7 @@ begin
 	wait until RESET = '0' and RESET'event;
   	file_open(fake_pulse_CBE, "fake_pulse_CBE.txt", READ_MODE);
 	Pulse_Ram_ADDRESS 	<= (others=>'0');
-	Pulse_Ram_ADDRESS_RD<= ("0000001111");
+	
 	WE_Pulse_Ram		<= '0';
 		loop
     	wait until Clk='1' and Clk'event;
