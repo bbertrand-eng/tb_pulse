@@ -36,7 +36,7 @@ entity Pulse_Emulator is
 --RESET
 			Reset		 		: in  STD_LOGIC;
 --CLOCKs
-    		CLK_4X					: in  STD_LOGIC;
+    		CLK_156k					: in  STD_LOGIC;
 			ENABLE_CLK_1X			: in  STD_LOGIC;
 --CONTROL
 
@@ -77,7 +77,7 @@ LUT_func_I: entity work.LUT_func
 		)
 	Port map( 
 		RESET				=> Reset,
-		CLK_4X				=> CLK_4X,
+		CLK_156k			=> CLK_156k,
 		ENABLE_CLK_1X		=> ENABLE_CLK_1X,
 		WE_Pulse_Ram 		=> WE_Pulse_Ram ,
 		Pulse_Ram_ADDRESS	=> Pulse_Ram_ADDRESS,
@@ -88,9 +88,9 @@ LUT_func_I: entity work.LUT_func
 );
 
 
-P_ONE_pulse: process(CLK_4X)
+P_ONE_pulse: process(CLK_156k)
 	begin
-		if (rising_edge(CLK_4X)) then
+		if (rising_edge(CLK_156k)) then
 			if (Reset = '1') then
 				one_pulse <= '0';
 		 		one_pulsed <= '0';

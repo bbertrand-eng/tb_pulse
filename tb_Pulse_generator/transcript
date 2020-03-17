@@ -1,12 +1,11 @@
 # Reading C:/intelFPGA_pro/19.4/modelsim_ase/tcl/vsim/pref.tcl
 # OpenFile C:/20200317_tb_pulse/tb_Pulse_generator/Tb_pulse.mpf
 # Loading project Tb_pulse
-# reading C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/../modelsim.ini
 pwd
 # C:/20200317_tb_pulse/tb_Pulse_generator
 do dofile.do
 # Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 15:11:34 on Mar 17,2020
+# Start time: 16:59:37 on Mar 17,2020
 # vcom -reportprogress 300 athena_package.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -14,10 +13,10 @@ do dofile.do
 # -- Loading package NUMERIC_STD
 # -- Loading package MATH_REAL
 # -- Compiling package athena_package
-# End time: 15:11:34 on Mar 17,2020, Elapsed time: 0:00:00
+# End time: 16:59:37 on Mar 17,2020, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 15:11:34 on Mar 17,2020
+# Start time: 16:59:37 on Mar 17,2020
 # vcom -reportprogress 300 Pulse_LUT_function.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -27,10 +26,10 @@ do dofile.do
 # -- Loading package athena_package
 # -- Compiling entity LUT_func
 # -- Compiling architecture Behavioral of LUT_func
-# End time: 15:11:35 on Mar 17,2020, Elapsed time: 0:00:01
+# End time: 16:59:37 on Mar 17,2020, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 15:11:35 on Mar 17,2020
+# Start time: 16:59:37 on Mar 17,2020
 # vcom -reportprogress 300 Pulse_Emulator.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -41,10 +40,10 @@ do dofile.do
 # -- Compiling entity Pulse_Emulator
 # -- Compiling architecture Behavioral of Pulse_Emulator
 # -- Loading entity LUT_func
-# End time: 15:11:35 on Mar 17,2020, Elapsed time: 0:00:00
+# End time: 16:59:37 on Mar 17,2020, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 15:11:35 on Mar 17,2020
+# Start time: 16:59:37 on Mar 17,2020
 # vcom -reportprogress 300 Tb_Pulse.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -56,10 +55,10 @@ do dofile.do
 # -- Loading package MATH_REAL
 # -- Loading package athena_package
 # -- Loading entity Pulse_Emulator
-# End time: 15:11:35 on Mar 17,2020, Elapsed time: 0:00:00
+# End time: 16:59:38 on Mar 17,2020, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # vsim work.Tb_Pulse -t 1ns 
-# Start time: 15:11:35 on Mar 17,2020
+# Start time: 16:59:39 on Mar 17,2020
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
@@ -70,5 +69,77 @@ do dofile.do
 # Loading work.tb_pulse(behavior)
 # Loading work.pulse_emulator(behavioral)
 # Loading work.lut_func(behavioral)
-# End time: 15:12:55 on Mar 17,2020, Elapsed time: 0:01:20
-# Errors: 4, Warnings: 0
+# Break key hit
+# Simulation stop requested.
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 18:50:53 on Mar 17,2020
+# vcom -reportprogress 300 athena_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package athena_package
+# End time: 18:50:53 on Mar 17,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 18:50:53 on Mar 17,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package athena_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 18:50:53 on Mar 17,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 18:50:53 on Mar 17,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package athena_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# -- Loading entity LUT_func
+# End time: 18:50:53 on Mar 17,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 18:50:53 on Mar 17,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading package MATH_REAL
+# -- Loading package athena_package
+# -- Loading entity Pulse_Emulator
+# End time: 18:50:53 on Mar 17,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 18:50:55 on Mar 17,2020, Elapsed time: 1:51:16
+# Errors: 0, Warnings: 0
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 18:50:55 on Mar 17,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.athena_package
+# Loading work.tb_pulse(behavior)
+# Loading work.pulse_emulator(behavioral)
+# Loading work.lut_func(behavioral)
+# Break key hit
+# Load canceled
+# End time: 18:53:50 on Mar 17,2020, Elapsed time: 0:02:55
+# Errors: 1, Warnings: 0

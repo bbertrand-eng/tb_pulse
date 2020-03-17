@@ -14,40 +14,40 @@ Z0 DPx4 ieee 9 math_real 0 22 gNk<PdFJ<XNPcfef`f?Z81
 Z1 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
 Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-Z4 w1584453456
-Z5 dC:/20200317_tb_pulse/tb_Pulse_generator
+w1584453456
+Z4 dC:/20200317_tb_pulse/tb_Pulse_generator
 8athena_package.vhd
 Fathena_package.vhd
 l0
 L36
 VW=4Q0WWi[O=P<V?@WjPmH2
 !s100 8C`FH=ifF4]L<K60dUg>@0
-Z6 OV;C;2019.2;69
+Z5 OV;C;2019.2;69
 32
-!s110 1584454294
+Z6 !s110 1584467453
 !i10b 1
-Z7 !s108 1584454294.000000
+Z7 !s108 1584467453.000000
 !s90 -reportprogress|300|athena_package.vhd|
 !s107 athena_package.vhd|
 !i113 1
 Z8 tExplicit 1 CvgOpt 0
 Elut_func
-R4
-Z9 DPx4 work 14 athena_package 0 22 W=4Q0WWi[O=P<V?@WjPmH2
+Z9 w1584467447
+Z10 DPx4 work 14 athena_package 0 22 W=4Q0WWi[O=P<V?@WjPmH2
 R0
 R1
 R2
 R3
-R5
-Z10 8Pulse_LUT_function.vhd
-Z11 FPulse_LUT_function.vhd
+R4
+Z11 8Pulse_LUT_function.vhd
+Z12 FPulse_LUT_function.vhd
 l0
 L26
-VF=9gcP85MR=jEokM0YCc03
-!s100 zE`7z8J9iO4nL0:R^_B6L1
-R6
+V7BeO_I8IYeDfo=LX[]GGb0
+!s100 6@GDLjdVTXVnX^JiEbFmN0
+R5
 32
-Z12 !s110 1584454295
+R6
 !i10b 1
 R7
 Z13 !s90 -reportprogress|300|Pulse_LUT_function.vhd|
@@ -55,19 +55,19 @@ Z14 !s107 Pulse_LUT_function.vhd|
 !i113 1
 R8
 Abehavioral
-R9
+R10
 R0
 R1
 R2
 R3
-Z15 DEx4 work 8 lut_func 0 22 F=9gcP85MR=jEokM0YCc03
+Z15 DEx4 work 8 lut_func 0 22 7BeO_I8IYeDfo=LX[]GGb0
 l64
 L48
-V1fDMXkAGcbYCzB^[HcJKL1
-!s100 m]R7IPU9mDed49?4NNeDG3
-R6
+Vg4TKI0^j?`^Fb[PVNXWJO3
+!s100 XFfGk?OgglEl>:Oa6eTkY0
+R5
 32
-R12
+R6
 !i10b 1
 R7
 R13
@@ -75,90 +75,131 @@ R14
 !i113 1
 R8
 Epulse_emulator
-Z16 w1584454128
+Z16 w1584467425
 R0
-R9
+R10
 R1
 R2
 R3
-R5
+R4
 Z17 8Pulse_Emulator.vhd
 Z18 FPulse_Emulator.vhd
 l0
 L34
-VmnDaRB;?gHY`JhEM0QhO53
-!s100 F3]lGmcdR;bDYb0dli@IO0
-R6
+V5i6J1;gC8db?Sf@1M_6=U1
+!s100 bD7=[i;RZM?X@RgY9Xi2D3
+R5
 32
-R12
+R6
 !i10b 1
-Z19 !s108 1584454295.000000
-Z20 !s90 -reportprogress|300|Pulse_Emulator.vhd|
-Z21 !s107 Pulse_Emulator.vhd|
+R7
+Z19 !s90 -reportprogress|300|Pulse_Emulator.vhd|
+Z20 !s107 Pulse_Emulator.vhd|
 !i113 1
 R8
 Abehavioral
 R15
 R0
-R9
+R10
 R1
 R2
 R3
-Z22 DEx4 work 14 pulse_emulator 0 22 mnDaRB;?gHY`JhEM0QhO53
+Z21 DEx4 work 14 pulse_emulator 0 22 5i6J1;gC8db?Sf@1M_6=U1
 l71
 L55
-VRTeRPWBg8ANh?k4]E4[nW0
-!s100 ^DFPKd`ZOV5>Sd9^kP^KX2
-R6
+V03E998>dlXL:G7m8:fI0<0
+!s100 L_`HV@Y2Nf?0KRUH=_E2A1
+R5
 32
-R12
+R6
 !i10b 1
+R7
 R19
 R20
-R21
 !i113 1
 R8
+Etb_file_read
+Z22 w1584373156
+Z23 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+R2
+R3
+R4
+Z24 8C:/20200316_tb_pulse/tb_Pulse_generator/tb_file_read.vhd
+Z25 FC:/20200316_tb_pulse/tb_Pulse_generator/tb_file_read.vhd
+l0
+L7
+V5hS5KU7GSbjM5bSU3>Oae1
+!s100 =7m3XhZgoo`Ei]NB^QhTg2
+R5
+32
+Z26 !s110 1584460051
+!i10b 1
+Z27 !s108 1584460051.000000
+Z28 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/20200316_tb_pulse/tb_Pulse_generator/tb_file_read.vhd|
+Z29 !s107 C:/20200316_tb_pulse/tb_Pulse_generator/tb_file_read.vhd|
+!i113 1
+Z30 o-work work -2002 -explicit
+R8
+Atest
+R23
+R2
+R3
+DEx4 work 12 tb_file_read 0 22 5hS5KU7GSbjM5bSU3>Oae1
+l31
+L10
+V<jY24WTOUGQe:VWYK26mb2
+!s100 WWZJbXD[68Bm5[hbf3Fc]3
+R5
+32
+R26
+!i10b 1
+R27
+R28
+R29
+!i113 1
+R30
+R8
 Etb_pulse
-Z23 w1584454110
-Z24 DPx4 ieee 16 std_logic_textio 0 22 V5TSK`;aJKC<l]CEg1>mz1
+R16
+Z31 DPx4 ieee 16 std_logic_textio 0 22 V5TSK`;aJKC<l]CEg1>mz1
 R1
 R2
 R3
-R5
-Z25 8Tb_Pulse.vhd
-Z26 FTb_Pulse.vhd
+R4
+Z32 8Tb_Pulse.vhd
+Z33 FTb_Pulse.vhd
 l0
 L8
 V79b;_Xm;[Pk4K1a;DlES60
 !s100 U?jW@:;M4QMe8fDFM98^]1
-R6
+R5
 32
-R12
+R6
 !i10b 1
-R19
-Z27 !s90 -reportprogress|300|Tb_Pulse.vhd|
-Z28 !s107 Tb_Pulse.vhd|
+R7
+Z34 !s90 -reportprogress|300|Tb_Pulse.vhd|
+Z35 !s107 Tb_Pulse.vhd|
 !i113 1
 R8
 Abehavior
 R0
-R9
-R22
-R24
+R10
+R21
+R31
 R1
 R2
 R3
-Z29 DEx4 work 8 tb_pulse 0 22 79b;_Xm;[Pk4K1a;DlES60
-l26
+Z36 DEx4 work 8 tb_pulse 0 22 79b;_Xm;[Pk4K1a;DlES60
+l27
 L11
-VH8Um67:hE`3C:miI?ChgH1
-!s100 9n7A9F3n;iJ0I8A11Poc]2
-R6
+VZ]a`=T<JlnR6fhS_k=R?60
+!s100 zLKZ?6jALG8g?_F?if?j@0
+R5
 32
-R12
+R6
 !i10b 1
-R19
-R27
-R28
+R7
+R34
+R35
 !i113 1
 R8
