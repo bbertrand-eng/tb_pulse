@@ -33,15 +33,14 @@ uut: entity work.Pulse_Emulator
 		Reset				=> RESET,
 		CLK_4X				=> CLK,
 		ENABLE_CLK_1X		=> '1',
-		Pulse_timescale	=> to_unsigned(1,4),
-		Pulse_amplitude	=> to_unsigned(128,8),
+
 		Send_Pulse			=> SendPulse,
-		WE_Pulse_Ram		=> WE_Pulse_Ram,
-		Pulse_Ram_ADDRESS	=> Pulse_Ram_ADDRESS,
-		Pulse_Ram_ADDRESS_RD=> Pulse_Ram_ADDRESS_RD,
-		Pulse_Ram_Data		=> Pulse_Ram_Data,
+		WE_Pulse_Ram		=> WE_Pulse_Ram,	--: std_logic;
+		Pulse_Ram_ADDRESS	=> Pulse_Ram_ADDRESS,	--: unsigned (9 downto 0 );
+		Pulse_Ram_ADDRESS_RD=> Pulse_Ram_ADDRESS_RD,	--: unsigned (9 downto 0 );
+		Pulse_Ram_Data		=> Pulse_Ram_Data,	--: STD_LOGIC_vector (31 downto 0 );
 		Sig_in				=> to_signed(32767,20),
-		Pulse_Ram_Data_RD	=> Pulse_Ram_Data_RD
+		Pulse_Ram_Data_RD	=> Pulse_Ram_Data_RD	--: STD_LOGIC_VECTOR (31 downto 0);
 	);
 
 

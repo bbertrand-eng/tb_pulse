@@ -39,8 +39,7 @@ entity Pulse_Emulator is
     		CLK_4X					: in  STD_LOGIC;
 			ENABLE_CLK_1X			: in  STD_LOGIC;
 --CONTROL
-			Pulse_timescale 	: in  unsigned (3 downto 0);
-			Pulse_amplitude 	: in  unsigned (7 downto 0);
+
 			Send_Pulse 			: in  STD_LOGIC;
 			WE_Pulse_Ram 		: in std_logic;
 			Pulse_Ram_ADDRESS	: in unsigned (9 downto 0);
@@ -64,16 +63,10 @@ type 	t_state is(idle,pulse);
 signal 	state : t_state;
 
 signal 	counter				: unsigned(C_PluseLUT_Size_in-1 downto 0);
--- signal 	counter_prev		: unsigned(C_PluseLUT_Size_in-1 downto 0);
--- signal 	LUT_out				: STD_LOGIC_VECTOR (31 downto 0);
--- signal 	pulse_amp_buf		: unsigned(LUT_out'length + Pulse_amplitude'length -1 downto 0);
--- signal 	pulse_amp			: unsigned(LUT_out'length -1 downto 0);
--- signal 	pulse_amp_offset	: unsigned(LUT_out'length -1 downto 0);
--- signal 	Bias_Pulse_buf		: signed(pulse_amp_offset'length+Pulse_Ram_Data_RD'length+1 -1 downto 0);
--- signal 	Bias_Pulse			: signed(Pulse_Ram_Data_RD'length -1 downto 0);
+
 signal 	one_pulse 			: STD_LOGIC;
 signal 	one_pulsed 			: STD_LOGIC;
--- signal Pulse_amplitude_reg : unsigned (7 downto 0);
+
 
 BEGIN
 
