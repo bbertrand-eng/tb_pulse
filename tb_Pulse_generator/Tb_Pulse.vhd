@@ -15,7 +15,7 @@ constant CLK_period : time := 50 ns;
 signal CLK 				: std_logic;
 signal RESET 			: std_logic;
 --signal Sig_in: signed(15 downto 0);
-signal Sig_out			: STD_LOGIC_VECTOR (31 downto 0);
+signal Pulse_Ram_Data_RD			: STD_LOGIC_VECTOR (31 downto 0);
 signal write_sig_1		: signed(19 downto 0);
 signal SendPulse 		: std_logic;
 signal Pulse_Ram_Data	: STD_LOGIC_vector (31 downto 0 );
@@ -41,7 +41,7 @@ uut: entity work.Pulse_Emulator
 		Pulse_Ram_ADDRESS_RD=> Pulse_Ram_ADDRESS_RD,
 		Pulse_Ram_Data		=> Pulse_Ram_Data,
 		Sig_in				=> to_signed(32767,20),
-		Sig_out				=> Sig_out
+		Pulse_Ram_Data_RD	=> Pulse_Ram_Data_RD
 	);
 
 
@@ -75,7 +75,7 @@ begin
 end process;
 
 
---write_sig_1		<= Sig_out;
+--write_sig_1		<= Pulse_Ram_Data_RD;
 
 
 -----------------------------------------
@@ -85,7 +85,7 @@ write_proc1: process
 
 file Sig_out_file	: text;
 variable l : line;
-variable Value : std_logic_vector(Sig_out'length-1 downto 0);
+variable Value : std_logic_vector(Pulse_Ram_Data_RD'length-1 downto 0);
 
 begin
 	file_open(Sig_out_file, "Output_signal.txt", WRITE_MODE);
@@ -93,7 +93,7 @@ begin
 	loop
   	wait until (CLK='1' and CLK'event); 
 	Pulse_Ram_ADDRESS_RD <= Pulse_Ram_ADDRESS_RD +1;	
-	Value:= std_logic_vector(Sig_out);
+	Value:= std_logic_vector(Pulse_Ram_Data_RD);
    	write(l, Value); 
 	writeline(Sig_out_file, l);
     end loop;

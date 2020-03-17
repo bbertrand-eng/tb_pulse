@@ -47,7 +47,7 @@ entity Pulse_Emulator is
 			Pulse_Ram_ADDRESS_RD: in unsigned (9 downto 0);
 			Pulse_Ram_Data		: in STD_LOGIC_VECTOR (31 downto 0);
 			Sig_in 				: in  signed (C_Size_DDS-1 downto 0);
-        	Sig_out 			: out STD_LOGIC_VECTOR (31 downto 0)
+        	Pulse_Ram_Data_RD 	: out STD_LOGIC_VECTOR (31 downto 0)
         );
 end Pulse_Emulator;
 
@@ -69,8 +69,8 @@ signal 	counter				: unsigned(C_PluseLUT_Size_in-1 downto 0);
 -- signal 	pulse_amp_buf		: unsigned(LUT_out'length + Pulse_amplitude'length -1 downto 0);
 -- signal 	pulse_amp			: unsigned(LUT_out'length -1 downto 0);
 -- signal 	pulse_amp_offset	: unsigned(LUT_out'length -1 downto 0);
--- signal 	Bias_Pulse_buf		: signed(pulse_amp_offset'length+Sig_out'length+1 -1 downto 0);
--- signal 	Bias_Pulse			: signed(Sig_out'length -1 downto 0);
+-- signal 	Bias_Pulse_buf		: signed(pulse_amp_offset'length+Pulse_Ram_Data_RD'length+1 -1 downto 0);
+-- signal 	Bias_Pulse			: signed(Pulse_Ram_Data_RD'length -1 downto 0);
 signal 	one_pulse 			: STD_LOGIC;
 signal 	one_pulsed 			: STD_LOGIC;
 -- signal Pulse_amplitude_reg : unsigned (7 downto 0);
@@ -91,7 +91,7 @@ LUT_func_I: entity work.LUT_func
 		Pulse_Ram_ADDRESS_RD=> Pulse_Ram_ADDRESS_RD,	
 		Pulse_Ram_Data		=> Pulse_Ram_Data,
 		Func_in				=> counter,
-		Func_out			=> Sig_out
+		Func_out			=> Pulse_Ram_Data_RD
 );
 
 
@@ -126,7 +126,7 @@ end process;
 			-- pulse_amp_buf		<= (others=>'0');
 			-- pulse_amp_offset	<= (others=>'0');
 			-- Bias_Pulse_buf		<= (others=>'0');
-			-- Sig_out 			<= (others=>'0');
+			-- Pulse_Ram_Data_RD 			<= (others=>'0');
 			-- state				<= idle;
 			-- Pulse_amplitude_reg <= (others=>'0');
 			-- counter 			<= (others=>'0');
@@ -136,7 +136,7 @@ end process;
 			-- pulse_amp_buf		<= LUT_out*Pulse_amplitude_reg;
 			-- pulse_amp_offset	<= to_unsigned((2**(LUT_out'length))-1,LUT_out'length) - pulse_amp;
 			-- Bias_Pulse_buf		<= signed('0' & pulse_amp_offset) * Sig_in;
-			-- Sig_out	<= Bias_Pulse;
+			-- Pulse_Ram_Data_RD	<= Bias_Pulse;
 			-- Case state is
 			-- when idle	=>
 				-- if one_pulse = '1' then
@@ -160,7 +160,7 @@ end process;
 -- end process;
 
 -- pulse_amp			<= pulse_amp_buf(pulse_amp_buf'length-1 downto pulse_amp_buf'length-LUT_out'length);
--- Bias_Pulse			<= Bias_Pulse_buf(Bias_Pulse_buf'length-1 -1 downto Bias_Pulse_buf'length-1 - Sig_out'length);
+-- Bias_Pulse			<= Bias_Pulse_buf(Bias_Pulse_buf'length-1 -1 downto Bias_Pulse_buf'length-1 - Pulse_Ram_Data_RD'length);
 
 
 end Behavioral;
