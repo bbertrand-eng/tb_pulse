@@ -101,7 +101,7 @@ begin
   	wait until (CLK_156k='1' and CLK_156k'event); 
 	Pulse_Ram_ADDRESS_RD <= Pulse_Ram_ADDRESS_RD +1;	
 	Value:= std_logic_vector(Pulse_Ram_Data_RD);
-   	write(l, Value); 
+   	hwrite(l, Value); 
 	writeline(Sig_out_file, l);
     end loop;
 end process;
