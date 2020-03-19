@@ -35,7 +35,7 @@ uut: entity work.Pulse_Emulator
 		CLK_156k				=> CLK_156k,
 		ENABLE_CLK_1X		=> '1',
 
-		Send_Pulse			=> SendPulse,
+		--Send_Pulse			=> SendPulse,
 		WE_Pulse_Ram		=> WE_Pulse_Ram,	--: std_logic;
 		Pulse_Ram_ADDRESS	=> Pulse_Ram_ADDRESS,	--: unsigned (9 downto 0 );
 		Pulse_Ram_ADDRESS_RD=> Pulse_Ram_ADDRESS_RD,	--: unsigned (9 downto 0 );
@@ -61,25 +61,25 @@ begin
 	wait for CLK_period*1282/2;
 end process;
 
-stim_proc: process
-begin		
+-- stim_proc: process
+-- begin		
 
-	SendPulse	<= '0';
-	wait for CLK_period*10;
+	-- SendPulse	<= '0';
+	-- wait for CLK_period*10;
 
 	
-	wait for CLK_period*2*10000;		-- = 1 ms
-	SendPulse	<= '1';
-	wait for CLK_period*1000;
-	SendPulse	<= '1';
+	-- wait for CLK_period*2*10000;		-- = 1 ms
+	-- SendPulse	<= '1';
+	-- wait for CLK_period*1000;
+	-- SendPulse	<= '1';
 
-	wait for CLK_period*2*150000;		-- = 15 ms
-	SendPulse	<= '1';
-	wait for CLK_period*100000;
-	SendPulse	<= '0';
+	-- wait for CLK_period*2*150000;		-- = 15 ms
+	-- SendPulse	<= '1';
+	-- wait for CLK_period*100000;
+	-- SendPulse	<= '0';
 	
-	wait;
-end process;
+	-- wait;
+-- end process;
 
 
 --write_sig_1		<= Pulse_Ram_Data_RD;

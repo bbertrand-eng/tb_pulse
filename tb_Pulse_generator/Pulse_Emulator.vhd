@@ -40,7 +40,7 @@ entity Pulse_Emulator is
 			ENABLE_CLK_1X			: in  STD_LOGIC;
 --CONTROL
 
-			Send_Pulse 			: in  STD_LOGIC;
+			--Send_Pulse 			: in  STD_LOGIC;
 			WE_Pulse_Ram 		: in std_logic;
 			Pulse_Ram_ADDRESS	: in unsigned (9 downto 0);
 			Pulse_Ram_ADDRESS_RD: in unsigned (9 downto 0);
@@ -64,8 +64,8 @@ signal 	state : t_state;
 
 signal 	counter				: unsigned(C_PluseLUT_Size_in-1 downto 0);
 
-signal 	one_pulse 			: STD_LOGIC;
-signal 	one_pulsed 			: STD_LOGIC;
+-- signal 	one_pulse 			: STD_LOGIC;
+-- signal 	one_pulsed 			: STD_LOGIC;
 
 
 BEGIN
@@ -83,35 +83,35 @@ LUT_func_I: entity work.LUT_func
 		Pulse_Ram_ADDRESS	=> Pulse_Ram_ADDRESS,
 		Pulse_Ram_ADDRESS_RD=> Pulse_Ram_ADDRESS_RD,	
 		Pulse_Ram_Data		=> Pulse_Ram_Data,
-		Func_in				=> counter,
+		--Func_in				=> counter,
 		Func_out			=> Pulse_Ram_Data_RD
 );
 
 
-P_ONE_pulse: process(CLK_156k)
-	begin
-		if (rising_edge(CLK_156k)) then
-			if (Reset = '1') then
-				one_pulse <= '0';
-		 		one_pulsed <= '0';
-			elsif (ENABLE_CLK_1X = '1') then
-				if (Send_Pulse ='1' and	one_pulsed = '0') then
-					one_pulse 	<='1';
-					one_pulsed 	<='1';
-				else 
-					if (one_pulse ='1' and one_pulsed = '1') then
-						one_pulse	<= '0';
-						one_pulsed 	<= '1';
-					else 
-						if (Send_Pulse ='0' ) then
-						one_pulse	<= '0';
-						one_pulsed 	<= '0';
-						end if;
-					end if;
-				end if;
-			end if;
-		end if;
-end process; 
+-- P_ONE_pulse: process(CLK_156k)
+	-- begin
+		-- if (rising_edge(CLK_156k)) then
+			-- if (Reset = '1') then
+				-- one_pulse <= '0';
+		 		-- one_pulsed <= '0';
+			-- elsif (ENABLE_CLK_1X = '1') then
+				-- if (Send_Pulse ='1' and	one_pulsed = '0') then
+					-- one_pulse 	<='1';
+					-- one_pulsed 	<='1';
+				-- else 
+					-- if (one_pulse ='1' and one_pulsed = '1') then
+						-- one_pulse	<= '0';
+						-- one_pulsed 	<= '1';
+					-- else 
+						-- if (Send_Pulse ='0' ) then
+						-- one_pulse	<= '0';
+						-- one_pulsed 	<= '0';
+						-- end if;
+					-- end if;
+				-- end if;
+			-- end if;
+		-- end if;
+-- end process; 
 -- P_sig_gene: process(CLK_4X)
 -- begin
 	-- if rising_edge(CLK_4X) then
