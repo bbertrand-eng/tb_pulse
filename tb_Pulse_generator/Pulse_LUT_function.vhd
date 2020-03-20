@@ -24,10 +24,10 @@ use work.athena_package.all;
 
 
 entity LUT_func is
-    Generic (
-		C_Size_in			: positive;	-- 18
-		C_Size_out			: positive	-- 14
-		);
+    -- Generic (
+		-- C_Size_in			: positive;	-- 18
+		-- C_Size_out			: positive	-- 14
+		-- );
     Port ( 
 --RESET
 		RESET				: in  std_logic;

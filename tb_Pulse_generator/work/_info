@@ -24,60 +24,60 @@ VW=4Q0WWi[O=P<V?@WjPmH2
 !s100 8C`FH=ifF4]L<K60dUg>@0
 Z5 OV;C;2019.2;69
 32
-Z6 !s110 1584629915
+!s110 1584695206
 !i10b 1
-Z7 !s108 1584629915.000000
+!s108 1584695206.000000
 !s90 -reportprogress|300|athena_package.vhd|
 !s107 athena_package.vhd|
 !i113 1
-Z8 tExplicit 1 CvgOpt 0
+Z6 tExplicit 1 CvgOpt 0
 Elut_func
-Z9 w1584629758
-Z10 DPx4 work 14 athena_package 0 22 W=4Q0WWi[O=P<V?@WjPmH2
+Z7 w1584631943
+Z8 DPx4 work 14 athena_package 0 22 W=4Q0WWi[O=P<V?@WjPmH2
 R0
 R1
 R2
 R3
 R4
-Z11 8Pulse_LUT_function.vhd
-Z12 FPulse_LUT_function.vhd
+Z9 8Pulse_LUT_function.vhd
+Z10 FPulse_LUT_function.vhd
 l0
 L26
-VFEn[dgdcR_e16n0kH[a<m0
-!s100 HofQ3FY_<f:IneB;z2Amj3
+VeBfC`3Bi4dHQBann`m?4<0
+!s100 b?FLMTl@>f6;z6;l1`>4R1
 R5
 32
-R6
+Z11 !s110 1584695207
 !i10b 1
-R7
+Z12 !s108 1584695207.000000
 Z13 !s90 -reportprogress|300|Pulse_LUT_function.vhd|
 Z14 !s107 Pulse_LUT_function.vhd|
 !i113 1
-R8
+R6
 Abehavioral
-R10
+R8
 R0
 R1
 R2
 R3
-Z15 DEx4 work 8 lut_func 0 22 FEn[dgdcR_e16n0kH[a<m0
+Z15 DEx4 work 8 lut_func 0 22 eBfC`3Bi4dHQBann`m?4<0
 l64
 L48
 Vg4TKI0^j?`^Fb[PVNXWJO3
 !s100 XFfGk?OgglEl>:Oa6eTkY0
 R5
 32
-R6
+R11
 !i10b 1
-R7
+R12
 R13
 R14
 !i113 1
-R8
+R6
 Epulse_emulator
-Z16 w1584629913
+Z16 w1584693894
 R0
-R10
+R8
 R1
 R2
 R3
@@ -90,116 +90,75 @@ VYzP8;951DEn7dC21:^EX12
 !s100 eTh9_;;zSZJCPWBXKVCha1
 R5
 32
-Z19 !s110 1584629916
+R11
 !i10b 1
-Z20 !s108 1584629916.000000
-Z21 !s90 -reportprogress|300|Pulse_Emulator.vhd|
-Z22 !s107 Pulse_Emulator.vhd|
+R12
+Z19 !s90 -reportprogress|300|Pulse_Emulator.vhd|
+Z20 !s107 Pulse_Emulator.vhd|
 !i113 1
-R8
+R6
 Abehavioral
 R15
 R0
-R10
+R8
 R1
 R2
 R3
-Z23 DEx4 work 14 pulse_emulator 0 22 YzP8;951DEn7dC21:^EX12
+Z21 DEx4 work 14 pulse_emulator 0 22 YzP8;951DEn7dC21:^EX12
 l71
 L55
-V>k7?zYE2;6`7aC4l:6FZK0
-!s100 hFo0<?Sc3THD:<V7oU5gl3
+V0TZ@OF7e5WNO^dNBY2eG:2
+!s100 9<aQFk0<l7PW1iDmQA9J[2
 R5
 32
+R11
+!i10b 1
+R12
 R19
-!i10b 1
 R20
-R21
-R22
 !i113 1
-R8
-Etb_file_read
-Z24 w1584373156
-Z25 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
-R2
-R3
-Z26 dC:/20200317_tb_pulse/tb_Pulse_generator
-Z27 8C:/20200316_tb_pulse/tb_Pulse_generator/tb_file_read.vhd
-Z28 FC:/20200316_tb_pulse/tb_Pulse_generator/tb_file_read.vhd
-l0
-L7
-V5hS5KU7GSbjM5bSU3>Oae1
-!s100 =7m3XhZgoo`Ei]NB^QhTg2
-R5
-32
-Z29 !s110 1584460051
-!i10b 1
-Z30 !s108 1584460051.000000
-Z31 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/20200316_tb_pulse/tb_Pulse_generator/tb_file_read.vhd|
-Z32 !s107 C:/20200316_tb_pulse/tb_Pulse_generator/tb_file_read.vhd|
-!i113 1
-Z33 o-work work -2002 -explicit
-R8
-Atest
-R25
-R2
-R3
-DEx4 work 12 tb_file_read 0 22 5hS5KU7GSbjM5bSU3>Oae1
-l31
-L10
-V<jY24WTOUGQe:VWYK26mb2
-!s100 WWZJbXD[68Bm5[hbf3Fc]3
-R5
-32
-R29
-!i10b 1
-R30
-R31
-R32
-!i113 1
-R33
-R8
+R6
 Etb_pulse
-Z34 w1584629696
-Z35 DPx4 ieee 16 std_logic_textio 0 22 V5TSK`;aJKC<l]CEg1>mz1
+Z22 w1584629696
+Z23 DPx4 ieee 16 std_logic_textio 0 22 V5TSK`;aJKC<l]CEg1>mz1
 R1
 R2
 R3
 R4
-Z36 8Tb_Pulse.vhd
-Z37 FTb_Pulse.vhd
+Z24 8Tb_Pulse.vhd
+Z25 FTb_Pulse.vhd
 l0
 L8
 V79b;_Xm;[Pk4K1a;DlES60
 !s100 U?jW@:;M4QMe8fDFM98^]1
 R5
 32
-R19
+R11
 !i10b 1
-R20
-Z38 !s90 -reportprogress|300|Tb_Pulse.vhd|
-Z39 !s107 Tb_Pulse.vhd|
+R12
+Z26 !s90 -reportprogress|300|Tb_Pulse.vhd|
+!s107 Tb_Pulse.vhd|
 !i113 1
-R8
+R6
 Abehavior
 R0
-R10
+R8
+R21
 R23
-R35
 R1
 R2
 R3
-Z40 DEx4 work 8 tb_pulse 0 22 79b;_Xm;[Pk4K1a;DlES60
+DEx4 work 8 tb_pulse 0 22 79b;_Xm;[Pk4K1a;DlES60
 l27
 L11
 VTMEg=:M3I1jAmlgmmP3=[0
 !s100 YG2j91@;@cIL94ehDWF]O1
 R5
 32
-R19
+R11
 !i10b 1
-R20
-R38
-R39
+R12
+R26
+Z27 !s107 Tb_Pulse.vhd|
 !i113 1
-R8
+R6

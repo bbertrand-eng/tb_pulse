@@ -71,10 +71,10 @@ signal 	counter				: unsigned(C_PluseLUT_Size_in-1 downto 0);
 BEGIN
 
 LUT_func_I: entity work.LUT_func 
-	Generic map(
-		C_Size_in	=> C_PluseLUT_Size_in,	
-		C_Size_out	=> C_PluseLUT_Size_out	
-		)
+	-- Generic map(
+		-- C_Size_in	=> C_PluseLUT_Size_in,	
+		-- C_Size_out	=> C_PluseLUT_Size_out	
+		-- )
 	Port map( 
 		RESET				=> Reset,
 		CLK_156k			=> CLK_156k,
