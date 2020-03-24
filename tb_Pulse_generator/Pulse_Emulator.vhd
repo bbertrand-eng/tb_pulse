@@ -20,7 +20,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use ieee.numeric_std.ALL;
-use work.athena_package.all;
+--use work.athena_package.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -45,7 +45,7 @@ entity Pulse_Emulator is
 			Pulse_Ram_ADDRESS	: in unsigned (9 downto 0);
 			Pulse_Ram_ADDRESS_RD: in unsigned (9 downto 0);
 			Pulse_Ram_Data		: in STD_LOGIC_VECTOR (31 downto 0);
-			Sig_in 				: in  signed (C_Size_DDS-1 downto 0);
+--			Sig_in 				: in  signed (C_Size_DDS-1 downto 0);
         	Pulse_Ram_Data_RD 	: out STD_LOGIC_VECTOR (31 downto 0)
         );
 end Pulse_Emulator;

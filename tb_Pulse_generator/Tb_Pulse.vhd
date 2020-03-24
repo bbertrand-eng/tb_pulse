@@ -40,7 +40,7 @@ label_Pulse_Emulator : entity work.Pulse_Emulator
 		Pulse_Ram_ADDRESS	=> Pulse_Ram_ADDRESS,	--: unsigned (9 downto 0 );
 		Pulse_Ram_ADDRESS_RD=> Pulse_Ram_ADDRESS_RD,	--: unsigned (9 downto 0 );
 		Pulse_Ram_Data		=> Pulse_Ram_Data,	--: STD_LOGIC_vector (31 downto 0 );
-		Sig_in				=> to_signed(32767,20),
+--		Sig_in				=> to_signed(32767,20),
 		Pulse_Ram_Data_RD	=> Pulse_Ram_Data_RD	--: STD_LOGIC_VECTOR (31 downto 0);
 	);
 
