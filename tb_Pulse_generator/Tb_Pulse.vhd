@@ -17,8 +17,8 @@ signal CLK_156k			: std_logic;
 signal RESET 			: std_logic;
 --signal Sig_in: signed(15 downto 0);
 signal Pulse_Ram_Data_RD			: STD_LOGIC_VECTOR (31 downto 0);
-signal write_sig_1		: signed(19 downto 0);
-signal SendPulse 		: std_logic;
+--signal write_sig_1		: signed(19 downto 0);
+--signal SendPulse 		: std_logic;
 signal Pulse_Ram_Data	: STD_LOGIC_vector (31 downto 0 );
 signal Pulse_Ram_ADDRESS	: unsigned (9 downto 0 );
 signal Pulse_Ram_ADDRESS_RD	: unsigned (9 downto 0 );
@@ -29,7 +29,7 @@ BEGIN
 RESET <= '1', '0' after 100 ns;
 
 -- Component Instantiation
-uut: entity work.Pulse_Emulator 
+label_Pulse_Emulator : entity work.Pulse_Emulator 
 	PORT MAP(
 		Reset				=> RESET,
 		CLK_156k				=> CLK_156k,
