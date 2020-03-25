@@ -1,3 +1,2244 @@
 # Reading C:/intelFPGA_pro/19.4/modelsim_ase/tcl/vsim/pref.tcl
-# OpenFile C:/20200324_tb_pulse/tb_Pulse_generator/Tb_pulse.mpf
+# OpenFile C:/20200325_tb_pulse/tb_Pulse_generator/Tb_pulse.mpf
 # Loading project Tb_pulse
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:11:16 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 10:11:16 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:11:16 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 10:11:16 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:11:16 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# -- Loading entity LUT_func
+# End time: 10:11:16 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:11:16 on Mar 25,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Loading entity Pulse_Emulator
+# End time: 10:11:16 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 10:11:17 on Mar 25,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading work.pulse_emulator(behavioral)
+# Loading work.lut_func(behavioral)
+# ** Fatal: (vsim-3421) Value 35 is out of range 0 to 34.
+#    Time: 6900 ns  Iteration: 1  Process: /tb_pulse/label_Pulse_Emulator/label_counter_address File: Pulse_Emulator.vhd Line: 82
+# Fatal error in Process label_counter_address at Pulse_Emulator.vhd line 82
+# 
+# HDL call sequence:
+# Stopped at Pulse_Emulator.vhd 82 Process label_counter_address
+# 
+quit -sim
+# End time: 10:12:18 on Mar 25,2020, Elapsed time: 0:01:01
+# Errors: 2, Warnings: 0
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:12:26 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 10:12:26 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:12:27 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 10:12:27 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:12:27 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# -- Loading entity LUT_func
+# End time: 10:12:27 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:12:27 on Mar 25,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Loading entity Pulse_Emulator
+# End time: 10:12:27 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 10:12:27 on Mar 25,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading work.pulse_emulator(behavioral)
+# Loading work.lut_func(behavioral)
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:13:04 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 10:13:04 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:13:04 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 10:13:04 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:13:04 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# -- Loading entity LUT_func
+# End time: 10:13:04 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:13:04 on Mar 25,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Loading entity Pulse_Emulator
+# End time: 10:13:04 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 10:13:07 on Mar 25,2020, Elapsed time: 0:00:40
+# Errors: 0, Warnings: 0
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 10:13:07 on Mar 25,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading work.pulse_emulator(behavioral)
+# Loading work.lut_func(behavioral)
+add wave -position insertpoint  \
+sim:/tb_pulse/label_Pulse_Emulator/pixel
+restart -f
+run -all
+# GetModuleFileName: Le module spécifié est introuvable.
+# 
+# 
+# Break key hit
+# Simulation stop requested.
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:21:06 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 10:21:06 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:21:06 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 10:21:06 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:21:06 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# -- Loading entity LUT_func
+# End time: 10:21:07 on Mar 25,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:21:07 on Mar 25,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Loading entity Pulse_Emulator
+# End time: 10:21:07 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 10:21:09 on Mar 25,2020, Elapsed time: 0:08:02
+# Errors: 0, Warnings: 0
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 10:21:10 on Mar 25,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading work.pulse_emulator(behavioral)
+# Loading work.lut_func(behavioral)
+add wave -position insertpoint  \
+sim:/tb_pulse/label_Pulse_Emulator/CLK_156k \
+sim:/tb_pulse/label_Pulse_Emulator/pixel
+ru 20ms
+# ambiguous command name "ru": run runIntHandler runStatus
+run 20ms
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:25:09 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 10:25:09 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:25:09 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 10:25:09 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:25:09 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# -- Loading entity LUT_func
+# End time: 10:25:09 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:25:09 on Mar 25,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Loading entity Pulse_Emulator
+# End time: 10:25:10 on Mar 25,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# End time: 10:25:12 on Mar 25,2020, Elapsed time: 0:04:02
+# Errors: 1, Warnings: 0
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 10:25:12 on Mar 25,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading work.pulse_emulator(behavioral)
+# Loading work.lut_func(behavioral)
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:26:15 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 10:26:15 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:26:15 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 10:26:15 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:26:15 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# -- Loading entity LUT_func
+# End time: 10:26:15 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:26:15 on Mar 25,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Loading entity Pulse_Emulator
+# End time: 10:26:16 on Mar 25,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# End time: 10:26:18 on Mar 25,2020, Elapsed time: 0:01:06
+# Errors: 0, Warnings: 0
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 10:26:19 on Mar 25,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading work.pulse_emulator(behavioral)
+# Loading work.lut_func(behavioral)
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:26:46 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 10:26:46 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:26:46 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 10:26:46 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:26:46 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# -- Loading entity LUT_func
+# End time: 10:26:46 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:26:46 on Mar 25,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Loading entity Pulse_Emulator
+# End time: 10:26:46 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 10:26:49 on Mar 25,2020, Elapsed time: 0:00:30
+# Errors: 0, Warnings: 0
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 10:26:50 on Mar 25,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading work.pulse_emulator(behavioral)
+# Loading work.lut_func(behavioral)
+add wave -position insertpoint  \
+sim:/tb_pulse/label_Pulse_Emulator/CLK_147k \
+sim:/tb_pulse/label_Pulse_Emulator/pixel
+run 
+run 20ms
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:34:09 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 10:34:09 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:34:09 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 10:34:09 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:34:09 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# -- Loading entity LUT_func
+# End time: 10:34:09 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:34:09 on Mar 25,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Loading entity Pulse_Emulator
+# End time: 10:34:09 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 10:34:12 on Mar 25,2020, Elapsed time: 0:07:22
+# Errors: 0, Warnings: 0
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 10:34:12 on Mar 25,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading work.pulse_emulator(behavioral)
+# Loading work.lut_func(behavioral)
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:48:15 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 10:48:15 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:48:15 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 10:48:15 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:48:15 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# ** Error: Pulse_Emulator.vhd(60): near ":": (vcom-1576) expecting IS or ';'.
+# ** Error: Pulse_Emulator.vhd(61): (vcom-1136) Unknown identifier "t_array_address_mem".
+# -- Loading entity LUT_func
+# ** Note: Pulse_Emulator.vhd(183): VHDL Compiler exiting
+# End time: 10:48:16 on Mar 25,2020, Elapsed time: 0:00:01
+# Errors: 2, Warnings: 0
+# ** Error: C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./dofile.do line 3
+# C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom Pulse_Emulator.vhd"
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:48:58 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 10:48:58 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:48:58 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 10:48:58 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:48:58 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# -- Loading entity LUT_func
+# End time: 10:48:58 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:48:58 on Mar 25,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Loading entity Pulse_Emulator
+# End time: 10:48:59 on Mar 25,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# End time: 10:49:01 on Mar 25,2020, Elapsed time: 0:14:49
+# Errors: 5, Warnings: 0
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 10:49:02 on Mar 25,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading work.pulse_emulator(behavioral)
+# Loading work.lut_func(behavioral)
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:51:13 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 10:51:13 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:51:13 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 10:51:13 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:51:13 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# -- Loading entity LUT_func
+# End time: 10:51:13 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:51:13 on Mar 25,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Loading entity Pulse_Emulator
+# End time: 10:51:13 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 10:51:16 on Mar 25,2020, Elapsed time: 0:02:14
+# Errors: 0, Warnings: 0
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 10:51:16 on Mar 25,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading work.pulse_emulator(behavioral)
+# Loading work.lut_func(behavioral)
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:53:56 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 10:53:57 on Mar 25,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:53:57 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 10:53:57 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:53:57 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# ** Error: Pulse_Emulator.vhd(70): near "type": (vcom-1576) expecting IDENTIFIER.
+# ** Error: Pulse_Emulator.vhd(71): (vcom-1136) Unknown identifier "t_state".
+# -- Loading entity LUT_func
+# ** Note: Pulse_Emulator.vhd(185): VHDL Compiler exiting
+# End time: 10:53:57 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+# ** Error: C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./dofile.do line 3
+# C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom Pulse_Emulator.vhd"
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:56:18 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 10:56:18 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:56:18 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 10:56:18 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:56:18 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# -- Loading entity LUT_func
+# End time: 10:56:18 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:56:18 on Mar 25,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Loading entity Pulse_Emulator
+# End time: 10:56:19 on Mar 25,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# End time: 10:56:21 on Mar 25,2020, Elapsed time: 0:05:05
+# Errors: 5, Warnings: 0
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 10:56:21 on Mar 25,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading work.pulse_emulator(behavioral)
+# Loading work.lut_func(behavioral)
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:57:30 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 10:57:30 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:57:30 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 10:57:30 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:57:31 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# -- Loading entity LUT_func
+# End time: 10:57:31 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 10:57:31 on Mar 25,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Loading entity Pulse_Emulator
+# End time: 10:57:31 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 10:57:34 on Mar 25,2020, Elapsed time: 0:01:13
+# Errors: 0, Warnings: 0
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 10:57:34 on Mar 25,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading work.pulse_emulator(behavioral)
+# Loading work.lut_func(behavioral)
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:01:31 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 11:01:31 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:01:32 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 11:01:32 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:01:32 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# ** Error: Pulse_Emulator.vhd(90): Symbol "label_counter_address" has already been declared in this region.
+# -- Loading entity LUT_func
+# ** Note: Pulse_Emulator.vhd(191): VHDL Compiler exiting
+# End time: 11:01:32 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./dofile.do line 3
+# C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom Pulse_Emulator.vhd"
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:02:03 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 11:02:03 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:02:03 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 11:02:03 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:02:03 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# -- Loading entity LUT_func
+# End time: 11:02:03 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:02:03 on Mar 25,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Loading entity Pulse_Emulator
+# End time: 11:02:03 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 11:02:06 on Mar 25,2020, Elapsed time: 0:04:32
+# Errors: 4, Warnings: 0
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 11:02:06 on Mar 25,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading work.pulse_emulator(behavioral)
+# Loading work.lut_func(behavioral)
+restart -f
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:07:49 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 11:07:50 on Mar 25,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:07:50 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 11:07:50 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:07:50 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# -- Loading entity LUT_func
+# End time: 11:07:50 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:07:50 on Mar 25,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Loading entity Pulse_Emulator
+# End time: 11:07:50 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 11:07:53 on Mar 25,2020, Elapsed time: 0:05:47
+# Errors: 0, Warnings: 0
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 11:07:53 on Mar 25,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading work.pulse_emulator(behavioral)
+# Loading work.lut_func(behavioral)
+add wave -position insertpoint  \
+sim:/tb_pulse/label_Pulse_Emulator/pixel \
+sim:/tb_pulse/label_Pulse_Emulator/counter_address
+restart -f
+run 20ms
+# GetModuleFileName: Le module spécifié est introuvable.
+# 
+# 
+run 20ms
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:12:36 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 11:12:37 on Mar 25,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:12:37 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 11:12:37 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:12:37 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# -- Loading entity LUT_func
+# End time: 11:12:37 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:12:37 on Mar 25,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Loading entity Pulse_Emulator
+# End time: 11:12:37 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 11:12:40 on Mar 25,2020, Elapsed time: 0:04:47
+# Errors: 0, Warnings: 0
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 11:12:41 on Mar 25,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading work.pulse_emulator(behavioral)
+# Loading work.lut_func(behavioral)
+add wave -position insertpoint  \
+sim:/tb_pulse/label_Pulse_Emulator/pixel \
+sim:/tb_pulse/label_Pulse_Emulator/counter_address
+run -all
+# Break key hit
+# Simulation stop requested.
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:32:05 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 11:32:05 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:32:05 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 11:32:05 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:32:05 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# ** Error: Pulse_Emulator.vhd(109): Target type ieee.NUMERIC_STD.UNRESOLVED_UNSIGNED in signal assignment is different from expression type t_array_Mem_counter_address.
+# -- Loading entity LUT_func
+# ** Warning: Pulse_Emulator.vhd(109): (vcom-1272) Length of expected is 10; length of actual is 34.
+# ** Note: Pulse_Emulator.vhd(131): VHDL Compiler exiting
+# End time: 11:32:05 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 1
+# ** Error: C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./dofile.do line 3
+# C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom Pulse_Emulator.vhd"
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:37:00 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 11:37:00 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:37:00 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 11:37:00 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:37:00 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# ** Error: Pulse_Emulator.vhd(93): Integer literal 0 is not of type ieee.NUMERIC_STD.UNSIGNED.
+# ** Error: Pulse_Emulator.vhd(98): Integer literal 0 is not of type ieee.NUMERIC_STD.UNSIGNED.
+# ** Error: Pulse_Emulator.vhd(110): Target type ieee.NUMERIC_STD.UNRESOLVED_UNSIGNED in signal assignment is different from expression type t_array_Mem_counter_address.
+# -- Loading entity LUT_func
+# ** Warning: Pulse_Emulator.vhd(110): (vcom-1272) Length of expected is 10; length of actual is 34.
+# ** Note: Pulse_Emulator.vhd(132): VHDL Compiler exiting
+# End time: 11:37:00 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 3, Warnings: 1
+# ** Error: C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./dofile.do line 3
+# C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom Pulse_Emulator.vhd"
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:37:38 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 11:37:38 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:37:38 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 11:37:39 on Mar 25,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:37:39 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# ** Error: Pulse_Emulator.vhd(98): Integer literal 0 is not of type ieee.NUMERIC_STD.UNSIGNED.
+# ** Error: Pulse_Emulator.vhd(110): Target type ieee.NUMERIC_STD.UNRESOLVED_UNSIGNED in signal assignment is different from expression type t_array_Mem_counter_address.
+# -- Loading entity LUT_func
+# ** Warning: Pulse_Emulator.vhd(110): (vcom-1272) Length of expected is 10; length of actual is 34.
+# ** Note: Pulse_Emulator.vhd(132): VHDL Compiler exiting
+# End time: 11:37:39 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 1
+# ** Error: C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./dofile.do line 3
+# C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom Pulse_Emulator.vhd"
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:37:57 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 11:37:57 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:37:57 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 11:37:57 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:37:57 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# ** Error: Pulse_Emulator.vhd(110): Target type ieee.NUMERIC_STD.UNRESOLVED_UNSIGNED in signal assignment is different from expression type t_array_Mem_counter_address.
+# -- Loading entity LUT_func
+# ** Warning: Pulse_Emulator.vhd(110): (vcom-1272) Length of expected is 10; length of actual is 34.
+# ** Note: Pulse_Emulator.vhd(132): VHDL Compiler exiting
+# End time: 11:37:57 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 1
+# ** Error: C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./dofile.do line 3
+# C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom Pulse_Emulator.vhd"
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:38:15 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 11:38:16 on Mar 25,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:38:16 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 11:38:16 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:38:16 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# -- Loading entity LUT_func
+# End time: 11:38:16 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:38:16 on Mar 25,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Loading entity Pulse_Emulator
+# End time: 11:38:16 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 11:38:19 on Mar 25,2020, Elapsed time: 0:25:38
+# Errors: 19, Warnings: 4
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 11:38:19 on Mar 25,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading work.pulse_emulator(behavioral)
+# Loading work.lut_func(behavioral)
+add wave -position insertpoint  \
+sim:/tb_pulse/label_Pulse_Emulator/mem_counter_address
+add wave -position insertpoint  \
+sim:/tb_pulse/label_Pulse_Emulator/pixel \
+sim:/tb_pulse/label_Pulse_Emulator/counter_address
+restart -f
+run -all
+# GetModuleFileName: Le module spécifié est introuvable.
+# 
+# 
+# Break key hit
+# Simulation stop requested.
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:53:59 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 11:53:59 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:53:59 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 11:53:59 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:53:59 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# -- Loading entity LUT_func
+# End time: 11:54:00 on Mar 25,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:54:00 on Mar 25,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Loading entity Pulse_Emulator
+# End time: 11:54:00 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 11:54:02 on Mar 25,2020, Elapsed time: 0:15:43
+# Errors: 0, Warnings: 0
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 11:54:03 on Mar 25,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading work.pulse_emulator(behavioral)
+# Loading work.lut_func(behavioral)
+add wave -position insertpoint  \
+sim:/tb_pulse/label_Pulse_Emulator/pixel \
+sim:/tb_pulse/label_Pulse_Emulator/mem_counter_address \
+sim:/tb_pulse/label_Pulse_Emulator/counter_address
+run -all
+# Break key hit
+# Break in Process P_Write_Pulse_Ram at Pulse_LUT_function.vhd line 65
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:57:02 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 11:57:02 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:57:03 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 11:57:03 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:57:03 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# ** Error: Pulse_Emulator.vhd(107): near ";": (vcom-1576) expecting ')'.
+# -- Loading entity LUT_func
+# ** Note: Pulse_Emulator.vhd(132): VHDL Compiler exiting
+# End time: 11:57:03 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./dofile.do line 3
+# C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom Pulse_Emulator.vhd"
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:57:22 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 11:57:22 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:57:22 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 11:57:22 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:57:22 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# ** Error: Pulse_Emulator.vhd(107): Aggregate expression cannot be scalar type ieee.std_logic_1164.STD_ULOGIC.
+# -- Loading entity LUT_func
+# ** Note: Pulse_Emulator.vhd(132): VHDL Compiler exiting
+# End time: 11:57:22 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./dofile.do line 3
+# C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom Pulse_Emulator.vhd"
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:58:42 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 11:58:42 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:58:42 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 11:58:42 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:58:42 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# -- Loading entity LUT_func
+# End time: 11:58:42 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 11:58:42 on Mar 25,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Loading entity Pulse_Emulator
+# End time: 11:58:42 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 11:58:45 on Mar 25,2020, Elapsed time: 0:04:42
+# Errors: 8, Warnings: 0
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 11:58:46 on Mar 25,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading work.pulse_emulator(behavioral)
+# Loading work.lut_func(behavioral)
+add wave -position insertpoint  \
+sim:/tb_pulse/label_Pulse_Emulator/pixel \
+sim:/tb_pulse/label_Pulse_Emulator/mem_counter_address \
+sim:/tb_pulse/label_Pulse_Emulator/counter_address
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+run -all
+# Break key hit
+# Break in Process write_proc1 at Tb_Pulse.vhd line 103
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:10:43 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 12:10:43 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:10:43 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 12:10:43 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:10:43 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# ** Error: Pulse_Emulator.vhd(107): Aggregate expression cannot be scalar type ieee.std_logic_1164.STD_ULOGIC.
+# -- Loading entity LUT_func
+# ** Note: Pulse_Emulator.vhd(133): VHDL Compiler exiting
+# End time: 12:10:43 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./dofile.do line 3
+# C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom Pulse_Emulator.vhd"
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:11:26 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 12:11:26 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:11:26 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 12:11:26 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:11:26 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# -- Loading entity LUT_func
+# End time: 12:11:26 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:11:26 on Mar 25,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Loading entity Pulse_Emulator
+# End time: 12:11:26 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 12:11:29 on Mar 25,2020, Elapsed time: 0:12:43
+# Errors: 11, Warnings: 0
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 12:11:30 on Mar 25,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading work.pulse_emulator(behavioral)
+# Loading work.lut_func(behavioral)
+add wave -position insertpoint  \
+sim:/tb_pulse/label_Pulse_Emulator/pixel \
+sim:/tb_pulse/label_Pulse_Emulator/mem_counter_address \
+sim:/tb_pulse/label_Pulse_Emulator/counter_address
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+run -all
+# Break key hit
+# Break in Process label_mem_counter_address at Pulse_Emulator.vhd line 104
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:29:32 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 12:29:32 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:29:32 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 12:29:32 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:29:32 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# -- Loading entity LUT_func
+# ** Error: Pulse_Emulator.vhd(150): near "process": (vcom-1576) expecting IF.
+# End time: 12:29:32 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./dofile.do line 3
+# C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom Pulse_Emulator.vhd"
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:30:21 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 12:30:22 on Mar 25,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:30:22 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 12:30:22 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:30:22 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# -- Loading entity LUT_func
+# ** Error: Pulse_Emulator.vhd(147): Cannot read output "Pulse_Ram_Data_RD".
+# 	VHDL 2008 allows reading outputs.
+# 	This facility is enabled by compiling with -2008.
+# ** Note: Pulse_Emulator.vhd(153): VHDL Compiler exiting
+# End time: 12:30:22 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./dofile.do line 3
+# C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom Pulse_Emulator.vhd"
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:31:03 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 12:31:03 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:31:03 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 12:31:03 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:31:03 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# ** Error: Pulse_Emulator.vhd(71): near "out": (vcom-1576) expecting STRING or IDENTIFIER or << or '('.
+# ** Error: Pulse_Emulator.vhd(74): (vcom-1136) Unknown identifier "t_state".
+# -- Loading entity LUT_func
+# ** Error: Pulse_Emulator.vhd(136): (vcom-1136) Unknown identifier "Pulse_Ram_Data_RD_internal".
+# ** Error: Pulse_Emulator.vhd(148): Cannot read output "Pulse_Ram_Data_RD".
+# 	VHDL 2008 allows reading outputs.
+# 	This facility is enabled by compiling with -2008.
+# ** Note: Pulse_Emulator.vhd(154): VHDL Compiler exiting
+# End time: 12:31:03 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 4, Warnings: 0
+# ** Error: C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./dofile.do line 3
+# C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom Pulse_Emulator.vhd"
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:31:15 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 12:31:15 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:31:15 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 12:31:15 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:31:15 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# ** Error: Pulse_Emulator.vhd(71): near "out": (vcom-1576) expecting STRING or IDENTIFIER or << or '('.
+# -- Loading entity LUT_func
+# ** Error: Pulse_Emulator.vhd(136): (vcom-1136) Unknown identifier "Pulse_Ram_Data_RD_internal".
+# ** Error: Pulse_Emulator.vhd(148): Cannot read output "Pulse_Ram_Data_RD".
+# 	VHDL 2008 allows reading outputs.
+# 	This facility is enabled by compiling with -2008.
+# ** Note: Pulse_Emulator.vhd(154): VHDL Compiler exiting
+# End time: 12:31:16 on Mar 25,2020, Elapsed time: 0:00:01
+# Errors: 3, Warnings: 0
+# ** Error: C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./dofile.do line 3
+# C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom Pulse_Emulator.vhd"
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:31:32 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 12:31:32 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:31:32 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 12:31:32 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:31:32 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# -- Loading entity LUT_func
+# ** Error: Pulse_Emulator.vhd(148): Cannot read output "Pulse_Ram_Data_RD".
+# 	VHDL 2008 allows reading outputs.
+# 	This facility is enabled by compiling with -2008.
+# ** Note: Pulse_Emulator.vhd(154): VHDL Compiler exiting
+# End time: 12:31:32 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./dofile.do line 3
+# C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom Pulse_Emulator.vhd"
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:32:01 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 12:32:01 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:32:01 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 12:32:01 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:32:01 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# -- Loading entity LUT_func
+# End time: 12:32:01 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:32:01 on Mar 25,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Loading entity Pulse_Emulator
+# End time: 12:32:01 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 12:32:09 on Mar 25,2020, Elapsed time: 0:20:39
+# Errors: 28, Warnings: 0
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 12:32:10 on Mar 25,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading work.pulse_emulator(behavioral)
+# Loading work.lut_func(behavioral)
+# ** Warning: (vsim-8683) Uninitialized out port /tb_pulse/label_Pulse_Emulator/Pulse_Ram_Data_RD(31 downto 0) has no driver.
+# This port will contribute value (UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU) to the signal network.
+add wave -position insertpoint  \
+sim:/tb_pulse/label_Pulse_Emulator/view_pixel
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-8683) Uninitialized out port /tb_pulse/label_Pulse_Emulator/Pulse_Ram_Data_RD(31 downto 0) has no driver.
+# This port will contribute value (UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU) to the signal network.
+run -all
+# Break key hit
+# Break in Process albel_read_file at Tb_Pulse.vhd line 131
+# Break key hit
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:35:34 on Mar 25,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 12:35:34 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:35:34 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 12:35:34 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:35:34 on Mar 25,2020
+# vcom -reportprogress 300 Pulse_Emulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Pulse_Emulator
+# -- Compiling architecture Behavioral of Pulse_Emulator
+# -- Loading entity LUT_func
+# End time: 12:35:34 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 12:35:34 on Mar 25,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Loading entity Pulse_Emulator
+# End time: 12:35:34 on Mar 25,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 12:35:38 on Mar 25,2020, Elapsed time: 0:03:28
+# Errors: 14, Warnings: 1
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 12:35:38 on Mar 25,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading work.pulse_emulator(behavioral)
+# Loading work.lut_func(behavioral)
+# ** Warning: (vsim-8683) Uninitialized out port /tb_pulse/label_Pulse_Emulator/Pulse_Ram_Data_RD(31 downto 0) has no driver.
+# This port will contribute value (UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU) to the signal network.
+add wave -position insertpoint  \
+sim:/tb_pulse/label_Pulse_Emulator/view_pixel
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-8683) Uninitialized out port /tb_pulse/label_Pulse_Emulator/Pulse_Ram_Data_RD(31 downto 0) has no driver.
+# This port will contribute value (UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU) to the signal network.
+run 20ms
+# End time: 13:29:28 on Mar 25,2020, Elapsed time: 0:53:50
+# Errors: 15, Warnings: 1

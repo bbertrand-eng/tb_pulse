@@ -32,7 +32,7 @@ entity LUT_func is
 --RESET
 		RESET				: in  std_logic;
 --CLOCK
-		CLK_156k				: in  std_logic;
+		CLK_5Mhz				: in  std_logic;
 		ENABLE_CLK_1X		: in  std_logic;
 		WE_Pulse_Ram 		: in  std_logic;
 		Pulse_Ram_ADDRESS	: in  unsigned (9 downto 0);
@@ -62,9 +62,9 @@ constant C_Size_ROM_Delta	: integer:= 16;			--  <======
 signal  Pulse_Ram : t_Pulse_Ram;
 
 begin
-P_Write_Pulse_Ram: process (CLK_156k)
+P_Write_Pulse_Ram: process (CLK_5Mhz)
 begin
-	if rising_edge(CLK_156k) then
+	if rising_edge(CLK_5Mhz) then
 		if (WE_Pulse_Ram ='1') then
 			Pulse_Ram(to_integer(Pulse_Ram_ADDRESS))	<= Pulse_Ram_Data;
 		end if;
@@ -72,9 +72,9 @@ begin
 end process;
 
 
-P_readout: process (CLK_156k)
+P_readout: process (CLK_5Mhz)
 begin
-	if rising_edge(CLK_156k) then
+	if rising_edge(CLK_5Mhz) then
 
 		Func_out	<= Pulse_Ram(to_integer(Pulse_Ram_ADDRESS_RD));
 			-- LUT_data 		<= Pulse_Ram(to_integer(Func_in(C_Size_in-1 downto C_Size_in-C_ROM_Depth)));

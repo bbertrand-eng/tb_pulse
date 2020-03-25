@@ -35,7 +35,8 @@ use IEEE.math_real.all;
 --! @detail file:work_dependencies.svg
 package pulse_package is
 
-
-type t_Pulse_Ram is array (1023 downto 0) of std_logic_vector(31 downto 0);
+constant C_pixel : integer := 34; 
+constant C_depth_pulse_memory : integer := 1024; 
+type t_Pulse_Ram is array (C_depth_pulse_memory-1 downto 0) of std_logic_vector(31 downto 0);
 
 end pulse_package;

@@ -10,24 +10,24 @@ z2
 cModel Technology
 dC:/intelFPGA_pro/19.4
 Elut_func
-Z0 w1585058272
-Z1 DPx4 work 13 pulse_package 0 22 NQVLS;aZM]cQ45:f23`5?0
+Z0 w1585124049
+Z1 DPx4 work 13 pulse_package 0 22 E5OM5A[5ih=d8F^fcF?a33
 Z2 DPx4 ieee 9 math_real 0 22 gNk<PdFJ<XNPcfef`f?Z81
 Z3 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
 Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z5 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-Z6 dC:/20200324_tb_pulse/tb_Pulse_generator
+Z6 dC:/20200325_tb_pulse/tb_Pulse_generator
 Z7 8Pulse_LUT_function.vhd
 Z8 FPulse_LUT_function.vhd
 l0
 L26
-V>5TZV;UlQ3Ag3=Xa0@ZFa1
-!s100 ilTSgjBXh@h0gH^Tlf=`71
+VBN7^5=]<z`FzSTDgofjRY0
+!s100 fZ8S:UZZ`;o`L^:hDQGc90
 Z9 OV;C;2019.2;69
 32
-Z10 !s110 1585073778
+Z10 !s110 1585136134
 !i10b 1
-Z11 !s108 1585073778.000000
+Z11 !s108 1585136134.000000
 Z12 !s90 -reportprogress|300|Pulse_LUT_function.vhd|
 Z13 !s107 Pulse_LUT_function.vhd|
 !i113 1
@@ -38,11 +38,11 @@ R2
 R3
 R4
 R5
-Z15 DEx4 work 8 lut_func 0 22 >5TZV;UlQ3Ag3=Xa0@ZFa1
+Z15 DEx4 work 8 lut_func 0 22 BN7^5=]<z`FzSTDgofjRY0
 l64
 L48
-Vg4TKI0^j?`^Fb[PVNXWJO3
-!s100 XFfGk?OgglEl>:Oa6eTkY0
+VceL8CEBEkJ`C^0W>1C8QK3
+!s100 McKnXcgPzP3hlaZfGCAP83
 R9
 32
 R10
@@ -53,7 +53,9 @@ R13
 !i113 1
 R14
 Epulse_emulator
-Z16 w1585073760
+Z16 w1585135913
+R2
+R1
 R3
 R4
 R5
@@ -61,9 +63,9 @@ R6
 Z17 8Pulse_Emulator.vhd
 Z18 FPulse_Emulator.vhd
 l0
-L34
-VGo49E9b^E9=V3>_jT=z3U2
-!s100 _84?B0^`l7?>T;lhc3=;e2
+L35
+V5:fTR^XGE0hCKJMI4^jE82
+!s100 fGSO`lA=VnYac61AW1E6]1
 R9
 32
 R10
@@ -74,17 +76,17 @@ Z20 !s107 Pulse_Emulator.vhd|
 !i113 1
 R14
 Abehavioral
-R1
-R2
 R15
+R2
+R1
 R3
 R4
 R5
-Z21 DEx4 work 14 pulse_emulator 0 22 Go49E9b^E9=V3>_jT=z3U2
-l71
-L55
-VnGYVHK=TVdHY84e8SGlL12
-!s100 ;egai6IZbfC4f:4V=JeZb3
+Z21 DEx4 work 14 pulse_emulator 0 22 5:fTR^XGE0hCKJMI4^jE82
+l76
+L56
+Vd^OAfaICOO038emLcGiJ?2
+!s100 9dLm=YVBF0ZC`lj9^EFU71
 R9
 32
 R10
@@ -99,14 +101,14 @@ R2
 R3
 R4
 R5
-w1585058536
+w1585131111
 R6
 8pulse_package.vhd
 Fpulse_package.vhd
 l0
 L36
-VNQVLS;aZM]cQ45:f23`5?0
-!s100 0Uiz=1PI@:C74ff?5T9hn2
+VE5OM5A[5ih=d8F^fcF?a33
+!s100 ?1abikE=>>;h7d:e1]MMH0
 R9
 32
 R10
@@ -117,7 +119,7 @@ R11
 !i113 1
 R14
 Etb_pulse
-Z22 w1585073772
+Z22 w1585127973
 Z23 DPx4 ieee 16 std_logic_textio 0 22 V5TSK`;aJKC<l]CEg1>mz1
 R3
 R4
@@ -135,26 +137,28 @@ R10
 !i10b 1
 R11
 Z26 !s90 -reportprogress|300|Tb_Pulse.vhd|
-!s107 Tb_Pulse.vhd|
+Z27 !s107 Tb_Pulse.vhd|
 !i113 1
 R14
 Abehavior
+R2
+R1
 R21
 R23
 R3
 R4
 R5
-DEx4 work 8 tb_pulse 0 22 79b;_Xm;[Pk4K1a;DlES60
+Z28 DEx4 work 8 tb_pulse 0 22 79b;_Xm;[Pk4K1a;DlES60
 l27
 L11
-V6T1=?>F^CV]]Y_EAd]j193
-!s100 [:XHAc564z:6RHlgzYVRT2
+Z29 VW7Ial5T=C=kGW:?ddTz[l1
+Z30 !s100 QX?3Y<l2HzfRNg>Cch5^T3
 R9
 32
 R10
 !i10b 1
 R11
 R26
-Z27 !s107 Tb_Pulse.vhd|
+R27
 !i113 1
 R14

@@ -20,6 +20,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use ieee.numeric_std.ALL;
+use work.pulse_package.all;
 --use work.athena_package.all;
 
 -- Uncomment the following library declaration if using
@@ -36,8 +37,8 @@ entity Pulse_Emulator is
 --RESET
 			Reset		 		: in  STD_LOGIC;
 --CLOCKs
-    		CLK_156k					: in  STD_LOGIC;
-			ENABLE_CLK_1X			: in  STD_LOGIC;
+    		CLK_5Mhz			: in  STD_LOGIC;
+			ENABLE_CLK_1X		: in  STD_LOGIC;
 --CONTROL
 
 			--Send_Pulse 			: in  STD_LOGIC;
@@ -54,21 +55,69 @@ end Pulse_Emulator;
 --! @detail file:work.Pulse_Emulator.Behavioral.svg
 architecture Behavioral of Pulse_Emulator is
 
-constant C_PluseLUT_Size_in 	: integer := 18;
-constant C_PluseLUT_Size_out 	: integer := 16;
-constant C_MaxCount			: positive := ((2**C_PluseLUT_Size_in)-1);
+signal	CLK_73529Hz			: std_logic;
+signal 	pixel				:	integer range 0 to C_pixel;
 
+type 	t_array_Mem_counter_address is array (C_pixel-1 downto 0) of unsigned (9 downto 0);
+signal	mem_counter_address	:	t_array_Mem_counter_address;
+
+signal	counter_address		:	unsigned (9 downto 0);
+
+signal	view_pixel			:	STD_LOGIC_VECTOR (31 downto 0);
+	
+-- constant C_MaxCount				:	positive := ((2**C_PluseLUT_Size_in)-1);
+
+signal Pulse_Ram_ADDRESS_RD_internal : unsigned (9 downto 0);
+signal Pulse_Ram_Data_RD_internal	: STD_LOGIC_VECTOR (31 downto 0);
 
 type 	t_state is(idle,pulse);
 signal 	state : t_state;
 
-signal 	counter				: unsigned(C_PluseLUT_Size_in-1 downto 0);
-
--- signal 	one_pulse 			: STD_LOGIC;
--- signal 	one_pulsed 			: STD_LOGIC;
-
-
 BEGIN
+
+label_pixel : process(Reset, CLK_5Mhz)
+begin
+if Reset = '1' then
+pixel	<= 0;
+CLK_73529Hz	<= '0';
+
+else
+    if CLK_5Mhz='1' and CLK_5Mhz'event then
+	pixel <= pixel + 1;
+		if pixel = C_pixel-1 then
+		pixel	<= 0;
+		CLK_73529Hz <= not CLK_73529Hz;
+		end if;
+    end if;  -- clock
+end if;  -- reset 
+end process;
+
+-- label_counter_address : process(Reset, CLK_5Mhz)
+-- begin
+-- if Reset = '1' then
+-- counter_address <= (others => '0');
+-- else
+    -- if CLK_5Mhz='1' and CLK_5Mhz'event then
+	-- counter_address <= counter_address + 1; 
+		-- if counter_address = C_depth_pulse_memory-1 then
+		-- counter_address <= (others => '0');
+		-- end if;
+    -- end if;  -- clock
+-- end if;  -- reset 
+-- end process;
+
+label_mem_counter_address : process(Reset, CLK_5Mhz)
+begin
+if Reset = '1' then
+mem_counter_address <= (others=>(others=>'0'));
+
+else
+    if CLK_5Mhz='1' and CLK_5Mhz'event then
+	mem_counter_address(pixel) <= mem_counter_address(pixel)+1;
+    end if;  -- clock
+end if;  -- reset 
+end process;
+
 
 label_LUT_func: entity work.LUT_func 
 	-- Generic map(
@@ -77,83 +126,32 @@ label_LUT_func: entity work.LUT_func
 		-- )
 	Port map( 
 		RESET				=> Reset,
-		CLK_156k			=> CLK_156k,
+		CLK_5Mhz			=> CLK_5Mhz,
 		ENABLE_CLK_1X		=> ENABLE_CLK_1X,
 		WE_Pulse_Ram 		=> WE_Pulse_Ram ,
 		Pulse_Ram_ADDRESS	=> Pulse_Ram_ADDRESS,
-		Pulse_Ram_ADDRESS_RD=> Pulse_Ram_ADDRESS_RD,	
+		Pulse_Ram_ADDRESS_RD=> Pulse_Ram_ADDRESS_RD_internal,	
 		Pulse_Ram_Data		=> Pulse_Ram_Data,
 		--Func_in				=> counter,
-		Func_out			=> Pulse_Ram_Data_RD
+		Func_out			=> Pulse_Ram_Data_RD_internal
 );
 
 
--- P_ONE_pulse: process(CLK_156k)
-	-- begin
-		-- if (rising_edge(CLK_156k)) then
-			-- if (Reset = '1') then
-				-- one_pulse <= '0';
-		 		-- one_pulsed <= '0';
-			-- elsif (ENABLE_CLK_1X = '1') then
-				-- if (Send_Pulse ='1' and	one_pulsed = '0') then
-					-- one_pulse 	<='1';
-					-- one_pulsed 	<='1';
-				-- else 
-					-- if (one_pulse ='1' and one_pulsed = '1') then
-						-- one_pulse	<= '0';
-						-- one_pulsed 	<= '1';
-					-- else 
-						-- if (Send_Pulse ='0' ) then
-						-- one_pulse	<= '0';
-						-- one_pulsed 	<= '0';
-						-- end if;
-					-- end if;
-				-- end if;
-			-- end if;
-		-- end if;
--- end process; 
--- P_sig_gene: process(CLK_4X)
--- begin
-	-- if rising_edge(CLK_4X) then
-		-- if (Reset = '1') then
-			-- pulse_amp_buf		<= (others=>'0');
-			-- pulse_amp_offset	<= (others=>'0');
-			-- Bias_Pulse_buf		<= (others=>'0');
-			-- Pulse_Ram_Data_RD 			<= (others=>'0');
-			-- state				<= idle;
-			-- Pulse_amplitude_reg <= (others=>'0');
-			-- counter 			<= (others=>'0');
-			-- counter_prev 		<= (others=>'0');
-		-- elsif (ENABLE_CLK_1X ='1') then
-			-- Pulse_amplitude_reg <= Pulse_amplitude;
-			-- pulse_amp_buf		<= LUT_out*Pulse_amplitude_reg;
-			-- pulse_amp_offset	<= to_unsigned((2**(LUT_out'length))-1,LUT_out'length) - pulse_amp;
-			-- Bias_Pulse_buf		<= signed('0' & pulse_amp_offset) * Sig_in;
-			-- Pulse_Ram_Data_RD	<= Bias_Pulse;
-			-- Case state is
-			-- when idle	=>
-				-- if one_pulse = '1' then
-					-- counter 		<= (others=>'0');
-					-- counter_prev 	<= (others=>'0');
-					-- state			<= pulse;
-				-- else 
-					-- state		<= idle;
-				-- end if;
-			-- when pulse	=>
-				-- if (counter < C_MaxCount) and (counter >= counter_prev) then
-					-- counter_prev	<= counter;
-					-- counter			<= resize(counter+Pulse_timescale,counter'length);
-					-- state			<= pulse;
-				-- else
-					-- state			<= idle;
-				-- end if;		
-			-- end case;
-		-- end if;
-	-- end if;
--- end process;
 
--- pulse_amp			<= pulse_amp_buf(pulse_amp_buf'length-1 downto pulse_amp_buf'length-LUT_out'length);
--- Bias_Pulse			<= Bias_Pulse_buf(Bias_Pulse_buf'length-1 -1 downto Bias_Pulse_buf'length-1 - Pulse_Ram_Data_RD'length);
 
+label_view_pixel : process(Reset, CLK_5Mhz)
+begin
+if Reset = '1' then
+view_pixel <= (others=>'0');
+Pulse_Ram_ADDRESS_RD_internal <= (others=>'0');
+else
+    if CLK_5Mhz='1' and CLK_5Mhz'event then
+		if pixel = 0 then
+		Pulse_Ram_ADDRESS_RD_internal <= mem_counter_address(0);
+		view_pixel <= Pulse_Ram_Data_RD_internal;
+		end if;
+    end if;  -- clock
+end if;  -- reset 
+end process;
 
 end Behavioral;
