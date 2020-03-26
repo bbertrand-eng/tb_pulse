@@ -19,8 +19,8 @@ signal RESET 			: std_logic;
 signal Pulse_Ram_Data_RD			: STD_LOGIC_VECTOR (31 downto 0);
 --signal write_sig_1		: signed(19 downto 0);
 --signal SendPulse 		: std_logic;
-signal Pulse_Ram_Data	: STD_LOGIC_vector (31 downto 0 );
-signal Pulse_Ram_ADDRESS	: unsigned (9 downto 0 );
+signal Pulse_Ram_Data_WR	: STD_LOGIC_vector (31 downto 0 );
+signal Pulse_Ram_ADDRESS_WR	: unsigned (9 downto 0 );
 signal Pulse_Ram_ADDRESS_RD	: unsigned (9 downto 0 );
 signal WE_Pulse_Ram		: std_logic;
 
@@ -45,9 +45,9 @@ label_Pulse_Emulator : entity work.Pulse_Emulator
 
 		--Send_Pulse			=> SendPulse,
 		WE_Pulse_Ram		=> WE_Pulse_Ram,	--: std_logic;
-		Pulse_Ram_ADDRESS	=> Pulse_Ram_ADDRESS,	--: unsigned (9 downto 0 );
+		Pulse_Ram_ADDRESS_WR	=> Pulse_Ram_ADDRESS_WR,	--: unsigned (9 downto 0 );
 		Pulse_Ram_ADDRESS_RD=> Pulse_Ram_ADDRESS_RD,	--: unsigned (9 downto 0 );
-		Pulse_Ram_Data		=> Pulse_Ram_Data,	--: STD_LOGIC_vector (31 downto 0 );
+		Pulse_Ram_Data_WR		=> Pulse_Ram_Data_WR,	--: STD_LOGIC_vector (31 downto 0 );
 --		Sig_in				=> to_signed(32767,20),
 		Pulse_Ram_Data_RD	=> Pulse_Ram_Data_RD	--: STD_LOGIC_VECTOR (31 downto 0);
 	);
@@ -124,7 +124,7 @@ begin
  
 	wait until RESET = '0' and RESET'event;
   	file_open(fake_pulse_CBE, "fake_pulse_CBE.txt", READ_MODE);
-	Pulse_Ram_ADDRESS 	<= (others=>'0');
+	Pulse_Ram_ADDRESS_WR 	<= (others=>'0');
 	
 	WE_Pulse_Ram		<= '0';
 		loop
@@ -134,9 +134,9 @@ begin
 		WE_Pulse_Ram		<= '1';
         	readline(fake_pulse_CBE, l);
         	hread(l, Value);
-         	Pulse_Ram_Data <= Value;
+         	Pulse_Ram_Data_WR <= Value;
 			
-			Pulse_Ram_ADDRESS <= Pulse_Ram_ADDRESS +1;
+			Pulse_Ram_ADDRESS_WR <= Pulse_Ram_ADDRESS_WR +1;
 		else
 		WE_Pulse_Ram		<= '0';	
 		end if;

@@ -1,4 +1,5 @@
 vcom pulse_package.vhd
+vcom demux_pixel_fpa.vhd
 vcom Pulse_LUT_function.vhd
 vcom Pulse_Emulator.vhd
 vcom Tb_Pulse.vhd
