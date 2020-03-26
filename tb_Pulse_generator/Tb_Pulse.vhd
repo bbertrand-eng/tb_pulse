@@ -37,7 +37,7 @@ begin
 end process;
 
 -- Component Instantiation
-label_Pulse_Emulator : entity work.Pulse_Emulator 
+label_TES : entity work.TES 
 	PORT MAP(
 		Reset				=> RESET,
 		CLK_5Mhz			=> CLK_5Mhz,

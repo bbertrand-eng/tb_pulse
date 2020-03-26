@@ -15,7 +15,7 @@ use work.pulse_package.all;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity Pulse_Emulator is
+entity TES is
     Port (
 --RESET
 			Reset		 		: in  STD_LOGIC;
@@ -32,11 +32,11 @@ entity Pulse_Emulator is
 --			Sig_in 				: in  signed (C_Size_DDS-1 downto 0);
         	Pulse_Ram_Data_RD 	: out STD_LOGIC_VECTOR (31 downto 0)
         );
-end Pulse_Emulator;
+end TES;
 
 --! @brief-- BLock diagrams schematics -- 
 --! @detail file:work.Pulse_Emulator.Behavioral.svg
-architecture Behavioral of Pulse_Emulator is
+architecture Behavioral of TES is
 
 signal	CLK_73529Hz			: std_logic;
 signal 	pixel				:	integer range 0 to C_pixel;

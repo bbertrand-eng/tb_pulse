@@ -27,9 +27,9 @@ VBOnIHiiOaWSde^oa6LTR_1
 !s100 MbEGWHo^TTXF[0Fh1=[9E1
 Z11 OV;C;2019.2;69
 32
-Z12 !s110 1585217339
+Z12 !s110 1585219958
 !i10b 1
-Z13 !s108 1585217339.000000
+Z13 !s108 1585219958.000000
 Z14 !s90 -reportprogress|300|demux_pixel_fpa.vhd|
 Z15 !s107 demux_pixel_fpa.vhd|
 !i113 1
@@ -99,53 +99,6 @@ R21
 R22
 !i113 1
 R16
-Epulse_emulator
-Z24 w1585217203
-R1
-R2
-R3
-R6
-R7
-R8
-Z25 8Pulse_Emulator.vhd
-Z26 FPulse_Emulator.vhd
-l0
-L18
-VR[Tk_4:9LmoXakRi1=Y5b3
-!s100 89ceGU2AKkC@hgV<b?O=>0
-R11
-32
-Z27 !s110 1585217340
-!i10b 1
-Z28 !s108 1585217340.000000
-Z29 !s90 -reportprogress|300|Pulse_Emulator.vhd|
-Z30 !s107 Pulse_Emulator.vhd|
-!i113 1
-R16
-Abehavioral
-R4
-R5
-R17
-R23
-R1
-R2
-R3
-R6
-R7
-Z31 DEx4 work 14 pulse_emulator 0 22 R[Tk_4:9LmoXakRi1=Y5b3
-l59
-L39
-V5BZ7>VlC6CfT=Y?_Da>kz1
-!s100 8L_a6=iUIaKGo1J:A09KP3
-R11
-32
-R27
-!i10b 1
-R28
-R29
-R30
-!i113 1
-R16
 Ppulse_package
 R1
 R3
@@ -169,46 +122,93 @@ R13
 !i113 1
 R16
 Etb_pulse
-Z32 w1585214854
-Z33 DPx4 ieee 16 std_logic_textio 0 22 V5TSK`;aJKC<l]CEg1>mz1
+Z24 w1585219926
+Z25 DPx4 ieee 16 std_logic_textio 0 22 V5TSK`;aJKC<l]CEg1>mz1
 R3
 R6
 R7
 R8
-Z34 8Tb_Pulse.vhd
-Z35 FTb_Pulse.vhd
+Z26 8Tb_Pulse.vhd
+Z27 FTb_Pulse.vhd
 l0
 L8
 V79b;_Xm;[Pk4K1a;DlES60
 !s100 U?jW@:;M4QMe8fDFM98^]1
 R11
 32
-R27
+R12
 !i10b 1
-R28
-Z36 !s90 -reportprogress|300|Tb_Pulse.vhd|
-Z37 !s107 Tb_Pulse.vhd|
+R13
+Z28 !s90 -reportprogress|300|Tb_Pulse.vhd|
+!s107 Tb_Pulse.vhd|
 !i113 1
 R16
 Abehavior
 R1
 R2
-R31
-R33
+Z29 DEx4 work 3 tes 0 22 FbJX935fO?b[@E>3T93LM1
+R25
 R3
 R6
 R7
-Z38 DEx4 work 8 tb_pulse 0 22 79b;_Xm;[Pk4K1a;DlES60
+DEx4 work 8 tb_pulse 0 22 79b;_Xm;[Pk4K1a;DlES60
 l27
 L11
-Z39 VnUD:VT_h5GH6GFSRZ6Vja3
-Z40 !s100 >HEh<0fkDn^fcoOCKcF1h2
+VdjCPRjj9cSYB^DIGNC`f>0
+!s100 jDi0nic1N^;:2BFO9o2U]1
 R11
 32
-R27
+R12
 !i10b 1
+R13
 R28
-R36
-R37
+Z30 !s107 Tb_Pulse.vhd|
+!i113 1
+R16
+Etes
+Z31 w1585219688
+R1
+R2
+R3
+R6
+R7
+R8
+Z32 8TES.vhd
+Z33 FTES.vhd
+l0
+L18
+VFbJX935fO?b[@E>3T93LM1
+!s100 L73_QY_@NW1ad0MC11Lf?2
+R11
+32
+R12
+!i10b 1
+R13
+Z34 !s90 -reportprogress|300|TES.vhd|
+Z35 !s107 TES.vhd|
+!i113 1
+R16
+Abehavioral
+R4
+R5
+R17
+R23
+R1
+R2
+R3
+R6
+R7
+R29
+l59
+L39
+VneRTP1>>5nlb9N<=O:4IP3
+!s100 kkN?KAYI;BAg76Z0CZ]lb2
+R11
+32
+R12
+!i10b 1
+R13
+R34
+R35
 !i113 1
 R16
