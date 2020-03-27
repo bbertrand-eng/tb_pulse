@@ -22,6 +22,11 @@ entity TES is
 --CLOCKs
     		CLK_5Mhz			: in  STD_LOGIC;
 			ENABLE_CLK_1X		: in  STD_LOGIC;
+			
+-- from gse Vp Vo 
+		
+			Vp	:	in	 t_array_Mem_Vp; 
+			
 --CONTROL
 
 			--Send_Pulse 			: in  STD_LOGIC;
@@ -40,14 +45,13 @@ architecture Behavioral of TES is
 
 signal	CLK_73529Hz			: std_logic;
 signal 	pixel				:	integer range 0 to C_pixel;
+signal	pixel_delayed_1		:	integer range 0 to C_pixel;
+signal	pixel_delayed_2		:	integer range 0 to C_pixel;
+
 --signal	pixel_view			:	integer range 0 to C_pixel;
-
-
 
 signal	counter_address		:	unsigned (9 downto 0);
 
-
-	
 -- constant C_MaxCount				:	positive := ((2**C_PluseLUT_Size_in)-1);
 
 signal Pulse_Ram_ADDRESS_RD_internal : unsigned (9 downto 0);
@@ -56,17 +60,32 @@ signal Pulse_Ram_Data_RD_internal	: STD_LOGIC_VECTOR (31 downto 0);
 type 	t_state is(idle,pulse);
 signal 	state : t_state;
 
+type 	t_array_start_pulse_pixel is array (C_pixel-1 downto 0) of std_logic;
+signal	start_pulse_pixel : t_array_start_pulse_pixel;
+
+signal	Mem_Vp	:	t_array_Mem_Vp;
+
+signal	mem_counter_address	:	t_array_Mem_counter_address;
+
 BEGIN
+
+-------------------------------------------------------------------------------------
+--	Master pixel increment
+-------------------------------------------------------------------------------------
+
 
 label_pixel : process(Reset, CLK_5Mhz)
 begin
 if Reset = '1' then
-pixel	<= 0;
+pixel			<= 0;
+pixel_delayed_1	<= 0;
+pixel_delayed_2	<= 0;
 CLK_73529Hz	<= '0';
-
 else
     if CLK_5Mhz='1' and CLK_5Mhz'event then
 	pixel <= pixel + 1;
+	pixel_delayed_1 <= pixel;
+	pixel_delayed_2 <= pixel_delayed_1; 
 		if pixel = C_pixel-1 then
 		pixel	<= 0;
 		CLK_73529Hz <= not CLK_73529Hz;
@@ -74,6 +93,10 @@ else
     end if;  -- clock
 end if;  -- reset 
 end process;
+
+-------------------------------------------------------------------------------------
+--	counter loop apply on counter address
+-------------------------------------------------------------------------------------
 
 -- label_counter_address : process(Reset, CLK_5Mhz)
 -- begin
@@ -89,18 +112,56 @@ end process;
 -- end if;  -- reset 
 -- end process;
 
+-------------------------------------------------------------------------------------
+--	control and increment counter address pixel 
+-------------------------------------------------------------------------------------
+
 label_mem_counter_address : process(Reset, CLK_5Mhz)
 begin
 if Reset = '1' then
 mem_counter_address <= (others=>(others=>'0'));
-
 else
     if CLK_5Mhz='1' and CLK_5Mhz'event then
-	mem_counter_address(pixel) <= mem_counter_address(pixel)+1;
-    end if;  -- clock
+		if	start_pulse_pixel(pixel) = '1' then
+		mem_counter_address(pixel) <= mem_counter_address(pixel)+1;
+		end if;
+	end if;  -- clock
 end if;  -- reset 
 end process;
 
+
+-------------------------------------------------------------------------------------
+--	control Vp state and remote start pulse pixel
+-------------------------------------------------------------------------------------
+
+
+
+label_generate : for i in 33 downto 0 generate
+--Mem_Vp(i)(15 downto 0) /= x"00000000";
+
+start_pulse_pixel(i) <= '1' when Mem_Vp(i)(15 downto 0) /= b"0000000000000000" else '0';
+end generate label_generate; 
+
+
+-- label_start_pulse_pixel : process(Reset, CLK_5Mhz)
+-- begin
+-- if Reset = '1' then
+-- start_pulse_pixel <= (others=>('0'));
+-- else
+    -- if CLK_5Mhz='1' and CLK_5Mhz'event then
+		-- if Mem_Vp(pixel) /=  x"00000000" then
+		-- start_pulse_pixel(pixel) <= '1';
+		-- end if;
+	-- end if;  -- clock
+-- end if;  -- reset 
+-- end process;
+
+
+
+
+-------------------------------------------------------------------------------------
+--	DUAL RAM
+-------------------------------------------------------------------------------------
 
 label_LUT_func: entity work.LUT_func 
 
@@ -116,6 +177,16 @@ label_LUT_func: entity work.LUT_func
 		Pulse_Ram_Data_RD	=> Pulse_Ram_Data_RD_internal
 );
 
+-------------------------------------------------------------------------------------
+--	Vp
+-------------------------------------------------------------------------------------
+
+Mem_Vp	<= Vp;
+
+-------------------------------------------------------------------------------------
+--	demux
+-------------------------------------------------------------------------------------
+
 label_demux_pixel_fpa : entity work.demux_pixel_fpa
 	Port map( 
 --RESET
@@ -124,7 +195,7 @@ label_demux_pixel_fpa : entity work.demux_pixel_fpa
     	CLK_5Mhz			=>	CLK_5Mhz,
 			--ENABLE_CLK_1X		: 	in  STD_LOGIC;
 --CONTROL
-		pixel				=>	pixel,
+		pixel				=>	pixel_delayed_2,
 		mem_counter_address	=>	mem_counter_address,	
 			
 		Pulse_Ram_Data_RD_internal		=>	Pulse_Ram_Data_RD_internal,	
@@ -136,9 +207,6 @@ label_demux_pixel_fpa : entity work.demux_pixel_fpa
 -- Pulse_Ram_ADDRESS_RD_internal <= mem_counter_address(pixel) when pixel = pixel_view; 
 -- view_pixel(pixel) <= Pulse_Ram_Data_RD_internal when pixel = pixel_view;
 -- end generate label_generate; 
-
-
-
 
 
 

@@ -1,5 +1,851 @@
 # Reading C:/intelFPGA_pro/19.4/modelsim_ase/tcl/vsim/pref.tcl
-# OpenFile C:/20200326_tb_pulse/tb_Pulse_generator/Tb_pulse.mpf
+# OpenFile C:/20200326_pm_tb_pulse/tb_Pulse_generator/Tb_pulse.mpf
 # Loading project Tb_pulse
-pwd
-# C:/20200326_tb_pulse/tb_Pulse_generator
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 00:31:31 on Mar 27,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 00:31:31 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 00:31:31 on Mar 27,2020
+# vcom -reportprogress 300 demux_pixel_fpa.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity demux_pixel_fpa
+# -- Compiling architecture rtl of demux_pixel_fpa
+# End time: 00:31:31 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 00:31:31 on Mar 27,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 00:31:32 on Mar 27,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 00:31:32 on Mar 27,2020
+# vcom -reportprogress 300 TES.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity TES
+# -- Compiling architecture Behavioral of TES
+# -- Loading entity LUT_func
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading entity demux_pixel_fpa
+# End time: 00:31:32 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 00:31:32 on Mar 27,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading entity TES
+# ** Warning: Tb_Pulse.vhd(69): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(101): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(103): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# End time: 00:31:32 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 3
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 00:31:32 on Mar 27,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.tes(behavioral)
+# Loading work.lut_func(behavioral)
+# Loading work.demux_pixel_fpa(rtl)
+# ** Warning: (vsim-8683) Uninitialized out port /tb_pulse/label_TES/Pulse_Ram_Data_RD(31 downto 0) has no driver.
+# This port will contribute value (UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU) to the signal network.
+add wave -position insertpoint  \
+sim:/tb_pulse/label_TES/mem_counter_address
+add wave -position insertpoint  \
+sim:/tb_pulse/label_TES/pixel
+add wave -position insertpoint  \
+sim:/tb_pulse/label_TES/label_demux_pixel_fpa/Pulse_Ram_ADDRESS_RD_internal
+add wave -position insertpoint  \
+sim:/tb_pulse/label_TES/label_demux_pixel_fpa/pixel
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-8683) Uninitialized out port /tb_pulse/label_TES/Pulse_Ram_Data_RD(31 downto 0) has no driver.
+# This port will contribute value (UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU) to the signal network.
+run 30ms
+add wave -position insertpoint  \
+sim:/tb_pulse/label_TES/label_demux_pixel_fpa/view_pixel
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-8683) Uninitialized out port /tb_pulse/label_TES/Pulse_Ram_Data_RD(31 downto 0) has no driver.
+# This port will contribute value (UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU) to the signal network.
+run 30ms
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 00:50:55 on Mar 27,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 00:50:55 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 00:50:55 on Mar 27,2020
+# vcom -reportprogress 300 demux_pixel_fpa.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity demux_pixel_fpa
+# -- Compiling architecture rtl of demux_pixel_fpa
+# End time: 00:50:55 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 00:50:55 on Mar 27,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 00:50:55 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 00:50:55 on Mar 27,2020
+# vcom -reportprogress 300 TES.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity TES
+# -- Compiling architecture Behavioral of TES
+# -- Loading entity LUT_func
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading entity demux_pixel_fpa
+# End time: 00:50:55 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 00:50:56 on Mar 27,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading entity TES
+# ** Warning: Tb_Pulse.vhd(69): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(101): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(103): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# End time: 00:50:56 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 3
+# End time: 00:50:58 on Mar 27,2020, Elapsed time: 0:19:26
+# Errors: 0, Warnings: 4
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 00:50:58 on Mar 27,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.tes(behavioral)
+# Loading work.lut_func(behavioral)
+# Loading work.demux_pixel_fpa(rtl)
+# ** Warning: (vsim-8683) Uninitialized out port /tb_pulse/label_TES/Pulse_Ram_Data_RD(31 downto 0) has no driver.
+# This port will contribute value (UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU) to the signal network.
+add wave -position insertpoint  \
+sim:/tb_pulse/label_TES/label_demux_pixel_fpa/view_pixel
+run 20ms
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-8683) Uninitialized out port /tb_pulse/label_TES/Pulse_Ram_Data_RD(31 downto 0) has no driver.
+# This port will contribute value (UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU) to the signal network.
+run 30ms
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 00:53:19 on Mar 27,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 00:53:19 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 00:53:19 on Mar 27,2020
+# vcom -reportprogress 300 demux_pixel_fpa.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity demux_pixel_fpa
+# -- Compiling architecture rtl of demux_pixel_fpa
+# End time: 00:53:19 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 00:53:20 on Mar 27,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 00:53:20 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 00:53:20 on Mar 27,2020
+# vcom -reportprogress 300 TES.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity TES
+# -- Compiling architecture Behavioral of TES
+# -- Loading entity LUT_func
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading entity demux_pixel_fpa
+# End time: 00:53:20 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 00:53:20 on Mar 27,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading entity TES
+# ** Warning: Tb_Pulse.vhd(69): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(101): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(103): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# End time: 00:53:20 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 3
+# End time: 00:53:22 on Mar 27,2020, Elapsed time: 0:02:24
+# Errors: 0, Warnings: 4
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 00:53:22 on Mar 27,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.tes(behavioral)
+# Loading work.lut_func(behavioral)
+# Loading work.demux_pixel_fpa(rtl)
+# ** Warning: (vsim-8683) Uninitialized out port /tb_pulse/label_TES/Pulse_Ram_Data_RD(31 downto 0) has no driver.
+# This port will contribute value (UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU) to the signal network.
+add wave -position insertpoint  \
+sim:/tb_pulse/label_TES/label_demux_pixel_fpa/view_pixel
+run 10ms
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-8683) Uninitialized out port /tb_pulse/label_TES/Pulse_Ram_Data_RD(31 downto 0) has no driver.
+# This port will contribute value (UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU) to the signal network.
+run 10ms
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 00:55:45 on Mar 27,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 00:55:45 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 00:55:45 on Mar 27,2020
+# vcom -reportprogress 300 demux_pixel_fpa.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity demux_pixel_fpa
+# -- Compiling architecture rtl of demux_pixel_fpa
+# End time: 00:55:45 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 00:55:45 on Mar 27,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 00:55:46 on Mar 27,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 00:55:46 on Mar 27,2020
+# vcom -reportprogress 300 TES.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity TES
+# -- Compiling architecture Behavioral of TES
+# -- Loading entity LUT_func
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading entity demux_pixel_fpa
+# End time: 00:55:46 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 00:55:46 on Mar 27,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading entity TES
+# ** Warning: Tb_Pulse.vhd(68): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(70): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(102): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(104): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# End time: 00:55:46 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 4
+# End time: 00:55:48 on Mar 27,2020, Elapsed time: 0:02:26
+# Errors: 0, Warnings: 5
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 00:55:48 on Mar 27,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.tes(behavioral)
+# Loading work.lut_func(behavioral)
+# Loading work.demux_pixel_fpa(rtl)
+# ** Warning: (vsim-8683) Uninitialized out port /tb_pulse/label_TES/Pulse_Ram_Data_RD(31 downto 0) has no driver.
+# This port will contribute value (UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU) to the signal network.
+add wave -position insertpoint  \
+sim:/tb_pulse/label_TES/label_demux_pixel_fpa/view_pixel
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-8683) Uninitialized out port /tb_pulse/label_TES/Pulse_Ram_Data_RD(31 downto 0) has no driver.
+# This port will contribute value (UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU) to the signal network.
+run 10ms
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 00:59:54 on Mar 27,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 00:59:54 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 00:59:54 on Mar 27,2020
+# vcom -reportprogress 300 demux_pixel_fpa.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity demux_pixel_fpa
+# -- Compiling architecture rtl of demux_pixel_fpa
+# End time: 00:59:54 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 00:59:54 on Mar 27,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 00:59:54 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 00:59:54 on Mar 27,2020
+# vcom -reportprogress 300 TES.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity TES
+# -- Compiling architecture Behavioral of TES
+# -- Loading entity LUT_func
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading entity demux_pixel_fpa
+# End time: 00:59:55 on Mar 27,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 00:59:55 on Mar 27,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading entity TES
+# ** Warning: Tb_Pulse.vhd(68): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(70): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(72): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(74): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(76): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Error: Tb_Pulse.vhd(78): near "after": (vcom-1576) expecting == or '+' or '-' or '&'.
+# ** Warning: Tb_Pulse.vhd(78): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(80): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(82): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(84): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(86): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(88): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(111): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(113): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Note: Tb_Pulse.vhd(206): VHDL Compiler exiting
+# End time: 00:59:55 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 13
+# ** Error: C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./dofile.do line 5
+# C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom Tb_Pulse.vhd"
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 01:00:11 on Mar 27,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 01:00:11 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 01:00:11 on Mar 27,2020
+# vcom -reportprogress 300 demux_pixel_fpa.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity demux_pixel_fpa
+# -- Compiling architecture rtl of demux_pixel_fpa
+# End time: 01:00:11 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 01:00:11 on Mar 27,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 01:00:11 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 01:00:11 on Mar 27,2020
+# vcom -reportprogress 300 TES.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity TES
+# -- Compiling architecture Behavioral of TES
+# -- Loading entity LUT_func
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading entity demux_pixel_fpa
+# End time: 01:00:11 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 01:00:11 on Mar 27,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading entity TES
+# ** Warning: Tb_Pulse.vhd(68): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(70): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(72): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(74): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(76): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(78): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Error: Tb_Pulse.vhd(79): near "Vp": (vcom-1576) expecting ';'.
+# ** Warning: Tb_Pulse.vhd(80): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(82): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(84): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(86): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(88): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(111): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(113): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Note: Tb_Pulse.vhd(206): VHDL Compiler exiting
+# End time: 01:00:12 on Mar 27,2020, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 13
+# ** Error: C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./dofile.do line 5
+# C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom Tb_Pulse.vhd"
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 01:00:39 on Mar 27,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 01:00:39 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 01:00:39 on Mar 27,2020
+# vcom -reportprogress 300 demux_pixel_fpa.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity demux_pixel_fpa
+# -- Compiling architecture rtl of demux_pixel_fpa
+# End time: 01:00:40 on Mar 27,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 01:00:40 on Mar 27,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 01:00:40 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 01:00:40 on Mar 27,2020
+# vcom -reportprogress 300 TES.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity TES
+# -- Compiling architecture Behavioral of TES
+# -- Loading entity LUT_func
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading entity demux_pixel_fpa
+# End time: 01:00:40 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 01:00:40 on Mar 27,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading entity TES
+# ** Warning: Tb_Pulse.vhd(68): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(70): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(72): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(74): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(76): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(78): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(80): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(82): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(84): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(86): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(88): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(111): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(113): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# End time: 01:00:40 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 13
+# End time: 01:00:42 on Mar 27,2020, Elapsed time: 0:04:54
+# Errors: 8, Warnings: 40
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 01:00:42 on Mar 27,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.tes(behavioral)
+# Loading work.lut_func(behavioral)
+# Loading work.demux_pixel_fpa(rtl)
+# ** Warning: (vsim-8683) Uninitialized out port /tb_pulse/label_TES/Pulse_Ram_Data_RD(31 downto 0) has no driver.
+# This port will contribute value (UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU) to the signal network.
+add wave -position insertpoint  \
+sim:/tb_pulse/label_TES/label_demux_pixel_fpa/view_pixel
+run 20ms
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-8683) Uninitialized out port /tb_pulse/label_TES/Pulse_Ram_Data_RD(31 downto 0) has no driver.
+# This port will contribute value (UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU) to the signal network.
+run 20ms
+do dofile.do
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 01:04:41 on Mar 27,2020
+# vcom -reportprogress 300 pulse_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Compiling package pulse_package
+# End time: 01:04:42 on Mar 27,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 01:04:42 on Mar 27,2020
+# vcom -reportprogress 300 demux_pixel_fpa.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity demux_pixel_fpa
+# -- Compiling architecture rtl of demux_pixel_fpa
+# End time: 01:04:42 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 01:04:42 on Mar 27,2020
+# vcom -reportprogress 300 Pulse_LUT_function.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity LUT_func
+# -- Compiling architecture Behavioral of LUT_func
+# End time: 01:04:42 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 01:04:42 on Mar 27,2020
+# vcom -reportprogress 300 TES.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity TES
+# -- Compiling architecture Behavioral of TES
+# -- Loading entity LUT_func
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading entity demux_pixel_fpa
+# End time: 01:04:42 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
+# Start time: 01:04:42 on Mar 27,2020
+# vcom -reportprogress 300 Tb_Pulse.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Loading package MATH_REAL
+# -- Loading package pulse_package
+# -- Compiling entity Tb_Pulse
+# -- Compiling architecture behavior of Tb_Pulse
+# -- Loading entity TES
+# ** Warning: Tb_Pulse.vhd(68): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(70): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(72): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(74): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(76): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(78): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(80): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(82): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(84): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(86): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(88): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(90): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(92): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(94): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(96): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(98): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(100): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(102): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(104): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(106): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(108): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(110): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(112): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(114): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(116): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(118): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(120): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(122): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(124): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(126): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(128): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(130): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(132): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Warning: Tb_Pulse.vhd(134): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# End time: 01:04:42 on Mar 27,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 34
+# End time: 01:04:44 on Mar 27,2020, Elapsed time: 0:04:02
+# Errors: 0, Warnings: 35
+# vsim work.Tb_Pulse -t 1ns 
+# Start time: 01:04:45 on Mar 27,2020
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.math_real(body)
+# Loading work.pulse_package
+# Loading work.tb_pulse(behavior)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.tes(behavioral)
+# Loading work.lut_func(behavioral)
+# Loading work.demux_pixel_fpa(rtl)
+# ** Warning: (vsim-8683) Uninitialized out port /tb_pulse/label_TES/Pulse_Ram_Data_RD(31 downto 0) has no driver.
+# This port will contribute value (UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU) to the signal network.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-8683) Uninitialized out port /tb_pulse/label_TES/Pulse_Ram_Data_RD(31 downto 0) has no driver.
+# This port will contribute value (UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU) to the signal network.
+add wave -position insertpoint  \
+sim:/tb_pulse/label_TES/label_demux_pixel_fpa/view_pixel
+run 40ms
+# End time: 01:07:32 on Mar 27,2020, Elapsed time: 0:02:47
+# Errors: 0, Warnings: 1
