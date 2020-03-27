@@ -25,7 +25,8 @@ entity TES is
 			
 -- from gse Vp Vo 
 		
-			Vp	:	in	 t_array_Mem_Vp; 
+			Vp		:	in	 t_array_Mem_Vp; 
+			write_Vp: in  STD_LOGIC;
 			
 --CONTROL
 
@@ -61,7 +62,8 @@ type 	t_state is(idle,pulse);
 signal 	state : t_state;
 
 type 	t_array_start_pulse_pixel is array (C_pixel-1 downto 0) of std_logic;
-signal	start_pulse_pixel : t_array_start_pulse_pixel;
+signal	start_pulse_pixel	: t_array_start_pulse_pixel;
+signal	stop_pulse_pixel	: t_array_start_pulse_pixel;
 
 signal	Mem_Vp	:	t_array_Mem_Vp;
 
@@ -113,7 +115,7 @@ end process;
 -- end process;
 
 -------------------------------------------------------------------------------------
---	control and increment counter address pixel 
+--	control and increment counter address pixel by start(pixel) read
 -------------------------------------------------------------------------------------
 
 label_mem_counter_address : process(Reset, CLK_5Mhz)
@@ -124,6 +126,24 @@ else
     if CLK_5Mhz='1' and CLK_5Mhz'event then
 		if	start_pulse_pixel(pixel) = '1' then
 		mem_counter_address(pixel) <= mem_counter_address(pixel)+1;
+		end if;
+	end if;  -- clock
+end if;  -- reset 
+end process;
+
+-------------------------------------------------------------------------------------
+--	read counter(pixel) generate stop(pixel)  
+-------------------------------------------------------------------------------------
+
+label_generate_stop_pixel : process(Reset, CLK_5Mhz)
+begin
+if Reset = '1' then
+stop_pulse_pixel	<= (others=>'0');
+else
+    if CLK_5Mhz='1' and CLK_5Mhz'event then
+	stop_pulse_pixel(pixel) <= '0';
+		if mem_counter_address(pixel) = 1023 then
+		stop_pulse_pixel(pixel) <= '1';
 		end if;
 	end if;  -- clock
 end if;  -- reset 
@@ -181,7 +201,10 @@ label_LUT_func: entity work.LUT_func
 --	Vp
 -------------------------------------------------------------------------------------
 
-Mem_Vp	<= Vp;
+label_generate_vp : for i in 33 downto 0 generate
+Mem_Vp(i)	<= Vp(i) when stop_pulse_pixel(pixel) = '0' and write_Vp='1' else 
+(others=>'0') when stop_pulse_pixel(pixel) = '1';
+end generate label_generate_vp; 
 
 -------------------------------------------------------------------------------------
 --	demux

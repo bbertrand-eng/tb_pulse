@@ -10,7 +10,7 @@ z2
 cModel Technology
 dC:/intelFPGA_pro/19.4
 Edemux_pixel_fpa
-Z0 w1585266599
+Z0 w1585296444
 Z1 DPx4 ieee 9 math_real 0 22 gNk<PdFJ<XNPcfef`f?Z81
 Z2 DPx4 work 13 pulse_package 0 22 5Y4c<f]biD?NYg45ZdM0I3
 Z3 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
@@ -18,7 +18,7 @@ Z4 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
 Z5 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
 Z6 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z7 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-Z8 dC:/20200326_pm_tb_pulse/tb_Pulse_generator
+Z8 dC:/20200327_am_tb_pulse/tb_Pulse_generator
 Z9 8demux_pixel_fpa.vhd
 Z10 Fdemux_pixel_fpa.vhd
 l0
@@ -27,9 +27,9 @@ VBOnIHiiOaWSde^oa6LTR_1
 !s100 MbEGWHo^TTXF[0Fh1=[9E1
 Z11 OV;C;2019.2;69
 32
-Z12 !s110 1585267482
+Z12 !s110 1585310014
 !i10b 1
-Z13 !s108 1585267482.000000
+Z13 !s108 1585310014.000000
 Z14 !s90 -reportprogress|300|demux_pixel_fpa.vhd|
 Z15 !s107 demux_pixel_fpa.vhd|
 !i113 1
@@ -45,8 +45,8 @@ R7
 Z17 DEx4 work 15 demux_pixel_fpa 0 22 BOnIHiiOaWSde^oa6LTR_1
 l36
 L31
-VlLo=1M9=5i3=l8<Ue5G]52
-!s100 5bPek_MQ31=61aSLhliGn3
+V=LOCXDGIDWEWV5Z2E]zSc2
+!s100 >KOUB7jYEHVZ?zozLKX5i0
 R11
 32
 R12
@@ -57,15 +57,15 @@ R15
 !i113 1
 R16
 Elut_func
-Z18 w1585220436
+R0
 R2
 R1
 R3
 R6
 R7
 R8
-Z19 8Pulse_LUT_function.vhd
-Z20 FPulse_LUT_function.vhd
+Z18 8Pulse_LUT_function.vhd
+Z19 FPulse_LUT_function.vhd
 l0
 L9
 Vhe^oMF@eJ0HgmCzHaEm=<1
@@ -75,8 +75,8 @@ R11
 R12
 !i10b 1
 R13
-Z21 !s90 -reportprogress|300|Pulse_LUT_function.vhd|
-Z22 !s107 Pulse_LUT_function.vhd|
+Z20 !s90 -reportprogress|300|Pulse_LUT_function.vhd|
+Z21 !s107 Pulse_LUT_function.vhd|
 !i113 1
 R16
 Abehavioral
@@ -85,7 +85,7 @@ R1
 R3
 R6
 R7
-Z23 DEx4 work 8 lut_func 0 22 he^oMF@eJ0HgmCzHaEm=<1
+Z22 DEx4 work 8 lut_func 0 22 he^oMF@eJ0HgmCzHaEm=<1
 l33
 L28
 V3Io`fg26S:@oPcJ;zccYa0
@@ -95,8 +95,8 @@ R11
 R12
 !i10b 1
 R13
+R20
 R21
-R22
 !i113 1
 R16
 Ppulse_package
@@ -104,7 +104,7 @@ R1
 R3
 R6
 R7
-w1585242651
+R0
 R8
 8pulse_package.vhd
 Fpulse_package.vhd
@@ -116,101 +116,101 @@ R11
 32
 R12
 !i10b 1
-!s108 1585267481.000000
+R13
 !s90 -reportprogress|300|pulse_package.vhd|
 !s107 pulse_package.vhd|
 !i113 1
 R16
 Etb_pulse
-Z24 w1585267473
+Z23 w1585310005
 R1
 R2
-Z25 DPx4 ieee 16 std_logic_textio 0 22 V5TSK`;aJKC<l]CEg1>mz1
+Z24 DPx4 ieee 16 std_logic_textio 0 22 V5TSK`;aJKC<l]CEg1>mz1
 R3
 R6
 R7
 R8
-Z26 8Tb_Pulse.vhd
-Z27 FTb_Pulse.vhd
+Z25 8Tb_Pulse.vhd
+Z26 FTb_Pulse.vhd
 l0
 L9
 VPJPMP>^Cai;IWB]kB:d1S2
 !s100 C[>_hP9ead7E:Wo>K;d]13
 R11
 32
-R12
+Z27 !s110 1585310015
 !i10b 1
-R13
-Z28 !s90 -reportprogress|300|Tb_Pulse.vhd|
-Z29 !s107 Tb_Pulse.vhd|
+Z28 !s108 1585310015.000000
+Z29 !s90 -reportprogress|300|Tb_Pulse.vhd|
+Z30 !s107 Tb_Pulse.vhd|
 !i113 1
 R16
 Abehavior
-Z30 DEx4 work 3 tes 0 22 UTk`QojXC=NdBn`]Rk`Bm3
+Z31 DEx4 work 3 tes 0 22 DU^<mnMbB9:eiJX?^`LZG2
 R1
 R2
-R25
+R24
 R3
 R6
 R7
-Z31 DEx4 work 8 tb_pulse 0 22 PJPMP>^Cai;IWB]kB:d1S2
+Z32 DEx4 work 8 tb_pulse 0 22 PJPMP>^Cai;IWB]kB:d1S2
 l29
 L12
-VEC3XF@JOJDe]hl70GHP>`3
-!s100 JliRNof?=`L`D7nWl8>0M3
+V12FcI24NfZoDWBiD;Fff11
+!s100 kIfa;Kl]Z:OgkSTYI67jj2
 R11
 32
-R12
+R27
 !i10b 1
-R13
 R28
 R29
+R30
 !i113 1
 R16
 Etes
-Z32 w1585265232
+Z33 w1585305016
 R1
 R2
 R3
 R6
 R7
 R8
-Z33 8TES.vhd
-Z34 FTES.vhd
+Z34 8TES.vhd
+Z35 FTES.vhd
 l0
 L18
-VUTk`QojXC=NdBn`]Rk`Bm3
-!s100 UI_Nk^89mL@1[RKC3m2P@2
+VDU^<mnMbB9:eiJX?^`LZG2
+!s100 1n0k3^UjoW_7HGTGeb=b33
 R11
 32
-R12
+R27
 !i10b 1
-R13
-Z35 !s90 -reportprogress|300|TES.vhd|
-Z36 !s107 TES.vhd|
+R28
+Z36 !s90 -reportprogress|300|TES.vhd|
+Z37 !s107 TES.vhd|
 !i113 1
 R16
 Abehavioral
 R4
 R5
 R17
-R23
+R22
 R1
 R2
 R3
 R6
 R7
-R30
-l70
-L44
-VKzUO@i2KLY@]WXVVJcB8e3
-!s100 VOj11HCjUG6R>Klf81]4E2
+R31
+l72
+L45
+VD@D_ce9BP=MGi4lOi;FF82
+!s100 m]A8oR3dFmBaDg5o;R=>c2
 R11
 32
-R12
+R27
 !i10b 1
-R13
-R35
+R28
 R36
+R37
 !i113 1
 R16

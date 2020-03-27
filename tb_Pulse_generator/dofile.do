@@ -5,4 +5,4 @@ vcom TES.vhd
 vcom Tb_Pulse.vhd
 vsim work.Tb_Pulse -t 1ns
 add wave /tb_pulse/*
-run 12ms
+run 50 ns
