@@ -40,142 +40,142 @@ else
     if CLK_5Mhz='1' and CLK_5Mhz'event then
 		if pixel = 0 then
 	
-		view_pixel(32) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(0) <= Pulse_Ram_Data_RD_internal;
 		
 		elsif pixel = 1 then
 		
-		view_pixel(33) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(1) <= Pulse_Ram_Data_RD_internal;
 		
 		elsif pixel = 2 then
 		
-		view_pixel(0) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(2) <= Pulse_Ram_Data_RD_internal;
 	
 	
 		elsif pixel = 3 then
 
-		view_pixel(1) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(3) <= Pulse_Ram_Data_RD_internal;
 
 	
 	
 		elsif pixel = 4 then
 		
-		view_pixel(2) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(4) <= Pulse_Ram_Data_RD_internal;
 		
 		elsif pixel = 5 then
 		
-		view_pixel(3) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(5) <= Pulse_Ram_Data_RD_internal;
 		
 		elsif pixel = 6 then
 	
-		view_pixel(4) <= Pulse_Ram_Data_RD_internal;	
+		view_pixel(6) <= Pulse_Ram_Data_RD_internal;	
 		
 		elsif pixel = 7 then
 		
-		view_pixel(5) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(7) <= Pulse_Ram_Data_RD_internal;
 		
 		elsif pixel = 8 then
 		
-		view_pixel(6) <= Pulse_Ram_Data_RD_internal;	
+		view_pixel(8) <= Pulse_Ram_Data_RD_internal;	
 
 		elsif pixel = 9 then
 		
-		view_pixel(7) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(9) <= Pulse_Ram_Data_RD_internal;
 		
 		elsif pixel = 10 then
 	
-		view_pixel(8) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(10) <= Pulse_Ram_Data_RD_internal;
 		
 		elsif pixel = 11 then
 		
-		view_pixel(9) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(11) <= Pulse_Ram_Data_RD_internal;
 		
 		elsif pixel = 12 then
 		
-		view_pixel(10) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(12) <= Pulse_Ram_Data_RD_internal;
 		
 		elsif pixel = 13 then
 		
-		view_pixel(11) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(13) <= Pulse_Ram_Data_RD_internal;
 		
 		elsif pixel = 14 then
 		
-		view_pixel(12) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(14) <= Pulse_Ram_Data_RD_internal;
 		
 		elsif pixel = 15 then
 		
-		view_pixel(13) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(15) <= Pulse_Ram_Data_RD_internal;
 		
 		elsif pixel = 16 then
 		
-		view_pixel(14) <= Pulse_Ram_Data_RD_internal;	
+		view_pixel(16) <= Pulse_Ram_Data_RD_internal;	
 		
 		elsif pixel = 17 then
 	
-		view_pixel(15) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(17) <= Pulse_Ram_Data_RD_internal;
 		
 		elsif pixel = 18 then
 
-		view_pixel(16) <= Pulse_Ram_Data_RD_internal;	
+		view_pixel(18) <= Pulse_Ram_Data_RD_internal;	
 
 		elsif pixel = 19 then
 
-		view_pixel(17) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(19) <= Pulse_Ram_Data_RD_internal;
 
 		elsif pixel = 20 then
 		
-		view_pixel(18) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(20) <= Pulse_Ram_Data_RD_internal;
 		
 		elsif pixel = 21 then
 		
-		view_pixel(19) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(21) <= Pulse_Ram_Data_RD_internal;
 		
 		elsif pixel = 22 then
 		
-		view_pixel(20) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(22) <= Pulse_Ram_Data_RD_internal;
 		
 		elsif pixel = 23 then
 
-		view_pixel(21) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(23) <= Pulse_Ram_Data_RD_internal;
 		
 		elsif pixel = 24 then
 		
-		view_pixel(22) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(24) <= Pulse_Ram_Data_RD_internal;
 		
 		elsif pixel = 25 then
 		
-		view_pixel(23) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(25) <= Pulse_Ram_Data_RD_internal;
 		
 		elsif pixel = 26 then
 		
-		view_pixel(24) <= Pulse_Ram_Data_RD_internal;	
+		view_pixel(26) <= Pulse_Ram_Data_RD_internal;	
 		
 		elsif pixel = 27 then
 		
-		view_pixel(25) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(27) <= Pulse_Ram_Data_RD_internal;
 		
 		elsif pixel = 28 then
 	
-		view_pixel(26) <= Pulse_Ram_Data_RD_internal;	
+		view_pixel(28) <= Pulse_Ram_Data_RD_internal;	
 
 		elsif pixel = 29 then
 	
-		view_pixel(27) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(29) <= Pulse_Ram_Data_RD_internal;
 
 		elsif pixel = 30 then
 	
-		view_pixel(28) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(30) <= Pulse_Ram_Data_RD_internal;
 		
 		elsif pixel = 31 then
 		
-		view_pixel(29) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(31) <= Pulse_Ram_Data_RD_internal;
 		
 		elsif pixel = 32 then
 	
-		view_pixel(30) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(32) <= Pulse_Ram_Data_RD_internal;
 		
 		elsif pixel = 33 then
 
-		view_pixel(31) <= Pulse_Ram_Data_RD_internal;
+		view_pixel(33) <= Pulse_Ram_Data_RD_internal;
 			
 		
 		end if;

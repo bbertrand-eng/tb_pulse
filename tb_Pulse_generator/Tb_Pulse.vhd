@@ -356,6 +356,218 @@ Vp(4) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(0,
 wait for 7 ms;
 ----------------------------------end copy another pulse---------------------------------------------------------
 
+-------------------------------------copy-------------------------------------------
+write_Vp <= '1';
+Vp(5) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(65000,16)));--pixel 31 energy ON
+wait for 100 us;
+write_Vp <= '0';
+wait for 100 us;
+Vp(5) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(0,16)));--pixel 31 energy OFF
+
+wait for 7 ms;
+----------------------------------end copy another pulse---------------------------------------------------------
+
+-------------------------------------copy-------------------------------------------
+write_Vp <= '1';
+Vp(6) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(65000,16)));--pixel 31 energy ON
+wait for 100 us;
+write_Vp <= '0';
+wait for 100 us;
+Vp(6) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(0,16)));--pixel 31 energy OFF
+
+wait for 7 ms;
+----------------------------------end copy another pulse---------------------------------------------------------
+
+-------------------------------------copy-------------------------------------------
+write_Vp <= '1';
+Vp(7) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(65000,16)));--pixel 31 energy ON
+wait for 100 us;
+write_Vp <= '0';
+wait for 100 us;
+Vp(7) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(0,16)));--pixel 31 energy OFF
+
+wait for 7 ms;
+----------------------------------end copy another pulse---------------------------------------------------------
+
+-------------------------------------copy-------------------------------------------
+write_Vp <= '1';
+Vp(8) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(65000,16)));--pixel 31 energy ON
+wait for 100 us;
+write_Vp <= '0';
+wait for 100 us;
+Vp(8) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(0,16)));--pixel 31 energy OFF
+
+wait for 7 ms;
+----------------------------------end copy another pulse---------------------------------------------------------
+
+-------------------------------------copy-------------------------------------------
+write_Vp <= '1';
+Vp(9) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(65000,16)));--pixel 31 energy ON
+wait for 100 us;
+write_Vp <= '0';
+wait for 100 us;
+Vp(9) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(0,16)));--pixel 31 energy OFF
+
+wait for 7 ms;
+----------------------------------end copy another pulse---------------------------------------------------------
+
+-------------------------------------copy-------------------------------------------
+write_Vp <= '1';
+Vp(10) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(65000,16)));--pixel 31 energy ON
+wait for 100 us;
+write_Vp <= '0';
+wait for 100 us;
+Vp(10) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(0,16)));--pixel 31 energy OFF
+
+wait for 7 ms;
+----------------------------------end copy another pulse---------------------------------------------------------
+
+-------------------------------------copy-------------------------------------------
+write_Vp <= '1';
+Vp(11) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(65000,16)));--pixel 31 energy ON
+wait for 100 us;
+write_Vp <= '0';
+wait for 100 us;
+Vp(11) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(0,16)));--pixel 31 energy OFF
+
+wait for 7 ms;
+----------------------------------end copy another pulse---------------------------------------------------------
+
+-------------------------------------copy-------------------------------------------
+write_Vp <= '1';
+Vp(12) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(65000,16)));--pixel 31 energy ON
+wait for 100 us;
+write_Vp <= '0';
+wait for 100 us;
+Vp(12) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(0,16)));--pixel 31 energy OFF
+
+wait for 7 ms;
+----------------------------------end copy another pulse---------------------------------------------------------
+
+-------------------------------------copy-------------------------------------------
+write_Vp <= '1';
+Vp(13) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(65000,16)));--pixel 31 energy ON
+wait for 100 us;
+write_Vp <= '0';
+wait for 100 us;
+Vp(13) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(0,16)));--pixel 31 energy OFF
+
+wait for 7 ms;
+----------------------------------end copy another pulse---------------------------------------------------------
+
+-------------------------------------copy-------------------------------------------
+write_Vp <= '1';
+Vp(14) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(65000,16)));--pixel 31 energy ON
+wait for 100 us;
+write_Vp <= '0';
+wait for 100 us;
+Vp(14) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(0,16)));--pixel 31 energy OFF
+
+wait for 7 ms;
+----------------------------------end copy another pulse---------------------------------------------------------
+
+-------------------------------------copy-------------------------------------------
+write_Vp <= '1';
+Vp(15) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(65000,16)));--pixel 31 energy ON
+wait for 100 us;
+write_Vp <= '0';
+wait for 100 us;
+Vp(15) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(0,16)));--pixel 31 energy OFF
+
+wait for 7 ms;
+----------------------------------end copy another pulse---------------------------------------------------------
+
+-------------------------------------copy-------------------------------------------
+write_Vp <= '1';
+Vp(16) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(65000,16)));--pixel 31 energy ON
+wait for 100 us;
+write_Vp <= '0';
+wait for 100 us;
+Vp(16) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(0,16)));--pixel 31 energy OFF
+
+wait for 7 ms;
+----------------------------------end copy another pulse---------------------------------------------------------
+
+-------------------------------------copy-------------------------------------------
+write_Vp <= '1';
+Vp(17) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(65000,16)));--pixel 31 energy ON
+wait for 100 us;
+write_Vp <= '0';
+wait for 100 us;
+Vp(17) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(0,16)));--pixel 31 energy OFF
+
+wait for 7 ms;
+----------------------------------end copy another pulse---------------------------------------------------------
+
+
+-------------------------------------copy-------------------------------------------
+write_Vp <= '1';
+Vp(18) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(65000,16)));--pixel 31 energy ON
+wait for 100 us;
+write_Vp <= '0';
+wait for 100 us;
+Vp(18) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(0,16)));--pixel 31 energy OFF
+
+wait for 7 ms;
+----------------------------------end copy another pulse---------------------------------------------------------
+
+-------------------------------------copy-------------------------------------------
+write_Vp <= '1';
+Vp(19) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(65000,16)));--pixel 31 energy ON
+wait for 100 us;
+write_Vp <= '0';
+wait for 100 us;
+Vp(19) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(0,16)));--pixel 31 energy OFF
+
+wait for 7 ms;
+----------------------------------end copy another pulse---------------------------------------------------------
+
+
+-------------------------------------copy-------------------------------------------
+write_Vp <= '1';
+Vp(20) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(65000,16)));--pixel 31 energy ON
+wait for 100 us;
+write_Vp <= '0';
+wait for 100 us;
+Vp(20) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(0,16)));--pixel 31 energy OFF
+
+wait for 7 ms;
+----------------------------------end copy another pulse---------------------------------------------------------
+
+-------------------------------------copy-------------------------------------------
+write_Vp <= '1';
+Vp(21) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(65000,16)));--pixel 31 energy ON
+wait for 100 us;
+write_Vp <= '0';
+wait for 100 us;
+Vp(21) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(0,16)));--pixel 31 energy OFF
+
+wait for 7 ms;
+----------------------------------end copy another pulse---------------------------------------------------------
+
+-------------------------------------copy-------------------------------------------
+write_Vp <= '1';
+Vp(22) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(65000,16)));--pixel 31 energy ON
+wait for 100 us;
+write_Vp <= '0';
+wait for 100 us;
+Vp(22) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(0,16)));--pixel 31 energy OFF
+
+wait for 7 ms;
+----------------------------------end copy another pulse---------------------------------------------------------
+
+-------------------------------------copy-------------------------------------------
+write_Vp <= '1';
+Vp(23) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(65000,16)));--pixel 31 energy ON
+wait for 100 us;
+write_Vp <= '0';
+wait for 100 us;
+Vp(23) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(0,16)));--pixel 31 energy OFF
+
+wait for 7 ms;
+----------------------------------end copy another pulse---------------------------------------------------------
+
+
 wait;
 end process;
 

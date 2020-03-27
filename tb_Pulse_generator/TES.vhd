@@ -48,6 +48,8 @@ signal	CLK_73529Hz			: std_logic;
 signal 	pixel				:	integer range 0 to C_pixel;
 signal	pixel_delayed_1		:	integer range 0 to C_pixel;
 signal	pixel_delayed_2		:	integer range 0 to C_pixel;
+signal	pixel_delayed_3		:	integer range 0 to C_pixel;
+signal	pixel_delayed_4		:	integer range 0 to C_pixel;
 
 --signal	pixel_view			:	integer range 0 to C_pixel;
 
@@ -88,6 +90,10 @@ else
 	pixel <= pixel + 1;
 	pixel_delayed_1 <= pixel;
 	pixel_delayed_2 <= pixel_delayed_1; 
+	pixel_delayed_3	<= pixel_delayed_2; 
+	pixel_delayed_4	<= pixel_delayed_3;
+	
+	
 		if pixel = C_pixel-1 then
 		pixel	<= 0;
 		CLK_73529Hz <= not CLK_73529Hz;
@@ -235,7 +241,7 @@ label_demux_pixel_fpa : entity work.demux_pixel_fpa
     	CLK_5Mhz			=>	CLK_5Mhz,
 			--ENABLE_CLK_1X		: 	in  STD_LOGIC;
 --CONTROL
-		pixel				=>	pixel_delayed_2,
+		pixel				=>	pixel_delayed_4,
 	
 			
 		Pulse_Ram_Data_RD_internal		=>	Pulse_Ram_Data_RD_internal	
