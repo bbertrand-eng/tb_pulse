@@ -29,4 +29,7 @@ type 	t_array_Mem_counter_address is array (C_pixel-1 downto 0) of unsigned (9 d
 type 	t_array_Mem_Vp is array (C_pixel-1 downto 0) of std_logic_vector(31 downto 0);
 signal 	Vp	:	t_array_Mem_Vp;
 
+type	t_array_view_pixel	is array (C_pixel-1 downto 0) of STD_LOGIC_VECTOR (31 downto 0);
+
+
 end pulse_package;

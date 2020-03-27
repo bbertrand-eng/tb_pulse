@@ -36,7 +36,10 @@ entity TES is
 			Pulse_Ram_ADDRESS_RD: in unsigned (9 downto 0);
 			Pulse_Ram_Data_WR		: in STD_LOGIC_VECTOR (31 downto 0);
 --			Sig_in 				: in  signed (C_Size_DDS-1 downto 0);
-        	Pulse_Ram_Data_RD 	: out STD_LOGIC_VECTOR (31 downto 0)
+        	Pulse_Ram_Data_RD 	: out STD_LOGIC_VECTOR (31 downto 0);
+			
+			view_pixel			:	out	t_array_view_pixel
+			
         );
 end TES;
 
@@ -244,7 +247,9 @@ label_demux_pixel_fpa : entity work.demux_pixel_fpa
 		pixel				=>	pixel_delayed_4,
 	
 			
-		Pulse_Ram_Data_RD_internal		=>	Pulse_Ram_Data_RD_internal	
+		Pulse_Ram_Data_RD_internal		=>	Pulse_Ram_Data_RD_internal,
+
+		view_pixel	=>	view_pixel				
 			
 	);
 

@@ -26,6 +26,8 @@ signal Pulse_Ram_ADDRESS_RD	: unsigned (9 downto 0 );
 signal WE_Pulse_Ram		: std_logic;
 signal write_Vp			: std_logic;
 
+signal view_pixel			:	t_array_view_pixel;
+
 BEGIN
 
 RESET <= '1', '0' after 100 ns;
@@ -60,7 +62,10 @@ label_TES : entity work.TES
 		Pulse_Ram_ADDRESS_RD=> Pulse_Ram_ADDRESS_RD,	--: unsigned (9 downto 0 );
 		Pulse_Ram_Data_WR		=> Pulse_Ram_Data_WR,	--: STD_LOGIC_vector (31 downto 0 );
 --		Sig_in				=> to_signed(32767,20),
-		Pulse_Ram_Data_RD	=> Pulse_Ram_Data_RD	--: STD_LOGIC_VECTOR (31 downto 0);
+		Pulse_Ram_Data_RD	=> Pulse_Ram_Data_RD,	--: STD_LOGIC_VECTOR (31 downto 0);
+		
+		view_pixel	=>	view_pixel
+		
 	);
 
 	

@@ -19,15 +19,15 @@ entity demux_pixel_fpa is
 --CONTROL
 			pixel				: 	in	integer;
 						
-			Pulse_Ram_Data_RD_internal		:	in	STD_LOGIC_VECTOR (31 downto 0)	
+			Pulse_Ram_Data_RD_internal		:	in	STD_LOGIC_VECTOR (31 downto 0);
+
+			view_pixel			:	out	t_array_view_pixel
 			
 	);
 end entity;
 
 architecture rtl of demux_pixel_fpa is
 
-type	t_array_view_pixel	is array (C_pixel-1 downto 0) of STD_LOGIC_VECTOR (31 downto 0);
-signal	view_pixel			:	t_array_view_pixel;
 
 begin
 
