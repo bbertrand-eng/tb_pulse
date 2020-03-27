@@ -177,6 +177,23 @@ end generate label_generate;
 -- end process;
 
 
+-------------------------------------------------------------------------------------
+--	read counter(pixel) to address dual RAM
+-------------------------------------------------------------------------------------
+label_mem_Cnt_Add_to_Add_RAM : entity work.mem_Cnt_Add_to_Add_RAM
+	Port map( 
+--RESET
+		Reset		 		=>	Reset,
+--CLOCKs
+    	CLK_5Mhz			=>	CLK_5Mhz,
+			--ENABLE_CLK_1X		: 	in  STD_LOGIC;
+--CONTROL
+		pixel				=>	pixel_delayed_2,
+	
+		mem_counter_address	=>	mem_counter_address,	
+		Pulse_Ram_ADDRESS_RD_internal		=>	Pulse_Ram_ADDRESS_RD_internal	
+			
+	);
 
 
 -------------------------------------------------------------------------------------
@@ -219,10 +236,10 @@ label_demux_pixel_fpa : entity work.demux_pixel_fpa
 			--ENABLE_CLK_1X		: 	in  STD_LOGIC;
 --CONTROL
 		pixel				=>	pixel_delayed_2,
-		mem_counter_address	=>	mem_counter_address,	
+	
 			
-		Pulse_Ram_Data_RD_internal		=>	Pulse_Ram_Data_RD_internal,	
-		Pulse_Ram_ADDRESS_RD_internal	=>	Pulse_Ram_ADDRESS_RD_internal	
+		Pulse_Ram_Data_RD_internal		=>	Pulse_Ram_Data_RD_internal	
+			
 	);
 
 

@@ -1,5 +1,6 @@
 vcom pulse_package.vhd
 vcom demux_pixel_fpa.vhd
+vcom mem_Cnt_Add_to_Add_RAM.vhd
 vcom Pulse_LUT_function.vhd
 vcom TES.vhd
 vcom Tb_Pulse.vhd
