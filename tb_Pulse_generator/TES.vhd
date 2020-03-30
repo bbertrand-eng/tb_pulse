@@ -74,6 +74,15 @@ signal	Mem_Vp	:	t_array_Mem_Vp;
 
 signal	mem_counter_address	:	t_array_Mem_counter_address;
 
+signal	unsigned_Pulse_Ram_Data_RD_internal :	unsigned(31 downto 0);
+signal	unsigned_Mem_Vp						:	unsigned(15 downto 0);
+signal	unsigned_multiply_to_pulse			:	unsigned(47 downto 0); 
+signal	unsigned_L_multiply_to_pulse		:	unsigned(15 downto 0); 
+signal	signed_L_multiply_to_pulse			:	signed(15 downto 0);
+signal	Vtes								:	signed(15 downto 0);
+constant Vo									: 	signed(15 downto 0)	:=	x"fff0";	
+
+
 BEGIN
 
 -------------------------------------------------------------------------------------
@@ -224,6 +233,19 @@ label_LUT_func: entity work.LUT_func
 );
 
 -------------------------------------------------------------------------------------
+--	computing
+-------------------------------------------------------------------------------------
+--	multiply
+unsigned_Pulse_Ram_Data_RD_internal <= unsigned(Pulse_Ram_Data_RD_internal);
+unsigned_Mem_Vp	<=	unsigned(Mem_Vp(pixel_delayed_4)(15 downto 0));
+unsigned_multiply_to_pulse <= unsigned_Pulse_Ram_Data_RD_internal*unsigned_Mem_Vp;
+--unsigned_L_multiply_to_pulse 	<= unsigned_multiply_to_pulse(47 downto 32);
+signed_L_multiply_to_pulse		<= signed(unsigned_multiply_to_pulse(47 downto 32));
+Vtes	<=	Vo	-	signed_L_multiply_to_pulse;		
+
+--Vtes	<=	unsigned_L_multiply_to_pulse	
+
+-------------------------------------------------------------------------------------
 --	Vp
 -------------------------------------------------------------------------------------
 
@@ -247,7 +269,7 @@ label_demux_pixel_fpa : entity work.demux_pixel_fpa
 		pixel				=>	pixel_delayed_4,
 	
 			
-		Pulse_Ram_Data_RD_internal		=>	Pulse_Ram_Data_RD_internal,
+		Pulse_Ram_Data_RD_internal		=>	Vtes,
 
 		view_pixel	=>	view_pixel				
 			
