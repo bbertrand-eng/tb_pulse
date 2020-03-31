@@ -17,9 +17,9 @@ entity LUT_func is
 		WE_Pulse_Ram 		: in  std_logic;
 		Pulse_Ram_ADDRESS_WR: in  unsigned (9 downto 0);
 		Pulse_Ram_ADDRESS_RD: in  unsigned (9 downto 0);
-		Pulse_Ram_Data_WR	: in  STD_LOGIC_VECTOR (31 downto 0);
+		Pulse_Ram_Data_WR	: in  STD_LOGIC_VECTOR (15 downto 0);
 
-		Pulse_Ram_Data_RD 	: out STD_LOGIC_VECTOR(31 downto 0)
+		Pulse_Ram_Data_RD 	: out STD_LOGIC_VECTOR(15 downto 0)
 		);
 end LUT_func;
 

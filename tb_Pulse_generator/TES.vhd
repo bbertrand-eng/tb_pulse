@@ -34,9 +34,9 @@ entity TES is
 			WE_Pulse_Ram 		: in std_logic;
 			Pulse_Ram_ADDRESS_WR	: in unsigned (9 downto 0);
 			Pulse_Ram_ADDRESS_RD: in unsigned (9 downto 0);
-			Pulse_Ram_Data_WR		: in STD_LOGIC_VECTOR (31 downto 0);
+			Pulse_Ram_Data_WR		: in STD_LOGIC_VECTOR (15 downto 0);
 --			Sig_in 				: in  signed (C_Size_DDS-1 downto 0);
-        	Pulse_Ram_Data_RD 	: out STD_LOGIC_VECTOR (31 downto 0);
+        	Pulse_Ram_Data_RD 	: out STD_LOGIC_VECTOR (15 downto 0);
 			
 			view_pixel			:	out	t_array_view_pixel
 			
@@ -61,7 +61,7 @@ signal	counter_address		:	unsigned (9 downto 0);
 -- constant C_MaxCount				:	positive := ((2**C_PluseLUT_Size_in)-1);
 
 signal Pulse_Ram_ADDRESS_RD_internal : unsigned (9 downto 0);
-signal Pulse_Ram_Data_RD_internal	: STD_LOGIC_VECTOR (31 downto 0);
+signal Pulse_Ram_Data_RD_internal	: STD_LOGIC_VECTOR (15 downto 0);
 
 type 	t_state is(idle,pulse);
 signal 	state : t_state;
@@ -74,13 +74,14 @@ signal	Mem_Vp	:	t_array_Mem_Vp;
 
 signal	mem_counter_address	:	t_array_Mem_counter_address;
 
-signal	unsigned_Pulse_Ram_Data_RD_internal :	unsigned(31 downto 0);
+signal	unsigned_Pulse_Ram_Data_RD_internal :	unsigned(15 downto 0);
 signal	unsigned_Mem_Vp						:	unsigned(15 downto 0);
-signal	unsigned_multiply_to_pulse			:	unsigned(47 downto 0); 
+signal	unsigned_multiply_to_pulse			:	unsigned(31 downto 0); 
 signal	unsigned_L_multiply_to_pulse		:	unsigned(15 downto 0); 
 signal	signed_L_multiply_to_pulse			:	signed(15 downto 0);
 signal	Vtes								:	signed(15 downto 0);
-constant Vo									: 	signed(15 downto 0)	:=	x"fff0";	
+signal	Vtes_out							:	signed(15 downto 0);
+constant Vo									: 	signed(15 downto 0)	:=	x"Ffff";	
 
 
 BEGIN
@@ -238,12 +239,23 @@ label_LUT_func: entity work.LUT_func
 --	multiply
 unsigned_Pulse_Ram_Data_RD_internal <= unsigned(Pulse_Ram_Data_RD_internal);
 unsigned_Mem_Vp	<=	unsigned(Mem_Vp(pixel_delayed_4)(15 downto 0));
-unsigned_multiply_to_pulse <= unsigned_Pulse_Ram_Data_RD_internal*unsigned_Mem_Vp;
+unsigned_multiply_to_pulse <= unsigned_Pulse_Ram_Data_RD_internal*unsigned_Mem_Vp;--unsigned(15 downto 0);*unsigned(15 downto 0);
 --unsigned_L_multiply_to_pulse 	<= unsigned_multiply_to_pulse(47 downto 32);
-signed_L_multiply_to_pulse		<= signed(unsigned_multiply_to_pulse(47 downto 32));
-Vtes	<=	Vo	-	signed_L_multiply_to_pulse;		
+signed_L_multiply_to_pulse		<= signed(unsigned_multiply_to_pulse(31 downto 16));--unsigned(31 downto 0); 
+Vtes	<=	Vo	-	signed_L_multiply_to_pulse;	--signed(15 downto 0)	:=	x"fff0" - signed(15 downto 0);	
 
 --Vtes	<=	unsigned_L_multiply_to_pulse	
+
+label_out_TES : process(Reset, CLK_5Mhz)
+begin
+if Reset = '1' then
+Vtes_out	<= (others=>'0');
+else
+    if CLK_5Mhz='1' and CLK_5Mhz'event then
+	Vtes_out <= Vtes;
+	end if;  -- clock
+end if;  -- reset 
+end process;
 
 -------------------------------------------------------------------------------------
 --	Vp
