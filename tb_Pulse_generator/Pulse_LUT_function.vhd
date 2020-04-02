@@ -28,7 +28,7 @@ end LUT_func;
 architecture Behavioral of LUT_func is
 
 
-signal  Pulse_Ram : t_Pulse_Ram;
+signal  Pulse_Ram : t_Pulse_Ram	:=	(others=>(others=>'0'));
 
 begin
 P_Write_Pulse_Ram: process (CLK_5Mhz)

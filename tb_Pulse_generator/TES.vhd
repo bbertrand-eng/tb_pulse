@@ -38,7 +38,10 @@ entity TES is
 --			Sig_in 				: in  signed (C_Size_DDS-1 downto 0);
         	Pulse_Ram_Data_RD 	: out STD_LOGIC_VECTOR (15 downto 0);
 			
-			view_pixel			:	out	t_array_view_pixel
+			view_pixel			:	out	t_array_view_pixel;
+			view_pixel_index	:	out	integer range 0 to C_pixel;
+			
+			Vtes_out			:	out	signed(15 downto 0)
 			
         );
 end TES;
@@ -68,6 +71,7 @@ signal 	state : t_state;
 
 type 	t_array_start_pulse_pixel is array (C_pixel-1 downto 0) of std_logic;
 signal	start_pulse_pixel	: t_array_start_pulse_pixel;
+signal	start_pulse_pixel_shifted	: t_array_start_pulse_pixel;
 signal	stop_pulse_pixel	: t_array_start_pulse_pixel;
 
 signal	Mem_Vp	:	t_array_Mem_Vp;
@@ -80,7 +84,7 @@ signal	unsigned_multiply_to_pulse			:	unsigned(31 downto 0);
 signal	unsigned_L_multiply_to_pulse		:	unsigned(15 downto 0); 
 signal	signed_L_multiply_to_pulse			:	signed(15 downto 0);
 signal	Vtes								:	signed(15 downto 0);
-signal	Vtes_out							:	signed(15 downto 0);
+
 constant Vo									: 	signed(15 downto 0)	:=	x"Ffff";	
 
 
@@ -97,6 +101,9 @@ if Reset = '1' then
 pixel			<= 0;
 pixel_delayed_1	<= 0;
 pixel_delayed_2	<= 0;
+pixel_delayed_3	<= 0;
+pixel_delayed_4	<= 0;
+view_pixel_index <= 0;
 CLK_73529Hz	<= '0';
 else
     if CLK_5Mhz='1' and CLK_5Mhz'event then
@@ -105,8 +112,7 @@ else
 	pixel_delayed_2 <= pixel_delayed_1; 
 	pixel_delayed_3	<= pixel_delayed_2; 
 	pixel_delayed_4	<= pixel_delayed_3;
-	
-	
+	view_pixel_index	<=	pixel_delayed_4;
 		if pixel = C_pixel-1 then
 		pixel	<= 0;
 		CLK_73529Hz <= not CLK_73529Hz;
@@ -115,23 +121,7 @@ else
 end if;  -- reset 
 end process;
 
--------------------------------------------------------------------------------------
---	counter loop apply on counter address
--------------------------------------------------------------------------------------
 
--- label_counter_address : process(Reset, CLK_5Mhz)
--- begin
--- if Reset = '1' then
--- counter_address <= (others => '0');
--- else
-    -- if CLK_5Mhz='1' and CLK_5Mhz'event then
-	-- counter_address <= counter_address + 1; 
-		-- if counter_address = C_depth_pulse_memory-1 then
-		-- counter_address <= (others => '0');
-		-- end if;
-    -- end if;  -- clock
--- end if;  -- reset 
--- end process;
 
 -------------------------------------------------------------------------------------
 --	control and increment counter address pixel by start(pixel) read
@@ -181,20 +171,16 @@ label_generate : for i in 33 downto 0 generate
 start_pulse_pixel(i) <= '1' when Mem_Vp(i)(15 downto 0) /= b"0000000000000000" else '0';
 end generate label_generate; 
 
-
--- label_start_pulse_pixel : process(Reset, CLK_5Mhz)
--- begin
--- if Reset = '1' then
--- start_pulse_pixel <= (others=>('0'));
--- else
-    -- if CLK_5Mhz='1' and CLK_5Mhz'event then
-		-- if Mem_Vp(pixel) /=  x"00000000" then
-		-- start_pulse_pixel(pixel) <= '1';
-		-- end if;
-	-- end if;  -- clock
--- end if;  -- reset 
--- end process;
-
+label_shift_start : process(Reset, CLK_5Mhz)
+begin
+if Reset = '1' then
+start_pulse_pixel_shifted	<=	(others=>'0'); 
+else
+    if CLK_5Mhz='1' and CLK_5Mhz'event then
+	start_pulse_pixel_shifted	<=	start_pulse_pixel;
+	end if;  -- clock
+end if;  -- reset 
+end process;
 
 -------------------------------------------------------------------------------------
 --	read counter(pixel) to address dual RAM
@@ -261,10 +247,12 @@ end process;
 --	Vp
 -------------------------------------------------------------------------------------
 
-label_generate_vp : for i in 33 downto 0 generate
-Mem_Vp(i)	<= Vp(i) when stop_pulse_pixel(pixel) = '0' and write_Vp='1' else 
-(others=>'0') when stop_pulse_pixel(pixel) = '1';
+label_generate_vp : for i in 33 downto 0 generate	--	Write_Vp common all pixel
+Mem_Vp(i)	<= Vp(i) when stop_pulse_pixel(i) = '0' and write_Vp='1' and start_pulse_pixel_shifted(i)='0' else 
+(others=>'0') when stop_pulse_pixel(i) = '1';
 end generate label_generate_vp; 
+
+
 
 -------------------------------------------------------------------------------------
 --	demux
