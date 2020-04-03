@@ -71,6 +71,7 @@ signal 	state : t_state;
 
 type 	t_array_start_pulse_pixel is array (C_pixel-1 downto 0) of std_logic;
 signal	start_pulse_pixel	: t_array_start_pulse_pixel;
+signal	detect_start_pulse_pixel	: t_array_start_pulse_pixel;
 signal	start_pulse_pixel_shifted	: t_array_start_pulse_pixel;
 signal	stop_pulse_pixel	: t_array_start_pulse_pixel;
 
@@ -163,13 +164,32 @@ end process;
 --	control Vp state and remote start pulse pixel
 -------------------------------------------------------------------------------------
 
-
-
 label_generate : for i in 33 downto 0 generate
---Mem_Vp(i)(15 downto 0) /= x"00000000";
-
-start_pulse_pixel(i) <= '1' when Mem_Vp(i)(15 downto 0) /= b"0000000000000000" else '0';
+--start_pulse_pixel(i) <= '1' when Mem_Vp(i)(15 downto 0) /= b"0000000000000000" else '0';	-- option (1)
+detect_start_pulse_pixel(i) <= '1' when Mem_Vp(i)(15 downto 0) /= b"0000000000000000" else '0';	--option (2)
 end generate label_generate; 
+
+
+-------------------------------------------------------------------------------------
+--	
+-------------------------------------------------------------------------------------
+
+label_start_pulse_pixel : process(Reset, CLK_5Mhz)
+begin
+if Reset = '1' then
+start_pulse_pixel <= (others=>'0');
+else
+    if CLK_5Mhz='1' and CLK_5Mhz'event then
+		if	pixel = 33 then
+		start_pulse_pixel	<= detect_start_pulse_pixel;--option (2)
+		end if;
+    end if;  -- clock
+end if;  -- reset 
+end process;
+
+-------------------------------------------------------------------------------------
+--	
+-------------------------------------------------------------------------------------
 
 label_shift_start : process(Reset, CLK_5Mhz)
 begin
