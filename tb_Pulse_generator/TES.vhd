@@ -88,6 +88,7 @@ signal	Vtes								:	signed(15 downto 0);
 
 constant Vo									: 	signed(15 downto 0)	:=	x"Ffff";	
 
+signal	view_start_pulse_pixel				:	std_logic;
 
 BEGIN
 
@@ -134,7 +135,7 @@ if Reset = '1' then
 mem_counter_address <= (others=>(others=>'0'));
 else
     if CLK_5Mhz='1' and CLK_5Mhz'event then
-		if	start_pulse_pixel(pixel) = '1' then
+		if	start_pulse_pixel(pixel) = '1' and stop_pulse_pixel(pixel) = '0' then
 		mem_counter_address(pixel) <= mem_counter_address(pixel)+1;
 		end if;
 	end if;  -- clock
@@ -164,14 +165,60 @@ end process;
 --	control Vp state and remote start pulse pixel
 -------------------------------------------------------------------------------------
 
+-- label_generate : for i in 33 downto 0 generate
+
+-- detect_start_pulse_pixel(i) <= '1' when Mem_Vp(i)(15 downto 0) /= b"0000000000000000" else '0';	--option (2)
+-- end generate label_generate; 
+
 label_generate : for i in 33 downto 0 generate
---start_pulse_pixel(i) <= '1' when Mem_Vp(i)(15 downto 0) /= b"0000000000000000" else '0';	-- option (1)
-detect_start_pulse_pixel(i) <= '1' when Mem_Vp(i)(15 downto 0) /= b"0000000000000000" else '0';	--option (2)
+	process(Reset, CLK_5Mhz)
+	begin
+	if Reset = '1' then
+	detect_start_pulse_pixel(i) <= '0';
+	else
+		if CLK_5Mhz='1' and CLK_5Mhz'event then
+			if	Mem_Vp(i)(15 downto 0) /= b"0000000000000000" then	
+			detect_start_pulse_pixel(i) <= '1';
+			else
+			detect_start_pulse_pixel(i) <= '0';
+			end if;
+		end if;  -- clock
+	end if;  -- reset 
+	end process;
 end generate label_generate; 
 
 
+
 -------------------------------------------------------------------------------------
---	
+--	Vp
+-------------------------------------------------------------------------------------
+
+-- label_generate_vp : for i in 33 downto 0 generate	--	Write_Vp common all pixel
+-- Mem_Vp(i)	<= Vp(i) when stop_pulse_pixel(i) = '0' and write_Vp='1' and start_pulse_pixel_shifted(i)='0' else 
+-- (others=>'0') when stop_pulse_pixel(i) = '1';
+-- end generate label_generate_vp; 
+
+label_generate_vp : for i in 33 downto 0 generate
+	process(Reset, CLK_5Mhz)
+	begin
+	if Reset = '1' then
+	Mem_Vp(i) <= (others=>'0');
+	else
+		if CLK_5Mhz='1' and CLK_5Mhz'event then
+			if	stop_pulse_pixel(i) = '0' and write_Vp='1' and start_pulse_pixel(i) = '0' and detect_start_pulse_pixel(i) = '0' and start_pulse_pixel_shifted(i)='0' then 
+			Mem_Vp(i)	<= Vp(i);
+			else
+				if	stop_pulse_pixel(i) = '1' then
+				Mem_Vp(i) <= (others=>'0');
+				end if;
+			end if;		
+		end if;  -- clock
+	end if;  -- reset 
+	end process;
+end generate label_generate_vp; 
+
+-------------------------------------------------------------------------------------
+--	start_pulse_pixel
 -------------------------------------------------------------------------------------
 
 label_start_pulse_pixel : process(Reset, CLK_5Mhz)
@@ -263,14 +310,7 @@ else
 end if;  -- reset 
 end process;
 
--------------------------------------------------------------------------------------
---	Vp
--------------------------------------------------------------------------------------
 
-label_generate_vp : for i in 33 downto 0 generate	--	Write_Vp common all pixel
-Mem_Vp(i)	<= Vp(i) when stop_pulse_pixel(i) = '0' and write_Vp='1' and start_pulse_pixel_shifted(i)='0' else 
-(others=>'0') when stop_pulse_pixel(i) = '1';
-end generate label_generate_vp; 
 
 
 
@@ -300,6 +340,17 @@ label_demux_pixel_fpa : entity work.demux_pixel_fpa
 -- Pulse_Ram_ADDRESS_RD_internal <= mem_counter_address(pixel) when pixel = pixel_view; 
 -- view_pixel(pixel) <= Pulse_Ram_Data_RD_internal when pixel = pixel_view;
 -- end generate label_generate; 
+
+
+
+
+-- view_start_pulse_pixel <= start_pulse_pixel(0)or start_pulse_pixel(1) or start_pulse_pixel(2) or start_pulse_pixel(3)or start_pulse_pixel(4) or 
+-- start_pulse_pixel(5)or start_pulse_pixel(6) or start_pulse_pixel(7) or start_pulse_pixel(8)or start_pulse_pixel(9) or
+-- start_pulse_pixel(10)or start_pulse_pixel(11) or start_pulse_pixel(12) or start_pulse_pixel(13)or start_pulse_pixel(14) or
+-- start_pulse_pixel(15)or start_pulse_pixel(16) or start_pulse_pixel(17) or start_pulse_pixel(18)or start_pulse_pixel(19) or
+-- start_pulse_pixel(20)or start_pulse_pixel(21) or start_pulse_pixel(22) or start_pulse_pixel(23)or start_pulse_pixel(24) or 
+-- start_pulse_pixel(25)or start_pulse_pixel(26) or start_pulse_pixel(27) or start_pulse_pixel(28)or start_pulse_pixel(29) or
+-- start_pulse_pixel(30)or start_pulse_pixel(31) or start_pulse_pixel(32) or start_pulse_pixel(33)or start_pulse_pixel(34);
 
 
 
