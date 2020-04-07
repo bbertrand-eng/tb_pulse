@@ -40,15 +40,15 @@ begin
 	end if;
 end process;
 
-P_readout: process (CLK_5Mhz)
+P_readout: process (RESET,CLK_5Mhz)
 begin
+if RESET = '1' then
+Pulse_Ram_Data_RD	<= (others=>'0');
+else
 	if rising_edge(CLK_5Mhz) then
-
-		Pulse_Ram_Data_RD	<= Pulse_Ram(to_integer(Pulse_Ram_ADDRESS_RD));
-
-		
-		
+	Pulse_Ram_Data_RD	<= Pulse_Ram(to_integer(Pulse_Ram_ADDRESS_RD));	
 	end if;
+end if;	
 end process;
 
 end Behavioral;

@@ -153,7 +153,7 @@ stop_pulse_pixel	<= (others=>'0');
 else
     if CLK_5Mhz='1' and CLK_5Mhz'event then
 	stop_pulse_pixel(pixel) <= '0';
-		if mem_counter_address(pixel) = 1023 then
+		if mem_counter_address(pixel) = C_depth_pulse_memory-1 then
 		stop_pulse_pixel(pixel) <= '1';
 		end if;
 	end if;  -- clock
@@ -165,12 +165,12 @@ end process;
 --	control Vp state and remote start pulse pixel
 -------------------------------------------------------------------------------------
 
--- label_generate : for i in 33 downto 0 generate
+-- label_generate : for i in C_pixel-1 downto 0 generate
 
 -- detect_start_pulse_pixel(i) <= '1' when Mem_Vp(i)(15 downto 0) /= b"0000000000000000" else '0';	--option (2)
 -- end generate label_generate; 
 
-label_generate : for i in 33 downto 0 generate
+label_generate : for i in C_pixel-1 downto 0 generate
 	process(Reset, CLK_5Mhz)
 	begin
 	if Reset = '1' then
@@ -193,12 +193,12 @@ end generate label_generate;
 --	Vp
 -------------------------------------------------------------------------------------
 
--- label_generate_vp : for i in 33 downto 0 generate	--	Write_Vp common all pixel
+-- label_generate_vp : for i in C_pixel-1 downto 0 generate	--	Write_Vp common all pixel
 -- Mem_Vp(i)	<= Vp(i) when stop_pulse_pixel(i) = '0' and write_Vp='1' and start_pulse_pixel_shifted(i)='0' else 
 -- (others=>'0') when stop_pulse_pixel(i) = '1';
 -- end generate label_generate_vp; 
 
-label_generate_vp : for i in 33 downto 0 generate
+label_generate_vp : for i in C_pixel-1 downto 0 generate
 	process(Reset, CLK_5Mhz)
 	begin
 	if Reset = '1' then
@@ -227,7 +227,7 @@ if Reset = '1' then
 start_pulse_pixel <= (others=>'0');
 else
     if CLK_5Mhz='1' and CLK_5Mhz'event then
-		if	pixel = 33 then
+		if	pixel = C_pixel-1 then
 		start_pulse_pixel	<= detect_start_pulse_pixel;--option (2)
 		end if;
     end if;  -- clock
@@ -336,7 +336,7 @@ label_demux_pixel_fpa : entity work.demux_pixel_fpa
 	);
 
 
--- label_generate : for pixel_view in 33 downto 0 generate
+-- label_generate : for pixel_view in C_pixel-1 downto 0 generate
 -- Pulse_Ram_ADDRESS_RD_internal <= mem_counter_address(pixel) when pixel = pixel_view; 
 -- view_pixel(pixel) <= Pulse_Ram_Data_RD_internal when pixel = pixel_view;
 -- end generate label_generate; 
