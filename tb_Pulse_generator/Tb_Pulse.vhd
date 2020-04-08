@@ -24,12 +24,18 @@ signal Pulse_Ram_Data_WR	: STD_LOGIC_vector (15 downto 0 );
 signal Pulse_Ram_ADDRESS_WR	: unsigned (9 downto 0 );
 signal Pulse_Ram_ADDRESS_RD	: unsigned (9 downto 0 );
 signal WE_Pulse_Ram		: std_logic;
+signal write_add_null	: std_logic;
+
 signal write_Vp			: std_logic;
 
 signal 	view_pixel			:	t_array_view_pixel;
 signal	view_pixel_index	:	integer range 0 to C_pixel;
 signal	Vtes_out			:	signed(15 downto 0);
 
+signal 	Vp	:	t_array_Mem_Vp;
+
+signal view_i			: integer;
+signal view_c			: integer;
 
 BEGIN
 
@@ -82,6 +88,8 @@ begin
 ----------------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------BEGIN INIT ALL Vp pixel don't' touch this area
 ----------------------------------------------------------------------------------------------------------------------------------------------
+view_i	<= 0;
+view_c	<= 0;
 write_Vp <= '1';
 --Vp(pixel number) <= (std_logic_vector(to_unsigned(pixel number,16)))&(std_logic_vector(to_unsigned(energy,16)))	
 Vp(0) <= (std_logic_vector(to_unsigned(0,16)))&(std_logic_vector(to_unsigned(0,16)));
@@ -233,9 +241,9 @@ wait for 400 ns;
 write_Vp <= '0';
 
 wait for 50 ms;
-----------------------------------------------------------------------------------------------------------------------------------------
--- -------------------------------------enable odd pix same time-----------------------------------------------------------------
--------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------enable odd pix same time-----------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------
 write_Vp <= '1';
 Vp(1) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(65000,16)));--pixel 31 energy ON
 Vp(3) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(65000,16)));--pixel 31 energy ON
@@ -289,24 +297,96 @@ wait for 50 ms;
 -----------------------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------compress and shift pix----------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------
-for i in 0 to 100 loop
+for c in 0 to 500 loop
+--if c=0 or c=2 or c=4 or c=6 or c=8 or c=10 or c=12 or c=14 or c=16 or c=18 or c=20 or c=22 or c=24 or c=26 or c=28 or c=30 or c=32  
+if (c mod 2) = 0
+then
+view_c <= c;
 
 	for i in 0 to C_pixel-1 loop
-		
-		write_Vp <= '1';	
-		Vp(i) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(65000,16)));--pixel 31 energy ON
-		wait for 400 ns;
-		write_Vp <= '0';
+	view_i <= i;
+			
+				--if i=0 or i=2 or i=4 or i=6 or i=8 or i=10 or i=12 or i=14 or i=16 or i=18 or i=20 or i=22 or i=24 or i=25 or i=26 or i=28 or i=30 or i=32  
+				if (i mod 2) = 0
+				then
+					write_Vp <= '1';
+					Vp(i) <= (std_logic_vector(to_unsigned(0,16)))&(std_logic_vector(to_unsigned(65000,16)));--pixel 31 energy ON
+					wait for 400 ns;
+					write_Vp <= '0';
 
-		-- write_Vp <= '1';	
-		-- Vp(i) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(0,16)));--pixel 31 energy ON
-		-- wait for 10 us;
-		-- write_Vp <= '0';
-		
-		--wait for 10 ms;
-		wait for 300 us;	
-		
+					wait for 400 ns;
+					
+					write_Vp <= '1';
+					Vp(i) <= (std_logic_vector(to_unsigned(0,16)))&(std_logic_vector(to_unsigned(0,16)));--pixel 31 energy ON
+					wait for 400 ns;
+					write_Vp <= '0';
+					
+				else
+				
+					write_Vp <= '1';
+					Vp(i) <= (std_logic_vector(to_unsigned(0,16)))&(std_logic_vector(to_unsigned(32767,16)));--pixel 31 energy ON
+					wait for 400 ns;
+					write_Vp <= '0';
+	
+					wait for 400 ns;
+	
+					write_Vp <= '1';		
+					Vp(i) <= (std_logic_vector(to_unsigned(0,16)))&(std_logic_vector(to_unsigned(0,16)));--pixel 31 energy ON
+					wait for 400 ns;
+					write_Vp <= '0';
+					
+					wait for 400 ns;
+					
+				
+				end if;
+			wait for 10 us;
+			
+		wait for 220 us;		
 	end loop;
+
+
+else	
+view_c <= c;
+	for i in 0 to C_pixel-1 loop
+	view_i <= i;	
+			write_Vp <= '1';
+				--if i=0 or i=2 or i=4 or i=6 or i=8 or i=10 or i=12 or i=14 or i=16 or i=18 or i=20 or i=22 or i=24 or i=25 or i=26 or i=28 or i=30 or i=32
+				if (i mod 2) = 0		
+				then
+					write_Vp <= '1';
+					Vp(i) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(32767,16)));--pixel 31 energy ON
+					wait for 400 ns;
+					write_Vp <= '0';					
+					
+					wait for 400 ns;
+					
+					write_Vp <= '1';
+					Vp(i) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(0,16)));--pixel 31 energy ON
+					wait for 400 ns;
+					write_Vp <= '0';					
+						
+				else
+					
+					write_Vp <= '1';		
+					Vp(i) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(65000,16)));--pixel 31 energy ON		
+					wait for 400 ns;
+					write_Vp <= '0';	
+					
+					wait for 400 ns;
+					
+					write_Vp <= '1';	
+					Vp(i) <= (std_logic_vector(to_unsigned(33,16)))&(std_logic_vector(to_unsigned(0,16)));--pixel 31 energy ON
+					wait for 400 ns;
+					write_Vp <= '0';	
+
+					wait for 400 ns;
+					
+				end if;
+			--wait for 10 us;
+			
+		wait for 220 us;		
+	end loop;
+end if;
 	
 end loop;
 
@@ -379,22 +459,29 @@ file_open(fake_pulse_CBE, "fake_pulse_CBE.txt", READ_MODE);
 Pulse_Ram_ADDRESS_WR 	<= (others=>'0');
 WE_Pulse_Ram			<= '0'; 
 Pulse_Ram_Data_WR		<= (others=>'0');
- 
+write_add_null 			<= '0'; 
 	wait until RESET = '0' and RESET'event;
-
+	
 		loop
     	wait until CLK_5Mhz='1' and CLK_5Mhz'event;
-    	if not endfile(fake_pulse_CBE) 
-		then
-		WE_Pulse_Ram		<= '1';
-        	readline(fake_pulse_CBE, l);
-        	hread(l, Value);
-         	Pulse_Ram_Data_WR <= Value;
-			
-			Pulse_Ram_ADDRESS_WR <= Pulse_Ram_ADDRESS_WR +1;
-		else
-		WE_Pulse_Ram		<= '0';	
-		end if;
+			if	write_add_null = '0' then
+			write_add_null 			<= '1'; 
+			WE_Pulse_Ram		<= '1';
+			readline(fake_pulse_CBE, l);
+			hread(l, Value);
+			Pulse_Ram_Data_WR <= Value;
+			else		
+				if not endfile(fake_pulse_CBE) then
+					WE_Pulse_Ram		<= '1';
+					readline(fake_pulse_CBE, l);
+					hread(l, Value);
+					Pulse_Ram_Data_WR <= Value;
+					
+					Pulse_Ram_ADDRESS_WR <= Pulse_Ram_ADDRESS_WR +1;
+				else
+				WE_Pulse_Ram		<= '0';	
+				end if;
+			end if;
      	end loop;
 end process;
 
