@@ -59,7 +59,7 @@ signal	pixel_delayed_4		:	integer range 0 to C_pixel;
 
 --signal	pixel_view			:	integer range 0 to C_pixel;
 
-signal	counter_address		:	unsigned (9 downto 0);
+--signal	counter_address		:	unsigned (9 downto 0);
 
 -- constant C_MaxCount				:	positive := ((2**C_PluseLUT_Size_in)-1);
 
@@ -72,7 +72,8 @@ signal 	state : t_state;
 type 	t_array_start_pulse_pixel is array (C_pixel-1 downto 0) of std_logic;
 signal	start_pulse_pixel	: t_array_start_pulse_pixel;
 signal	detect_start_pulse_pixel	: t_array_start_pulse_pixel;
-signal	start_pulse_pixel_shifted	: t_array_start_pulse_pixel;
+
+signal	detect_stop_pulse_pixel	: t_array_start_pulse_pixel;
 signal	stop_pulse_pixel	: t_array_start_pulse_pixel;
 
 signal	Mem_Vp	:	t_array_Mem_Vp;
@@ -135,7 +136,7 @@ if Reset = '1' then
 mem_counter_address <= (others=>(others=>'0'));
 else
     if CLK_5Mhz='1' and CLK_5Mhz'event then
-		if	start_pulse_pixel(pixel) = '1' and stop_pulse_pixel(pixel) = '0' then
+		if	start_pulse_pixel(pixel) = '1' and detect_stop_pulse_pixel(pixel) = '0' and stop_pulse_pixel(pixel) = '0' then
 		mem_counter_address(pixel) <= mem_counter_address(pixel)+1;
 		end if;
 	end if;  -- clock
@@ -149,12 +150,12 @@ end process;
 label_generate_stop_pixel : process(Reset, CLK_5Mhz)
 begin
 if Reset = '1' then
-stop_pulse_pixel	<= (others=>'0');
+detect_stop_pulse_pixel	<= (others=>'0');
 else
     if CLK_5Mhz='1' and CLK_5Mhz'event then
-	stop_pulse_pixel(pixel) <= '0';
+	detect_stop_pulse_pixel(pixel) <= '0';
 		if mem_counter_address(pixel) = C_depth_pulse_memory-1 then
-		stop_pulse_pixel(pixel) <= '1';
+		detect_stop_pulse_pixel(pixel) <= '1';
 		end if;
 	end if;  -- clock
 end if;  -- reset 
@@ -194,8 +195,8 @@ end generate label_generate;
 -------------------------------------------------------------------------------------
 
 -- label_generate_vp : for i in C_pixel-1 downto 0 generate	--	Write_Vp common all pixel
--- Mem_Vp(i)	<= Vp(i) when stop_pulse_pixel(i) = '0' and write_Vp='1' and start_pulse_pixel_shifted(i)='0' else 
--- (others=>'0') when stop_pulse_pixel(i) = '1';
+-- Mem_Vp(i)	<= Vp(i) when detect_stop_pulse_pixel(i) = '0' and write_Vp='1' and start_pulse_pixel_shifted(i)='0' else 
+-- (others=>'0') when detect_stop_pulse_pixel(i) = '1';
 -- end generate label_generate_vp; 
 
 label_generate_vp : for i in C_pixel-1 downto 0 generate
@@ -205,10 +206,12 @@ label_generate_vp : for i in C_pixel-1 downto 0 generate
 	Mem_Vp(i) <= (others=>'0');
 	else
 		if CLK_5Mhz='1' and CLK_5Mhz'event then
-			if	stop_pulse_pixel(i) = '0' and write_Vp='1' and start_pulse_pixel(i) = '0' and detect_start_pulse_pixel(i) = '0' and start_pulse_pixel_shifted(i)='0' then 
+			if	write_Vp='1' and detect_start_pulse_pixel(i) = '0' and  start_pulse_pixel(i) = '0'-- write Vp AND pulse pix (i) is not processing  
+			and detect_stop_pulse_pixel(i) = '0'  and stop_pulse_pixel(i) = '0' -- AND pulse pix (i) being stopped
+			then 
 			Mem_Vp(i)	<= Vp(i);
 			else
-				if	stop_pulse_pixel(i) = '1' then
+				if	detect_stop_pulse_pixel(i) = '1' or stop_pulse_pixel(i) = '1'  then
 				Mem_Vp(i) <= (others=>'0');
 				end if;
 			end if;		
@@ -224,11 +227,13 @@ end generate label_generate_vp;
 label_start_pulse_pixel : process(Reset, CLK_5Mhz)
 begin
 if Reset = '1' then
-start_pulse_pixel <= (others=>'0');
+start_pulse_pixel 	<= (others=>'0');
+stop_pulse_pixel 	<= (others=>'0');
 else
     if CLK_5Mhz='1' and CLK_5Mhz'event then
 		if	pixel = C_pixel-1 then
 		start_pulse_pixel	<= detect_start_pulse_pixel;--option (2)
+		stop_pulse_pixel	<=	detect_stop_pulse_pixel;
 		end if;
     end if;  -- clock
 end if;  -- reset 
@@ -238,16 +243,16 @@ end process;
 --	
 -------------------------------------------------------------------------------------
 
-label_shift_start : process(Reset, CLK_5Mhz)
-begin
-if Reset = '1' then
-start_pulse_pixel_shifted	<=	(others=>'0'); 
-else
-    if CLK_5Mhz='1' and CLK_5Mhz'event then
-	start_pulse_pixel_shifted	<=	start_pulse_pixel;
-	end if;  -- clock
-end if;  -- reset 
-end process;
+-- label_shift_start : process(Reset, CLK_5Mhz)
+-- begin
+-- if Reset = '1' then
+-- start_pulse_pixel_shifted	<=	(others=>'0'); 
+-- else
+    -- if CLK_5Mhz='1' and CLK_5Mhz'event then
+	-- start_pulse_pixel_shifted	<=	start_pulse_pixel;
+	-- end if;  -- clock
+-- end if;  -- reset 
+-- end process;
 
 -------------------------------------------------------------------------------------
 --	read counter(pixel) to address dual RAM
