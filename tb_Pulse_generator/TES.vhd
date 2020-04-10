@@ -69,7 +69,6 @@ signal Pulse_Ram_Data_RD_internal	: STD_LOGIC_VECTOR (15 downto 0);
 type 	t_state is(idle,pulse);
 signal 	state : t_state;
 
-type 	t_array_start_pulse_pixel is array (C_pixel-1 downto 0) of std_logic;
 signal	start_pulse_pixel	: t_array_start_pulse_pixel;
 signal	detect_start_pulse_pixel	: t_array_start_pulse_pixel;
 
@@ -144,54 +143,35 @@ end if;  -- reset
 end process;
 
 -------------------------------------------------------------------------------------
---	read counter(pixel) generate stop(pixel)  
+--	label_start_stop_manager
 -------------------------------------------------------------------------------------
 
-label_generate_stop_pixel : process(Reset, CLK_5Mhz)
-begin
-if Reset = '1' then
-detect_stop_pulse_pixel	<= (others=>'0');
-else
-    if CLK_5Mhz='1' and CLK_5Mhz'event then
-	detect_stop_pulse_pixel(pixel) <= '0';
-		if mem_counter_address(pixel) = C_depth_pulse_memory-1 then
-		detect_stop_pulse_pixel(pixel) <= '1';
-		end if;
-	end if;  -- clock
-end if;  -- reset 
-end process;
-
-
--------------------------------------------------------------------------------------
---	control Vp state and remote start pulse pixel
--------------------------------------------------------------------------------------
-
--- label_generate : for i in C_pixel-1 downto 0 generate
-
--- detect_start_pulse_pixel(i) <= '1' when Mem_Vp(i)(15 downto 0) /= b"0000000000000000" else '0';	--option (2)
--- end generate label_generate; 
-
-label_generate : for i in C_pixel-1 downto 0 generate
-	process(Reset, CLK_5Mhz)
-	begin
-	if Reset = '1' then
-	detect_start_pulse_pixel(i) <= '0';
-	else
-		if CLK_5Mhz='1' and CLK_5Mhz'event then
-			if	Mem_Vp(i)(15 downto 0) /= b"0000000000000000" then	
-			detect_start_pulse_pixel(i) <= '1';
-			else
-			detect_start_pulse_pixel(i) <= '0';
-			end if;
-		end if;  -- clock
-	end if;  -- reset 
-	end process;
-end generate label_generate; 
-
+label_start_stop_manager : entity work.start_stop_manager
+	Port map( 
+--RESET
+		Reset		 		=>	Reset,
+--CLOCKs
+    	CLK_5Mhz			=>	CLK_5Mhz,
+			--ENABLE_CLK_1X		: 	in  STD_LOGIC;
+--CONTROL
+		pixel				=>	pixel,
+		
+		
+		Mem_Vp				=>	Mem_Vp,
+		mem_counter_address	=>	mem_counter_address,
+	
+--input
+		detect_start_pulse_pixel	=>	detect_start_pulse_pixel,
+		detect_stop_pulse_pixel		=>	detect_stop_pulse_pixel,
+--output
+		start_pulse_pixel	=>	start_pulse_pixel,
+		stop_pulse_pixel	=>	stop_pulse_pixel
+			
+	);
 
 
 -------------------------------------------------------------------------------------
---	Vp
+--	drive Mem_Vp(i)
 -------------------------------------------------------------------------------------
 
 -- label_generate_vp : for i in C_pixel-1 downto 0 generate	--	Write_Vp common all pixel
@@ -220,24 +200,7 @@ label_generate_vp : for i in C_pixel-1 downto 0 generate
 	end process;
 end generate label_generate_vp; 
 
--------------------------------------------------------------------------------------
---	start_pulse_pixel
--------------------------------------------------------------------------------------
 
-label_start_pulse_pixel : process(Reset, CLK_5Mhz)
-begin
-if Reset = '1' then
-start_pulse_pixel 	<= (others=>'0');
-stop_pulse_pixel 	<= (others=>'0');
-else
-    if CLK_5Mhz='1' and CLK_5Mhz'event then
-		if	pixel = C_pixel-1 then
-		start_pulse_pixel	<= detect_start_pulse_pixel;--option (2)
-		stop_pulse_pixel	<=	detect_stop_pulse_pixel;
-		end if;
-    end if;  -- clock
-end if;  -- reset 
-end process;
 
 -------------------------------------------------------------------------------------
 --	

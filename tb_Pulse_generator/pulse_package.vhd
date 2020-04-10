@@ -31,5 +31,6 @@ signal 	Vp	:	t_array_Mem_Vp;
 
 type	t_array_view_pixel	is array (C_pixel-1 downto 0) of signed(15 downto 0);
 
+type 	t_array_start_pulse_pixel is array (C_pixel-1 downto 0) of std_logic;
 
 end pulse_package;
