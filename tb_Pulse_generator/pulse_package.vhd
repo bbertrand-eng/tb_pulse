@@ -25,11 +25,13 @@ type t_Pulse_Ram is array (C_depth_pulse_memory-1 downto 0) of std_logic_vector(
 
 type 	t_array_Mem_counter_address is array (C_pixel-1 downto 0) of unsigned (9 downto 0);
 
+type 	t_array_Mem_Vo is array (C_pixel-1 downto 0) of std_logic_vector(31 downto 0);
+signal 	Vo	:	t_array_Mem_Vo;
 
 type 	t_array_Mem_Vp is array (C_pixel-1 downto 0) of std_logic_vector(31 downto 0);
 signal 	Vp	:	t_array_Mem_Vp;
 
-type	t_array_view_pixel	is array (C_pixel-1 downto 0) of signed(15 downto 0);
+type	t_array_view_pixel	is array (C_pixel-1 downto 0) of unsigned(15 downto 0);
 
 type 	t_array_start_pulse_pixel is array (C_pixel-1 downto 0) of std_logic;
 

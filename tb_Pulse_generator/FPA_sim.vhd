@@ -8,6 +8,8 @@ entity FPA_sim is
 	port(
 		Reset                : in    std_logic;
 		CLK_5Mhz             : in    std_logic;
+		
+		Vo					: in    t_array_Mem_Vo;	
 		write_Vp             : in    std_logic;
 		Vp                   : in    t_array_Mem_Vp;
 		WE_Pulse_Ram         : in    std_logic;
@@ -35,7 +37,7 @@ begin
 			CLK_5Mhz             => CLK_5Mhz,
 			ENABLE_CLK_1X        => '1',
 			-- from gse Vp Vo 
-
+			Vo					=>	Vo,
 			Vp                   => Vp,
 			write_Vp             => write_Vp,
 			-- from gse DualRam

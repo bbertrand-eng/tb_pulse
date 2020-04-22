@@ -24,7 +24,7 @@ entity TES is
 			ENABLE_CLK_1X		: in  STD_LOGIC;
 			
 -- from gse Vp Vo 
-		
+			Vo		:	in	 t_array_Mem_Vo;
 			Vp		:	in	 t_array_Mem_Vp; 
 			write_Vp: in  STD_LOGIC;
 			
@@ -84,9 +84,11 @@ signal	unsigned_Mem_Vp						:	unsigned(15 downto 0);
 signal	unsigned_multiply_to_pulse			:	unsigned(31 downto 0); 
 signal	unsigned_L_multiply_to_pulse		:	unsigned(15 downto 0); 
 signal	signed_L_multiply_to_pulse			:	signed(15 downto 0);
-signal	Vtes								:	signed(15 downto 0);
+signal	signed_Vo							:	signed(15 downto 0);
+signal	unsigned_Vo							:	unsigned(15 downto 0);	
+signal	Vtes								:	unsigned(15 downto 0);
 
-constant Vo									: 	signed(15 downto 0)	:=	x"Ffff";	
+--constant Vo									: 	signed(15 downto 0)	:=	x"Ffff";	
 
 signal	view_start_pulse_pixel				:	std_logic;
 
@@ -262,8 +264,10 @@ unsigned_Pulse_Ram_Data_RD_internal <= unsigned(Pulse_Ram_Data_RD_internal);
 unsigned_Mem_Vp	<=	unsigned(Mem_Vp(pixel_delayed_4)(15 downto 0));
 unsigned_multiply_to_pulse <= unsigned_Pulse_Ram_Data_RD_internal*unsigned_Mem_Vp;--unsigned(15 downto 0);*unsigned(15 downto 0);
 --unsigned_L_multiply_to_pulse 	<= unsigned_multiply_to_pulse(47 downto 32);
-signed_L_multiply_to_pulse		<= signed(unsigned_multiply_to_pulse(31 downto 16));--unsigned(31 downto 0); 
-Vtes	<=	Vo	-	signed_L_multiply_to_pulse;	--signed(15 downto 0)	:=	x"fff0" - signed(15 downto 0);	
+--signed_L_multiply_to_pulse		<= signed(unsigned_multiply_to_pulse(31 downto 16));--unsigned(31 downto 0); 
+unsigned_Vo	<= unsigned(Vo(pixel_delayed_4)(15 downto 0));
+--signed_Vo	<= signed(Vo(pixel_delayed_4)(15 downto 0));
+Vtes	<= unsigned_Vo -	unsigned_multiply_to_pulse(31 downto 16);	--signed(15 downto 0)	:=	x"fff0" - signed(15 downto 0);	
 
 --Vtes	<=	unsigned_L_multiply_to_pulse	
 
@@ -273,7 +277,7 @@ if Reset = '1' then
 Vtes_out	<= (others=>'0');
 else
     if CLK_5Mhz='1' and CLK_5Mhz'event then
-	Vtes_out <= Vtes;
+	Vtes_out <= signed('0'&Vtes(15 downto 1));
 	end if;  -- clock
 end if;  -- reset 
 end process;

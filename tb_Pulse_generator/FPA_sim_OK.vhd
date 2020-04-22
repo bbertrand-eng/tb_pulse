@@ -47,7 +47,7 @@ architecture RTL of FPA_sim_OK is
 
 	signal write_Vp         : STD_LOGIC;
 	signal address          : STD_LOGIC_VECTOR(31 DOWNTO 0);
-	signal Vo               : STD_LOGIC_VECTOR(31 DOWNTO 0);
+	signal Vo_fifo          : STD_LOGIC_VECTOR(31 DOWNTO 0);
 	signal frequence        : STD_LOGIC_VECTOR(31 DOWNTO 0);
 	signal Vp_fifo          : STD_LOGIC_VECTOR(31 DOWNTO 0);
 	signal unsigned_address : unsigned(5 downto 0);
@@ -76,6 +76,11 @@ begin
 			Current_state <= read_fifo_add;
 			write_Vp      <= '0';
 			Vp            <= (others => (others => '0'));
+			Vo			 <= (others => (others => '0'));
+			address			<=(others => '0'); 
+			Vo_fifo			<=(others => '0');
+			Vp_fifo			<=(others => '0');
+			
 		elsif rising_edge(CLK_5Mhz) then
 			
 			write_Vp <= '0';
@@ -106,7 +111,7 @@ begin
 					--int_address <= To_integer(unsigned_address);
 					rd_en <= '0';
 					if valid = '1' then
-						Vo            <= dout;
+						Vo_fifo       <= dout;
 						Current_state <= read_fifo_Vp;
 					end if;
 
@@ -137,7 +142,8 @@ begin
 					end if;
 
 				when format_tab =>
-
+				
+					Vo(To_integer(unsigned(address(5 downto 0)))) <= Vo_fifo;	 		
 					Vp(To_integer(unsigned(address(5 downto 0)))) <= Vp_fifo;
 					Current_state <= read_fifo_add;
 					
@@ -161,6 +167,8 @@ begin
 		port map(
 			Reset                => Reset,
 			CLK_5Mhz             => CLK_5Mhz,
+			
+			Vo					=>	Vo,
 			write_Vp             => write_Vp,
 			Vp                   => Vp,
 			WE_Pulse_Ram         => WE_Pulse_Ram,

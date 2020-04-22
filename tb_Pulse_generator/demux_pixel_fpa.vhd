@@ -19,7 +19,7 @@ entity demux_pixel_fpa is
 --CONTROL
 			pixel				: 	in	integer;
 						
-			Pulse_Ram_Data_RD_internal		:	in	signed(15 downto 0);
+			Pulse_Ram_Data_RD_internal		:	in	unsigned(15 downto 0);
 
 			view_pixel			:	out	t_array_view_pixel
 			

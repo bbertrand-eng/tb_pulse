@@ -1,5 +1,5 @@
 ISim log file
-Running: C:\20200420_tb_pulse\tb_Pulse_generator\ISE\FPA_sim_OK\Tb_FPA_sim_OK_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/20200420_tb_pulse/tb_Pulse_generator/ISE/FPA_sim_OK/Tb_FPA_sim_OK_isim_beh.wdb 
+Running: C:\20200421_tb_pulse\tb_Pulse_generator\ISE\FPA_sim_OK\Tb_FPA_sim_OK_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/20200421_tb_pulse/tb_Pulse_generator/ISE/FPA_sim_OK/Tb_FPA_sim_OK_isim_beh.wdb 
 ISim P.20131013 (signature 0x7708f090)
 ----------------------------------------------------------------------
 WARNING:Security:42 - Your software subscription period has lapsed. Your current version of Xilinx tools will continue to function, but you no longer qualify for Xilinx software updates or new releases.
@@ -14,25 +14,28 @@ Time resolution is 1 ps
 Simulator is doing circuit initialization process.
 at 0 ps: Note: WARNING: Behavioral models for independent clock FIFO configurations do not model synchronization delays. The behavioral models are functionally correct, and will represent the behavior of the configured FIFO. See the FIFO Generator User Guide for more information. (/tb_fpa_sim_ok/label_FPA_sim_ok/label_fifo_r32_1024_w32_1024/U0/gconvfifo/inst_conv_fifo/).
 Finished circuit initialization process.
+# run 5ms
+ISim P.20131013 (signature 0x7708f090)
+----------------------------------------------------------------------
+WARNING:Security:42 - Your software subscription period has lapsed. Your current version of Xilinx tools will continue to function, but you no longer qualify for Xilinx software updates or new releases.
+
+
+----------------------------------------------------------------------
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+at 0 ps: Note: WARNING: Behavioral models for independent clock FIFO configurations do not model synchronization delays. The behavioral models are functionally correct, and will represent the behavior of the configured FIFO. See the FIFO Generator User Guide for more information. (/tb_fpa_sim_ok/label_FPA_sim_ok/label_fifo_r32_1024_w32_1024/U0/gconvfifo/inst_conv_fifo/).
+Finished circuit initialization process.
 # restart
 # run all
 Simulator is doing circuit initialization process.
 at 0 ps: Note: WARNING: Behavioral models for independent clock FIFO configurations do not model synchronization delays. The behavioral models are functionally correct, and will represent the behavior of the configured FIFO. See the FIFO Generator User Guide for more information. (/tb_fpa_sim_ok/label_FPA_sim_ok/label_fifo_r32_1024_w32_1024/U0/gconvfifo/inst_conv_fifo/).
 Finished circuit initialization process.
-Stopped at time : 35786515 ns : File "C:/20200420_tb_pulse/tb_Pulse_generator/Tb_FPA_sim_OK.vhd" Line 75
+Stopped at time : 4866480 ns : File "C:/20200421_tb_pulse/tb_Pulse_generator/Tb_FPA_sim_OK.vhd" Line 73
 # restart
-# run all
+# restart
+# run 5ms
 Simulator is doing circuit initialization process.
 at 0 ps: Note: WARNING: Behavioral models for independent clock FIFO configurations do not model synchronization delays. The behavioral models are functionally correct, and will represent the behavior of the configured FIFO. See the FIFO Generator User Guide for more information. (/tb_fpa_sim_ok/label_FPA_sim_ok/label_fifo_r32_1024_w32_1024/U0/gconvfifo/inst_conv_fifo/).
 Finished circuit initialization process.
-Stopped at time : 5518120 ns : File "C:/20200420_tb_pulse/tb_Pulse_generator/Tb_FPA_sim_OK.vhd" Line 73
-# restart
-# restart
-# restart
-# run all
-Simulator is doing circuit initialization process.
-at 0 ps: Note: WARNING: Behavioral models for independent clock FIFO configurations do not model synchronization delays. The behavioral models are functionally correct, and will represent the behavior of the configured FIFO. See the FIFO Generator User Guide for more information. (/tb_fpa_sim_ok/label_FPA_sim_ok/label_fifo_r32_1024_w32_1024/U0/gconvfifo/inst_conv_fifo/).
-Finished circuit initialization process.
-Stopped at time : 5391205 ns : File "C:/20200420_tb_pulse/tb_Pulse_generator/Tb_FPA_sim_OK.vhd" Line 75
-# run all
-Stopped at time : 13906100 ns : File "C:/20200420_tb_pulse/tb_Pulse_generator/start_stop_manager.vhd" Line 77
+Stopped at time : 3470595 ns : File "C:/20200421_tb_pulse/tb_Pulse_generator/Tb_FPA_sim_OK.vhd" Line 75

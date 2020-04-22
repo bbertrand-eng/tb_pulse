@@ -22,9 +22,12 @@
   <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="FPA_sim_OK.xise"/>
 
   <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="FPA_sim_OK_isim_beh.exe"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Tb_FPA_sim_OK_beh.prj"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Tb_FPA_sim_OK_isim_beh.exe"/>
     <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="Tb_FPA_sim_OK_isim_beh.wdb"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Tb_FPA_sim_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="Tb_FPA_sim_isim_beh.wdb"/>
     <file xil_pn:fileType="FILE_LOG" xil_pn:name="fuse.log"/>
     <file xil_pn:fileType="FILE_LOG" xil_pn:name="ipcore_dir/coregen.log"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
@@ -34,44 +37,46 @@
   </files>
 
   <transforms xmlns="http://www.xilinx.com/XMLSchema">
-    <transform xil_pn:end_ts="1587468888" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1587468888">
+    <transform xil_pn:end_ts="1587551421" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1587551421">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1587468888" xil_pn:in_ck="180787121302364887" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1587468888">
+    <transform xil_pn:end_ts="1587551421" xil_pn:in_ck="-5641407967955775951" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1587551421">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="../../FPA_sim.vhd"/>
       <outfile xil_pn:name="../../FPA_sim_OK.vhd"/>
       <outfile xil_pn:name="../../Pulse_LUT_function.vhd"/>
       <outfile xil_pn:name="../../TES.vhd"/>
+      <outfile xil_pn:name="../../Tb_FPA_sim.vhd"/>
       <outfile xil_pn:name="../../Tb_FPA_sim_OK.vhd"/>
       <outfile xil_pn:name="../../demux_pixel_fpa.vhd"/>
       <outfile xil_pn:name="../../mem_Cnt_Add_to_Add_RAM.vhd"/>
       <outfile xil_pn:name="../../pulse_package.vhd"/>
       <outfile xil_pn:name="../../start_stop_manager.vhd"/>
     </transform>
-    <transform xil_pn:end_ts="1587468888" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="6758329897080147331" xil_pn:start_ts="1587468888">
+    <transform xil_pn:end_ts="1587551421" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="6758329897080147331" xil_pn:start_ts="1587551421">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1587468888" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="3706411765867102583" xil_pn:start_ts="1587468888">
+    <transform xil_pn:end_ts="1587551421" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="3706411765867102583" xil_pn:start_ts="1587551421">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1587468888" xil_pn:in_ck="2639821165220665192" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="-8221720149628435775" xil_pn:start_ts="1587468888">
+    <transform xil_pn:end_ts="1587551421" xil_pn:in_ck="2639821165220665192" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="-7169226698576268338" xil_pn:start_ts="1587551421">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="ipcore_dir/fifo_r32_1024_w32_1024.ngc"/>
       <outfile xil_pn:name="ipcore_dir/fifo_r32_1024_w32_1024.vhd"/>
     </transform>
-    <transform xil_pn:end_ts="1587468888" xil_pn:in_ck="-8165650508109058889" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1587468888">
+    <transform xil_pn:end_ts="1587551421" xil_pn:in_ck="-213650290697197487" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1587551421">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="../../FPA_sim.vhd"/>
       <outfile xil_pn:name="../../FPA_sim_OK.vhd"/>
       <outfile xil_pn:name="../../Pulse_LUT_function.vhd"/>
       <outfile xil_pn:name="../../TES.vhd"/>
+      <outfile xil_pn:name="../../Tb_FPA_sim.vhd"/>
       <outfile xil_pn:name="../../Tb_FPA_sim_OK.vhd"/>
       <outfile xil_pn:name="../../demux_pixel_fpa.vhd"/>
       <outfile xil_pn:name="../../mem_Cnt_Add_to_Add_RAM.vhd"/>
@@ -79,7 +84,7 @@
       <outfile xil_pn:name="../../start_stop_manager.vhd"/>
       <outfile xil_pn:name="ipcore_dir/fifo_r32_1024_w32_1024.vhd"/>
     </transform>
-    <transform xil_pn:end_ts="1587468893" xil_pn:in_ck="-8165650508109058889" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-4080915934665071647" xil_pn:start_ts="1587468888">
+    <transform xil_pn:end_ts="1587551426" xil_pn:in_ck="-213650290697197487" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-4080915934665071647" xil_pn:start_ts="1587551421">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
@@ -91,7 +96,7 @@
       <outfile xil_pn:name="isim.log"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1587468893" xil_pn:in_ck="505740459625826044" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-7302754886831734066" xil_pn:start_ts="1587468893">
+    <transform xil_pn:end_ts="1587551426" xil_pn:in_ck="-2900166350616826138" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-7302754886831734066" xil_pn:start_ts="1587551426">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForOutputs"/>

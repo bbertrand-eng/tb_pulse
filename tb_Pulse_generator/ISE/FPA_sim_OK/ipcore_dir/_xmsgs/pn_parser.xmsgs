@@ -8,7 +8,7 @@
 <!-- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.    -->
 
 <messages>
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;C:/20200420_tb_pulse/tb_Pulse_generator/ISE/FPA_sim_OK/ipcore_dir/fifo_r32_1024_w32_1024.vhd&quot; into library work</arg>
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;C:/20200421_tb_pulse/tb_Pulse_generator/ISE/FPA_sim_OK/ipcore_dir/fifo_r32_1024_w32_1024.vhd&quot; into library work</arg>
 </msg>
 
 </messages>

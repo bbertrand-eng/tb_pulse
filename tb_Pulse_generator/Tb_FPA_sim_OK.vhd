@@ -20,7 +20,7 @@ signal CLK_100Mhz		: std_logic;
 --signal CLK_156k			: std_logic;
 signal RESET 			: std_logic;
 signal RESET_file		: std_logic;
-signal Sig_in: signed(15 downto 0);
+--signal Sig_in: signed(15 downto 0);
 signal Pulse_Ram_Data_RD			: STD_LOGIC_VECTOR (15 downto 0);
 --signal write_sig_1		: signed(19 downto 0);
 --signal SendPulse 		: std_logic;
@@ -30,18 +30,18 @@ signal Pulse_Ram_ADDRESS_RD	: unsigned (9 downto 0 );
 signal WE_Pulse_Ram		: std_logic;
 signal write_add_null	: std_logic;
 
-signal write_Vp			: std_logic;
+--signal write_Vp			: std_logic;
 
-signal 	view_pixel			:	t_array_view_pixel;
-signal	view_pixel_index	:	integer range 0 to C_pixel;
+-- signal 	view_pixel			:	t_array_view_pixel;
+-- signal	view_pixel_index	:	integer range 0 to C_pixel;
 signal	Vtes_out			:	signed(15 downto 0);
 
-signal 	Vp	:	t_array_Mem_Vp;
+--signal 	Vp	:	t_array_Mem_Vp;
 
-signal	Amplitude		: integer;
+--signal	Amplitude		: integer;
 
-signal view_i			: integer;
-signal view_c			: integer;
+-- signal view_i			: integer;
+-- signal view_c			: integer;
 
 signal din_vp				: 	STD_LOGIC_VECTOR (31 downto 0);
 signal wr_en_vp				:	std_logic;
