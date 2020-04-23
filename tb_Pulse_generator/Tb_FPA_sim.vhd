@@ -100,16 +100,16 @@ BEGIN
 		view_c    <= 0;
 		Amplitude 		<= 1900;
 		Amplitude_vo 	<= 1901;
-		write_Vp  <= '1';
+		write_Vp  <= '0';
 
 		for i in 0 to C_pixel - 1 loop
 			Vp(i) <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(0, 16)));
 
 		end loop;
 
-		write_Vp <= '1';
+		--write_Vp <= '1';
 		wait for 100 us;
-		write_Vp <= '0';
+		--write_Vp <= '0';
 
 		--------------------------------END INIT ALL Vp pixel don't' touch
 		--------------------------------------------------------------------------------------------------------------------------------------
@@ -117,7 +117,7 @@ BEGIN
 		wait for 1 ms;
 		
 		-----------------------------------------------------------------------------------------------------------------------------------------
-		-------------------------------------------------Vo ramp ----------------------------------------------------------
+		-------------------------------------------------Vo fast ramp ----------------------------------------------------------
 		-----------------------------------------------------------------------------------------------------------------------------------------
 		
 		Amplitude_vo <= 0;
@@ -167,10 +167,10 @@ BEGIN
 
 			wait for 400 ns;
 
-			write_Vp <= '1';
+			--write_Vp <= '1';
 			Vp(i)    <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON
-			wait for 400 ns;
-			write_Vp <= '0';
+			--wait for 400 ns;
+			--write_Vp <= '0';
 
 			wait for 10 ms;
 
@@ -205,9 +205,9 @@ BEGIN
 			end if;
 		end loop;
 
-		write_Vp <= '1';
-		wait for 400 ns;
-		write_Vp <= '0';
+		-- write_Vp <= '1';
+		-- wait for 400 ns;
+		-- write_Vp <= '0';
 
 		wait for 10 ms;
 
@@ -231,9 +231,9 @@ BEGIN
 			end if;
 		end loop;
 
-		write_Vp <= '1';
-		wait for 400 ns;
-		write_Vp <= '0';
+		-- write_Vp <= '1';
+		-- wait for 400 ns;
+		-- write_Vp <= '0';
 
 		wait for 50 ms;
 
@@ -248,10 +248,10 @@ BEGIN
 
 			wait for 1.7 ms;
 
-			write_Vp <= '1';
+			--write_Vp <= '1';
 			Vp(i)    <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON
 			wait for 400 ns;
-			write_Vp <= '0';
+			--write_Vp <= '0';
 		end loop;
 
 		wait for 50 ms;
@@ -279,24 +279,24 @@ BEGIN
 
 						wait for 400 ns;
 
-						write_Vp <= '1';
+						--write_Vp <= '1';
 						Vp(i)    <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON
 						wait for 400 ns;
-						write_Vp <= '0';
+						--write_Vp <= '0';
 
 					else
 
 						write_Vp <= '1';
-						Vp(i)    <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(32767, 16))); --pixel 31 energy ON
+						Vp(i)    <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(65535, 16))); --pixel 31 energy ON
 						wait for 400 ns;
 						write_Vp <= '0';
 
 						wait for 400 ns;
 
-						write_Vp <= '1';
+						--write_Vp <= '1';
 						Vp(i)    <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON
 						wait for 400 ns;
-						write_Vp <= '0';
+						--write_Vp <= '0';
 
 						wait for 400 ns;
 
@@ -314,16 +314,16 @@ BEGIN
 					--if i=0 or i=2 or i=4 or i=6 or i=8 or i=10 or i=12 or i=14 or i=16 or i=18 or i=20 or i=22 or i=24 or i=25 or i=26 or i=28 or i=30 or i=32
 					if (i mod 2) = 0 then
 						write_Vp <= '1';
-						Vp(i)    <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(32767, 16))); --pixel 31 energy ON
+						Vp(i)    <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(65535, 16))); --pixel 31 energy ON
 						wait for 400 ns;
 						write_Vp <= '0';
 
 						wait for 400 ns;
 
-						write_Vp <= '1';
+						--write_Vp <= '1';
 						Vp(i)    <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON
 						wait for 400 ns;
-						write_Vp <= '0';
+						--write_Vp <= '0';
 
 					else
 
@@ -334,10 +334,10 @@ BEGIN
 
 						wait for 400 ns;
 
-						write_Vp <= '1';
+						--write_Vp <= '1';
 						Vp(i)    <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON
 						wait for 400 ns;
-						write_Vp <= '0';
+						--write_Vp <= '0';
 
 						wait for 400 ns;
 
@@ -350,7 +350,7 @@ BEGIN
 
 		end loop;
 
-		wait for 60 ms;
+		--wait for 60 ms;
 
 		wait;
 	end process;
