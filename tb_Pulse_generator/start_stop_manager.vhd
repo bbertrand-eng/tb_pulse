@@ -50,12 +50,28 @@ label_start_pulse_pixel : process(Reset, CLK_5Mhz)
 begin
 if Reset = '1' then
 start_pulse_pixel 	<= (others=>'0');
-stop_pulse_pixel 	<= (others=>'0');
+--stop_pulse_pixel 	<= (others=>'0');
 else
     if CLK_5Mhz='1' and CLK_5Mhz'event then
 		if	pixel = C_pixel-1 then
 		start_pulse_pixel	<= detect_start_pulse_pixel;--option (2)
-		stop_pulse_pixel	<=	detect_stop_pulse_pixel;
+		--stop_pulse_pixel	<=	detect_stop_pulse_pixel;
+		end if;
+    end if;  -- clock
+end if;  -- reset 
+end process;
+
+
+process(Reset, CLK_5Mhz)
+begin
+if Reset = '1' then
+stop_pulse_pixel 	<= (others=>'0');
+else
+    if CLK_5Mhz='1' and CLK_5Mhz'event then
+		if	detect_stop_pulse_pixel(pixel) = '1' then
+		stop_pulse_pixel(pixel) <= '1';
+		else
+		stop_pulse_pixel(pixel) <= '0';
 		end if;
     end if;  -- clock
 end if;  -- reset 

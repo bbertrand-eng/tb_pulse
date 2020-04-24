@@ -89,7 +89,7 @@ BEGIN
 		----------------------------------------------------------------------------------------------------------------------------------------------
 		
 		for i in 0 to C_pixel - 1 loop
-			Vo(i) <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(0, 16)));
+			Vo(i) <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(65535, 16)));
 
 		end loop;	
 	
@@ -98,8 +98,7 @@ BEGIN
 		----------------------------------------------------------------------------------------------------------------------------------------------
 		view_i    <= 0;
 		view_c    <= 0;
-		Amplitude 		<= 1900;
-		Amplitude_vo 	<= 1901;
+
 		write_Vp  <= '0';
 
 		for i in 0 to C_pixel - 1 loop
@@ -114,8 +113,23 @@ BEGIN
 		--------------------------------END INIT ALL Vp pixel don't' touch
 		--------------------------------------------------------------------------------------------------------------------------------------
 
-		wait for 1 ms;
+		-- wait for 1 ms;
 		
+		-- Amplitude 		<= 65535;
+		-- Amplitude_vo 	<= 65535;
+	
+		-- wait for 1 ms;
+		
+				-- Vo(0)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude_vo, 16)));		
+				-- Vp(0)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude, 16))); --pixel 31 energy ON
+				
+				-- wait for 1 ns;
+				-- write_Vp  <= '1';
+				-- wait for 400 ns;
+				-- write_Vp  <= '0';
+
+
+	
 		-----------------------------------------------------------------------------------------------------------------------------------------
 		-------------------------------------------------Vo fast ramp ----------------------------------------------------------
 		-----------------------------------------------------------------------------------------------------------------------------------------
@@ -146,37 +160,43 @@ BEGIN
 		-----------------------------------------------------------------------------------------------------------------------------------------
 		--loop
 		
-		Amplitude 		<= 1900;
-		Amplitude_vo 	<= 1901;
+		Amplitude 		<= 100;
+		Amplitude_vo 	<= 100;
 		
 		wait for 10 us;
 		
-		for i in 0 to C_pixel - 1 loop
-			Amplitude <= Amplitude + 1790;
-			Amplitude_vo <= Amplitude_vo + 1791;
+		for c in 0 to 18 loop
+		
+			for i in 0 to C_pixel - 1 loop
+
+				
+				wait for 400 ns;
+				Vo(i)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude_vo, 16)));		
+				Vp(i)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude, 16))); --pixel 31 energy ON
+				
+				wait for 1 ns;
+				write_Vp  <= '1';
+				wait for 400 ns;
+				write_Vp  <= '0';
+
+				wait for 400 ns;
+
+				--write_Vp <= '1';
+				Vp(i)    <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON
+				--wait for 400 ns;
+				--write_Vp <= '0';
+				
+				wait for 220 us;
+				
+				Amplitude <= Amplitude + 100;
+				Amplitude_vo <= Amplitude_vo + 100;
+				
+			end loop;
 			
-			wait for 400 ns;
-			Vo(i)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude_vo, 16)));
-			
-			wait for 400 ns;
-			
-			write_Vp  <= '1';
-			Vp(i)     <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(Amplitude, 16))); --pixel 31 energy ON
-			wait for 400 ns;
-			write_Vp  <= '0';
+		end loop;	
 
-			wait for 400 ns;
-
-			--write_Vp <= '1';
-			Vp(i)    <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON
-			--wait for 400 ns;
-			--write_Vp <= '0';
-
-			wait for 10 ms;
-
-		end loop;
-		--end loop;	
-
+		wait for 10 ms;
+		
 		----------------------------------------------------------------------------------------------------------------------------------------------
 		--------------------------------set all Vo max value
 		----------------------------------------------------------------------------------------------------------------------------------------------
@@ -185,6 +205,7 @@ BEGIN
 			Vo(i) <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(65535, 16)));
 
 		end loop;	
+		
 		
 		----------------------------------------------------------------------------------------------------------------------------
 		-- -------------------------------------enable even pix same time-----------------------------------------------------------------
@@ -203,6 +224,31 @@ BEGIN
 			if (i mod 2) = 0 then
 				Vp(i) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON	
 			end if;
+		end loop;
+
+		-- write_Vp <= '1';
+		-- wait for 400 ns;
+		-- write_Vp <= '0';
+
+		wait for 10 ms;
+		
+		----------------------------------------------------------------------------------------------------------------------------
+		-- -------------------------------------enable all pix same time-----------------------------------------------------------------
+		-----------------------------------------------------------------------------------------------------------------------------------
+		for i in 0 to C_pixel - 1 loop
+			--if (i mod 2) = 0 then
+				Vp(i) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(32767, 16))); --pixel 31 energy ON	
+			--end if;
+		end loop;
+
+		write_Vp <= '1';
+		wait for 400 ns;
+		write_Vp <= '0';
+
+		for i in 0 to C_pixel - 1 loop
+			--if (i mod 2) = 0 then
+				Vp(i) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON	
+			--end if;
 		end loop;
 
 		-- write_Vp <= '1';
@@ -237,27 +283,27 @@ BEGIN
 
 		wait for 50 ms;
 
-		-----------------------------------------------------------------------------------------------------------------------------------------
-		-------------------------------------------------shift T/4 pix T/4----------------------------------------------------------
-		-----------------------------------------------------------------------------------------------------------------------------------------
-		for i in 0 to C_pixel - 1 loop
-			write_Vp <= '1';
-			Vp(i)    <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(32767, 16))); --pixel 31 energy ON
-			wait for 400 ns;
-			write_Vp <= '0';
+		-- -----------------------------------------------------------------------------------------------------------------------------------------
+		-- -------------------------------------------------shift T/4 pix T/4----------------------------------------------------------
+		-- -----------------------------------------------------------------------------------------------------------------------------------------
+		-- for i in 0 to C_pixel - 1 loop
+			-- write_Vp <= '1';
+			-- Vp(i)    <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(32767, 16))); --pixel 31 energy ON
+			-- wait for 400 ns;
+			-- write_Vp <= '0';
 
-			wait for 1.7 ms;
+			-- wait for 1.7 ms;
 
-			--write_Vp <= '1';
-			Vp(i)    <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON
-			wait for 400 ns;
-			--write_Vp <= '0';
-		end loop;
+			-- --write_Vp <= '1';
+			-- Vp(i)    <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON
+			-- wait for 400 ns;
+			-- --write_Vp <= '0';
+		-- end loop;
 
-		wait for 50 ms;
+		-- wait for 50 ms;
 
-		-- ----------------------------------------------------------------------------------------------------------------------------------
-		-- -- wait for 1 ms;
+		-- -- ----------------------------------------------------------------------------------------------------------------------------------
+		-- -- -- wait for 1 ms;
 		-----------------------------------------------------------------------------------------------------------------------------------------
 		-------------------------------------------------compress and shift pix----------------------------------------------------------
 		-----------------------------------------------------------------------------------------------------------------------------------------
@@ -350,7 +396,7 @@ BEGIN
 
 		end loop;
 
-		--wait for 60 ms;
+		wait for 60 ms;
 
 		wait;
 	end process;

@@ -75,15 +75,16 @@ signal	detect_start_pulse_pixel	: t_array_start_pulse_pixel;
 signal	detect_stop_pulse_pixel	: t_array_start_pulse_pixel;
 signal	stop_pulse_pixel	: t_array_start_pulse_pixel;
 
-signal	Mem_Vp	:	t_array_Mem_Vp;
+signal	Mem_Vp			:	t_array_Mem_Vp;
+signal	Mem_Vp_shifte	:	t_array_Mem_Vp;
 
 signal	mem_counter_address	:	t_array_Mem_counter_address;
 
 signal	unsigned_Pulse_Ram_Data_RD_internal :	unsigned(15 downto 0);
-signal	unsigned_Mem_Vp						:	unsigned(15 downto 0);
+signal	unsigned_Mem_Vp_shifte				:	unsigned(15 downto 0);
 signal	unsigned_multiply_to_pulse			:	unsigned(31 downto 0); 
-signal	unsigned_L_multiply_to_pulse		:	unsigned(15 downto 0); 
-signal	signed_L_multiply_to_pulse			:	signed(15 downto 0);
+--signal	unsigned_L_multiply_to_pulse		:	unsigned(15 downto 0); 
+--signal	signed_L_multiply_to_pulse			:	signed(15 downto 0);
 signal	signed_Vo							:	signed(15 downto 0);
 signal	unsigned_Vo							:	unsigned(15 downto 0);	
 signal	Vtes								:	unsigned(15 downto 0);
@@ -220,7 +221,7 @@ end generate label_generate_vp;
 -- end process;
 
 -------------------------------------------------------------------------------------
---	read counter(pixel) to address dual RAM
+--	read counter(pixel) from address dual RAM
 -------------------------------------------------------------------------------------
 label_mem_Cnt_Add_to_Add_RAM : entity work.mem_Cnt_Add_to_Add_RAM
 	Port map( 
@@ -261,8 +262,8 @@ label_LUT_func: entity work.LUT_func
 -------------------------------------------------------------------------------------
 --	multiply
 unsigned_Pulse_Ram_Data_RD_internal <= unsigned(Pulse_Ram_Data_RD_internal);
-unsigned_Mem_Vp	<=	unsigned(Mem_Vp(pixel_delayed_4)(15 downto 0));
-unsigned_multiply_to_pulse <= unsigned_Pulse_Ram_Data_RD_internal*unsigned_Mem_Vp;--unsigned(15 downto 0);*unsigned(15 downto 0);
+unsigned_Mem_Vp_shifte	<=	unsigned(Mem_Vp_shifte(pixel_delayed_4)(15 downto 0));
+unsigned_multiply_to_pulse <= unsigned_Pulse_Ram_Data_RD_internal*unsigned_Mem_Vp_shifte;--unsigned(15 downto 0);*unsigned(15 downto 0);
 --unsigned_L_multiply_to_pulse 	<= unsigned_multiply_to_pulse(47 downto 32);
 --signed_L_multiply_to_pulse		<= signed(unsigned_multiply_to_pulse(31 downto 16));--unsigned(31 downto 0); 
 unsigned_Vo	<= unsigned(Vo(pixel_delayed_4)(15 downto 0));
@@ -270,6 +271,11 @@ unsigned_Vo	<= unsigned(Vo(pixel_delayed_4)(15 downto 0));
 Vtes	<= unsigned_Vo -	unsigned_multiply_to_pulse(31 downto 16);	--signed(15 downto 0)	:=	x"fff0" - signed(15 downto 0);	
 
 --Vtes	<=	unsigned_L_multiply_to_pulse	
+
+-------------------------------------------------------------------------------------
+--	flip flop output of fpa_sim
+-------------------------------------------------------------------------------------
+
 
 label_out_TES : process(Reset, CLK_5Mhz)
 begin
@@ -282,8 +288,25 @@ else
 end if;  -- reset 
 end process;
 
+-------------------------------------------------------------------------------------
+--	shift origin signal Mem_Vp_shifte 
+-------------------------------------------------------------------------------------
 
 
+label_Mem_Vp_shifte : for i in C_pixel-1 downto 0 generate
+process(Reset, CLK_5Mhz)
+begin
+if Reset = '1' then
+Mem_Vp_shifte(i) <= (others=>'0');
+else
+    if CLK_5Mhz='1' and CLK_5Mhz'event then
+		if	pixel_delayed_4 = C_pixel-1 then
+		Mem_Vp_shifte(i) <= Mem_Vp(i);
+		end if;
+	end if;  -- clock
+end if;  -- reset 
+end process;
+end generate label_Mem_Vp_shifte; 
 
 
 -------------------------------------------------------------------------------------
