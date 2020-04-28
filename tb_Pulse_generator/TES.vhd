@@ -69,7 +69,8 @@ signal Pulse_Ram_Data_RD_internal	: STD_LOGIC_VECTOR (15 downto 0);
 type 	t_state is(idle,pulse);
 signal 	state : t_state;
 
-signal	start_pulse_pixel	: t_array_start_pulse_pixel;
+signal	start_pulse_pixel		: t_array_start_pulse_pixel;
+signal	start_pulse_pixel_shift	: t_array_start_pulse_pixel;
 signal	detect_start_pulse_pixel	: t_array_start_pulse_pixel;
 
 signal	detect_stop_pulse_pixel	: t_array_start_pulse_pixel;
@@ -92,6 +93,9 @@ signal	Vtes								:	unsigned(15 downto 0);
 --constant Vo									: 	signed(15 downto 0)	:=	x"Ffff";	
 
 signal	view_start_pulse_pixel				:	std_logic;
+
+type 	t_array_mem_counter_address_readed is array (C_pixel-1 downto 0) of std_logic;
+signal	mem_counter_address_readed	:	t_array_mem_counter_address_readed;	
 
 BEGIN
 
@@ -136,10 +140,19 @@ label_mem_counter_address : process(Reset, CLK_5Mhz)
 begin
 if Reset = '1' then
 mem_counter_address <= (others=>(others=>'0'));
+mem_counter_address_readed <= (others=>'0');
 else
     if CLK_5Mhz='1' and CLK_5Mhz'event then
-		if	start_pulse_pixel(pixel) = '1' and detect_stop_pulse_pixel(pixel) = '0' and stop_pulse_pixel(pixel) = '0' then
-		mem_counter_address(pixel) <= mem_counter_address(pixel)+1;
+		if	mem_counter_address_readed(pixel) = '0' and start_pulse_pixel(pixel) = '1' and detect_stop_pulse_pixel(pixel) = '0' and stop_pulse_pixel(pixel) = '0' then
+		mem_counter_address_readed(pixel) <= '1';
+		else
+			if	mem_counter_address_readed(pixel) = '1' and start_pulse_pixel(pixel) = '1' and detect_stop_pulse_pixel(pixel) = '0' and stop_pulse_pixel(pixel) = '0' then
+			mem_counter_address(pixel) <= mem_counter_address(pixel)+1;
+			else	
+				if stop_pulse_pixel(pixel) = '1' then
+				mem_counter_address_readed(pixel) <= '0';
+				end if;
+			end if;	
 		end if;
 	end if;  -- clock
 end if;  -- reset 
@@ -158,6 +171,7 @@ label_start_stop_manager : entity work.start_stop_manager
 			--ENABLE_CLK_1X		: 	in  STD_LOGIC;
 --CONTROL
 		pixel				=>	pixel,
+		pixel_delayed_4		=>	pixel_delayed_4,
 		
 		
 		Mem_Vp				=>	Mem_Vp,
@@ -167,7 +181,8 @@ label_start_stop_manager : entity work.start_stop_manager
 		detect_start_pulse_pixel	=>	detect_start_pulse_pixel,
 		detect_stop_pulse_pixel		=>	detect_stop_pulse_pixel,
 --output
-		start_pulse_pixel	=>	start_pulse_pixel,
+		start_pulse_pixel		=>	start_pulse_pixel,
+		start_pulse_pixel_shift	=>	start_pulse_pixel_shift,
 		stop_pulse_pixel	=>	stop_pulse_pixel
 			
 	);
@@ -189,7 +204,7 @@ label_generate_vp : for i in C_pixel-1 downto 0 generate
 	Mem_Vp(i) <= (others=>'0');
 	else
 		if CLK_5Mhz='1' and CLK_5Mhz'event then
-			if	write_Vp='1' and detect_start_pulse_pixel(i) = '0' and  start_pulse_pixel(i) = '0'-- write Vp AND pulse pix (i) is not processing  
+			if	write_Vp = '1' and detect_start_pulse_pixel(i) = '0' and  start_pulse_pixel(i) = '0' -- write Vp AND pulse pix (i) is not processing  
 			and detect_stop_pulse_pixel(i) = '0'  and stop_pulse_pixel(i) = '0' -- AND pulse pix (i) being stopped
 			then 
 			Mem_Vp(i)	<= Vp(i);
@@ -202,7 +217,6 @@ label_generate_vp : for i in C_pixel-1 downto 0 generate
 	end if;  -- reset 
 	end process;
 end generate label_generate_vp; 
-
 
 
 -------------------------------------------------------------------------------------
@@ -293,20 +307,30 @@ end process;
 -------------------------------------------------------------------------------------
 
 
-label_Mem_Vp_shifte : for i in C_pixel-1 downto 0 generate
-process(Reset, CLK_5Mhz)
-begin
-if Reset = '1' then
-Mem_Vp_shifte(i) <= (others=>'0');
-else
-    if CLK_5Mhz='1' and CLK_5Mhz'event then
-		if	pixel_delayed_4 = C_pixel-1 then
-		Mem_Vp_shifte(i) <= Mem_Vp(i);
-		end if;
-	end if;  -- clock
-end if;  -- reset 
-end process;
-end generate label_Mem_Vp_shifte; 
+-- label_Mem_Vp_shifte : for i in C_pixel-1 downto 0 generate
+-- process(Reset, CLK_5Mhz)
+-- begin
+-- if Reset = '1' then
+-- Mem_Vp_shifte(i) <= (others=>'0');
+-- else
+    -- if CLK_5Mhz='1' and CLK_5Mhz'event then
+		-- if	start_pulse_pixel(i) = '1' and i = pixel_delayed_4 and detect_stop_pulse_pixel(i) = '0' and stop_pulse_pixel(i) = '0'   then
+		-- Mem_Vp_shifte(i) <= Mem_Vp(i);
+		-- else
+			-- if	stop_pulse_pixel(i) = '1' then
+			-- Mem_Vp_shifte(i) <= (others=>'0');
+			-- end if;
+		-- end if;
+	-- end if;  -- clock
+-- end if;  -- reset 
+-- end process;
+-- end generate label_Mem_Vp_shifte; 
+
+label_generate : for i in C_pixel-1 downto 0 generate
+
+Mem_Vp_shifte(i) <= Mem_Vp(i) when (start_pulse_pixel_shift(i) = '1' and i = pixel_delayed_4 and detect_stop_pulse_pixel(i) = '0' and stop_pulse_pixel(i) = '0') else (others=>'0'); 
+
+end generate label_generate; 
 
 
 -------------------------------------------------------------------------------------
