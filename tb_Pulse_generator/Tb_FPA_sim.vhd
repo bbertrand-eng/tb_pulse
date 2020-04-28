@@ -235,22 +235,30 @@ BEGIN
 		----------------------------------------------------------------------------------------------------------------------------
 		-- -------------------------------------enable all pix same time-----------------------------------------------------------------
 		-----------------------------------------------------------------------------------------------------------------------------------
-		for i in 0 to C_pixel - 1 loop
-			--if (i mod 2) = 0 then
-				Vp(i) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(32767, 16))); --pixel 31 energy ON	
-			--end if;
-		end loop;
+		--for c in 0 to 100 loop
+		--	view_c <= c;
+			wait for 400 ns;
+		
+				for i in 0 to C_pixel - 1 loop
+					--if (i mod 2) = 0 then
+						Vp(i) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(32767, 16))); --pixel 31 energy ON	
+					--end if;
+				end loop;
 
-		write_Vp <= '1';
-		wait for 400 ns;
-		write_Vp <= '0';
+				write_Vp <= '1';
+				wait for 400 ns;
+				write_Vp <= '0';
 
-		for i in 0 to C_pixel - 1 loop
-			--if (i mod 2) = 0 then
-				Vp(i) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON	
-			--end if;
-		end loop;
-
+				for i in 0 to C_pixel - 1 loop
+					--if (i mod 2) = 0 then
+						Vp(i) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON	
+					--end if;
+				end loop;
+			
+			wait for 7ms;
+			
+		--end loop;
+			
 		-- write_Vp <= '1';
 		-- wait for 400 ns;
 		-- write_Vp <= '0';
@@ -302,8 +310,8 @@ BEGIN
 
 		-- wait for 50 ms;
 
-		-- -- ----------------------------------------------------------------------------------------------------------------------------------
-		-- -- -- wait for 1 ms;
+		-- ----------------------------------------------------------------------------------------------------------------------------------
+		-- -- wait for 1 ms;
 		-----------------------------------------------------------------------------------------------------------------------------------------
 		-------------------------------------------------compress and shift pix----------------------------------------------------------
 		-----------------------------------------------------------------------------------------------------------------------------------------

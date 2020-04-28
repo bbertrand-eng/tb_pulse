@@ -18,6 +18,7 @@ entity start_stop_manager is
 			--ENABLE_CLK_1X		: 	in  STD_LOGIC;
 --CONTROL
 			pixel				: 	in	integer;
+			pixel_delayed_4		: 	in	integer;
 -- --input
 
 			Mem_Vp				:	in 	t_array_Mem_Vp;
@@ -26,7 +27,9 @@ entity start_stop_manager is
 			detect_start_pulse_pixel	:	inout  t_array_start_pulse_pixel;
 			detect_stop_pulse_pixel		:	inout t_array_start_pulse_pixel;
 --output
-			start_pulse_pixel	:	out t_array_start_pulse_pixel;
+			start_pulse_pixel		:	inout t_array_start_pulse_pixel;
+			start_pulse_pixel_shift	:	out t_array_start_pulse_pixel;
+			
 			stop_pulse_pixel	:	out t_array_start_pulse_pixel
 
 
@@ -43,7 +46,7 @@ begin
 
 
 -------------------------------------------------------------------------------------
---	start_pulse_pixel and stop_pulse_pixel
+--	start_pulse_pixel 
 -------------------------------------------------------------------------------------
 
 label_start_pulse_pixel : process(Reset, CLK_5Mhz)
@@ -60,6 +63,26 @@ else
     end if;  -- clock
 end if;  -- reset 
 end process;
+
+-------------------------------------------------------------------------------------
+--	start_pulse_pixel_shift 
+-------------------------------------------------------------------------------------
+
+--for i in C_pixel-1 downto 0 generate
+process(Reset, CLK_5Mhz)
+begin
+if Reset = '1' then
+start_pulse_pixel_shift 	<= (others=>'0');
+else
+    if CLK_5Mhz='1' and CLK_5Mhz'event then
+		if	(pixel_delayed_4 = C_pixel-1)  then
+		start_pulse_pixel_shift	<= start_pulse_pixel;--option (2)
+		
+		end if;
+    end if;  -- clock
+end if;  -- reset 
+end process;
+--end generate label_generate; 
 
 
 process(Reset, CLK_5Mhz)
