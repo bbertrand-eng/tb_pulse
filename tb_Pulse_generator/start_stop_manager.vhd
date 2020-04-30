@@ -18,7 +18,7 @@ entity start_stop_manager is
 			--ENABLE_CLK_1X		: 	in  STD_LOGIC;
 --CONTROL
 			pixel				: 	in	integer;
-			pixel_delayed_4		: 	in	integer;
+			pixel_delayed_3		: 	in	integer;
 -- --input
 
 			Mem_Vp				:	in 	t_array_Mem_Vp;
@@ -75,7 +75,9 @@ if Reset = '1' then
 start_pulse_pixel_shift 	<= (others=>'0');
 else
     if CLK_5Mhz='1' and CLK_5Mhz'event then
-		if	(pixel_delayed_4 = C_pixel-1)  then
+		--	pixel_delayed_4 = 34	-1 - 1clk
+		--	pixel_delayed_4 = C_pixel -1	-1
+		if	(pixel_delayed_3 = C_pixel-1)  then
 		start_pulse_pixel_shift	<= start_pulse_pixel;--option (2)
 		
 		end if;

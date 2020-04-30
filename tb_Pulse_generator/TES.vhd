@@ -171,7 +171,7 @@ label_start_stop_manager : entity work.start_stop_manager
 			--ENABLE_CLK_1X		: 	in  STD_LOGIC;
 --CONTROL
 		pixel				=>	pixel,
-		pixel_delayed_4		=>	pixel_delayed_4,
+		pixel_delayed_3		=>	pixel_delayed_3,
 		
 		
 		Mem_Vp				=>	Mem_Vp,
@@ -307,30 +307,28 @@ end process;
 -------------------------------------------------------------------------------------
 
 
--- label_Mem_Vp_shifte : for i in C_pixel-1 downto 0 generate
--- process(Reset, CLK_5Mhz)
--- begin
--- if Reset = '1' then
--- Mem_Vp_shifte(i) <= (others=>'0');
--- else
-    -- if CLK_5Mhz='1' and CLK_5Mhz'event then
-		-- if	start_pulse_pixel(i) = '1' and i = pixel_delayed_4 and detect_stop_pulse_pixel(i) = '0' and stop_pulse_pixel(i) = '0'   then
-		-- Mem_Vp_shifte(i) <= Mem_Vp(i);
-		-- else
-			-- if	stop_pulse_pixel(i) = '1' then
-			-- Mem_Vp_shifte(i) <= (others=>'0');
-			-- end if;
-		-- end if;
-	-- end if;  -- clock
--- end if;  -- reset 
--- end process;
--- end generate label_Mem_Vp_shifte; 
+label_Mem_Vp_shifte : for i in C_pixel-1 downto 0 generate
+process(Reset, CLK_5Mhz)
+begin
+if Reset = '1' then
+Mem_Vp_shifte(i) <= (others=>'0');
+else
+    if CLK_5Mhz='1' and CLK_5Mhz'event then
+		if	start_pulse_pixel_shift(i) = '1' and i = (pixel_delayed_3) and detect_stop_pulse_pixel(i) = '0' and stop_pulse_pixel(i) = '0'   then
+		Mem_Vp_shifte(i) <= Mem_Vp(i);
+		else
+		Mem_Vp_shifte(i) <= (others=>'0');
+		end if;
+	end if;  -- clock
+end if;  -- reset 
+end process;
+end generate label_Mem_Vp_shifte; 
 
-label_generate : for i in C_pixel-1 downto 0 generate
+-- label_generate : for i in C_pixel-1 downto 0 generate
+-- Mem_Vp_shifte(i) <= Mem_Vp(i) when (start_pulse_pixel_shift(i) = '1' and i = pixel_delayed_4 and detect_stop_pulse_pixel(i) = '0' and stop_pulse_pixel(i) = '0') else (others=>'0'); 
+-- end generate label_generate; 
 
-Mem_Vp_shifte(i) <= Mem_Vp(i) when (start_pulse_pixel_shift(i) = '1' and i = pixel_delayed_4 and detect_stop_pulse_pixel(i) = '0' and stop_pulse_pixel(i) = '0') else (others=>'0'); 
 
-end generate label_generate; 
 
 
 -------------------------------------------------------------------------------------

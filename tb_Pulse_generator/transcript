@@ -1,9 +1,11 @@
 # Reading C:/intelFPGA_pro/19.4/modelsim_ase/tcl/vsim/pref.tcl
-# OpenFile C:/20200426_tb_pulse/tb_Pulse_generator/Tb_pulse.mpf
+# OpenFile C:/20200428_tb_pulse/tb_Pulse_generator/Tb_pulse.mpf
 # Loading project Tb_pulse
-do dofile.do
+pwd
+# C:/20200428_tb_pulse/tb_Pulse_generator
+ do dofile.do
 # Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:46:08 on Apr 27,2020
+# Start time: 06:36:47 on Apr 30,2020
 # vcom -reportprogress 300 pulse_package.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -11,10 +13,10 @@ do dofile.do
 # -- Loading package NUMERIC_STD
 # -- Loading package MATH_REAL
 # -- Compiling package pulse_package
-# End time: 17:46:08 on Apr 27,2020, Elapsed time: 0:00:00
+# End time: 06:36:47 on Apr 30,2020, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:46:08 on Apr 27,2020
+# Start time: 06:36:47 on Apr 30,2020
 # vcom -reportprogress 300 demux_pixel_fpa.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -26,10 +28,10 @@ do dofile.do
 # -- Loading package pulse_package
 # -- Compiling entity demux_pixel_fpa
 # -- Compiling architecture rtl of demux_pixel_fpa
-# End time: 17:46:08 on Apr 27,2020, Elapsed time: 0:00:00
+# End time: 06:36:47 on Apr 30,2020, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:46:08 on Apr 27,2020
+# Start time: 06:36:47 on Apr 30,2020
 # vcom -reportprogress 300 mem_Cnt_Add_to_Add_RAM.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -41,10 +43,10 @@ do dofile.do
 # -- Loading package pulse_package
 # -- Compiling entity mem_Cnt_Add_to_Add_RAM
 # -- Compiling architecture rtl of mem_Cnt_Add_to_Add_RAM
-# End time: 17:46:08 on Apr 27,2020, Elapsed time: 0:00:00
+# End time: 06:36:47 on Apr 30,2020, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:46:08 on Apr 27,2020
+# Start time: 06:36:47 on Apr 30,2020
 # vcom -reportprogress 300 Pulse_LUT_function.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -54,10 +56,10 @@ do dofile.do
 # -- Loading package pulse_package
 # -- Compiling entity LUT_func
 # -- Compiling architecture Behavioral of LUT_func
-# End time: 17:46:08 on Apr 27,2020, Elapsed time: 0:00:00
+# End time: 06:36:48 on Apr 30,2020, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:46:08 on Apr 27,2020
+# Start time: 06:36:48 on Apr 30,2020
 # vcom -reportprogress 300 start_stop_manager.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -69,10 +71,10 @@ do dofile.do
 # -- Loading package pulse_package
 # -- Compiling entity start_stop_manager
 # -- Compiling architecture rtl of start_stop_manager
-# End time: 17:46:08 on Apr 27,2020, Elapsed time: 0:00:00
+# End time: 06:36:48 on Apr 30,2020, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:46:08 on Apr 27,2020
+# Start time: 06:36:48 on Apr 30,2020
 # vcom -reportprogress 300 TES.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -88,10 +90,10 @@ do dofile.do
 # -- Loading entity mem_Cnt_Add_to_Add_RAM
 # -- Loading entity LUT_func
 # -- Loading entity demux_pixel_fpa
-# End time: 17:46:08 on Apr 27,2020, Elapsed time: 0:00:00
+# End time: 06:36:48 on Apr 30,2020, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:46:08 on Apr 27,2020
+# Start time: 06:36:48 on Apr 30,2020
 # vcom -reportprogress 300 FPA_sim.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -102,10 +104,10 @@ do dofile.do
 # -- Compiling entity FPA_sim
 # -- Compiling architecture RTL of FPA_sim
 # -- Loading entity TES
-# End time: 17:46:08 on Apr 27,2020, Elapsed time: 0:00:00
+# End time: 06:36:48 on Apr 30,2020, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:46:08 on Apr 27,2020
+# Start time: 06:36:48 on Apr 30,2020
 # vcom -reportprogress 300 Tb_FPA_sim.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -117,298 +119,11 @@ do dofile.do
 # -- Compiling entity Tb_FPA_sim
 # -- Compiling architecture behavior of Tb_FPA_sim
 # -- Loading entity FPA_sim
-# End time: 17:46:09 on Apr 27,2020, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
-# vsim work.Tb_FPA_sim -t 1ns 
-# Start time: 17:46:09 on Apr 27,2020
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading ieee.std_logic_textio(body)
-# Loading ieee.math_real(body)
-# Loading work.pulse_package
-# Loading work.tb_fpa_sim(behavior)
-# Loading work.fpa_sim(rtl)
-# Loading ieee.std_logic_arith(body)
-# Loading ieee.std_logic_unsigned(body)
-# Loading work.tes(behavioral)
-# Loading work.start_stop_manager(rtl)
-# Loading work.mem_cnt_add_to_add_ram(rtl)
-# Loading work.lut_func(behavioral)
-# Loading work.demux_pixel_fpa(rtl)
-# WARNING: No extended dataflow license exists
-run 500ms
-# Break key hit
-vsim work.tb_fpa_sim
-# End time: 17:48:23 on Apr 27,2020, Elapsed time: 0:02:14
+# ** Warning: Tb_FPA_sim.vhd(289): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# End time: 06:36:48 on Apr 30,2020, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 1
-# vsim work.tb_fpa_sim 
-# Start time: 17:48:23 on Apr 27,2020
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading ieee.std_logic_textio(body)
-# Loading ieee.math_real(body)
-# Loading work.pulse_package
-# Loading work.tb_fpa_sim(behavior)
-# Loading work.fpa_sim(rtl)
-# Loading ieee.std_logic_arith(body)
-# Loading ieee.std_logic_unsigned(body)
-# Loading work.tes(behavioral)
-# Loading work.start_stop_manager(rtl)
-# Loading work.mem_cnt_add_to_add_ram(rtl)
-# Loading work.lut_func(behavioral)
-# Loading work.demux_pixel_fpa(rtl)
-# WARNING: No extended dataflow license exists
-do dofile.do
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:49:17 on Apr 27,2020
-# vcom -reportprogress 300 pulse_package.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Compiling package pulse_package
-# End time: 17:49:17 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:49:17 on Apr 27,2020
-# vcom -reportprogress 300 demux_pixel_fpa.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity demux_pixel_fpa
-# -- Compiling architecture rtl of demux_pixel_fpa
-# End time: 17:49:17 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:49:17 on Apr 27,2020
-# vcom -reportprogress 300 mem_Cnt_Add_to_Add_RAM.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity mem_Cnt_Add_to_Add_RAM
-# -- Compiling architecture rtl of mem_Cnt_Add_to_Add_RAM
-# End time: 17:49:17 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:49:17 on Apr 27,2020
-# vcom -reportprogress 300 Pulse_LUT_function.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity LUT_func
-# -- Compiling architecture Behavioral of LUT_func
-# End time: 17:49:17 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:49:17 on Apr 27,2020
-# vcom -reportprogress 300 start_stop_manager.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity start_stop_manager
-# -- Compiling architecture rtl of start_stop_manager
-# End time: 17:49:18 on Apr 27,2020, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:49:18 on Apr 27,2020
-# vcom -reportprogress 300 TES.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity TES
-# -- Compiling architecture Behavioral of TES
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading entity start_stop_manager
-# -- Loading entity mem_Cnt_Add_to_Add_RAM
-# -- Loading entity LUT_func
-# -- Loading entity demux_pixel_fpa
-# End time: 17:49:18 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:49:18 on Apr 27,2020
-# vcom -reportprogress 300 FPA_sim.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity FPA_sim
-# -- Compiling architecture RTL of FPA_sim
-# -- Loading entity TES
-# End time: 17:49:18 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:49:18 on Apr 27,2020
-# vcom -reportprogress 300 Tb_FPA_sim.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package std_logic_textio
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity Tb_FPA_sim
-# -- Compiling architecture behavior of Tb_FPA_sim
-# -- Loading entity FPA_sim
-# ** Error: Tb_FPA_sim.vhd(260): near "wait": (vcom-1576) expecting ';'.
-# ** Note: Tb_FPA_sim.vhd(472): VHDL Compiler exiting
-# End time: 17:49:18 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
-# ** Error: C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
-# Error in macro ./dofile.do line 8
-# C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
-#     while executing
-# "vcom Tb_FPA_sim.vhd"
-do dofile.do
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:49:28 on Apr 27,2020
-# vcom -reportprogress 300 pulse_package.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Compiling package pulse_package
-# End time: 17:49:29 on Apr 27,2020, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:49:29 on Apr 27,2020
-# vcom -reportprogress 300 demux_pixel_fpa.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity demux_pixel_fpa
-# -- Compiling architecture rtl of demux_pixel_fpa
-# End time: 17:49:29 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:49:29 on Apr 27,2020
-# vcom -reportprogress 300 mem_Cnt_Add_to_Add_RAM.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity mem_Cnt_Add_to_Add_RAM
-# -- Compiling architecture rtl of mem_Cnt_Add_to_Add_RAM
-# End time: 17:49:29 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:49:29 on Apr 27,2020
-# vcom -reportprogress 300 Pulse_LUT_function.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity LUT_func
-# -- Compiling architecture Behavioral of LUT_func
-# End time: 17:49:29 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:49:29 on Apr 27,2020
-# vcom -reportprogress 300 start_stop_manager.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity start_stop_manager
-# -- Compiling architecture rtl of start_stop_manager
-# End time: 17:49:29 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:49:29 on Apr 27,2020
-# vcom -reportprogress 300 TES.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity TES
-# -- Compiling architecture Behavioral of TES
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading entity start_stop_manager
-# -- Loading entity mem_Cnt_Add_to_Add_RAM
-# -- Loading entity LUT_func
-# -- Loading entity demux_pixel_fpa
-# End time: 17:49:29 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:49:29 on Apr 27,2020
-# vcom -reportprogress 300 FPA_sim.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity FPA_sim
-# -- Compiling architecture RTL of FPA_sim
-# -- Loading entity TES
-# End time: 17:49:29 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:49:29 on Apr 27,2020
-# vcom -reportprogress 300 Tb_FPA_sim.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package std_logic_textio
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity Tb_FPA_sim
-# -- Compiling architecture behavior of Tb_FPA_sim
-# -- Loading entity FPA_sim
-# End time: 17:49:30 on Apr 27,2020, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
-# End time: 17:49:32 on Apr 27,2020, Elapsed time: 0:01:09
-# Errors: 8, Warnings: 1
 # vsim work.Tb_FPA_sim -t 1ns 
-# Start time: 17:49:32 on Apr 27,2020
+# Start time: 06:36:49 on Apr 30,2020
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
@@ -426,10 +141,27 @@ do dofile.do
 # Loading work.lut_func(behavioral)
 # Loading work.demux_pixel_fpa(rtl)
 # WARNING: No extended dataflow license exists
+add wave -position insertpoint  \
+sim:/tb_fpa_sim/label_FPA_sim/label_TES/pixel
+add wave -position insertpoint  \
+sim:/tb_fpa_sim/label_FPA_sim/label_TES/detect_start_pulse_pixel \
+sim:/tb_fpa_sim/label_FPA_sim/label_TES/start_pulse_pixel
+add wave -position insertpoint  \
+sim:/tb_fpa_sim/label_FPA_sim/label_TES/pixel_delayed_3 \
+sim:/tb_fpa_sim/label_FPA_sim/label_TES/pixel_delayed_4
+add wave -position insertpoint  \
+sim:/tb_fpa_sim/label_FPA_sim/label_TES/Pulse_Ram_Data_RD_internal
+add wave -position insertpoint  \
+sim:/tb_fpa_sim/label_FPA_sim/label_TES/unsigned_Mem_Vp_shifte \
+sim:/tb_fpa_sim/label_FPA_sim/label_TES/unsigned_Pulse_Ram_Data_RD_internal
+add wave -position insertpoint  \
+sim:/tb_fpa_sim/label_FPA_sim/label_TES/unsigned_multiply_to_pulse
 run 500ms
-do dofile.do
+add wave -position 5  sim:/tb_fpa_sim/label_FPA_sim/label_TES/mem_counter_address
+restart -f
+ do dofile.do
 # Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:53:13 on Apr 27,2020
+# Start time: 06:58:07 on Apr 30,2020
 # vcom -reportprogress 300 pulse_package.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -437,10 +169,10 @@ do dofile.do
 # -- Loading package NUMERIC_STD
 # -- Loading package MATH_REAL
 # -- Compiling package pulse_package
-# End time: 17:53:13 on Apr 27,2020, Elapsed time: 0:00:00
+# End time: 06:58:07 on Apr 30,2020, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:53:13 on Apr 27,2020
+# Start time: 06:58:07 on Apr 30,2020
 # vcom -reportprogress 300 demux_pixel_fpa.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -452,10 +184,10 @@ do dofile.do
 # -- Loading package pulse_package
 # -- Compiling entity demux_pixel_fpa
 # -- Compiling architecture rtl of demux_pixel_fpa
-# End time: 17:53:13 on Apr 27,2020, Elapsed time: 0:00:00
+# End time: 06:58:07 on Apr 30,2020, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:53:13 on Apr 27,2020
+# Start time: 06:58:07 on Apr 30,2020
 # vcom -reportprogress 300 mem_Cnt_Add_to_Add_RAM.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -467,10 +199,10 @@ do dofile.do
 # -- Loading package pulse_package
 # -- Compiling entity mem_Cnt_Add_to_Add_RAM
 # -- Compiling architecture rtl of mem_Cnt_Add_to_Add_RAM
-# End time: 17:53:14 on Apr 27,2020, Elapsed time: 0:00:01
+# End time: 06:58:07 on Apr 30,2020, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:53:14 on Apr 27,2020
+# Start time: 06:58:07 on Apr 30,2020
 # vcom -reportprogress 300 Pulse_LUT_function.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -480,10 +212,10 @@ do dofile.do
 # -- Loading package pulse_package
 # -- Compiling entity LUT_func
 # -- Compiling architecture Behavioral of LUT_func
-# End time: 17:53:14 on Apr 27,2020, Elapsed time: 0:00:00
+# End time: 06:58:07 on Apr 30,2020, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:53:14 on Apr 27,2020
+# Start time: 06:58:07 on Apr 30,2020
 # vcom -reportprogress 300 start_stop_manager.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -495,10 +227,10 @@ do dofile.do
 # -- Loading package pulse_package
 # -- Compiling entity start_stop_manager
 # -- Compiling architecture rtl of start_stop_manager
-# End time: 17:53:14 on Apr 27,2020, Elapsed time: 0:00:00
+# End time: 06:58:07 on Apr 30,2020, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:53:14 on Apr 27,2020
+# Start time: 06:58:07 on Apr 30,2020
 # vcom -reportprogress 300 TES.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -514,10 +246,10 @@ do dofile.do
 # -- Loading entity mem_Cnt_Add_to_Add_RAM
 # -- Loading entity LUT_func
 # -- Loading entity demux_pixel_fpa
-# End time: 17:53:14 on Apr 27,2020, Elapsed time: 0:00:00
+# End time: 06:58:07 on Apr 30,2020, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:53:14 on Apr 27,2020
+# Start time: 06:58:07 on Apr 30,2020
 # vcom -reportprogress 300 FPA_sim.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -528,10 +260,10 @@ do dofile.do
 # -- Compiling entity FPA_sim
 # -- Compiling architecture RTL of FPA_sim
 # -- Loading entity TES
-# End time: 17:53:14 on Apr 27,2020, Elapsed time: 0:00:00
+# End time: 06:58:08 on Apr 30,2020, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 17:53:14 on Apr 27,2020
+# Start time: 06:58:08 on Apr 30,2020
 # vcom -reportprogress 300 Tb_FPA_sim.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -543,853 +275,13 @@ do dofile.do
 # -- Compiling entity Tb_FPA_sim
 # -- Compiling architecture behavior of Tb_FPA_sim
 # -- Loading entity FPA_sim
-# End time: 17:53:14 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# End time: 17:53:17 on Apr 27,2020, Elapsed time: 0:03:45
-# Errors: 4, Warnings: 1
-# vsim work.Tb_FPA_sim -t 1ns 
-# Start time: 17:53:17 on Apr 27,2020
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading ieee.std_logic_textio(body)
-# Loading ieee.math_real(body)
-# Loading work.pulse_package
-# Loading work.tb_fpa_sim(behavior)
-# Loading work.fpa_sim(rtl)
-# Loading ieee.std_logic_arith(body)
-# Loading ieee.std_logic_unsigned(body)
-# Loading work.tes(behavioral)
-# Loading work.start_stop_manager(rtl)
-# Loading work.mem_cnt_add_to_add_ram(rtl)
-# Loading work.lut_func(behavioral)
-# Loading work.demux_pixel_fpa(rtl)
-# WARNING: No extended dataflow license exists
-run 500ms
-do dofile.do
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:03:59 on Apr 27,2020
-# vcom -reportprogress 300 pulse_package.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Compiling package pulse_package
-# End time: 18:03:59 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:03:59 on Apr 27,2020
-# vcom -reportprogress 300 demux_pixel_fpa.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity demux_pixel_fpa
-# -- Compiling architecture rtl of demux_pixel_fpa
-# End time: 18:04:00 on Apr 27,2020, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:04:00 on Apr 27,2020
-# vcom -reportprogress 300 mem_Cnt_Add_to_Add_RAM.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity mem_Cnt_Add_to_Add_RAM
-# -- Compiling architecture rtl of mem_Cnt_Add_to_Add_RAM
-# End time: 18:04:00 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:04:00 on Apr 27,2020
-# vcom -reportprogress 300 Pulse_LUT_function.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity LUT_func
-# -- Compiling architecture Behavioral of LUT_func
-# End time: 18:04:00 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:04:00 on Apr 27,2020
-# vcom -reportprogress 300 start_stop_manager.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity start_stop_manager
-# -- Compiling architecture rtl of start_stop_manager
-# End time: 18:04:00 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:04:00 on Apr 27,2020
-# vcom -reportprogress 300 TES.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity TES
-# -- Compiling architecture Behavioral of TES
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading entity start_stop_manager
-# -- Loading entity mem_Cnt_Add_to_Add_RAM
-# -- Loading entity LUT_func
-# -- Loading entity demux_pixel_fpa
-# End time: 18:04:00 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:04:00 on Apr 27,2020
-# vcom -reportprogress 300 FPA_sim.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity FPA_sim
-# -- Compiling architecture RTL of FPA_sim
-# -- Loading entity TES
-# End time: 18:04:00 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:04:00 on Apr 27,2020
-# vcom -reportprogress 300 Tb_FPA_sim.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package std_logic_textio
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity Tb_FPA_sim
-# -- Compiling architecture behavior of Tb_FPA_sim
-# -- Loading entity FPA_sim
-# End time: 18:04:00 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# End time: 18:04:03 on Apr 27,2020, Elapsed time: 0:10:46
-# Errors: 4, Warnings: 1
-# vsim work.Tb_FPA_sim -t 1ns 
-# Start time: 18:04:03 on Apr 27,2020
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading ieee.std_logic_textio(body)
-# Loading ieee.math_real(body)
-# Loading work.pulse_package
-# Loading work.tb_fpa_sim(behavior)
-# Loading work.fpa_sim(rtl)
-# Loading ieee.std_logic_arith(body)
-# Loading ieee.std_logic_unsigned(body)
-# Loading work.tes(behavioral)
-# Loading work.start_stop_manager(rtl)
-# Loading work.mem_cnt_add_to_add_ram(rtl)
-# Loading work.lut_func(behavioral)
-# Loading work.demux_pixel_fpa(rtl)
-# WARNING: No extended dataflow license exists
-do dofile.do
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:06:14 on Apr 27,2020
-# vcom -reportprogress 300 pulse_package.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Compiling package pulse_package
-# End time: 18:06:14 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:06:14 on Apr 27,2020
-# vcom -reportprogress 300 demux_pixel_fpa.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity demux_pixel_fpa
-# -- Compiling architecture rtl of demux_pixel_fpa
-# End time: 18:06:14 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:06:14 on Apr 27,2020
-# vcom -reportprogress 300 mem_Cnt_Add_to_Add_RAM.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity mem_Cnt_Add_to_Add_RAM
-# -- Compiling architecture rtl of mem_Cnt_Add_to_Add_RAM
-# End time: 18:06:14 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:06:14 on Apr 27,2020
-# vcom -reportprogress 300 Pulse_LUT_function.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity LUT_func
-# -- Compiling architecture Behavioral of LUT_func
-# End time: 18:06:14 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:06:14 on Apr 27,2020
-# vcom -reportprogress 300 start_stop_manager.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity start_stop_manager
-# -- Compiling architecture rtl of start_stop_manager
-# End time: 18:06:14 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:06:14 on Apr 27,2020
-# vcom -reportprogress 300 TES.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity TES
-# -- Compiling architecture Behavioral of TES
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading entity start_stop_manager
-# -- Loading entity mem_Cnt_Add_to_Add_RAM
-# -- Loading entity LUT_func
-# -- Loading entity demux_pixel_fpa
-# End time: 18:06:15 on Apr 27,2020, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:06:15 on Apr 27,2020
-# vcom -reportprogress 300 FPA_sim.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity FPA_sim
-# -- Compiling architecture RTL of FPA_sim
-# -- Loading entity TES
-# End time: 18:06:15 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:06:15 on Apr 27,2020
-# vcom -reportprogress 300 Tb_FPA_sim.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package std_logic_textio
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity Tb_FPA_sim
-# -- Compiling architecture behavior of Tb_FPA_sim
-# -- Loading entity FPA_sim
-# End time: 18:06:15 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# End time: 18:06:17 on Apr 27,2020, Elapsed time: 0:02:14
-# Errors: 4, Warnings: 1
-# vsim work.Tb_FPA_sim -t 1ns 
-# Start time: 18:06:17 on Apr 27,2020
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading ieee.std_logic_textio(body)
-# Loading ieee.math_real(body)
-# Loading work.pulse_package
-# Loading work.tb_fpa_sim(behavior)
-# Loading work.fpa_sim(rtl)
-# Loading ieee.std_logic_arith(body)
-# Loading ieee.std_logic_unsigned(body)
-# Loading work.tes(behavioral)
-# Loading work.start_stop_manager(rtl)
-# Loading work.mem_cnt_add_to_add_ram(rtl)
-# Loading work.lut_func(behavioral)
-# Loading work.demux_pixel_fpa(rtl)
-# WARNING: No extended dataflow license exists
-run 500ms
-# Break key hit
-# Simulation stop requested.
-do dofile.do
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:07:44 on Apr 27,2020
-# vcom -reportprogress 300 pulse_package.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Compiling package pulse_package
-# End time: 18:07:44 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:07:44 on Apr 27,2020
-# vcom -reportprogress 300 demux_pixel_fpa.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity demux_pixel_fpa
-# -- Compiling architecture rtl of demux_pixel_fpa
-# End time: 18:07:44 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:07:44 on Apr 27,2020
-# vcom -reportprogress 300 mem_Cnt_Add_to_Add_RAM.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity mem_Cnt_Add_to_Add_RAM
-# -- Compiling architecture rtl of mem_Cnt_Add_to_Add_RAM
-# End time: 18:07:44 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:07:44 on Apr 27,2020
-# vcom -reportprogress 300 Pulse_LUT_function.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity LUT_func
-# -- Compiling architecture Behavioral of LUT_func
-# End time: 18:07:45 on Apr 27,2020, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:07:45 on Apr 27,2020
-# vcom -reportprogress 300 start_stop_manager.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity start_stop_manager
-# -- Compiling architecture rtl of start_stop_manager
-# End time: 18:07:45 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:07:45 on Apr 27,2020
-# vcom -reportprogress 300 TES.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity TES
-# -- Compiling architecture Behavioral of TES
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading entity start_stop_manager
-# -- Loading entity mem_Cnt_Add_to_Add_RAM
-# -- Loading entity LUT_func
-# -- Loading entity demux_pixel_fpa
-# End time: 18:07:45 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:07:45 on Apr 27,2020
-# vcom -reportprogress 300 FPA_sim.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity FPA_sim
-# -- Compiling architecture RTL of FPA_sim
-# -- Loading entity TES
-# End time: 18:07:45 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:07:45 on Apr 27,2020
-# vcom -reportprogress 300 Tb_FPA_sim.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package std_logic_textio
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity Tb_FPA_sim
-# -- Compiling architecture behavior of Tb_FPA_sim
-# -- Loading entity FPA_sim
-# End time: 18:07:45 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# End time: 18:07:47 on Apr 27,2020, Elapsed time: 0:01:30
-# Errors: 4, Warnings: 1
-# vsim work.Tb_FPA_sim -t 1ns 
-# Start time: 18:07:47 on Apr 27,2020
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading ieee.std_logic_textio(body)
-# Loading ieee.math_real(body)
-# Loading work.pulse_package
-# Loading work.tb_fpa_sim(behavior)
-# Loading work.fpa_sim(rtl)
-# Loading ieee.std_logic_arith(body)
-# Loading ieee.std_logic_unsigned(body)
-# Loading work.tes(behavioral)
-# Loading work.start_stop_manager(rtl)
-# Loading work.mem_cnt_add_to_add_ram(rtl)
-# Loading work.lut_func(behavioral)
-# Loading work.demux_pixel_fpa(rtl)
-# WARNING: No extended dataflow license exists
-run 100ms
-do dofile.do
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:09:42 on Apr 27,2020
-# vcom -reportprogress 300 pulse_package.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Compiling package pulse_package
-# End time: 18:09:42 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:09:42 on Apr 27,2020
-# vcom -reportprogress 300 demux_pixel_fpa.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity demux_pixel_fpa
-# -- Compiling architecture rtl of demux_pixel_fpa
-# End time: 18:09:42 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:09:42 on Apr 27,2020
-# vcom -reportprogress 300 mem_Cnt_Add_to_Add_RAM.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity mem_Cnt_Add_to_Add_RAM
-# -- Compiling architecture rtl of mem_Cnt_Add_to_Add_RAM
-# End time: 18:09:42 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:09:42 on Apr 27,2020
-# vcom -reportprogress 300 Pulse_LUT_function.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity LUT_func
-# -- Compiling architecture Behavioral of LUT_func
-# End time: 18:09:42 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:09:42 on Apr 27,2020
-# vcom -reportprogress 300 start_stop_manager.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity start_stop_manager
-# -- Compiling architecture rtl of start_stop_manager
-# End time: 18:09:42 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:09:42 on Apr 27,2020
-# vcom -reportprogress 300 TES.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity TES
-# -- Compiling architecture Behavioral of TES
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading entity start_stop_manager
-# -- Loading entity mem_Cnt_Add_to_Add_RAM
-# -- Loading entity LUT_func
-# -- Loading entity demux_pixel_fpa
-# End time: 18:09:42 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:09:42 on Apr 27,2020
-# vcom -reportprogress 300 FPA_sim.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity FPA_sim
-# -- Compiling architecture RTL of FPA_sim
-# -- Loading entity TES
-# End time: 18:09:43 on Apr 27,2020, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:09:43 on Apr 27,2020
-# vcom -reportprogress 300 Tb_FPA_sim.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package std_logic_textio
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity Tb_FPA_sim
-# -- Compiling architecture behavior of Tb_FPA_sim
-# -- Loading entity FPA_sim
-# End time: 18:09:43 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# End time: 18:09:45 on Apr 27,2020, Elapsed time: 0:01:58
-# Errors: 4, Warnings: 1
-# vsim work.Tb_FPA_sim -t 1ns 
-# Start time: 18:09:45 on Apr 27,2020
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading ieee.std_logic_textio(body)
-# Loading ieee.math_real(body)
-# Loading work.pulse_package
-# Loading work.tb_fpa_sim(behavior)
-# Loading work.fpa_sim(rtl)
-# Loading ieee.std_logic_arith(body)
-# Loading ieee.std_logic_unsigned(body)
-# Loading work.tes(behavioral)
-# Loading work.start_stop_manager(rtl)
-# Loading work.mem_cnt_add_to_add_ram(rtl)
-# Loading work.lut_func(behavioral)
-# Loading work.demux_pixel_fpa(rtl)
-# WARNING: No extended dataflow license exists
-do dofile.do
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:10:00 on Apr 27,2020
-# vcom -reportprogress 300 pulse_package.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Compiling package pulse_package
-# End time: 18:10:00 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:10:00 on Apr 27,2020
-# vcom -reportprogress 300 demux_pixel_fpa.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity demux_pixel_fpa
-# -- Compiling architecture rtl of demux_pixel_fpa
-# End time: 18:10:00 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:10:01 on Apr 27,2020
-# vcom -reportprogress 300 mem_Cnt_Add_to_Add_RAM.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity mem_Cnt_Add_to_Add_RAM
-# -- Compiling architecture rtl of mem_Cnt_Add_to_Add_RAM
-# End time: 18:10:01 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:10:01 on Apr 27,2020
-# vcom -reportprogress 300 Pulse_LUT_function.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity LUT_func
-# -- Compiling architecture Behavioral of LUT_func
-# End time: 18:10:01 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:10:01 on Apr 27,2020
-# vcom -reportprogress 300 start_stop_manager.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity start_stop_manager
-# -- Compiling architecture rtl of start_stop_manager
-# End time: 18:10:01 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:10:01 on Apr 27,2020
-# vcom -reportprogress 300 TES.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity TES
-# -- Compiling architecture Behavioral of TES
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading entity start_stop_manager
-# -- Loading entity mem_Cnt_Add_to_Add_RAM
-# -- Loading entity LUT_func
-# -- Loading entity demux_pixel_fpa
-# End time: 18:10:01 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:10:01 on Apr 27,2020
-# vcom -reportprogress 300 FPA_sim.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity FPA_sim
-# -- Compiling architecture RTL of FPA_sim
-# -- Loading entity TES
-# End time: 18:10:01 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:10:01 on Apr 27,2020
-# vcom -reportprogress 300 Tb_FPA_sim.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package std_logic_textio
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity Tb_FPA_sim
-# -- Compiling architecture behavior of Tb_FPA_sim
-# -- Loading entity FPA_sim
-# End time: 18:10:01 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# End time: 18:10:03 on Apr 27,2020, Elapsed time: 0:00:18
-# Errors: 4, Warnings: 1
-# vsim work.Tb_FPA_sim -t 1ns 
-# Start time: 18:10:04 on Apr 27,2020
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading ieee.std_logic_textio(body)
-# Loading ieee.math_real(body)
-# Loading work.pulse_package
-# Loading work.tb_fpa_sim(behavior)
-# Loading work.fpa_sim(rtl)
-# Loading ieee.std_logic_arith(body)
-# Loading ieee.std_logic_unsigned(body)
-# Loading work.tes(behavioral)
-# Loading work.start_stop_manager(rtl)
-# Loading work.mem_cnt_add_to_add_ram(rtl)
-# Loading work.lut_func(behavioral)
-# Loading work.demux_pixel_fpa(rtl)
-# WARNING: No extended dataflow license exists
-run 100ms
-do dofile.do
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:12:59 on Apr 27,2020
-# vcom -reportprogress 300 pulse_package.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Compiling package pulse_package
-# End time: 18:12:59 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:12:59 on Apr 27,2020
-# vcom -reportprogress 300 demux_pixel_fpa.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity demux_pixel_fpa
-# -- Compiling architecture rtl of demux_pixel_fpa
-# End time: 18:12:59 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:13:00 on Apr 27,2020
-# vcom -reportprogress 300 mem_Cnt_Add_to_Add_RAM.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity mem_Cnt_Add_to_Add_RAM
-# -- Compiling architecture rtl of mem_Cnt_Add_to_Add_RAM
-# End time: 18:13:00 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:13:00 on Apr 27,2020
-# vcom -reportprogress 300 Pulse_LUT_function.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity LUT_func
-# -- Compiling architecture Behavioral of LUT_func
-# End time: 18:13:00 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:13:00 on Apr 27,2020
-# vcom -reportprogress 300 start_stop_manager.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity start_stop_manager
-# -- Compiling architecture rtl of start_stop_manager
-# End time: 18:13:00 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:13:00 on Apr 27,2020
-# vcom -reportprogress 300 TES.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity TES
-# -- Compiling architecture Behavioral of TES
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading entity start_stop_manager
-# -- Loading entity mem_Cnt_Add_to_Add_RAM
-# -- Loading entity LUT_func
-# -- Loading entity demux_pixel_fpa
-# End time: 18:13:00 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:13:00 on Apr 27,2020
-# vcom -reportprogress 300 FPA_sim.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity FPA_sim
-# -- Compiling architecture RTL of FPA_sim
-# -- Loading entity TES
-# End time: 18:13:00 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:13:00 on Apr 27,2020
-# vcom -reportprogress 300 Tb_FPA_sim.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package std_logic_textio
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity Tb_FPA_sim
-# -- Compiling architecture behavior of Tb_FPA_sim
-# -- Loading entity FPA_sim
-# ** Warning: Tb_FPA_sim.vhd(258): (vcom-1207) An abstract literal and an identifier must have a separator between them.
-# End time: 18:13:00 on Apr 27,2020, Elapsed time: 0:00:00
+# ** Warning: Tb_FPA_sim.vhd(289): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# End time: 06:58:08 on Apr 30,2020, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 1
-# End time: 18:13:03 on Apr 27,2020, Elapsed time: 0:02:59
-# Errors: 4, Warnings: 2
+# End time: 06:58:10 on Apr 30,2020, Elapsed time: 0:21:21
+# Errors: 0, Warnings: 2
 # vsim work.Tb_FPA_sim -t 1ns 
-# Start time: 18:13:03 on Apr 27,2020
+# Start time: 06:58:11 on Apr 30,2020
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
@@ -1407,277 +299,31 @@ do dofile.do
 # Loading work.lut_func(behavioral)
 # Loading work.demux_pixel_fpa(rtl)
 # WARNING: No extended dataflow license exists
-run 100ms
-run 100ms
-do dofile.do
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:50:42 on Apr 27,2020
-# vcom -reportprogress 300 pulse_package.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Compiling package pulse_package
-# End time: 18:50:42 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:50:42 on Apr 27,2020
-# vcom -reportprogress 300 demux_pixel_fpa.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity demux_pixel_fpa
-# -- Compiling architecture rtl of demux_pixel_fpa
-# End time: 18:50:42 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:50:42 on Apr 27,2020
-# vcom -reportprogress 300 mem_Cnt_Add_to_Add_RAM.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity mem_Cnt_Add_to_Add_RAM
-# -- Compiling architecture rtl of mem_Cnt_Add_to_Add_RAM
-# End time: 18:50:42 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:50:42 on Apr 27,2020
-# vcom -reportprogress 300 Pulse_LUT_function.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity LUT_func
-# -- Compiling architecture Behavioral of LUT_func
-# End time: 18:50:42 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:50:42 on Apr 27,2020
-# vcom -reportprogress 300 start_stop_manager.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity start_stop_manager
-# -- Compiling architecture rtl of start_stop_manager
-# End time: 18:50:42 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:50:43 on Apr 27,2020
-# vcom -reportprogress 300 TES.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity TES
-# -- Compiling architecture Behavioral of TES
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading entity start_stop_manager
-# -- Loading entity mem_Cnt_Add_to_Add_RAM
-# -- Loading entity LUT_func
-# -- Loading entity demux_pixel_fpa
-# End time: 18:50:43 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:50:43 on Apr 27,2020
-# vcom -reportprogress 300 FPA_sim.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity FPA_sim
-# -- Compiling architecture RTL of FPA_sim
-# -- Loading entity TES
-# End time: 18:50:43 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:50:43 on Apr 27,2020
-# vcom -reportprogress 300 Tb_FPA_sim.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package std_logic_textio
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity Tb_FPA_sim
-# -- Compiling architecture behavior of Tb_FPA_sim
-# -- Loading entity FPA_sim
-# ** Error: Tb_FPA_sim.vhd(239): (vcom-1136) Unknown identifier "c".
-# ** Warning: Tb_FPA_sim.vhd(258): (vcom-1207) An abstract literal and an identifier must have a separator between them.
-# ** Note: Tb_FPA_sim.vhd(478): VHDL Compiler exiting
-# End time: 18:50:43 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 1
-# ** Error: C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
-# Error in macro ./dofile.do line 8
-# C:/intelFPGA_pro/19.4/modelsim_ase/win32aloem/vcom failed.
-#     while executing
-# "vcom Tb_FPA_sim.vhd"
-do dofile.do
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:51:04 on Apr 27,2020
-# vcom -reportprogress 300 pulse_package.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Compiling package pulse_package
-# End time: 18:51:04 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:51:04 on Apr 27,2020
-# vcom -reportprogress 300 demux_pixel_fpa.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity demux_pixel_fpa
-# -- Compiling architecture rtl of demux_pixel_fpa
-# End time: 18:51:04 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:51:04 on Apr 27,2020
-# vcom -reportprogress 300 mem_Cnt_Add_to_Add_RAM.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity mem_Cnt_Add_to_Add_RAM
-# -- Compiling architecture rtl of mem_Cnt_Add_to_Add_RAM
-# End time: 18:51:04 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:51:04 on Apr 27,2020
-# vcom -reportprogress 300 Pulse_LUT_function.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity LUT_func
-# -- Compiling architecture Behavioral of LUT_func
-# End time: 18:51:04 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:51:04 on Apr 27,2020
-# vcom -reportprogress 300 start_stop_manager.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity start_stop_manager
-# -- Compiling architecture rtl of start_stop_manager
-# End time: 18:51:04 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:51:04 on Apr 27,2020
-# vcom -reportprogress 300 TES.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity TES
-# -- Compiling architecture Behavioral of TES
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading entity start_stop_manager
-# -- Loading entity mem_Cnt_Add_to_Add_RAM
-# -- Loading entity LUT_func
-# -- Loading entity demux_pixel_fpa
-# End time: 18:51:05 on Apr 27,2020, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:51:05 on Apr 27,2020
-# vcom -reportprogress 300 FPA_sim.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity FPA_sim
-# -- Compiling architecture RTL of FPA_sim
-# -- Loading entity TES
-# End time: 18:51:05 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vcom 2019.2 Compiler 2019.04 Apr 17 2019
-# Start time: 18:51:05 on Apr 27,2020
-# vcom -reportprogress 300 Tb_FPA_sim.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package std_logic_textio
-# -- Loading package MATH_REAL
-# -- Loading package pulse_package
-# -- Compiling entity Tb_FPA_sim
-# -- Compiling architecture behavior of Tb_FPA_sim
-# -- Loading entity FPA_sim
-# ** Warning: Tb_FPA_sim.vhd(258): (vcom-1207) An abstract literal and an identifier must have a separator between them.
-# End time: 18:51:05 on Apr 27,2020, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 1
-# End time: 18:51:07 on Apr 27,2020, Elapsed time: 0:38:04
-# Errors: 4, Warnings: 3
-# vsim work.Tb_FPA_sim -t 1ns 
-# Start time: 18:51:07 on Apr 27,2020
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading ieee.std_logic_textio(body)
-# Loading ieee.math_real(body)
-# Loading work.pulse_package
-# Loading work.tb_fpa_sim(behavior)
-# Loading work.fpa_sim(rtl)
-# Loading ieee.std_logic_arith(body)
-# Loading ieee.std_logic_unsigned(body)
-# Loading work.tes(behavioral)
-# Loading work.start_stop_manager(rtl)
-# Loading work.mem_cnt_add_to_add_ram(rtl)
-# Loading work.lut_func(behavioral)
-# Loading work.demux_pixel_fpa(rtl)
-# WARNING: No extended dataflow license exists
-run 500ms
+add wave -position insertpoint  \
+sim:/tb_fpa_sim/label_FPA_sim/label_TES/detect_start_pulse_pixel
+add wave -position insertpoint  \
+sim:/tb_fpa_sim/label_FPA_sim/label_TES/pixel
+add wave -position insertpoint  \
+sim:/tb_fpa_sim/label_FPA_sim/label_TES/start_pulse_pixel
+add wave -position insertpoint  \
+sim:/tb_fpa_sim/label_FPA_sim/label_TES/mem_counter_address
+add wave -position insertpoint  \
+sim:/tb_fpa_sim/label_FPA_sim/label_TES/pixel_delayed_2 \
+sim:/tb_fpa_sim/label_FPA_sim/label_TES/pixel_delayed_4
+add wave -position insertpoint  \
+sim:/tb_fpa_sim/label_FPA_sim/label_TES/Pulse_Ram_ADDRESS_RD_internal
+add wave -position insertpoint  \
+sim:/tb_fpa_sim/label_FPA_sim/label_TES/unsigned_Mem_Vp_shifte
+add wave -position insertpoint  \
+sim:/tb_fpa_sim/label_FPA_sim/label_TES/unsigned_Pulse_Ram_Data_RD_internal
+add wave -position insertpoint  \
+sim:/tb_fpa_sim/label_FPA_sim/label_TES/unsigned_multiply_to_pulse
+add wave -position insertpoint  \
+sim:/tb_fpa_sim/label_FPA_sim/label_TES/Vtes
 run 500ms
 pwd
-# C:/20200426_tb_pulse/tb_Pulse_generator
-# End time: 07:52:43 on Apr 28,2020, Elapsed time: 13:01:36
+# C:/20200428_tb_pulse/tb_Pulse_generator
+pwd
+# C:/20200428_tb_pulse/tb_Pulse_generator
+# End time: 07:22:15 on Apr 30,2020, Elapsed time: 0:24:04
 # Errors: 4, Warnings: 1

@@ -130,29 +130,59 @@ BEGIN
 
 
 	
-		-----------------------------------------------------------------------------------------------------------------------------------------
-		-------------------------------------------------Vo fast ramp ----------------------------------------------------------
-		-----------------------------------------------------------------------------------------------------------------------------------------
+		-- -----------------------------------------------------------------------------------------------------------------------------------------
+		-- -------------------------------------------------Vo fast ramp ----------------------------------------------------------
+		-- -----------------------------------------------------------------------------------------------------------------------------------------
 		
-		Amplitude_vo <= 0;
-		wait for 10 us;
+		-- Amplitude_vo <= 0;
+		-- wait for 10 us;
 		
-		--for c in 0 to 1800 loop	
-		for c in 0 to 1926 loop	
+		-- --for c in 0 to 1800 loop	
+		-- for c in 0 to 1926 loop	
 		
 		
-			for i in 0 to C_pixel - 1 loop
+			-- for i in 0 to C_pixel - 1 loop
 			
-				Amplitude_vo <= Amplitude_vo + 1;
-				wait until (CLK_5Mhz = '1' and CLK_5Mhz'event);
-				Vo(i)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude_vo, 16))); --pixel 31 energy ON
+				-- Amplitude_vo <= Amplitude_vo + 1;
+				-- wait until (CLK_5Mhz = '1' and CLK_5Mhz'event);
+				-- Vo(i)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude_vo, 16))); --pixel 31 energy ON
 				
 				
-			end loop;	
+			-- end loop;	
 			
-		end loop;		
+		-- end loop;		
 		
-		wait for 1 ms;
+		-- wait for 1 ms;
+		
+		
+		-- -----------------------------------------------------------------------------------------------------------------------------------------
+		-- -------------------------------------------------			 ----------------------------------------------------------
+		-- -----------------------------------------------------------------------------------------------------------------------------------------
+		
+
+		-- loop
+		
+		
+			-- for i in 0 to C_pixel - 1 loop
+			
+				-- Amplitude_vo <= Amplitude_vo + 1;
+				-- wait until (CLK_5Mhz = '1' and CLK_5Mhz'event);
+				-- Vp(i)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(65535, 16))); --pixel 31 energy ON
+				-- write_Vp  <= '1';
+				
+					-- if write_Vp = '1' then
+					-- write_Vp  <= '0';
+					-- --Vp(i)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON
+					-- end if;
+				
+			-- end loop;	
+			-- --write_Vp  <= '0';
+			-- --wait for 10 ms;
+			
+		-- end loop;		
+		
+		-- wait for 1 ms;
+		
 
 		-----------------------------------------------------------------------------------------------------------------------------------------
 		-------------------------------------------------enable pix one by one ----------------------------------------------------------
@@ -171,12 +201,13 @@ BEGIN
 
 				
 				wait for 400 ns;
-				Vo(i)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude_vo, 16)));		
+				Vo(i)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude_vo, 16)));	
+				wait for 205 ns;
 				Vp(i)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude, 16))); --pixel 31 energy ON
 				
 				wait for 1 ns;
 				write_Vp  <= '1';
-				wait for 400 ns;
+				wait for 205 ns;
 				write_Vp  <= '0';
 
 				wait for 400 ns;
