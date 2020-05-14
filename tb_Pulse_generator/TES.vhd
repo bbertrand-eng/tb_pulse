@@ -32,7 +32,7 @@ entity TES is
 
 			--Send_Pulse 			: in  STD_LOGIC;
 			WE_Pulse_Ram 		: in std_logic;
-			Pulse_Ram_ADDRESS_WR	: in unsigned (9 downto 0);
+			Pulse_Ram_ADDRESS_WR	: in STD_LOGIC_VECTOR (9 downto 0);
 			--Pulse_Ram_ADDRESS_RD: in unsigned (9 downto 0);
 			Pulse_Ram_Data_WR		: in STD_LOGIC_VECTOR (15 downto 0);
 --			Sig_in 				: in  signed (C_Size_DDS-1 downto 0);
@@ -56,6 +56,8 @@ signal	pixel_delayed_1		:	integer range 0 to C_pixel;
 signal	pixel_delayed_2		:	integer range 0 to C_pixel;
 signal	pixel_delayed_3		:	integer range 0 to C_pixel;
 signal	pixel_delayed_4		:	integer range 0 to C_pixel;
+signal	pixel_delayed_5		:	integer range 0 to C_pixel;
+signal	pixel_delayed_6		:	integer range 0 to C_pixel;
 
 --signal	pixel_view			:	integer range 0 to C_pixel;
 
@@ -112,6 +114,8 @@ pixel_delayed_1	<= 0;
 pixel_delayed_2	<= 0;
 pixel_delayed_3	<= 0;
 pixel_delayed_4	<= 0;
+pixel_delayed_5	<= 0;
+pixel_delayed_6	<= 0;
 view_pixel_index <= 0;
 CLK_73529Hz	<= '0';
 else
@@ -121,7 +125,9 @@ else
 	pixel_delayed_2 <= pixel_delayed_1; 
 	pixel_delayed_3	<= pixel_delayed_2; 
 	pixel_delayed_4	<= pixel_delayed_3;
-	view_pixel_index	<=	pixel_delayed_4;
+	pixel_delayed_5	<= pixel_delayed_4;
+	pixel_delayed_6	<= pixel_delayed_5;
+	view_pixel_index	<= pixel_delayed_6;	
 		if pixel = C_pixel-1 then
 		pixel	<= 0;
 		CLK_73529Hz <= not CLK_73529Hz;
@@ -274,14 +280,64 @@ label_LUT_func: entity work.LUT_func
 -------------------------------------------------------------------------------------
 --	computing
 -------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+--	unsigned_Pulse_Ram_Data_RD_internal
+-------------------------------------------------------------------------------------
 --	multiply
-unsigned_Pulse_Ram_Data_RD_internal <= unsigned(Pulse_Ram_Data_RD_internal);
-unsigned_Mem_Vp_shifte	<=	unsigned(Mem_Vp_shifte(pixel_delayed_4)(15 downto 0));
-unsigned_multiply_to_pulse <= unsigned_Pulse_Ram_Data_RD_internal*unsigned_Mem_Vp_shifte;--unsigned(15 downto 0);*unsigned(15 downto 0);
---unsigned_L_multiply_to_pulse 	<= unsigned_multiply_to_pulse(47 downto 32);
---signed_L_multiply_to_pulse		<= signed(unsigned_multiply_to_pulse(31 downto 16));--unsigned(31 downto 0); 
-unsigned_Vo	<= unsigned(Vo(pixel_delayed_4)(15 downto 0));
---signed_Vo	<= signed(Vo(pixel_delayed_4)(15 downto 0));
+--unsigned_Pulse_Ram_Data_RD_internal <= unsigned(Pulse_Ram_Data_RD_internal);
+--unsigned_Mem_Vp_shifte	<=	unsigned(Mem_Vp_shifte(pixel_delayed_4)(15 downto 0));
+
+process(Reset, CLK_5Mhz)
+begin
+if Reset = '1' then
+unsigned_Pulse_Ram_Data_RD_internal	<= (others=>'0');
+else
+    if CLK_5Mhz='1' and CLK_5Mhz'event then
+		
+		unsigned_Pulse_Ram_Data_RD_internal	<=	unsigned(Pulse_Ram_Data_RD_internal);
+
+		
+	end if;  -- clock
+end if;  -- reset 
+end process;
+
+-------------------------------------------------------------------------------------
+--	unsigned_Mem_Vp_shifte
+-------------------------------------------------------------------------------------
+
+process(Reset, CLK_5Mhz)
+begin
+if Reset = '1' then
+unsigned_Mem_Vp_shifte	<= (others=>'0');
+else
+    if CLK_5Mhz='1' and CLK_5Mhz'event then
+		
+		unsigned_Mem_Vp_shifte	<=	unsigned(Mem_Vp_shifte(pixel_delayed_4)(15 downto 0));
+
+		
+	end if;  -- clock
+end if;  -- reset 
+end process;
+
+
+-------------------------------------------------------------------------------------
+--	label_multiply
+-------------------------------------------------------------------------------------
+
+
+label_multiply : process(Reset, CLK_5Mhz)
+begin
+if Reset = '1' then
+unsigned_multiply_to_pulse <=	(others=>'0');
+else
+    if CLK_5Mhz='1' and CLK_5Mhz'event then
+	unsigned_multiply_to_pulse <= unsigned_Pulse_Ram_Data_RD_internal*unsigned_Mem_Vp_shifte;
+	end if;  -- clock
+end if;  -- reset 
+end process;
+
+ 
+unsigned_Vo	<= unsigned(Vo(pixel_delayed_6)(15 downto 0));
 Vtes	<= unsigned_Vo -	unsigned_multiply_to_pulse(31 downto 16);	--signed(15 downto 0)	:=	x"fff0" - signed(15 downto 0);	
 
 --Vtes	<=	unsigned_L_multiply_to_pulse	
@@ -343,7 +399,7 @@ label_demux_pixel_fpa : entity work.demux_pixel_fpa
     	CLK_5Mhz			=>	CLK_5Mhz,
 			--ENABLE_CLK_1X		: 	in  STD_LOGIC;
 --CONTROL
-		pixel				=>	pixel_delayed_4,
+		pixel				=>	pixel_delayed_6,
 	
 			
 		Pulse_Ram_Data_RD_internal		=>	Vtes,

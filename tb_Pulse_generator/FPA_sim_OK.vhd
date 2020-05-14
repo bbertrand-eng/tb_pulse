@@ -14,7 +14,7 @@ entity FPA_sim_OK is
 		wr_en                : IN    STD_LOGIC;
 		--	tempo
 		WE_Pulse_Ram         : in    std_logic;
-		Pulse_Ram_ADDRESS_WR : in    unsigned(9 downto 0);
+		Pulse_Ram_ADDRESS_WR : in    STD_LOGIC_vector(9 downto 0);
 		Pulse_Ram_Data_WR    : in    STD_LOGIC_VECTOR(15 downto 0);
 		Vtes_out             : inout signed(15 downto 0);
 		feedback_sq1         : in    signed(15 downto 0);
@@ -53,6 +53,10 @@ architecture RTL of FPA_sim_OK is
 	signal unsigned_address : unsigned(5 downto 0);
 	signal int_address      : integer range 0 to C_pixel - 1;
 
+	
+	signal 	Vo	:	t_array_Mem_Vo;
+	signal 	Vp	:	t_array_Mem_Vp;
+	
 begin
 
 	label_fifo_r32_1024_w32_1024 : entity work.fifo_r32_1024_w32_1024
@@ -103,8 +107,10 @@ begin
 				when read_fifo_Vo =>
 
 					--unsigned_address <= unsigned(address(5 downto 0));
+					if empty = '0' then
 					rd_en         <= '1';
 					Current_state <= valid_fifo_Vo;
+					end if;
 
 				when valid_fifo_Vo =>
 
@@ -117,8 +123,10 @@ begin
 
 				when read_fifo_Vp =>
 
+					if empty = '0' then
 					rd_en         <= '1';
 					Current_state <= valid_fifo_Vp;
+					end if;
 
 				when valid_fifo_Vp =>
 
@@ -130,9 +138,11 @@ begin
 
 				when read_fifo_frequence =>
 
+					if empty = '0' then
 					rd_en         <= '1';
 					Current_state <= valid_fifo_frequence;
-
+					end if;
+					
 				when valid_fifo_frequence =>
 
 					rd_en <= '0';
@@ -147,8 +157,10 @@ begin
 					Vp(To_integer(unsigned(address(5 downto 0)))) <= Vp_fifo;
 					Current_state <= read_fifo_add;
 					
-						if empty = '1' then
+						if	(To_integer(unsigned(address(5 downto 0)))) = 33 then
 						Current_state <= write_register;
+						else
+						Current_state <= read_fifo_add;
 						end if;
 
 				when write_register =>

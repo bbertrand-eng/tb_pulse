@@ -15,7 +15,7 @@ entity LUT_func is
 		CLK_5Mhz				: in  std_logic;
 		ENABLE_CLK_1X		: in  std_logic;
 		WE_Pulse_Ram 		: in  std_logic;
-		Pulse_Ram_ADDRESS_WR: in  unsigned (9 downto 0);
+		Pulse_Ram_ADDRESS_WR: in  STD_LOGIC_vector (9 downto 0);
 		Pulse_Ram_ADDRESS_RD: in  unsigned (9 downto 0);
 		Pulse_Ram_Data_WR	: in  STD_LOGIC_VECTOR (15 downto 0);
 
@@ -35,7 +35,7 @@ P_Write_Pulse_Ram: process (CLK_5Mhz)
 begin
 	if rising_edge(CLK_5Mhz) then
 		if (WE_Pulse_Ram ='1') then
-			Pulse_Ram(to_integer(Pulse_Ram_ADDRESS_WR))	<= Pulse_Ram_Data_WR;
+			Pulse_Ram(to_integer(unsigned(Pulse_Ram_ADDRESS_WR)))	<= Pulse_Ram_Data_WR;
 		end if;
 	end if;
 end process;

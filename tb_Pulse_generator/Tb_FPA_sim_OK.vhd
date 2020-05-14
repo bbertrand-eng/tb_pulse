@@ -1,8 +1,10 @@
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
-USE ieee.numeric_std.ALL;
+use IEEE.std_logic_arith.all;
+use IEEE.std_logic_unsigned.all;
 use ieee.std_logic_textio.all;
+--USE ieee.numeric_std.ALL;
 use std.textio.all;
 use work.pulse_package.all;
 
@@ -25,7 +27,7 @@ signal Pulse_Ram_Data_RD			: STD_LOGIC_VECTOR (15 downto 0);
 --signal write_sig_1		: signed(19 downto 0);
 --signal SendPulse 		: std_logic;
 signal Pulse_Ram_Data_WR	: STD_LOGIC_vector (15 downto 0 );
-signal Pulse_Ram_ADDRESS_WR	: unsigned (9 downto 0 );
+signal Pulse_Ram_ADDRESS_WR	: STD_LOGIC_vector (9 downto 0 );
 signal Pulse_Ram_ADDRESS_RD	: unsigned (9 downto 0 );
 signal WE_Pulse_Ram		: std_logic;
 signal write_add_null	: std_logic;
@@ -58,7 +60,7 @@ signal error : signed(15 downto 0);
 BEGIN
 
 RESET <= '1', '0' after 100 ns;
-RESET_file <= '1', '0' after 1000 ns;
+RESET_file <= '1', '0' after 250 us;
 
 CLK_process :process
 begin

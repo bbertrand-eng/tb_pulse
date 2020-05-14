@@ -13,7 +13,7 @@ entity FPA_sim is
 		write_Vp             : in    std_logic;
 		Vp                   : in    t_array_Mem_Vp;
 		WE_Pulse_Ram         : in    std_logic;
-		Pulse_Ram_ADDRESS_WR : in    unsigned(9 downto 0);
+		Pulse_Ram_ADDRESS_WR : in STD_LOGIC_VECTOR (9 downto 0);
 		Pulse_Ram_Data_WR    : in    STD_LOGIC_VECTOR(15 downto 0);
 		view_pixel           : out   t_array_view_pixel;
 		view_pixel_index     : out   integer range 0 to C_pixel;

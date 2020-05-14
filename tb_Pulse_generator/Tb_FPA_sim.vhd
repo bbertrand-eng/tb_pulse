@@ -41,6 +41,9 @@ ARCHITECTURE behavior OF Tb_FPA_sim IS
 	signal view_c       : integer;
 	signal feedback_sq1 : signed(15 downto 0);
 	signal error : signed(15 downto 0);
+	
+	signal 	Vo	:	t_array_Mem_Vo;
+	
 
 BEGIN
 
@@ -68,7 +71,7 @@ BEGIN
 			write_Vp             => write_Vp,
 			-- from gse DualRam
 			WE_Pulse_Ram         => WE_Pulse_Ram, --: std_logic;
-			Pulse_Ram_ADDRESS_WR => Pulse_Ram_ADDRESS_WR, --: unsigned (9 downto 0 );
+			Pulse_Ram_ADDRESS_WR => std_logic_vector(Pulse_Ram_ADDRESS_WR), --: unsigned (9 downto 0 );
 			--Pulse_Ram_ADDRESS_RD => open, --debug stay open
 			Pulse_Ram_Data_WR    => Pulse_Ram_Data_WR, 
 			--		Sig_in				=> to_signed(32767,20),
@@ -113,46 +116,47 @@ BEGIN
 		--------------------------------END INIT ALL Vp pixel don't' touch
 		--------------------------------------------------------------------------------------------------------------------------------------
 
-		-- wait for 1 ms;
+		wait for 1 ms;
 		
-		-- Amplitude 		<= 65535;
-		-- Amplitude_vo 	<= 65535;
+		Amplitude 		<= 65535;
+		Amplitude_vo 	<= 65535;
 	
-		-- wait for 1 ms;
+		wait for 205 ns;
 		
-				-- Vo(0)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude_vo, 16)));		
-				-- Vp(0)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude, 16))); --pixel 31 energy ON
+				Vo(0)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude_vo, 16)));		
+				wait for 205 ns;
+				Vp(0)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude, 16))); --pixel 31 energy ON
 				
-				-- wait for 1 ns;
-				-- write_Vp  <= '1';
-				-- wait for 400 ns;
-				-- write_Vp  <= '0';
+				wait for 1 ns;
+				write_Vp  <= '1';
+				wait for 400 ns;
+				write_Vp  <= '0';
 
-
+		wait for 10 ms;
 	
-		-- -----------------------------------------------------------------------------------------------------------------------------------------
-		-- -------------------------------------------------Vo fast ramp ----------------------------------------------------------
-		-- -----------------------------------------------------------------------------------------------------------------------------------------
+		-----------------------------------------------------------------------------------------------------------------------------------------
+		-------------------------------------------------Vo fast ramp ----------------------------------------------------------
+		-----------------------------------------------------------------------------------------------------------------------------------------
 		
-		-- Amplitude_vo <= 0;
-		-- wait for 10 us;
+		Amplitude_vo <= 0;
+		wait for 10 us;
 		
-		-- --for c in 0 to 1800 loop	
-		-- for c in 0 to 1926 loop	
+		--for c in 0 to 1800 loop	
+		for c in 0 to 1926 loop	
 		
 		
-			-- for i in 0 to C_pixel - 1 loop
+			for i in 0 to C_pixel - 1 loop
 			
-				-- Amplitude_vo <= Amplitude_vo + 1;
-				-- wait until (CLK_5Mhz = '1' and CLK_5Mhz'event);
-				-- Vo(i)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude_vo, 16))); --pixel 31 energy ON
+				Amplitude_vo <= Amplitude_vo + 1;
+				wait until (CLK_5Mhz = '1' and CLK_5Mhz'event);
+				Vo(i)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude_vo, 16))); --pixel 31 energy ON
 				
 				
-			-- end loop;	
+			end loop;	
 			
-		-- end loop;		
+		end loop;		
 		
-		-- wait for 1 ms;
+		wait for 1 ms;
 		
 		
 		-- -----------------------------------------------------------------------------------------------------------------------------------------
