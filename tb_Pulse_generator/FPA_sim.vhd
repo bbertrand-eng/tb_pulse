@@ -17,8 +17,8 @@ entity FPA_sim is
 		Pulse_Ram_Data_WR    : in    STD_LOGIC_VECTOR(15 downto 0);
 		view_pixel           : out   t_array_view_pixel;
 		view_pixel_index     : out   integer range 0 to C_pixel;
-		--Pulse_Ram_ADDRESS_RD : out   unsigned(9 downto 0); --debug stay open
-		--Pulse_Ram_Data_RD    : out   STD_LOGIC_VECTOR(15 downto 0); --debug stay open
+		Pulse_Ram_ADDRESS_RD : out   STD_LOGIC_VECTOR(9 downto 0); --debug stay open
+		Pulse_Ram_Data_RD    : out   STD_LOGIC_VECTOR(15 downto 0); --debug stay open
 
 		Vtes_out             : inout signed(15 downto 0);
 		feedback_sq1         : in    signed(15 downto 0);
@@ -43,10 +43,10 @@ begin
 			-- from gse DualRam
 			WE_Pulse_Ram         => WE_Pulse_Ram, --: std_logic;
 			Pulse_Ram_ADDRESS_WR => Pulse_Ram_ADDRESS_WR, --: unsigned (9 downto 0 );
-			--Pulse_Ram_ADDRESS_RD => Pulse_Ram_ADDRESS_RD, --: unsigned (9 downto 0 );
+			Pulse_Ram_ADDRESS_RD => Pulse_Ram_ADDRESS_RD, --: unsigned (9 downto 0 );
 			Pulse_Ram_Data_WR    => Pulse_Ram_Data_WR, --: STD_LOGIC_vector (31 downto 0 );
 			--		Sig_in				=> to_signed(32767,20),
-			--Pulse_Ram_Data_RD    => Pulse_Ram_Data_RD, --: STD_LOGIC_VECTOR (31 downto 0);
+			Pulse_Ram_Data_RD    => Pulse_Ram_Data_RD, --: STD_LOGIC_VECTOR (31 downto 0);
 
 			view_pixel           => view_pixel,
 			view_pixel_index     => view_pixel_index,

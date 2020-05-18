@@ -32,11 +32,11 @@ entity TES is
 
 			--Send_Pulse 			: in  STD_LOGIC;
 			WE_Pulse_Ram 		: in std_logic;
-			Pulse_Ram_ADDRESS_WR	: in STD_LOGIC_VECTOR (9 downto 0);
-			--Pulse_Ram_ADDRESS_RD: in unsigned (9 downto 0);
-			Pulse_Ram_Data_WR		: in STD_LOGIC_VECTOR (15 downto 0);
+			Pulse_Ram_ADDRESS_WR: in STD_LOGIC_VECTOR (9 downto 0);
+			Pulse_Ram_ADDRESS_RD: out STD_LOGIC_VECTOR (9 downto 0);
+			Pulse_Ram_Data_WR	: in STD_LOGIC_VECTOR (15 downto 0);
 --			Sig_in 				: in  signed (C_Size_DDS-1 downto 0);
-        	--Pulse_Ram_Data_RD 	: out STD_LOGIC_VECTOR (15 downto 0);
+        	Pulse_Ram_Data_RD 	: out STD_LOGIC_VECTOR (15 downto 0);
 			
 			view_pixel			:	out	t_array_view_pixel;
 			view_pixel_index	:	out	integer range 0 to C_pixel;
@@ -277,6 +277,9 @@ label_LUT_func: entity work.LUT_func
 		Pulse_Ram_Data_RD	=> Pulse_Ram_Data_RD_internal
 );
 
+Pulse_Ram_ADDRESS_RD <= std_logic_vector(Pulse_Ram_ADDRESS_RD_internal);
+Pulse_Ram_Data_RD	<= Pulse_Ram_Data_RD_internal;
+
 -------------------------------------------------------------------------------------
 --	computing
 -------------------------------------------------------------------------------------
@@ -300,6 +303,8 @@ else
 	end if;  -- clock
 end if;  -- reset 
 end process;
+
+
 
 -------------------------------------------------------------------------------------
 --	unsigned_Mem_Vp_shifte

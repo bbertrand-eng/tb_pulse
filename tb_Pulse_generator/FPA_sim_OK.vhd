@@ -18,7 +18,13 @@ entity FPA_sim_OK is
 		Pulse_Ram_Data_WR    : in    STD_LOGIC_VECTOR(15 downto 0);
 		Vtes_out             : inout signed(15 downto 0);
 		feedback_sq1         : in    signed(15 downto 0);
-		error                : out   signed(15 downto 0)
+		error                : out   signed(15 downto 0);
+		
+		view_pixel_index_out : out   STD_LOGIC_vector(5 downto 0);
+		
+		Pulse_Ram_ADDRESS_RD : out   STD_LOGIC_VECTOR(9 downto 0); --debug stay open
+		Pulse_Ram_Data_RD    : out   STD_LOGIC_VECTOR(15 downto 0)--debug stay open
+		
 	);
 end entity FPA_sim_OK;
 
@@ -38,9 +44,9 @@ architecture RTL of FPA_sim_OK is
 	signal current_state        : FSM_State;
 	--signal WE_Pulse_Ram : std_logic;
 	--signal Pulse_Ram_ADDRESS_WR : unsigned (9 downto 0);
-	signal Pulse_Ram_ADDRESS_RD : unsigned(9 downto 0);
+	--signal Pulse_Ram_ADDRESS_RD : unsigned(9 downto 0);
 	--signal Pulse_Ram_Data_WR : STD_LOGIC_VECTOR (15 downto 0);
-	signal Pulse_Ram_Data_RD    : STD_LOGIC_VECTOR(15 downto 0);
+	--signal Pulse_Ram_Data_RD    : STD_LOGIC_VECTOR(15 downto 0);
 	signal view_pixel           : t_array_view_pixel;
 
 	signal view_pixel_index : integer range 0 to C_pixel;
@@ -80,7 +86,7 @@ begin
 			Current_state <= read_fifo_add;
 			write_Vp      <= '0';
 			Vp            <= (others => (others => '0'));
-			Vo			 <= (others => (others => '0'));
+			Vo			 <= (others => x"ffffffff");
 			address			<=(others => '0'); 
 			Vo_fifo			<=(others => '0');
 			Vp_fifo			<=(others => '0');
@@ -188,11 +194,13 @@ begin
 			Pulse_Ram_Data_WR    => Pulse_Ram_Data_WR,
 			view_pixel           => view_pixel,
 			view_pixel_index     => view_pixel_index,
-			--			Pulse_Ram_ADDRESS_RD => Pulse_Ram_ADDRESS_RD,
-			--			Pulse_Ram_Data_RD    => Pulse_Ram_Data_RD,
+			Pulse_Ram_ADDRESS_RD => Pulse_Ram_ADDRESS_RD,
+			Pulse_Ram_Data_RD    => Pulse_Ram_Data_RD,
 			Vtes_out             => Vtes_out,
 			feedback_sq1         => feedback_sq1,
 			error                => error
 		);
 
+view_pixel_index_out <= std_logic_vector(To_unsigned(view_pixel_index,6));		
+		
 end architecture RTL;

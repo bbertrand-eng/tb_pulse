@@ -22,7 +22,7 @@ ARCHITECTURE behavior OF Tb_FPA_sim IS
 	--signal SendPulse 		: std_logic;
 	signal Pulse_Ram_Data_WR    : STD_LOGIC_vector(15 downto 0);
 	signal Pulse_Ram_ADDRESS_WR : unsigned(9 downto 0);
-	signal Pulse_Ram_ADDRESS_RD : unsigned(9 downto 0);
+	signal Pulse_Ram_ADDRESS_RD : STD_LOGIC_vector(9 downto 0);
 	signal WE_Pulse_Ram         : std_logic;
 	signal write_add_null       : std_logic;
 
@@ -47,7 +47,7 @@ ARCHITECTURE behavior OF Tb_FPA_sim IS
 
 BEGIN
 
-	RESET <= '1', '0' after 100 ns;
+	RESET <= '1', '0' after 200 ns;
 
 	CLK_process : process
 	begin
@@ -79,6 +79,10 @@ BEGIN
 
 			view_pixel           => view_pixel,
 			view_pixel_index     => view_pixel_index,
+			
+			Pulse_Ram_ADDRESS_RD => Pulse_Ram_ADDRESS_RD,
+			Pulse_Ram_Data_RD    => Pulse_Ram_Data_RD,
+			
 			Vtes_out             => Vtes_out,
 			feedback_sq1         => feedback_sq1,
 			error                => error
@@ -444,29 +448,29 @@ BEGIN
 		wait;
 	end process;
 
+	-- -- -------------------------------------------------------------------------------------------------------------------------------------
+	-- -- ----------------------------------Manage files---------------------------------------------------------
 	-- -------------------------------------------------------------------------------------------------------------------------------------
-	-- ----------------------------------Manage files---------------------------------------------------------
-	-------------------------------------------------------------------------------------------------------------------------------------
 
-	-----------------------------------------
-	--- write process - 1
-	-----------------------------------------
-	write_proc1 : process
-		file Sig_out_file : text;
-		variable l        : line;
-		variable Value    : std_logic_vector(Pulse_Ram_Data_RD'length - 1 downto 0);
+	-- -----------------------------------------
+	-- --- write process - 1
+	-- -----------------------------------------
+	-- write_proc1 : process
+		-- file Sig_out_file : text;
+		-- variable l        : line;
+		-- variable Value    : std_logic_vector(Pulse_Ram_Data_RD'length - 1 downto 0);
 
-	begin
-		file_open(Sig_out_file, "Output_signal.txt", WRITE_MODE);
-		Pulse_Ram_ADDRESS_RD <= (others => '0');
-		loop
-			wait until (CLK_5Mhz = '1' and CLK_5Mhz'event);
-			Pulse_Ram_ADDRESS_RD <= Pulse_Ram_ADDRESS_RD + 1;
-			Value                := std_logic_vector(Pulse_Ram_Data_RD);
-			hwrite(l, Value);
-			writeline(Sig_out_file, l);
-		end loop;
-	end process;
+	-- begin
+		-- file_open(Sig_out_file, "Output_signal.txt", WRITE_MODE);
+		-- Pulse_Ram_ADDRESS_RD <= (others => '0');
+		-- loop
+			-- wait until (CLK_5Mhz = '1' and CLK_5Mhz'event);
+			-- Pulse_Ram_ADDRESS_RD <= Pulse_Ram_ADDRESS_RD + 1;
+			-- Value                := std_logic_vector(Pulse_Ram_Data_RD);
+			-- hwrite(l, Value);
+			-- writeline(Sig_out_file, l);
+		-- end loop;
+	-- end process;
 
 	----------------------------------------------------------------------------------------------
 	--

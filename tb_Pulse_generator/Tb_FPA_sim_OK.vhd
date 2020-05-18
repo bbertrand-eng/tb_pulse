@@ -6,7 +6,7 @@ use IEEE.std_logic_unsigned.all;
 use ieee.std_logic_textio.all;
 --USE ieee.numeric_std.ALL;
 use std.textio.all;
-use work.pulse_package.all;
+--use work.pulse_package.all;
 
 ENTITY Tb_FPA_sim_OK IS
 END Tb_FPA_sim_OK;
@@ -28,7 +28,7 @@ signal Pulse_Ram_Data_RD			: STD_LOGIC_VECTOR (15 downto 0);
 --signal SendPulse 		: std_logic;
 signal Pulse_Ram_Data_WR	: STD_LOGIC_vector (15 downto 0 );
 signal Pulse_Ram_ADDRESS_WR	: STD_LOGIC_vector (9 downto 0 );
-signal Pulse_Ram_ADDRESS_RD	: unsigned (9 downto 0 );
+signal Pulse_Ram_ADDRESS_RD	: STD_LOGIC_vector (9 downto 0 );
 signal WE_Pulse_Ram		: std_logic;
 signal write_add_null	: std_logic;
 
@@ -36,7 +36,7 @@ signal write_add_null	: std_logic;
 
 -- signal 	view_pixel			:	t_array_view_pixel;
 -- signal	view_pixel_index	:	integer range 0 to C_pixel;
-signal	Vtes_out			:	signed(15 downto 0);
+signal	Vtes_out			:	STD_LOGIC_vector (15 downto 0 );
 
 --signal 	Vp	:	t_array_Mem_Vp;
 
@@ -49,17 +49,17 @@ signal din_vp				: 	STD_LOGIC_VECTOR (31 downto 0);
 signal wr_en_vp				:	std_logic;
 
 
-signal feedback_sq1 : signed(15 downto 0);
-signal error : signed(15 downto 0);
+signal feedback_sq1 : STD_LOGIC_vector (15 downto 0 );
+signal error : STD_LOGIC_vector (15 downto 0 );
 
-
+signal view_pixel_index_out :	STD_LOGIC_vector(5 downto 0);
 
 
 
 
 BEGIN
 
-RESET <= '1', '0' after 100 ns;
+RESET <= '1', '0' after 200 ns;
 RESET_file <= '1', '0' after 250 us;
 
 CLK_process :process
@@ -92,55 +92,58 @@ label_FPA_sim_ok : entity work.FPA_sim_OK
 		Pulse_Ram_Data_WR    => Pulse_Ram_Data_WR,
 		Vtes_out             => Vtes_out,
 		feedback_sq1         => feedback_sq1,
-		error                => error
+		error                => error,
+		
+		view_pixel_index_out => view_pixel_index_out,
+		
+		Pulse_Ram_ADDRESS_RD => Pulse_Ram_ADDRESS_RD,
+		Pulse_Ram_Data_RD    => Pulse_Ram_Data_RD
 	);
 
 
 
 
-----------------------------------------------------------------------------------------------
---
--- read file
---
-----------------------------------------------------------------------------------------------
+	----------------------------------------------------------------------------------------------
+	--
+	-- read file
+	--
+	----------------------------------------------------------------------------------------------
 
-label_read_file_pules: process
+	albel_read_file : process
+		file fake_pulse_CBE : text;
+		variable l          : line;
+		variable Value      : std_logic_vector(31 downto 0);
 
-file fake_pulse_CBE	: text;
-variable l : line;
-variable Value : std_logic_vector(31 downto 0);
+	begin
+		file_open(fake_pulse_CBE, "fake_pulse_CBE.txt", READ_MODE);
+		Pulse_Ram_ADDRESS_WR <= (others => '0');
+		WE_Pulse_Ram         <= '0';
+		Pulse_Ram_Data_WR    <= (others => '0');
+		write_add_null       <= '0';
+		wait until RESET = '0' and RESET'event;
 
-begin
- 
-file_open(fake_pulse_CBE, "fake_pulse_CBE.txt", READ_MODE);
-Pulse_Ram_ADDRESS_WR 	<= (others=>'0');
-WE_Pulse_Ram			<= '0'; 
-Pulse_Ram_Data_WR		<= (others=>'0');
-write_add_null 			<= '0'; 
-	wait until RESET = '0' and RESET'event;
-	
 		loop
-    	wait until CLK_5Mhz='1' and CLK_5Mhz'event;
-			if	write_add_null = '0' then
-			write_add_null 			<= '1'; 
-			WE_Pulse_Ram		<= '1';
-			readline(fake_pulse_CBE, l);
-			hread(l, Value);
-			Pulse_Ram_Data_WR <= Value(31 downto 16);
-			else		
+			wait until CLK_5Mhz = '1' and CLK_5Mhz'event;
+			if write_add_null = '0' then
+				write_add_null    <= '1';
+				WE_Pulse_Ram      <= '1';
+				readline(fake_pulse_CBE, l);
+				hread(l, Value);
+				Pulse_Ram_Data_WR <= Value(31 downto 16);
+			else
 				if not endfile(fake_pulse_CBE) then
-					WE_Pulse_Ram		<= '1';
+					WE_Pulse_Ram      <= '1';
 					readline(fake_pulse_CBE, l);
 					hread(l, Value);
 					Pulse_Ram_Data_WR <= Value(31 downto 16);
-					
-					Pulse_Ram_ADDRESS_WR <= Pulse_Ram_ADDRESS_WR +1;
+
+					Pulse_Ram_ADDRESS_WR <= Pulse_Ram_ADDRESS_WR + 1;
 				else
-				WE_Pulse_Ram		<= '0';	
+					WE_Pulse_Ram <= '0';
 				end if;
 			end if;
-     	end loop;
-end process;
+		end loop;
+	end process;
 
 ----------------------------------------------------------------------------------------------
 --
@@ -163,13 +166,13 @@ wr_en_vp	<=	'0';
 	
 		loop
     	wait until CLK_100Mhz='1' and CLK_100Mhz'event;
-			if	write_add_null = '0' then
-			write_add_null 			<= '1'; 
-			wr_en_vp		<= '1';
-			readline(Vo_Vp, l);
-			hread(l, Value);
-			din_vp <= Value(31 downto 0);
-			else		
+			-- if	write_add_null = '0' then
+			-- write_add_null 			<= '1'; 
+			-- wr_en_vp		<= '1';
+			-- readline(Vo_Vp, l);
+			-- hread(l, Value);
+			-- din_vp <= Value(31 downto 0);
+			-- else		
 				if not endfile(Vo_Vp) then
 					wr_en_vp		<= '1';
 					readline(Vo_Vp, l);
@@ -178,7 +181,7 @@ wr_en_vp	<=	'0';
 				else
 				wr_en_vp		<= '0';	
 				end if;
-			end if;
+--			end if;
      	end loop;
 end process;
 
