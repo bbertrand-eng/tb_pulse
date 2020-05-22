@@ -112,20 +112,25 @@ BEGIN
 		--------------------------------END INIT ALL Vp pixel don't' touch
 		--------------------------------------------------------------------------------------------------------------------------------------
 
-		-- wait for 1 ms;
+		wait for 1 ms;
 		
-		-- Amplitude 		<= 65535;
-		-- Amplitude_vo 	<= 65535;
+		Amplitude 		<= 65535;
+		Amplitude_vo 	<= 65535;
 	
-		-- wait for 1 ms;
+		wait for 205 ns;
 		
-				-- Vo(0)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude_vo, 16)));		
-				-- Vp(0)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude, 16))); --pixel 31 energy ON
+				Vo(33)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude_vo, 16)));		
+				wait for 205 ns;
+				Vp(33)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude, 16))); --pixel 31 energy ON
 				
-				-- wait for 1 ns;
-				-- write_Vp  <= '1';
-				-- wait for 400 ns;
-				-- write_Vp  <= '0';
+				wait for 1 ns;
+				write_Vp  <= '1';
+				wait for 400 ns;
+				write_Vp  <= '0';
+
+				Vp(33)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31
+				
+		wait for 10 ms;
 
 
 		--write_Vp <= '1';
