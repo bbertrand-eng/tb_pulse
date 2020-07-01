@@ -1,0 +1,23 @@
+
+function sendPulse(filename)
+{
+	pulse = new Array(1024)
+	filecontent = readTextFile(filename)
+	for (index = 0;index < filecontent.length && index < 1024;index++)
+		pulse[index] = parseInt(filecontent[index],16)
+	sendToFPA_setPulse(pulse)
+}
+
+sendToFPA_resetOK()
+waitMs(1)
+sendPulse("fake_pulse_CBE.txt")
+waitMs(1)
+//sendToFPA_configurePixel(0,65535,32000,0)
+sendToFPA_configurePixel(10,65536,65000,0)
+waitMs(10)
+sendToFPA_setWireIn(0x00,4)
+sendToFPA_setWireIn(0x00,0)
+getLatestValue("FPA_WireOutValues")
+
+print(FPA_WireOutValues)
+
