@@ -1047,7 +1047,7 @@ begin
 
 	
 	
-	wait for 1000 ns;
+	wait for 100 us;
 
 	-- apply all
 	SetWireInValue(x"00", x"0000_0004", NO_MASK);

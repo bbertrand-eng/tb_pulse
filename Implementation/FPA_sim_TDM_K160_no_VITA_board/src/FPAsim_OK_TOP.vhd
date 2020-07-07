@@ -127,6 +127,7 @@ signal 	full_vp		: STD_LOGIC;
 
 	
 signal	write_Vp        		: STD_LOGIC;	
+signal	write_Vp_wire			: STD_LOGIC;	
 signal	write_Vp_detect			: STD_LOGIC;
 signal	write_Vp_detect_old		: STD_LOGIC;
 signal 	Vo	:	t_array_Mem_Vo;
@@ -348,28 +349,28 @@ port map (
 --	manage write all register
 ----------------------------------------------------
 
-	-- label_write_all : process(CLK_5Mhz, Reset) is
-	-- begin
-		-- if Reset = '1' then
+	label_write_all : process(CLK_5Mhz, Reset) is
+	begin
+		if Reset = '1' then
 		
-		-- write_Vp		<= '0';
-		-- write_Vp_detect	<=	'0';
-		-- write_Vp_detect_old	<=	'0';
+		write_Vp_wire		<= '0';
+		write_Vp_detect	<=	'0';
+		write_Vp_detect_old	<=	'0';
 		
-		-- elsif rising_edge(CLK_5Mhz) then
+		elsif rising_edge(CLK_5Mhz) then
 		
 		
-		-- write_Vp_detect <=	ep00wire(2);
-		-- write_Vp_detect_old <= write_Vp_detect; 
+		write_Vp_detect <=	ep00wire(2);
+		write_Vp_detect_old <= write_Vp_detect; 
 		
-			-- if write_Vp_detect_old = '0' and write_Vp_detect = '1' then
-			-- write_Vp		<= '1';
-			-- else
-			-- write_Vp		<= '0';
-			-- end if;
+			if write_Vp_detect_old = '0' and write_Vp_detect = '1' then
+			write_Vp_wire		<= '1';
+			else
+			write_Vp_wire		<= '0';
+			end if;
 		
-		-- end if;
-	-- end process label_write_all;
+		end if;
+	end process label_write_all;
 		
 ----------------------------------------------------
 --	ok pipe in configure
@@ -513,7 +514,7 @@ port map (
 			CLK_5Mhz             => CLK_5Mhz,
 			
 			Vo					=>	Vo,
-			write_Vp             => write_Vp,
+			write_Vp             => write_Vp_wire,
 			Vp                   => Vp,
 			WE_Pulse_Ram         => WE_Pulse_Ram,
 			Pulse_Ram_ADDRESS_WR => Pulse_Ram_ADDRESS_WR,
@@ -692,8 +693,8 @@ port map (
 
 icon_inst : entity work.icon
 	Port map (
-		CONTROL0 => CONTROL0,
-		CONTROL1 => CONTROL1
+		CONTROL0 => CONTROL0
+		--CONTROL1 => CONTROL1
 	 );
 
 	
@@ -705,26 +706,27 @@ port map (
 );
 
 
-label_ila_1 : entity work.ila 
-port map (
-    CONTROL =>	CONTROL1, 
-    CLK	=>	CLK_5Mhz, 
-    TRIG0 	=>	DATA_1 
-);
+-- label_ila_1 : entity work.ila 
+-- port map (
+    -- CONTROL =>	CONTROL1, 
+    -- CLK	=>	CLK_5Mhz, 
+    -- TRIG0 	=>	DATA_1 
+-- );
 
-
-DATA_0(54 downto 23) <= ep00wire;
+DATA_0(54 downto 25) <= "000000000000000000000000000000";
+ DATA_0(24) <= write_Vp;
+DATA_0(23) <= write_Vp_wire;
 DATA_0(22 downto 17) <=	(std_logic_vector(to_unsigned(view_pixel_index,6)));
 DATA_0(16 downto 1) <=	(std_logic_vector(Vtes_out));
 DATA_0(0) <=  rd_en;
 --	16bits&6bits&32bits	
 
-DATA_1(54 downto 37) <=	"000000000000000000";	
-DATA_1(36)	<=	write_Vp;
-DATA_1(35)	<=	write_Vp_detect_old;
-DATA_1(34)	<=	write_Vp_detect;
-DATA_1(33)	<=	ep00wire(2);
-DATA_1(32 downto 1) <=	dout_Vp;
-DATA_1(0) <=  rd_en_Vp;
+-- DATA_1(54 downto 37) <=	"000000000000000000";	
+-- DATA_1(36)	<=	write_Vp;
+-- DATA_1(35)	<=	write_Vp_detect_old;
+-- DATA_1(34)	<=	write_Vp_detect;
+-- DATA_1(33)	<=	ep00wire(2);
+-- DATA_1(32 downto 1) <=	dout_Vp;
+-- DATA_1(0) <=  rd_en_Vp;
 		
 end RTL;
