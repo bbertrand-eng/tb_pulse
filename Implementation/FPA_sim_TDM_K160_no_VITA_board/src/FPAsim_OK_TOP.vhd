@@ -104,7 +104,7 @@ signal 	valid	: STD_LOGIC;
 signal 	empty	: STD_LOGIC;
 signal 	full	: STD_LOGIC;
 
-	type FSM_State_vp is (read_fifo_add, valid_fifo_add, write_ram
+	type FSM_State_vp is (read_fifo_add, valid_fifo_add, write_ram, increase_add_wr
 	                  );
 	signal current_state_vp        : FSM_State_vp;
 
@@ -603,13 +603,16 @@ port map (
 				
 					WE_Pulse_Ram      <= '1';
 
-					Pulse_Ram_Data_WR <= dout_Vp_valid(31 downto 16);
-
-					Pulse_Ram_ADDRESS_WR <= Pulse_Ram_ADDRESS_WR + 1;				
+					Pulse_Ram_Data_WR <= dout_Vp_valid(31 downto 16);					
+				
+					Current_state_vp <= increase_add_wr;
+				
+				when increase_add_wr =>
+					
+					Pulse_Ram_ADDRESS_WR <= Pulse_Ram_ADDRESS_WR + 1;
 				
 					Current_state_vp <= read_fifo_add;
 				
-
 				when others =>
 
 			end case;
