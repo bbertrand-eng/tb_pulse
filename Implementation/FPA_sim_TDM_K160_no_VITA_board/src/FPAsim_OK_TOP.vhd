@@ -69,6 +69,7 @@ signal reset			: std_logic;
 -- signal TRIG3			: std_logic_vector(31 downto 0);
 
 signal CLK_5Mhz			: std_logic;
+signal CLK_20Mhz		: std_logic;
 signal CLK_OUT2			: std_logic;	
 signal GLOBAL_CLK		: std_logic;
 -- signal CLUSTER_CLK		: t_CLUSTER_CLK;
@@ -76,6 +77,8 @@ signal GLOBAL_CLK		: std_logic;
 
 -- signal	START_STOP		: std_logic;
 
+signal count_slow_clk			: integer range 0 to 3;
+signal slow_clk	 				: STD_LOGIC;
 
 --	okHost
 signal okClk			: STD_LOGIC;
@@ -238,30 +241,31 @@ MaterCLK : entity work.CLK_MNGR_FPA PORT MAP(
   CLK_IN1_P			=> sys_clkp,
   CLK_IN1_N			=> sys_clkn,
   CLK_OUT1			=> GLOBAL_CLK,
-  CLK_OUT2			=> CLK_5Mhz,
+  CLK_OUT2			=> CLK_20Mhz,
+  CLK_OUT3			=> CLK_5Mhz,
   RESET				=> reset,
   LOCKED			=> open	
 ); 
 
--- ----------------------------------------------------
--- --	slow clk
--- ----------------------------------------------------
+----------------------------------------------------
+--	slow clk
+----------------------------------------------------
 
--- process(reset, CLUSTER_CLK.CLK_4X)
--- begin
--- if reset = '1' then
--- slow_clk 		<= '0';
--- count_slow_clk	<= 0;
--- else 
-	-- if (rising_edge(CLUSTER_CLK.CLK_4X)) then
-	-- count_slow_clk <= count_slow_clk + 1;
-		-- if count_slow_clk >= 400 then
-		-- slow_clk <= not slow_clk;	
-		-- count_slow_clk	<= 0;
-		-- end if;
-	-- end if;	
--- end if;
--- end process; 	
+process(reset, CLK_5Mhz)	
+begin
+if reset = '1' then
+slow_clk 		<= '0';
+count_slow_clk	<= 0;
+else 
+	if (rising_edge(CLK_5Mhz)) then	--	5MHz
+	count_slow_clk <= count_slow_clk + 1;
+		if count_slow_clk >= 3 then
+		slow_clk <= not slow_clk;	
+		count_slow_clk	<= 0;
+		end if;
+	end if;	
+end if;
+end process; 	
 
 ----------------------------------------------------
 --	LED
@@ -349,7 +353,7 @@ port map (
 --	manage write all register
 ----------------------------------------------------
 
-	label_write_all : process(CLK_5Mhz, Reset) is
+	label_write_all : process(slow_clk, Reset) is
 	begin
 		if Reset = '1' then
 		
@@ -357,7 +361,7 @@ port map (
 		write_Vp_detect	<=	'0';
 		write_Vp_detect_old	<=	'0';
 		
-		elsif rising_edge(CLK_5Mhz) then
+		elsif rising_edge(slow_clk) then
 		
 		
 		write_Vp_detect <=	ep00wire(2);
@@ -393,7 +397,7 @@ okPipeIn_fifo	:	entity work.fifo_w32_1024_r32_1024
 port map (
 	rst		=>	reset,
 	wr_clk	=>	okClk,
-	rd_clk	=>	CLK_5Mhz,	--	normal clock 20MHz 
+	rd_clk	=>	slow_clk,	--	normal clock 20MHz 
 	din		=>	ep_dataout, --// Bus [31 : 0] 
 	wr_en	=>	ep_write,
 	rd_en	=>	rd_en,
@@ -408,7 +412,7 @@ port map (
 --	FSM configure
 ----------------------------------------------------		
 	
-	label_case_configure : process(CLK_5Mhz, Reset) is
+	label_case_configure : process(slow_clk, Reset) is
 	begin
 		if Reset = '1' then
 			rd_en         <= '0';
@@ -421,7 +425,7 @@ port map (
 			Vp_fifo			<=(others => '0');
 			frequence		<=(others => '0');
 			
-		elsif rising_edge(CLK_5Mhz) then
+		elsif rising_edge(slow_clk) then
 			
 			write_Vp <= '0';
 			
@@ -512,6 +516,7 @@ port map (
 		port map(
 			Reset                => Reset,
 			CLK_5Mhz             => CLK_5Mhz,
+			slow_clk			=> slow_clk,	
 			
 			Vo					=>	Vo,
 			write_Vp             => write_Vp_wire,
@@ -546,11 +551,11 @@ port map (
 --	fifo pipe in Vp
 ----------------------------------------------------	
 	
-okPipeIn_fifo_vp	:	entity work.fifo_w32_1024_r32_1024 
+okPipeIn_fifo_vp	:	entity work.fifo_w32_2048_r32_2048 
 port map (
 	rst		=>	reset,
 	wr_clk	=>	okClk,
-	rd_clk	=>	CLK_5Mhz,	--	normal clock 20MHz 
+	rd_clk	=>	slow_clk,	--	normal clock 20MHz 
 	din		=>	ep_dataout_Vp, --// Bus [31 : 0] 
 	wr_en	=>	ep_write_Vp,
 	rd_en	=>	rd_en_Vp,
@@ -566,7 +571,7 @@ port map (
 --	FSM VP
 ----------------------------------------------------		
 	
-	label_case_vp : process(CLK_5Mhz, Reset) is
+	label_case_vp : process(slow_clk, Reset) is
 	begin
 		if Reset = '1' then
 		
@@ -576,7 +581,7 @@ port map (
 			Pulse_Ram_ADDRESS_WR <= (others => '0');
 			WE_Pulse_Ram         <= '0';
 
-		elsif rising_edge(CLK_5Mhz) then
+		elsif rising_edge(slow_clk) then
 		
 		WE_Pulse_Ram      <= '0';
 						

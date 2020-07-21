@@ -12,7 +12,10 @@ entity LUT_func is
 --RESET
 		RESET				: in  std_logic;
 --CLOCK
-		CLK_5Mhz				: in  std_logic;
+		CLK_5Mhz			: in  std_logic;
+		slow_clk			: in    std_logic;
+		
+		
 		ENABLE_CLK_1X		: in  std_logic;
 		WE_Pulse_Ram 		: in  std_logic;
 		Pulse_Ram_ADDRESS_WR: in  unsigned (9 downto 0);
@@ -31,9 +34,9 @@ architecture Behavioral of LUT_func is
 signal  Pulse_Ram : t_Pulse_Ram	:=	(others=>(others=>'0'));
 
 begin
-P_Write_Pulse_Ram: process (CLK_5Mhz)
+P_Write_Pulse_Ram: process (slow_clk)
 begin
-	if rising_edge(CLK_5Mhz) then
+	if rising_edge(slow_clk) then
 		if (WE_Pulse_Ram ='1') then
 			Pulse_Ram(to_integer(Pulse_Ram_ADDRESS_WR))	<= Pulse_Ram_Data_WR;
 		end if;

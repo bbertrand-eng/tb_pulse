@@ -21,6 +21,8 @@ entity TES is
 			Reset		 		: in  STD_LOGIC;
 --CLOCKs
     		CLK_5Mhz			: in  STD_LOGIC;
+			slow_clk			: in    std_logic;
+			
 			ENABLE_CLK_1X		: in  STD_LOGIC;
 			
 -- from gse Vp Vo 
@@ -268,6 +270,8 @@ label_LUT_func: entity work.LUT_func
 	Port map( 
 		RESET				=> Reset,
 		CLK_5Mhz			=> CLK_5Mhz,
+		slow_clk			=> slow_clk,	
+		
 		ENABLE_CLK_1X		=> ENABLE_CLK_1X,
 		WE_Pulse_Ram 		=> WE_Pulse_Ram ,
 		Pulse_Ram_ADDRESS_WR=> Pulse_Ram_ADDRESS_WR,

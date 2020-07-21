@@ -56,7 +56,8 @@
 -- "Clock    Freq (MHz) (degrees) Cycle (%) Jitter (ps)  Error (ps)"
 ------------------------------------------------------------------------------
 -- CLK_OUT1____80.000______0.000______50.0______233.740____179.338
--- CLK_OUT2_____5.000______0.000______50.0______394.366____179.338
+-- CLK_OUT2____20.000______0.000______50.0______304.600____179.338
+-- CLK_OUT3_____5.000______0.000______50.0______394.366____179.338
 --
 ------------------------------------------------------------------------------
 -- "Input Clock   Freq (MHz)    Input Jitter (UI)"
@@ -80,6 +81,7 @@ port
   -- Clock out ports
   CLK_OUT1          : out    std_logic;
   CLK_OUT2          : out    std_logic;
+  CLK_OUT3          : out    std_logic;
   -- Status and control signals
   RESET             : in     std_logic;
   LOCKED            : out    std_logic
@@ -88,7 +90,7 @@ end CLK_MNGR_FPA;
 
 architecture xilinx of CLK_MNGR_FPA is
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of xilinx : architecture is "CLK_MNGR_FPA,clk_wiz_v3_6,{component_name=CLK_MNGR_FPA,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,feedback_source=FDBK_AUTO,primtype_sel=MMCM_ADV,num_out_clk=2,clkin1_period=5.000,clkin2_period=10.0,use_power_down=false,use_reset=true,use_locked=true,use_inclk_stopped=false,use_status=false,use_freeze=false,use_clk_valid=false,feedback_type=SINGLE,clock_mgr_type=MANUAL,manual_override=false}";
+  attribute CORE_GENERATION_INFO of xilinx : architecture is "CLK_MNGR_FPA,clk_wiz_v3_6,{component_name=CLK_MNGR_FPA,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,feedback_source=FDBK_AUTO,primtype_sel=MMCM_ADV,num_out_clk=3,clkin1_period=5.000,clkin2_period=10.0,use_power_down=false,use_reset=true,use_locked=true,use_inclk_stopped=false,use_status=false,use_freeze=false,use_clk_valid=false,feedback_type=SINGLE,clock_mgr_type=MANUAL,manual_override=false}";
   -- Input clock buffering / unused connectors
   signal clkin1      : std_logic;
   -- Output clock buffering / unused connectors
@@ -99,7 +101,7 @@ architecture xilinx of CLK_MNGR_FPA is
   signal clkout0b_unused  : std_logic;
   signal clkout1          : std_logic;
   signal clkout1b_unused  : std_logic;
-  signal clkout2_unused   : std_logic;
+  signal clkout2          : std_logic;
   signal clkout2b_unused  : std_logic;
   signal clkout3_unused   : std_logic;
   signal clkout3b_unused  : std_logic;
@@ -145,10 +147,14 @@ begin
     CLKOUT0_PHASE        => 0.000,
     CLKOUT0_DUTY_CYCLE   => 0.500,
     CLKOUT0_USE_FINE_PS  => FALSE,
-    CLKOUT1_DIVIDE       => 128,
+    CLKOUT1_DIVIDE       => 32,
     CLKOUT1_PHASE        => 0.000,
     CLKOUT1_DUTY_CYCLE   => 0.500,
     CLKOUT1_USE_FINE_PS  => FALSE,
+    CLKOUT2_DIVIDE       => 128,
+    CLKOUT2_PHASE        => 0.000,
+    CLKOUT2_DUTY_CYCLE   => 0.500,
+    CLKOUT2_USE_FINE_PS  => FALSE,
     CLKIN1_PERIOD        => 5.000,
     REF_JITTER1          => 0.010)
   port map
@@ -159,7 +165,7 @@ begin
     CLKOUT0B            => clkout0b_unused,
     CLKOUT1             => clkout1,
     CLKOUT1B            => clkout1b_unused,
-    CLKOUT2             => clkout2_unused,
+    CLKOUT2             => clkout2,
     CLKOUT2B            => clkout2b_unused,
     CLKOUT3             => clkout3_unused,
     CLKOUT3B            => clkout3b_unused,
@@ -211,5 +217,10 @@ begin
   port map
    (O   => CLK_OUT2,
     I   => clkout1);
+
+  clkout3_buf : BUFG
+  port map
+   (O   => CLK_OUT3,
+    I   => clkout2);
 
 end xilinx;

@@ -55,7 +55,8 @@
 -- "Clock    Freq (MHz) (degrees) Cycle (%) Jitter (ps)  Error (ps)"
 ------------------------------------------------------------------------------
 -- CLK_OUT1____80.000______0.000______50.0______233.740____179.338
--- CLK_OUT2_____5.000______0.000______50.0______394.366____179.338
+-- CLK_OUT2____20.000______0.000______50.0______304.600____179.338
+-- CLK_OUT3_____5.000______0.000______50.0______394.366____179.338
 --
 ------------------------------------------------------------------------------
 -- "Input Clock   Freq (MHz)    Input Jitter (UI)"
@@ -73,6 +74,7 @@ port
   -- Clock out ports
   CLK_OUT1          : out    std_logic;
   CLK_OUT2          : out    std_logic;
+  CLK_OUT3          : out    std_logic;
   -- Status and control signals
   RESET             : in     std_logic;
   LOCKED            : out    std_logic
@@ -91,6 +93,7 @@ your_instance_name : CLK_MNGR_FPA
     -- Clock out ports
     CLK_OUT1 => CLK_OUT1,
     CLK_OUT2 => CLK_OUT2,
+    CLK_OUT3 => CLK_OUT3,
     -- Status and control signals
     RESET  => RESET,
     LOCKED => LOCKED);
