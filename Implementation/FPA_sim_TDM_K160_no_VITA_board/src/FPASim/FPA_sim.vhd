@@ -7,7 +7,11 @@ use work.pulse_package.all;
 entity FPA_sim is
 	port(
 		Reset                : in    std_logic;
-		CLK_5Mhz             : in    std_logic;
+		
+		CLK_4X				: in    std_logic;--	20 MHz
+		ENABLE_CLK_1X		: in    std_logic;--	enable on 5 MHz	
+		
+		
 		slow_clk			: in    std_logic;
 		
 		Vo					: in    t_array_Mem_Vo;	
@@ -35,10 +39,12 @@ begin
 		PORT MAP(
 			-- global
 			Reset                => Reset,
-			CLK_5Mhz             => CLK_5Mhz,
+			
+			CLK_4X				=>	CLK_4X,			--	20 MHz
+			ENABLE_CLK_1X		=>	ENABLE_CLK_1X,	--	enable on 5 MHz		
+					
 			slow_clk			=> slow_clk,
 			
-			ENABLE_CLK_1X        => '1',
 			-- from gse Vp Vo 
 			Vo					=>	Vo,
 			Vp                   => Vp,

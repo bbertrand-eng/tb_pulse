@@ -35,4 +35,14 @@ type	t_array_view_pixel	is array (C_pixel-1 downto 0) of unsigned(15 downto 0);
 
 type 	t_array_start_pulse_pixel is array (C_pixel-1 downto 0) of std_logic;
 
+type t_CLUSTER_CLK is record
+			CLK_4X					: STD_LOGIC; 
+			ENABLE_CLK_1X			: STD_LOGIC;
+			ENABLE_CLK_2X			: STD_LOGIC;
+         ENABLE_CLK_1X_DIV32 	: STD_LOGIC;
+         ENABLE_CLK_1X_DIV64 	: STD_LOGIC;
+         ENABLE_CLK_1X_DIV128	: STD_LOGIC;
+		 ENABLE_CLK_1X_DIV256	: STD_LOGIC;
+end record;
+
 end pulse_package;

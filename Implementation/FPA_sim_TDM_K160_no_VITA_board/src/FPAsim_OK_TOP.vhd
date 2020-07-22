@@ -229,6 +229,9 @@ signal DATA_0	  		: std_logic_vector(54 downto 0);
 signal CONTROL1 		: std_logic_vector(35 downto 0);
 signal DATA_1	  		: std_logic_vector(54 downto 0);
 
+signal CLUSTER_CLK		: t_CLUSTER_CLK;
+signal Sequencer		: unsigned(1 downto 0);			
+
 
 begin
 
@@ -248,16 +251,29 @@ MaterCLK : entity work.CLK_MNGR_FPA PORT MAP(
 ); 
 
 ----------------------------------------------------
+--	clock manager CNES compliance
+----------------------------------------------------
+
+label_CMM : entity work.CMM 
+PORT MAP(
+		GLOBAL_CLK 				=>	CLK_20Mhz,		--	20 MHz
+        RESET 					=>	reset,			--	reset from wire GSE
+		
+		CLUSTER_CLK				=>	CLUSTER_CLK,
+		Sequencer				=>	Sequencer	
+);
+
+----------------------------------------------------
 --	slow clk
 ----------------------------------------------------
 
-process(reset, CLK_5Mhz)	
+process(reset, CLUSTER_CLK.CLK_4X)	
 begin
 if reset = '1' then
 slow_clk 		<= '0';
 count_slow_clk	<= 0;
 else 
-	if (rising_edge(CLK_5Mhz)) then	--	5MHz
+	if (rising_edge(CLUSTER_CLK.CLK_4X)) then	--	20 MHz
 	count_slow_clk <= count_slow_clk + 1;
 		if count_slow_clk >= 3 then
 		slow_clk <= not slow_clk;	
@@ -515,7 +531,11 @@ port map (
 	label_FPA_sim : entity work.FPA_sim
 		port map(
 			Reset                => Reset,
-			CLK_5Mhz             => CLK_5Mhz,
+			
+			CLK_4X				=>	CLUSTER_CLK.CLK_4X,			--	20 MHz
+			ENABLE_CLK_1X		=>	CLUSTER_CLK.ENABLE_CLK_1X,	--	enable on 5 MHz	
+			
+			
 			slow_clk			=> slow_clk,	
 			
 			Vo					=>	Vo,
