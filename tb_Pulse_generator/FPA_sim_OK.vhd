@@ -63,6 +63,9 @@ architecture RTL of FPA_sim_OK is
 	signal 	Vo	:	t_array_Mem_Vo;
 	signal 	Vp	:	t_array_Mem_Vp;
 	
+	signal	feedback_sq1_wide	:	signed(15 downto 0);
+	
+	
 begin
 
 	label_fifo_r32_1024_w32_1024 : entity work.fifo_r32_1024_w32_1024
@@ -201,6 +204,9 @@ begin
 			error                => error
 		);
 
+			
+	
+		
 view_pixel_index_out <= std_logic_vector(To_unsigned(view_pixel_index,6));		
 		
 end architecture RTL;

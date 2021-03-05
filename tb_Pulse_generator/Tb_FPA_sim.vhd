@@ -25,6 +25,7 @@ ARCHITECTURE behavior OF Tb_FPA_sim IS
 	signal Pulse_Ram_ADDRESS_RD : STD_LOGIC_vector(9 downto 0);
 	signal WE_Pulse_Ram         : std_logic;
 	signal write_add_null       : std_logic;
+	signal write_add_null_squid : std_logic;
 
 	signal write_Vp : std_logic;
 
@@ -32,22 +33,31 @@ ARCHITECTURE behavior OF Tb_FPA_sim IS
 	signal view_pixel_index : integer range 0 to C_pixel;
 	signal Vtes_out         : signed(15 downto 0);
 
-	signal Vp : t_array_Mem_Vp;
-	signal Amplitude_vo : integer;
+	signal	Vp : t_array_Mem_Vp;
+	signal	V_squid_offset	:	t_array_Mem_Squid_offset;
+	signal	Amplitude_vo : integer;
 
-	signal Amplitude : integer;
+	signal	Amplitude : integer;
 
 	signal view_i       : integer;
 	signal view_c       : integer;
-	signal feedback_sq1 : signed(15 downto 0);
+	signal feedback_sq1 : signed(13 downto 0);
 	signal error : signed(15 downto 0);
 	
 	signal 	Vo	:	t_array_Mem_Vo;
 	
+	signal WE_squid_Ram 		: std_logic;
+	signal squid_Ram_ADDRESS_WR: unsigned (11 downto 0);
+		
+	signal squid_Ram_Data_WR	: STD_LOGIC_VECTOR (15 downto 0);
 
+	
+	
+	
 BEGIN
 
 	RESET <= '1', '0' after 200 ns;
+	feedback_sq1	<= (others => '0'); 
 
 	CLK_process : process
 	begin
@@ -67,36 +77,53 @@ BEGIN
 			-- from gse Vp Vo 
 
 			Vo					=>	vo,
-			Vp                   => Vp,
-			write_Vp             => write_Vp,
+			Vp                  => Vp,
+			write_Vp            => write_Vp,
+			V_squid_offset		=>	V_squid_offset,
+			
 			-- from gse DualRam
 			WE_Pulse_Ram         => WE_Pulse_Ram, --: std_logic;
 			Pulse_Ram_ADDRESS_WR => std_logic_vector(Pulse_Ram_ADDRESS_WR), --: unsigned (9 downto 0 );
-			--Pulse_Ram_ADDRESS_RD => open, --debug stay open
 			Pulse_Ram_Data_WR    => Pulse_Ram_Data_WR, 
-			--		Sig_in				=> to_signed(32767,20),
-			--Pulse_Ram_Data_RD    => open, --debug stay open
 
 			view_pixel           => view_pixel,
 			view_pixel_index     => view_pixel_index,
-			
+			-- DualRam RD
 			Pulse_Ram_ADDRESS_RD => Pulse_Ram_ADDRESS_RD,
 			Pulse_Ram_Data_RD    => Pulse_Ram_Data_RD,
-			
+			--	DualRam WR	
+			squid_Ram_ADDRESS_WR=>	std_logic_vector(squid_Ram_ADDRESS_WR),
+			squid_Ram_Data_WR	=>	squid_Ram_Data_WR,
+			WE_squid_Ram		=>	WE_squid_Ram,	
+			--FMC150	
 			Vtes_out             => Vtes_out,
 			feedback_sq1         => feedback_sq1,
 			error                => error
 		);
 
+
 	stim_proc : process
 	begin
-	
+
+		wait for 1 ms;
+
+		----------------------------------------------------------------------------------------------------------------------------------------------
+		--------------------------------BEGIN INIT ALL V_squid_offset pixel don't' touch this area
+		----------------------------------------------------------------------------------------------------------------------------------------------
+		
+		for i in 0 to C_pixel - 1 loop
+		
+			V_squid_offset(i) <= to_signed(17000,16);
+
+		end loop;	
+
+		
 		----------------------------------------------------------------------------------------------------------------------------------------------
 		--------------------------------BEGIN INIT ALL V0 pixel don't' touch this area
 		----------------------------------------------------------------------------------------------------------------------------------------------
 		
 		for i in 0 to C_pixel - 1 loop
-			Vo(i) <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(65535, 16)));
+			Vo(i) <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(310, 16)));
 
 		end loop;	
 	
@@ -117,19 +144,21 @@ BEGIN
 		wait for 100 us;
 		--write_Vp <= '0';
 
-		--------------------------------END INIT ALL Vp pixel don't' touch
-		--------------------------------------------------------------------------------------------------------------------------------------
-
+		-- ------------------------------END INIT ALL Vp pixel don't' touch
+		-- --------------------------------------------------------------------------------------------------------------------------------------
+		-- small pixel
 		wait for 1 ms;
 		
-		Amplitude 		<= 65535;
-		Amplitude_vo 	<= 65535;
+		Amplitude 		<= 300;
+		Amplitude_vo 	<= 310;
 	
 		wait for 205 ns;
 		
-				Vo(0)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude_vo, 16)));		
+				Vo(0)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude_vo, 16)));
+				Vo(1)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude_vo, 16)));				
 				wait for 205 ns;
 				Vp(0)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude, 16))); --pixel 31 energy ON
+				VP(1)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(150, 16)));
 				
 				wait for 1 ns;
 				write_Vp  <= '1';
@@ -137,26 +166,62 @@ BEGIN
 				write_Vp  <= '0';
 
 		wait for 10 ms;
+		
+		-- --------------------------------------------------------------------------------------------------------------------------------------
+		-- big pixel squid distrision appear
+		wait for 1 ms;
+		
+		Amplitude 		<= 65535-10;
+		Amplitude_vo 	<= 65535;
+	
+		wait for 205 ns;
+	
+				for i in 0 to C_pixel - 1 loop
+					Vo(i) <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(65535, 16)));
+
+				end loop;	
+
+	
+			
+				wait for 205 ns;
+				Vp(0)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude, 16))); --pixel 31 energy ON
+				VP(1)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude, 16)));
+				
+				wait for 1 ns;
+				write_Vp  <= '1';
+				wait for 400 ns;
+				write_Vp  <= '0';
+
+		wait for 10 ms;		
 	
 		-----------------------------------------------------------------------------------------------------------------------------------------
 		-------------------------------------------------Vo fast ramp ----------------------------------------------------------
 		-----------------------------------------------------------------------------------------------------------------------------------------
 		
-		Amplitude_vo <= 0;
+		--Amplitude_vo <= 0;
+		wait for 10 us;
+
+		for i in 0 to C_pixel - 1 loop
+			Vp(i) <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(0, 16))); --reset vp
+
+		end loop;
+
 		wait for 10 us;
 		
 		--for c in 0 to 1800 loop	
-		for c in 0 to 1926 loop	
+		for Amplitude_vo in 0 to 65536 loop	
 		
+		--Amplitude_vo <= Amplitude_vo + 1;
 		
 			for i in 0 to C_pixel - 1 loop
-			
-				Amplitude_vo <= Amplitude_vo + 1;
-				wait until (CLK_5Mhz = '1' and CLK_5Mhz'event);
-				Vo(i)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude_vo, 16))); --pixel 31 energy ON
 				
+			Vo(i)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude_vo, 16))); --pixel 31 energy ON
 				
-			end loop;	
+			--wait for 10 us;
+				
+			end loop;
+
+		wait until (CLK_5Mhz = '1' and CLK_5Mhz'event);
 			
 		end loop;		
 		
@@ -192,143 +257,189 @@ BEGIN
 		-- wait for 1 ms;
 		
 
-		-----------------------------------------------------------------------------------------------------------------------------------------
-		-------------------------------------------------enable pix one by one ----------------------------------------------------------
-		-------------------------------------------------set different value and different Vo ----------------------------------------------------------
-		-----------------------------------------------------------------------------------------------------------------------------------------
-		--loop
+		-- -----------------------------------------------------------------------------------------------------------------------------------------
+		-- -------------------------------------------------enable pix one by one ----------------------------------------------------------
+		-- -------------------------------------------------set different value and different Vo ----------------------------------------------------------
+		-- -----------------------------------------------------------------------------------------------------------------------------------------
+		-- --loop
 		
-		Amplitude 		<= 100;
-		Amplitude_vo 	<= 100;
+		-- Amplitude 		<= 100;
+		-- Amplitude_vo 	<= 100;
 		
-		wait for 10 us;
+		-- wait for 10 us;
 		
-		for c in 0 to 18 loop
+		-- for c in 0 to 18 loop
 		
-			for i in 0 to C_pixel - 1 loop
+			-- for i in 0 to C_pixel - 1 loop
 
 				
-				wait for 400 ns;
-				Vo(i)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude_vo, 16)));	
-				wait for 205 ns;
-				Vp(i)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude, 16))); --pixel 31 energy ON
+				-- wait for 400 ns;
+				-- Vo(i)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude_vo, 16)));	
+				-- wait for 205 ns;
+				-- Vp(i)     <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(Amplitude, 16))); --pixel 31 energy ON
 				
-				wait for 1 ns;
-				write_Vp  <= '1';
-				wait for 205 ns;
-				write_Vp  <= '0';
+				-- wait for 1 ns;
+				-- write_Vp  <= '1';
+				-- wait for 205 ns;
+				-- write_Vp  <= '0';
 
-				wait for 400 ns;
+				-- wait for 400 ns;
 
-				--write_Vp <= '1';
-				Vp(i)    <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON
-				--wait for 400 ns;
-				--write_Vp <= '0';
+				-- --write_Vp <= '1';
+				-- Vp(i)    <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON
+				-- --wait for 400 ns;
+				-- --write_Vp <= '0';
 				
-				wait for 220 us;
+				-- wait for 220 us;
 				
-				Amplitude <= Amplitude + 100;
-				Amplitude_vo <= Amplitude_vo + 100;
+				-- Amplitude <= Amplitude + 100;
+				-- Amplitude_vo <= Amplitude_vo + 100;
 				
-			end loop;
+			-- end loop;
 			
-		end loop;	
+		-- end loop;	
 
-		wait for 10 ms;
+		-- wait for 10 ms;
 		
-		----------------------------------------------------------------------------------------------------------------------------------------------
-		--------------------------------set all Vo max value
-		----------------------------------------------------------------------------------------------------------------------------------------------
+		-- ----------------------------------------------------------------------------------------------------------------------------------------------
+		-- --------------------------------set all Vo max value
+		-- ----------------------------------------------------------------------------------------------------------------------------------------------
 		
-		for i in 0 to C_pixel - 1 loop
-			Vo(i) <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(65535, 16)));
+		-- for i in 0 to C_pixel - 1 loop
+			-- Vo(i) <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(65535, 16)));
 
-		end loop;	
+		-- end loop;	
 		
 		
-		----------------------------------------------------------------------------------------------------------------------------
-		-- -------------------------------------enable even pix same time-----------------------------------------------------------------
-		-----------------------------------------------------------------------------------------------------------------------------------
-		for i in 0 to C_pixel - 1 loop
-			if (i mod 2) = 0 then
-				Vp(i) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(32767, 16))); --pixel 31 energy ON	
-			end if;
-		end loop;
-
-		write_Vp <= '1';
-		wait for 400 ns;
-		write_Vp <= '0';
-
-		for i in 0 to C_pixel - 1 loop
-			if (i mod 2) = 0 then
-				Vp(i) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON	
-			end if;
-		end loop;
+		-- ----------------------------------------------------------------------------------------------------------------------------
+		-- -- -------------------------------------enable even pix same time-----------------------------------------------------------------
+		-- -----------------------------------------------------------------------------------------------------------------------------------
+		-- for i in 0 to C_pixel - 1 loop
+			-- if (i mod 2) = 0 then
+				-- Vp(i) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(32767, 16))); --pixel 31 energy ON	
+			-- end if;
+		-- end loop;
 
 		-- write_Vp <= '1';
 		-- wait for 400 ns;
 		-- write_Vp <= '0';
 
-		wait for 10 ms;
-		
-		----------------------------------------------------------------------------------------------------------------------------
-		-- -------------------------------------enable all pix same time-----------------------------------------------------------------
-		-----------------------------------------------------------------------------------------------------------------------------------
-		--for c in 0 to 100 loop
-		--	view_c <= c;
-			wait for 400 ns;
-		
-				for i in 0 to C_pixel - 1 loop
-					--if (i mod 2) = 0 then
-						Vp(i) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(32767, 16))); --pixel 31 energy ON	
-					--end if;
-				end loop;
+		-- for i in 0 to C_pixel - 1 loop
+			-- if (i mod 2) = 0 then
+				-- Vp(i) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON	
+			-- end if;
+		-- end loop;
 
-				write_Vp <= '1';
-				wait for 400 ns;
-				write_Vp <= '0';
+		-- -- write_Vp <= '1';
+		-- -- wait for 400 ns;
+		-- -- write_Vp <= '0';
 
-				for i in 0 to C_pixel - 1 loop
-					--if (i mod 2) = 0 then
-						Vp(i) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON	
-					--end if;
-				end loop;
+		-- wait for 10 ms;
+	
+		-- ----------------------------------------------------------------------------------------------------------------------------
+		-- -- -------------------------------------enable one pix-----------------------------------------------------------------
+		-- -----------------------------------------------------------------------------------------------------------------------------------
+		-- --for c in 0 to 100 loop
+		-- --	view_c <= c;
+				-- wait for 400 ns;
+		
+				-- --for i in 0 to C_pixel - 1 loop
+					-- --if (i mod 2) = 0 then
+						-- Vp(0) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(100, 16))); --pixel 31 energy ON
+						-- Vp(5) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(200, 16))); --pixel 31 energy ON
+						-- Vp(10) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(300, 16))); --pixel 31 energy ON
+						-- Vp(15) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(400, 16))); --pixel 31 energy ON	
+						-- Vp(20) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(500, 16))); --pixel 31 energy ON	
+						-- Vp(25) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(600, 16))); --pixel 31 energy ON
+						-- Vp(30) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(700, 16))); --pixel 31 energy ON						
+					-- --end if;
+				-- --end loop;
+
+				-- write_Vp <= '1';
+				-- wait for 400 ns;
+				-- write_Vp <= '0';
+
+				-- wait for 20ms;
+
+
+	
+		-- ----------------------------------------------------------------------------------------------------------------------------
+		-- -- -------------------------------------enable all pix same time-----------------------------------------------------------------
+		-- -----------------------------------------------------------------------------------------------------------------------------------
+		-- --for c in 0 to 100 loop
+		-- --	view_c <= c;
+			-- wait for 400 ns;
+		
+				-- for i in 0 to C_pixel - 1 loop
+					-- --if (i mod 2) = 0 then
+						-- Vp(i) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(300, 16))); --pixel 31 energy ON	
+					-- --end if;
+				-- end loop;
+
+				-- write_Vp <= '1';
+				-- wait for 400 ns;
+				-- write_Vp <= '0';
+
+				-- for i in 0 to C_pixel - 1 loop
+					-- --if (i mod 2) = 0 then
+						-- Vp(i) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON	
+					-- --end if;
+				-- end loop;
 			
-			wait for 7ms;
+		-- --	wait for 7ms;
 			
-		--end loop;
+		-- --end loop;
 			
+		-- -- write_Vp <= '1';
+		-- -- wait for 400 ns;
+		-- -- write_Vp <= '0';
+
+		-- wait for 10 ms;
+
+				-- for i in 0 to C_pixel - 1 loop
+					-- --if (i mod 2) = 0 then
+						-- Vp(i) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(1800, 16))); --pixel 31 energy ON	
+					-- --end if;
+				-- end loop;
+
+				-- write_Vp <= '1';
+				-- wait for 400 ns;
+				-- write_Vp <= '0';
+
+				-- for i in 0 to C_pixel - 1 loop
+					-- --if (i mod 2) = 0 then
+						-- Vp(i) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON	
+					-- --end if;
+				-- end loop;		
+		
+		
+		
+		
+		-- --------------------------------------------------------------------------------------------------------------------------------------
+		-- -------------------------------------enable odd pix same time-----------------------------------------------------------------
+		-- -----------------------------------------------------------------------------------------------------------------------------------
+
+		-- for i in 0 to C_pixel - 1 loop
+			-- if (i mod 2) = 1 then
+				-- Vp(i) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(32767, 16))); --pixel 31 energy ON	
+			-- end if;
+		-- end loop;
+
 		-- write_Vp <= '1';
 		-- wait for 400 ns;
 		-- write_Vp <= '0';
 
-		wait for 10 ms;
+		-- for i in 0 to C_pixel - 1 loop
+			-- if (i mod 2) = 1 then
+				-- Vp(i) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON	
+			-- end if;
+		-- end loop;
 
-		--------------------------------------------------------------------------------------------------------------------------------------
-		-------------------------------------enable odd pix same time-----------------------------------------------------------------
-		-----------------------------------------------------------------------------------------------------------------------------------
+		-- -- write_Vp <= '1';
+		-- -- wait for 400 ns;
+		-- -- write_Vp <= '0';
 
-		for i in 0 to C_pixel - 1 loop
-			if (i mod 2) = 1 then
-				Vp(i) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(32767, 16))); --pixel 31 energy ON	
-			end if;
-		end loop;
-
-		write_Vp <= '1';
-		wait for 400 ns;
-		write_Vp <= '0';
-
-		for i in 0 to C_pixel - 1 loop
-			if (i mod 2) = 1 then
-				Vp(i) <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON	
-			end if;
-		end loop;
-
-		-- write_Vp <= '1';
-		-- wait for 400 ns;
-		-- write_Vp <= '0';
-
-		wait for 50 ms;
+		-- wait for 50 ms;
 
 		-- -----------------------------------------------------------------------------------------------------------------------------------------
 		-- -------------------------------------------------shift T/4 pix T/4----------------------------------------------------------
@@ -349,99 +460,99 @@ BEGIN
 
 		-- wait for 50 ms;
 
-		-- ----------------------------------------------------------------------------------------------------------------------------------
-		-- -- wait for 1 ms;
-		-----------------------------------------------------------------------------------------------------------------------------------------
-		-------------------------------------------------compress and shift pix----------------------------------------------------------
-		-----------------------------------------------------------------------------------------------------------------------------------------
+		-- -- ----------------------------------------------------------------------------------------------------------------------------------
+		-- -- -- wait for 1 ms;
+		-- -----------------------------------------------------------------------------------------------------------------------------------------
+		-- -------------------------------------------------compress and shift pix----------------------------------------------------------
+		-- -----------------------------------------------------------------------------------------------------------------------------------------
 
-		for c in 0 to 500 loop
-			--if c=0 or c=2 or c=4 or c=6 or c=8 or c=10 or c=12 or c=14 or c=16 or c=18 or c=20 or c=22 or c=24 or c=26 or c=28 or c=30 or c=32  
-			if (c mod 2) = 0 then
-				view_c <= c;
+		-- for c in 0 to 500 loop
+			-- --if c=0 or c=2 or c=4 or c=6 or c=8 or c=10 or c=12 or c=14 or c=16 or c=18 or c=20 or c=22 or c=24 or c=26 or c=28 or c=30 or c=32  
+			-- if (c mod 2) = 0 then
+				-- view_c <= c;
 
-				for i in 0 to C_pixel - 1 loop
-					view_i <= i;
+				-- for i in 0 to C_pixel - 1 loop
+					-- view_i <= i;
 
-					--if i=0 or i=2 or i=4 or i=6 or i=8 or i=10 or i=12 or i=14 or i=16 or i=18 or i=20 or i=22 or i=24 or i=25 or i=26 or i=28 or i=30 or i=32  
-					if (i mod 2) = 0 then
-						write_Vp <= '1';
-						Vp(i)    <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(32767, 16))); --pixel 31 energy ON
-						wait for 400 ns;
-						write_Vp <= '0';
+					-- --if i=0 or i=2 or i=4 or i=6 or i=8 or i=10 or i=12 or i=14 or i=16 or i=18 or i=20 or i=22 or i=24 or i=25 or i=26 or i=28 or i=30 or i=32  
+					-- if (i mod 2) = 0 then
+						-- write_Vp <= '1';
+						-- Vp(i)    <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(32767, 16))); --pixel 31 energy ON
+						-- wait for 400 ns;
+						-- write_Vp <= '0';
 
-						wait for 400 ns;
+						-- wait for 400 ns;
 
-						--write_Vp <= '1';
-						Vp(i)    <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON
-						wait for 400 ns;
-						--write_Vp <= '0';
+						-- --write_Vp <= '1';
+						-- Vp(i)    <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON
+						-- wait for 400 ns;
+						-- --write_Vp <= '0';
 
-					else
+					-- else
 
-						write_Vp <= '1';
-						Vp(i)    <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(65535, 16))); --pixel 31 energy ON
-						wait for 400 ns;
-						write_Vp <= '0';
+						-- write_Vp <= '1';
+						-- Vp(i)    <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(65535, 16))); --pixel 31 energy ON
+						-- wait for 400 ns;
+						-- write_Vp <= '0';
 
-						wait for 400 ns;
+						-- wait for 400 ns;
 
-						--write_Vp <= '1';
-						Vp(i)    <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON
-						wait for 400 ns;
-						--write_Vp <= '0';
+						-- --write_Vp <= '1';
+						-- Vp(i)    <= (std_logic_vector(to_unsigned(0, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON
+						-- wait for 400 ns;
+						-- --write_Vp <= '0';
 
-						wait for 400 ns;
+						-- wait for 400 ns;
 
-					end if;
-					wait for 10 us;
+					-- end if;
+					-- wait for 10 us;
 
-					wait for 220 us;
-				end loop;
+					-- wait for 220 us;
+				-- end loop;
 
-			else
-				view_c <= c;
-				for i in 0 to C_pixel - 1 loop
-					view_i   <= i;
-					write_Vp <= '1';
-					--if i=0 or i=2 or i=4 or i=6 or i=8 or i=10 or i=12 or i=14 or i=16 or i=18 or i=20 or i=22 or i=24 or i=25 or i=26 or i=28 or i=30 or i=32
-					if (i mod 2) = 0 then
-						write_Vp <= '1';
-						Vp(i)    <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(65535, 16))); --pixel 31 energy ON
-						wait for 400 ns;
-						write_Vp <= '0';
+			-- else
+				-- view_c <= c;
+				-- for i in 0 to C_pixel - 1 loop
+					-- view_i   <= i;
+					-- write_Vp <= '1';
+					-- --if i=0 or i=2 or i=4 or i=6 or i=8 or i=10 or i=12 or i=14 or i=16 or i=18 or i=20 or i=22 or i=24 or i=25 or i=26 or i=28 or i=30 or i=32
+					-- if (i mod 2) = 0 then
+						-- write_Vp <= '1';
+						-- Vp(i)    <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(65535, 16))); --pixel 31 energy ON
+						-- wait for 400 ns;
+						-- write_Vp <= '0';
 
-						wait for 400 ns;
+						-- wait for 400 ns;
 
-						--write_Vp <= '1';
-						Vp(i)    <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON
-						wait for 400 ns;
-						--write_Vp <= '0';
+						-- --write_Vp <= '1';
+						-- Vp(i)    <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON
+						-- wait for 400 ns;
+						-- --write_Vp <= '0';
 
-					else
+					-- else
 
-						write_Vp <= '1';
-						Vp(i)    <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(32767, 16))); --pixel 31 energy ON		
-						wait for 400 ns;
-						write_Vp <= '0';
+						-- write_Vp <= '1';
+						-- Vp(i)    <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(32767, 16))); --pixel 31 energy ON		
+						-- wait for 400 ns;
+						-- write_Vp <= '0';
 
-						wait for 400 ns;
+						-- wait for 400 ns;
 
-						--write_Vp <= '1';
-						Vp(i)    <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON
-						wait for 400 ns;
-						--write_Vp <= '0';
+						-- --write_Vp <= '1';
+						-- Vp(i)    <= (std_logic_vector(to_unsigned(33, 16))) & (std_logic_vector(to_unsigned(0, 16))); --pixel 31 energy ON
+						-- wait for 400 ns;
+						-- --write_Vp <= '0';
 
-						wait for 400 ns;
+						-- wait for 400 ns;
 
-					end if;
-					--wait for 10 us;
+					-- end if;
+					-- --wait for 10 us;
 
-					wait for 220 us;
-				end loop;
-			end if;
+					-- wait for 220 us;
+				-- end loop;
+			-- end if;
 
-		end loop;
+		-- end loop;
 
 		wait for 60 ms;
 
@@ -478,7 +589,7 @@ BEGIN
 	--
 	----------------------------------------------------------------------------------------------
 
-	albel_read_file : process
+	label_read_file_pulse : process
 		file fake_pulse_CBE : text;
 		variable l          : line;
 		variable Value      : std_logic_vector(31 downto 0);
@@ -513,5 +624,43 @@ BEGIN
 			end if;
 		end loop;
 	end process;
+	
+	label_read_file_squid : process
+		file SQUID_tab : text;
+		variable l          : line;
+		variable Value      : std_logic_vector(15 downto 0);
+
+	begin
+		file_open(SQUID_tab, "SQUID_tab.txt", READ_MODE);
+		squid_Ram_ADDRESS_WR <= (others => '0');
+		WE_squid_Ram         <= '0';
+		squid_Ram_Data_WR    <= (others => '0');
+		write_add_null_squid       <= '0';
+		wait until RESET = '0' and RESET'event;
+
+		loop
+			wait until CLK_5Mhz = '1' and CLK_5Mhz'event;
+			if write_add_null_squid = '0' then
+				write_add_null_squid    <= '1';
+				WE_squid_Ram      <= '1';
+				readline(SQUID_tab, l);
+				hread(l, Value);
+				squid_Ram_Data_WR <= Value;
+			else
+				if not endfile(SQUID_tab) then
+					WE_squid_Ram      <= '1';
+					readline(SQUID_tab, l);
+					hread(l, Value);
+					squid_Ram_Data_WR <= Value;
+
+					squid_Ram_ADDRESS_WR <= squid_Ram_ADDRESS_WR + 1;
+				else
+					WE_squid_Ram <= '0';
+				end if;
+			end if;
+		end loop;
+	end process;
+	
+	
 
 END;

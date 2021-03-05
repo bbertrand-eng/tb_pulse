@@ -58,6 +58,7 @@ signal	pixel_delayed_3		:	integer range 0 to C_pixel;
 signal	pixel_delayed_4		:	integer range 0 to C_pixel;
 signal	pixel_delayed_5		:	integer range 0 to C_pixel;
 signal	pixel_delayed_6		:	integer range 0 to C_pixel;
+signal	pixel_delayed_7		:	integer range 0 to C_pixel;
 
 --signal	pixel_view			:	integer range 0 to C_pixel;
 
@@ -98,6 +99,12 @@ signal	view_start_pulse_pixel				:	std_logic;
 
 type 	t_array_mem_counter_address_readed is array (C_pixel-1 downto 0) of std_logic;
 signal	mem_counter_address_readed	:	t_array_mem_counter_address_readed;	
+
+--signal Vtes_signed	: signed(15 downto 0);
+
+signal signed_Vo_signed 					:	signed(16 downto 0);				
+signal signed_unsigned_multiply_to_pulse	:	signed(16 downto 0);	
+signal Vtes_out_wide						:	signed(16 downto 0);
 
 BEGIN
 
@@ -345,6 +352,12 @@ end process;
 unsigned_Vo	<= unsigned(Vo(pixel_delayed_6)(15 downto 0));
 Vtes	<= unsigned_Vo -	unsigned_multiply_to_pulse(31 downto 16);	--signed(15 downto 0)	:=	x"fff0" - signed(15 downto 0);	
 
+signed_Vo_signed 					<=	signed('0'&unsigned_Vo);
+signed_unsigned_multiply_to_pulse	<=	signed('0'&unsigned_multiply_to_pulse(31 downto 16));
+Vtes_out_wide	<=	signed_Vo_signed - signed_unsigned_multiply_to_pulse;
+
+Vtes_out <= '0'&Vtes_out_wide(15 downto 1);
+
 --Vtes	<=	unsigned_L_multiply_to_pulse	
 
 -------------------------------------------------------------------------------------
@@ -352,16 +365,16 @@ Vtes	<= unsigned_Vo -	unsigned_multiply_to_pulse(31 downto 16);	--signed(15 down
 -------------------------------------------------------------------------------------
 
 
-label_out_TES : process(Reset, CLK_5Mhz)
-begin
-if Reset = '1' then
-Vtes_out	<= (others=>'0');
-else
-    if CLK_5Mhz='1' and CLK_5Mhz'event then
-	Vtes_out <= signed('0'&Vtes(15 downto 1));
-	end if;  -- clock
-end if;  -- reset 
-end process;
+-- label_out_TES : process(Reset, CLK_5Mhz)
+-- begin
+-- if Reset = '1' then
+-- Vtes_out	<= (others=>'0');
+-- else
+    -- if CLK_5Mhz='1' and CLK_5Mhz'event then
+	-- Vtes_out <= signed('0'&Vtes(15 downto 1));
+	-- end if;  -- clock
+-- end if;  -- reset 
+-- end process;
 
 -------------------------------------------------------------------------------------
 --	shift origin signal Mem_Vp_shifte 
