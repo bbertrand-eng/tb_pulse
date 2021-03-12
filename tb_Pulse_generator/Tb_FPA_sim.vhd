@@ -628,7 +628,7 @@ BEGIN
 	label_read_file_squid : process
 		file SQUID_tab : text;
 		variable l          : line;
-		variable Value      : std_logic_vector(15 downto 0);
+		variable Value      : std_logic_vector(31 downto 0);
 
 	begin
 		file_open(SQUID_tab, "SQUID_tab.txt", READ_MODE);
@@ -645,13 +645,13 @@ BEGIN
 				WE_squid_Ram      <= '1';
 				readline(SQUID_tab, l);
 				hread(l, Value);
-				squid_Ram_Data_WR <= Value;
+				squid_Ram_Data_WR <= Value(15 downto 0);
 			else
 				if not endfile(SQUID_tab) then
 					WE_squid_Ram      <= '1';
 					readline(SQUID_tab, l);
 					hread(l, Value);
-					squid_Ram_Data_WR <= Value;
+					squid_Ram_Data_WR <= Value(15 downto 0);
 
 					squid_Ram_ADDRESS_WR <= squid_Ram_ADDRESS_WR + 1;
 				else
