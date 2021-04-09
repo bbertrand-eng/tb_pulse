@@ -1,0 +1,84 @@
+function writeBlockFromFile(pipeAddress)
+{
+	var HEX_FILE_LINE_SIZE  = 4
+	fileContent = readTextFile("fake_pulse_CBE.txt")
+	
+	i = 0;
+	data = new Array()
+	for (var currentLineIndex = 0 ;  currentLineIndex< fileContent.length;++currentLineIndex)
+	{
+		value  = parseInt(fileContent[currentLineIndex],16/* 16 si le fichier est en hexa*/) // convertion de ascii hex vers valeur
+		for (var j = HEX_FILE_LINE_SIZE - 1; j >=0 ;j--)
+			data[i++] = value >> (8 * j) // on met d'abort les poids forts
+		
+	}
+	
+	print (data.length)
+	print (data)
+	sendToFPA_writeBlock(pipeAddress, data)
+}
+
+function writeBlockFromFile_config(pipeAddress)
+{
+	var HEX_FILE_LINE_SIZE  = 4
+	fileContent = readTextFile("config.txt")
+	
+	i = 0;
+	data = new Array()
+	for (var currentLineIndex = 0 ;  currentLineIndex< fileContent.length;++currentLineIndex)
+	{
+		value  = parseInt(fileContent[currentLineIndex],16/* 16 si le fichier est en hexa*/) // convertion de ascii hex vers valeur
+		for (var j = HEX_FILE_LINE_SIZE - 1; j >=0 ;j--)
+			data[i++] = value >> (8 * j) // on met d'abort les poids forts
+		
+	}
+	
+	print (data.length)
+	print (data)
+	sendToFPA_writeBlock(pipeAddress, data)
+}
+
+function writeBlockFromFile_squid(pipeAddress)
+{
+	var HEX_FILE_LINE_SIZE  = 4
+	fileContent = readTextFile("SQUID_tab.txt")
+	
+	i = 0;
+	data = new Array()
+	for (var currentLineIndex = 0 ;  currentLineIndex< fileContent.length;++currentLineIndex)
+	{
+		value  = parseInt(fileContent[currentLineIndex],16/* 16 si le fichier est en hexa*/) // convertion de ascii hex vers valeur
+		for (var j = HEX_FILE_LINE_SIZE - 1; j >=0 ;j--)
+			data[i++] = value >> (8 * j) // on met d'abort les poids forts
+		
+	}
+	
+	print (data.length)
+	print (data)
+	sendToFPA_writeBlock(pipeAddress, data)
+}
+
+
+waitMs(10)
+writeBlockFromFile(0x81)
+waitMs(10)
+writeBlockFromFile_config(0x80)
+waitMs(10)
+
+waitMs(10)
+writeBlockFromFile_squid(0x82)
+waitMs(10)
+
+//writeBlockFromFile(0x82)
+
+getLatestValue("FPA_WireOutValues")
+print(FPA_WireOutValues)
+
+
+for (index = 0;index < 30000;index++){
+sendToFPA_setWireIn(0x00,4)
+sendToFPA_setWireIn(0x00,0)
+//print("send")
+getLatestValue("FPA_WireOutValues")
+print(FPA_WireOutValues)
+}

@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- Copyright (c) 2020 Xilinx, Inc.
+-- Copyright (c) 2021 Xilinx, Inc.
 -- All Rights Reserved
 -------------------------------------------------------------------------------
 --   ____  ____
@@ -8,7 +8,7 @@
 -- \   \   \/     Version    : 14.7
 --  \   \         Application: XILINX CORE Generator
 --  /   /         Filename   : ila.vhd
--- /___/   /\     Timestamp  : Thu Jul 02 14:47:40 Paris, Madrid (heure d’été) 2020
+-- /___/   /\     Timestamp  : Thu Apr 08 14:27:23 Paris, Madrid (heure d’été) 2021
 -- \   \  /  \
 --  \___\/\___\
 --
@@ -22,7 +22,7 @@ ENTITY ila IS
   port (
     CONTROL: inout std_logic_vector(35 downto 0);
     CLK: in std_logic;
-    TRIG0: in std_logic_vector(54 downto 0));
+    TRIG0: in std_logic_vector(138 downto 0));
 END ila;
 
 ARCHITECTURE ila_a OF ila IS

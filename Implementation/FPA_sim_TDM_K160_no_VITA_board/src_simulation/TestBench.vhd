@@ -87,10 +87,15 @@ architecture simulate of TestBench is
 	
 	signal view_data  : std_logic_vector(7 downto 0);
 
-	type PIPEIN_ARRAY is array (0 to 4095) of std_logic_vector(7 downto 0);
+	type PIPEIN_ARRAY is array (0 to 16383) of std_logic_vector(7 downto 0);
 	signal pipeIn_signal   : PIPEIN_ARRAY;	
+	signal pipeIn_signal_squid : PIPEIN_ARRAY;
+	
+	-- type PIPEIN_ARRAY_SQUID is array (0 to 16383) of std_logic_vector(7 downto 0);	
+	-- signal pipeIn_signal_squid : PIPEIN_ARRAY_SQUID;	
 
-	signal	pipeInSize_count :	integer;		
+	signal	pipeInSize_count 		:	integer;
+	signal	pipeInSize_count_squid	:	integer;	
 	
 	
 	---------------------------------------------------------------------------------------------
@@ -155,7 +160,7 @@ begin
 	-- Simulation Process
 
 
-label_read_file	: process
+label_read_file_pulse	: process
 ------------------------------------------------------------------
 
 file DONNEES : text;
@@ -197,6 +202,50 @@ wait until reset = '0' and reset' event;
   	end loop;---------
   	
 end process;------------------------------------------------------
+
+label_read_file_squid	: process
+------------------------------------------------------------------
+
+file DONNEES : text;
+variable MY_LINE : line;
+variable data		: std_logic_vector(31 downto 0);	
+variable i_signal : integer;
+-------------------------------------------------------------------
+
+begin-------------begin of process-----
+file_open(DONNEES, "SQUID_tab.txt", read_mode);
+--ep_write	<= '0';
+--ep_dataout	<= (others => '0');
+i_signal := 0;
+pipeInSize_count_squid <= 0;
+wait until reset = '0' and reset' event;
+	
+   loop
+   
+  	wait until (hi_clk = '1' and hi_clk' event); 
+	
+		if (not endfile(DONNEES))
+		then
+		--ep_write	<= '1';  
+		readline(DONNEES,MY_LINE); 
+		hread(MY_LINE,data);
+		pipeInSize_count_squid <= pipeInSize_count_squid + 1;
+		pipeIn_signal_squid(i_signal) <= data(7 downto 0);
+		i_signal := i_signal+1;
+		pipeIn_signal_squid(i_signal) <= data(15 downto 8);
+		i_signal := i_signal+1;
+		pipeIn_signal_squid(i_signal) <= data(23 downto 16);
+		i_signal := i_signal+1;
+		pipeIn_signal_squid(i_signal) <= data(31 downto 24);
+		i_signal := i_signal+1;
+		else
+		--ep_write	<= '0';
+		end if;
+		
+  	end loop;---------
+  	
+end process;------------------------------------------------------
+
 	
 ----------------------------------------------------------------------------------------------
 --
@@ -893,161 +942,713 @@ begin
 	WriteToPipeIn(x"81", pipeInSize_count*4);
 	
 	wait for 250 us;
+
+	pipeIn := pipeIn_signal_squid;
+	WriteToPipeIn(x"82", pipeInSize_count_squid*4);
+	
+	wait for 250 us;	
+	
+	
+	
 	
 	-- -- start on and truncation and heat
 --
 -- ---------------------start heat and stop heat, start pixel and bbfb-------------------------------
 	
-	-- add 0
+	-- VO
 	
-	pipeIn(0) :=	x"00";	
-	pipeIn(1) :=	x"00";
-	pipeIn(2) :=	x"00";	
-	pipeIn(3) :=	x"00";
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"00";	--pixel 0
+	pipeIn(3) :=	x"00";	--V0
 	
 	
-	-- Vo de pix 0
+	-- Vp
 
-	pipeIn(4) :=	x"FF";	
-	pipeIn(5) :=	x"FF";	
-	pipeIn(6) :=	x"00";	
-	pipeIn(7) :=	x"00";
-	wait for 10 ns;	
-	--
-	
-	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
-	wait for 10 ns;
-
-	-- Vp de pix 0
-	
-	pipeIn(0) :=	x"fe";	
-	pipeIn(1) :=	x"ff";
-	pipeIn(2) :=	x"00";	
-	pipeIn(3) :=	x"00";
-
-	-- frequency
 	pipeIn(4) :=	x"00";	
-	pipeIn(5) :=	x"00";	
-	pipeIn(6) :=	x"00";	
-	pipeIn(7) :=	x"00";
-	wait for 10 ns;	
-	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
-	wait for 10 ns;
-
-
-		-- add 2
-	
-	pipeIn(0) :=	x"02";	
-	pipeIn(1) :=	x"00";
-	pipeIn(2) :=	x"00";	
-	pipeIn(3) :=	x"00";
-	
-	
-	-- Vo de pix 0
-
-	pipeIn(4) :=	x"FF";	
-	pipeIn(5) :=	x"FF";	
-	pipeIn(6) :=	x"00";	
-	pipeIn(7) :=	x"00";
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"00";	--pixel 0
+	pipeIn(7) :=	x"01";	--Vp
 	wait for 10 ns;	
 	--
 	
 	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
 	wait for 10 ns;
 
-	-- Vp de pix 0
+	-- VO
 	
-	pipeIn(0) :=	x"fe";	
-	pipeIn(1) :=	x"ff";
-	pipeIn(2) :=	x"00";	
-	pipeIn(3) :=	x"00";
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"01";	--pixel 1
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
 
-	-- frequency
 	pipeIn(4) :=	x"00";	
-	pipeIn(5) :=	x"00";	
-	pipeIn(6) :=	x"00";	
-	pipeIn(7) :=	x"00";
-	wait for 10 ns;	
-	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
-	wait for 10 ns;
-	
-	
-	-- add 4
-	
-	pipeIn(0) :=	x"04";	
-	pipeIn(1) :=	x"00";
-	pipeIn(2) :=	x"00";	
-	pipeIn(3) :=	x"00";
-	
-	
-	-- Vo de pix 4
-
-	pipeIn(4) :=	x"FF";	
-	pipeIn(5) :=	x"FF";	
-	pipeIn(6) :=	x"00";	
-	pipeIn(7) :=	x"00";
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"01";	--pixel 1
+	pipeIn(7) :=	x"01";	--Vp
 	wait for 10 ns;	
 	--
 	
 	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
 	wait for 10 ns;
-
-	-- Vp de pix 4
 	
-	pipeIn(0) :=	x"fe";	
-	pipeIn(1) :=	x"ff";
-	pipeIn(2) :=	x"00";	
-	pipeIn(3) :=	x"00";
 
-	-- frequency
+	-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"02";	--pixel 2
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
 	pipeIn(4) :=	x"00";	
-	pipeIn(5) :=	x"00";	
-	pipeIn(6) :=	x"00";	
-	pipeIn(7) :=	x"00";
-	wait for 10 ns;	
-	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
-	wait for 10 ns;
-	--
-
-	-- add 33
-	
-	pipeIn(0) :=	x"21";	
-	pipeIn(1) :=	x"00";
-	pipeIn(2) :=	x"00";	
-	pipeIn(3) :=	x"00";
-	
-	
-	-- Vo de pix 33
-
-	pipeIn(4) :=	x"FF";	
-	pipeIn(5) :=	x"FF";	
-	pipeIn(6) :=	x"00";	
-	pipeIn(7) :=	x"00";
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"02";	--pixel 2
+	pipeIn(7) :=	x"01";	--Vp
 	wait for 10 ns;	
 	--
 	
 	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
 	wait for 10 ns;
 
-	-- Vp de pix 32
+		-- VO
 	
-	pipeIn(0) :=	x"fd";	
-	pipeIn(1) :=	x"ff";
-	pipeIn(2) :=	x"00";	
-	pipeIn(3) :=	x"00";
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"03";	--pixel 3
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
 
-	-- frequency
 	pipeIn(4) :=	x"00";	
-	pipeIn(5) :=	x"00";	
-	pipeIn(6) :=	x"00";	
-	pipeIn(7) :=	x"00";
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"03";	--pixel 3
+	pipeIn(7) :=	x"01";	--Vp
 	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;
+
+	--
+	
+	-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"04";	--pixel 4
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"04";	--pixel 4
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;
+	
+	-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"05";	--pixel 5
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"05";	--pixel 5
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;
+
+
+	-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"06";	--pixel 6
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"06";	--pixel 6
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;
+	
+	
+		-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"07";	--pixel 7
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"07";	--pixel 7
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;
+	
+	-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"08";	--pixel 8
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"08";	--pixel 8
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;
+
+	-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"09";	--pixel 9
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"09";	--pixel 9
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;
+
+		-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"0a";	--pixel a
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"0a";	--pixel a
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;
+	
+	-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"0B";	--pixel b
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"0b";	--pixel b
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;
+		
+		-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"0C";	--pixel C
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"0C";	--pixel C
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;
+	
+		-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"0d";	--pixel d
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"0d";	--pixel d
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;
+
+
+	-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"0e";	--pixel e
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"0e";	--pixel e
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;
+	
+		-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"0f";	--pixel f
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"0f";	--pixel f
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;
+	
+	-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"10";	--pixel 10
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"10";	--pixel 10
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
 	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
 	wait for 10 ns;	
 
+
+	-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"11";	--pixel 11
+	pipeIn(3) :=	x"00";	--V0
 	
 	
-	wait for 100 us;
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"11";	--pixel 11
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;	
+	
+
+	
+		-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"12";	--pixel 12
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"12";	--pixel 12
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;	
+
+
+		-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"13";	--pixel 13
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"13";	--pixel 13
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+		
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;	
+
+		-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"14";	--pixel 14
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"14";	--pixel 14
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;	
+
+			-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"15";	--pixel 15
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"15";	--pixel 15
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;	
+
+
+		-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"16";	--pixel 16
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"16";	--pixel 16
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;	
+
+		-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"17";	--pixel 17
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"17";	--pixel 17
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;		
+
+		-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"18";	--pixel 18
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"18";	--pixel 18
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;	
+
+
+			-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"19";	--pixel 19
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"19";	--pixel 19
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;	
+	
+		-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"1A";	--pixel 1A
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"1A";	--pixel 1A
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;		
+
+		-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"1B";	--pixel 1B
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"1B";	--pixel 1B
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;	
+
+		-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"1C";	--pixel 1C
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"1C";	--pixel 1C
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;	
+
+			-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"1D";	--pixel 1D
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"1D";	--pixel 1D
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;	
+
+
+		-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"1E";	--pixel 1E
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"1E";	--pixel 1E
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;	
+
+		-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"1F";	--pixel 1F
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"1F";	--pixel 1F
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;	
+		-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"20";	--pixel 20
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"20";	--pixel 20
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;	
+
+		-- VO
+	
+	pipeIn(0) :=	x"FF";	
+	pipeIn(1) :=	x"FF";
+	pipeIn(2) :=	x"21";	--pixel 21
+	pipeIn(3) :=	x"00";	--V0
+	
+	
+	-- Vp
+
+	pipeIn(4) :=	x"00";	
+	pipeIn(5) :=	x"08";	
+	pipeIn(6) :=	x"21";	--pixel 21
+	pipeIn(7) :=	x"01";	--Vp
+	wait for 10 ns;	
+	--
+	
+	WriteToPipeIn(x"80", 8);	--	usb3 injection 4 bytes
+	wait for 10 ns;	
+	
+
+	
+	
+	wait for 4ms;
 
 	-- apply all
 	SetWireInValue(x"00", x"0000_0004", NO_MASK);

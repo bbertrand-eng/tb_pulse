@@ -14,8 +14,7 @@ entity start_stop_manager is
 --RESET
 			Reset		 		:	 in  STD_LOGIC;
 --CLOCKs
-     		CLK_4X				: in  STD_LOGIC;--	20 MHz
-			ENABLE_CLK_1X		: in  STD_LOGIC;
+    		CLK_5Mhz			: 	in  STD_LOGIC;
 			--ENABLE_CLK_1X		: 	in  STD_LOGIC;
 --CONTROL
 			pixel				: 	in	integer;
@@ -50,18 +49,16 @@ begin
 --	start_pulse_pixel 
 -------------------------------------------------------------------------------------
 
-label_start_pulse_pixel : process(Reset, CLK_4X)
+label_start_pulse_pixel : process(Reset, CLK_5Mhz)
 begin
 if Reset = '1' then
 start_pulse_pixel 	<= (others=>'0');
 --stop_pulse_pixel 	<= (others=>'0');
 else
-	if rising_edge(CLK_4X) then
-		if (ENABLE_CLK_1X ='1') then
-			if	pixel = C_pixel-1 then
-			start_pulse_pixel	<= detect_start_pulse_pixel;--option (2)
-			--stop_pulse_pixel	<=	detect_stop_pulse_pixel;
-			end if;
+    if CLK_5Mhz='1' and CLK_5Mhz'event then
+		if	pixel = C_pixel-1 then
+		start_pulse_pixel	<= detect_start_pulse_pixel;--option (2)
+		--stop_pulse_pixel	<=	detect_stop_pulse_pixel;
 		end if;
     end if;  -- clock
 end if;  -- reset 
@@ -72,19 +69,17 @@ end process;
 -------------------------------------------------------------------------------------
 
 --for i in C_pixel-1 downto 0 generate
-process(Reset, CLK_4X)
+process(Reset, CLK_5Mhz)
 begin
 if Reset = '1' then
 start_pulse_pixel_shift 	<= (others=>'0');
 else
-	if rising_edge(CLK_4X) then
-		if (ENABLE_CLK_1X ='1') then
-			--	pixel_delayed_4 = 34	-1 - 1clk
-			--	pixel_delayed_4 = C_pixel -1	-1
-			if	(pixel_delayed_3 = C_pixel-1)  then
-			start_pulse_pixel_shift	<= start_pulse_pixel;--option (2)
-			
-			end if;
+    if CLK_5Mhz='1' and CLK_5Mhz'event then
+		--	pixel_delayed_4 = 34	-1 - 1clk
+		--	pixel_delayed_4 = C_pixel -1	-1
+		if	(pixel_delayed_3 = C_pixel-1)  then
+		start_pulse_pixel_shift	<= start_pulse_pixel;--option (2)
+		
 		end if;
     end if;  -- clock
 end if;  -- reset 
@@ -92,18 +87,16 @@ end process;
 --end generate label_generate; 
 
 
-process(Reset, CLK_4X)
+process(Reset, CLK_5Mhz)
 begin
 if Reset = '1' then
 stop_pulse_pixel 	<= (others=>'0');
 else
- 	if rising_edge(CLK_4X) then
-		if (ENABLE_CLK_1X ='1') then
-			if	detect_stop_pulse_pixel(pixel) = '1' then
-			stop_pulse_pixel(pixel) <= '1';
-			else
-			stop_pulse_pixel(pixel) <= '0';
-			end if;
+    if CLK_5Mhz='1' and CLK_5Mhz'event then
+		if	detect_stop_pulse_pixel(pixel) = '1' then
+		stop_pulse_pixel(pixel) <= '1';
+		else
+		stop_pulse_pixel(pixel) <= '0';
 		end if;
     end if;  -- clock
 end if;  -- reset 
@@ -120,20 +113,18 @@ end process;
 -- end generate label_generate; 
 
 label_generate : for i in C_pixel-1 downto 0 generate
-	process(Reset, CLK_4X)
+	process(Reset, CLK_5Mhz)
 	begin
 	if Reset = '1' then
 	detect_start_pulse_pixel(i) <= '0';
 	else
-		if rising_edge(CLK_4X) then
-			if (ENABLE_CLK_1X ='1') then
-				if	Mem_Vp(i)(15 downto 0) /= b"0000000000000000" then	
-				detect_start_pulse_pixel(i) <= '1';
-				else
-				detect_start_pulse_pixel(i) <= '0';
-				end if;
-			end if;  -- clock
-		end if; 	
+		if CLK_5Mhz='1' and CLK_5Mhz'event then
+			if	Mem_Vp(i)(15 downto 0) /= b"0000000000000000" then	
+			detect_start_pulse_pixel(i) <= '1';
+			else
+			detect_start_pulse_pixel(i) <= '0';
+			end if;
+		end if;  -- clock
 	end if;  -- reset 
 	end process;
 end generate label_generate; 
@@ -143,18 +134,16 @@ end generate label_generate;
 --	read counter(pixel) generate stop(pixel)  
 -------------------------------------------------------------------------------------
 
-label_generate_stop_pixel : process(Reset, CLK_4X)
+label_generate_stop_pixel : process(Reset, CLK_5Mhz)
 begin
 if Reset = '1' then
 detect_stop_pulse_pixel	<= (others=>'0');
 else
-		if rising_edge(CLK_4X) then
-			if (ENABLE_CLK_1X ='1') then
-				detect_stop_pulse_pixel(pixel) <= '0';
-					if mem_counter_address(pixel) = C_depth_pulse_memory-1 then
-					detect_stop_pulse_pixel(pixel) <= '1';
-					end if;
-			end if;
+    if CLK_5Mhz='1' and CLK_5Mhz'event then
+	detect_stop_pulse_pixel(pixel) <= '0';
+		if mem_counter_address(pixel) = C_depth_pulse_memory-1 then
+		detect_stop_pulse_pixel(pixel) <= '1';
+		end if;
 	end if;  -- clock
 end if;  -- reset 
 end process;

@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- Copyright (c) 2020 Xilinx, Inc.
+-- Copyright (c) 2021 Xilinx, Inc.
 -- All Rights Reserved
 -------------------------------------------------------------------------------
 --   ____  ____
@@ -8,7 +8,7 @@
 -- \   \   \/     Version    : 14.7
 --  \   \         Application: Xilinx CORE Generator
 --  /   /         Filename   : icon.vho
--- /___/   /\     Timestamp  : Thu Jul 02 14:41:21 Paris, Madrid (heure d’été) 2020
+-- /___/   /\     Timestamp  : Fri Mar 12 16:33:30 Paris, Madrid 2021
 -- \   \  /  \
 --  \___\/\___\
 --
@@ -20,7 +20,8 @@
 ------------- Begin Cut here for COMPONENT Declaration ------ COMP_TAG
 component icon
   PORT (
-    CONTROL0 : INOUT STD_LOGIC_VECTOR(35 DOWNTO 0));
+    CONTROL0 : INOUT STD_LOGIC_VECTOR(35 DOWNTO 0);
+    CONTROL1 : INOUT STD_LOGIC_VECTOR(35 DOWNTO 0));
 
 end component;
 
@@ -31,6 +32,7 @@ end component;
 
 your_instance_name : icon
   port map (
-    CONTROL0 => CONTROL0);
+    CONTROL0 => CONTROL0,
+    CONTROL1 => CONTROL1);
 
 -- INST_TAG_END ------ End INSTANTIATION Template ------------

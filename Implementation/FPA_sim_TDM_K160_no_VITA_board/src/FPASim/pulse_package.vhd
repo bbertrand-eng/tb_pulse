@@ -22,11 +22,13 @@ package pulse_package is
 constant C_pixel : integer := 34; 
 constant C_depth_pulse_memory : integer := 1024; 
 type t_Pulse_Ram is array (C_depth_pulse_memory-1 downto 0) of std_logic_vector(15 downto 0);
+type t_squid_Ram is array (4095 downto 0)	of std_logic_vector(15 downto 0);	
 
 type 	t_array_Mem_counter_address is array (C_pixel-1 downto 0) of unsigned (9 downto 0);
 
 type 	t_array_Mem_Vo is array (C_pixel-1 downto 0) of std_logic_vector(31 downto 0);
 
+type 	t_array_Mem_Squid_offset is array (C_pixel-1 downto 0) of signed(15 downto 0);
 
 type 	t_array_Mem_Vp is array (C_pixel-1 downto 0) of std_logic_vector(31 downto 0);
 
@@ -34,15 +36,5 @@ type 	t_array_Mem_Vp is array (C_pixel-1 downto 0) of std_logic_vector(31 downto
 type	t_array_view_pixel	is array (C_pixel-1 downto 0) of unsigned(15 downto 0);
 
 type 	t_array_start_pulse_pixel is array (C_pixel-1 downto 0) of std_logic;
-
-type t_CLUSTER_CLK is record
-			CLK_4X					: STD_LOGIC; 
-			ENABLE_CLK_1X			: STD_LOGIC;
-			ENABLE_CLK_2X			: STD_LOGIC;
-         ENABLE_CLK_1X_DIV32 	: STD_LOGIC;
-         ENABLE_CLK_1X_DIV64 	: STD_LOGIC;
-         ENABLE_CLK_1X_DIV128	: STD_LOGIC;
-		 ENABLE_CLK_1X_DIV256	: STD_LOGIC;
-end record;
 
 end pulse_package;

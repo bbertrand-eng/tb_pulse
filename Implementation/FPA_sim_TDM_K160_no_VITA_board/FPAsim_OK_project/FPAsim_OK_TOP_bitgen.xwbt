@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\20210308_tb_pulse_working\Implementation\FPA_sim_TDM_K160_no_VITA_board\FPAsim_OK_project\FPAsim_OK_TOP.ncd
+OUTFILE=C:\20210308_tb_pulse_working\Implementation\FPA_sim_TDM_K160_no_VITA_board\FPAsim_OK_project\FPAsim_OK_TOP.bit
+FAMILY=Kintex7
+PART=xc7k160t-1ffg676
+WORKINGDIR=C:\20210308_tb_pulse_working\Implementation\FPA_sim_TDM_K160_no_VITA_board\FPAsim_OK_project
+LICENSE=ISE
+USER_INFO=174150004_1777506197_210672125_245

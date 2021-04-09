@@ -82,7 +82,7 @@ architecture test of CLK_MNGR_FPA_tb is
 
 
   -- we'll be using the period in many locations
-  constant PER1        : time := 5.000 ns;
+  constant PER1        : time := 5.0 ns;
 
 
   -- Declare the input clock signals
@@ -100,13 +100,13 @@ architecture test of CLK_MNGR_FPA_tb is
   signal CLK_OUT : std_logic_vector(3 downto 1);
 --Freq Check using the M & D values setting and actual Frequency generated
   signal period1 : time := 0 ps;
-constant  ref_period1_clkin1 : time := (5.000*5*8.000/16.000)*1000 ps;
+constant  ref_period1_clkin1 : time := (5.0*1*7.500/3.000)*1000 ps;
    signal prev_rise1 : time := 0 ps;
   signal period2 : time := 0 ps;
-constant  ref_period2_clkin1 : time := (5.000*5*32/16.000)*1000 ps;
+constant  ref_period2_clkin1 : time := (5.0*1*9/3.000)*1000 ps;
    signal prev_rise2 : time := 0 ps;
   signal period3 : time := 0 ps;
-constant  ref_period3_clkin1 : time := (5.000*5*128/16.000)*1000 ps;
+constant  ref_period3_clkin1 : time := (5.0*1*120/3.000)*1000 ps;
    signal prev_rise3 : time := 0 ps;
 
 component CLK_MNGR_FPA_exdes

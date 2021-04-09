@@ -20,11 +20,9 @@ entity TES is
 --RESET
 			Reset		 		: in  STD_LOGIC;
 --CLOCKs
-    		CLK_4X				: in  STD_LOGIC;--	20 MHz
-			ENABLE_CLK_1X		: in  STD_LOGIC;--	enable on 5 MHz		
+    		CLK_5Mhz			: in  STD_LOGIC;
+			ENABLE_CLK_1X		: in  STD_LOGIC;
 			
-			slow_clk			: in    std_logic;
-						
 -- from gse Vp Vo 
 			Vo		:	in	 t_array_Mem_Vo;
 			Vp		:	in	 t_array_Mem_Vp; 
@@ -35,7 +33,7 @@ entity TES is
 			--Send_Pulse 			: in  STD_LOGIC;
 			WE_Pulse_Ram 		: in std_logic;
 			Pulse_Ram_ADDRESS_WR: in unsigned (9 downto 0);
-			Pulse_Ram_ADDRESS_RD: out unsigned(9 downto 0);
+			Pulse_Ram_ADDRESS_RD: out unsigned (9 downto 0);
 			Pulse_Ram_Data_WR	: in STD_LOGIC_VECTOR (15 downto 0);
 --			Sig_in 				: in  signed (C_Size_DDS-1 downto 0);
         	Pulse_Ram_Data_RD 	: out STD_LOGIC_VECTOR (15 downto 0);
@@ -60,6 +58,7 @@ signal	pixel_delayed_3		:	integer range 0 to C_pixel;
 signal	pixel_delayed_4		:	integer range 0 to C_pixel;
 signal	pixel_delayed_5		:	integer range 0 to C_pixel;
 signal	pixel_delayed_6		:	integer range 0 to C_pixel;
+signal	pixel_delayed_7		:	integer range 0 to C_pixel;
 
 --signal	pixel_view			:	integer range 0 to C_pixel;
 
@@ -101,6 +100,12 @@ signal	view_start_pulse_pixel				:	std_logic;
 type 	t_array_mem_counter_address_readed is array (C_pixel-1 downto 0) of std_logic;
 signal	mem_counter_address_readed	:	t_array_mem_counter_address_readed;	
 
+--signal Vtes_signed	: signed(15 downto 0);
+
+signal signed_Vo_signed 					:	signed(16 downto 0);				
+signal signed_unsigned_multiply_to_pulse	:	signed(16 downto 0);	
+signal Vtes_out_wide						:	signed(16 downto 0);
+
 BEGIN
 
 -------------------------------------------------------------------------------------
@@ -108,7 +113,7 @@ BEGIN
 -------------------------------------------------------------------------------------
 
 
-label_pixel : process(Reset, CLK_4X)
+label_pixel : process(Reset, CLK_5Mhz)
 begin
 if Reset = '1' then
 pixel			<= 0;
@@ -121,22 +126,20 @@ pixel_delayed_6	<= 0;
 view_pixel_index <= 0;
 CLK_73529Hz	<= '0';
 else
-	if rising_edge(CLK_4X) then
-		if (ENABLE_CLK_1X ='1') then
-		pixel <= pixel + 1;
-		pixel_delayed_1 <= pixel;
-		pixel_delayed_2 <= pixel_delayed_1; 
-		pixel_delayed_3	<= pixel_delayed_2; 
-		pixel_delayed_4	<= pixel_delayed_3;
-		pixel_delayed_5	<= pixel_delayed_4;
-		pixel_delayed_6	<= pixel_delayed_5;
-		view_pixel_index	<= pixel_delayed_6;	
-			if pixel = C_pixel-1 then
-			pixel	<= 0;
-			CLK_73529Hz <= not CLK_73529Hz;
-			end if;
-		end if;  -- clock
-	end if;
+    if CLK_5Mhz='1' and CLK_5Mhz'event then
+	pixel <= pixel + 1;
+	pixel_delayed_1 <= pixel;
+	pixel_delayed_2 <= pixel_delayed_1; 
+	pixel_delayed_3	<= pixel_delayed_2; 
+	pixel_delayed_4	<= pixel_delayed_3;
+	pixel_delayed_5	<= pixel_delayed_4;
+	pixel_delayed_6	<= pixel_delayed_5;
+	view_pixel_index	<= pixel_delayed_6;	
+		if pixel = C_pixel-1 then
+		pixel	<= 0;
+		CLK_73529Hz <= not CLK_73529Hz;
+		end if;
+    end if;  -- clock
 end if;  -- reset 
 end process;
 
@@ -146,25 +149,23 @@ end process;
 --	control and increment counter address pixel by start(pixel) read
 -------------------------------------------------------------------------------------
 
-label_mem_counter_address : process(Reset, CLK_4X)
+label_mem_counter_address : process(Reset, CLK_5Mhz)
 begin
 if Reset = '1' then
 mem_counter_address <= (others=>(others=>'0'));
 mem_counter_address_readed <= (others=>'0');
 else
-	if rising_edge(CLK_4X) then
-		if (ENABLE_CLK_1X ='1') then
-			if	mem_counter_address_readed(pixel) = '0' and start_pulse_pixel(pixel) = '1' and detect_stop_pulse_pixel(pixel) = '0' and stop_pulse_pixel(pixel) = '0' then
-			mem_counter_address_readed(pixel) <= '1';
-			else
-				if	mem_counter_address_readed(pixel) = '1' and start_pulse_pixel(pixel) = '1' and detect_stop_pulse_pixel(pixel) = '0' and stop_pulse_pixel(pixel) = '0' then
-				mem_counter_address(pixel) <= mem_counter_address(pixel)+1;
-				else	
-					if stop_pulse_pixel(pixel) = '1' then
-					mem_counter_address_readed(pixel) <= '0';
-					end if;
-				end if;	
-			end if;
+    if CLK_5Mhz='1' and CLK_5Mhz'event then
+		if	mem_counter_address_readed(pixel) = '0' and start_pulse_pixel(pixel) = '1' and detect_stop_pulse_pixel(pixel) = '0' and stop_pulse_pixel(pixel) = '0' then
+		mem_counter_address_readed(pixel) <= '1';
+		else
+			if	mem_counter_address_readed(pixel) = '1' and start_pulse_pixel(pixel) = '1' and detect_stop_pulse_pixel(pixel) = '0' and stop_pulse_pixel(pixel) = '0' then
+			mem_counter_address(pixel) <= mem_counter_address(pixel)+1;
+			else	
+				if stop_pulse_pixel(pixel) = '1' then
+				mem_counter_address_readed(pixel) <= '0';
+				end if;
+			end if;	
 		end if;
 	end if;  -- clock
 end if;  -- reset 
@@ -179,8 +180,7 @@ label_start_stop_manager : entity work.start_stop_manager
 --RESET
 		Reset		 		=>	Reset,
 --CLOCKs
- 		CLK_4X				=>	CLK_4X,			--	20 MHz
-		ENABLE_CLK_1X		=>	ENABLE_CLK_1X,	--	enable on 5 MHz	
+    	CLK_5Mhz			=>	CLK_5Mhz,
 			--ENABLE_CLK_1X		: 	in  STD_LOGIC;
 --CONTROL
 		pixel				=>	pixel,
@@ -211,25 +211,23 @@ label_start_stop_manager : entity work.start_stop_manager
 -- end generate label_generate_vp; 
 
 label_generate_vp : for i in C_pixel-1 downto 0 generate
-	process(Reset, CLK_4X)
+	process(Reset, CLK_5Mhz)
 	begin
 	if Reset = '1' then
 	Mem_Vp(i) <= (others=>'0');
 	else
-		if rising_edge(CLK_4X) then
-			if (ENABLE_CLK_1X ='1') then
-				if	write_Vp = '1' and detect_start_pulse_pixel(i) = '0' and  start_pulse_pixel(i) = '0' -- write Vp AND pulse pix (i) is not processing  
-				and detect_stop_pulse_pixel(i) = '0'  and stop_pulse_pixel(i) = '0' -- AND pulse pix (i) being stopped
-				then 
-				Mem_Vp(i)	<= Vp(i);
-				else
-					if	detect_stop_pulse_pixel(i) = '1' or stop_pulse_pixel(i) = '1'  then
-					Mem_Vp(i) <= (others=>'0');
-					end if;
-				end if;		
-			end if;  -- clock
-		end if;  -- reset 
-	end if;
+		if CLK_5Mhz='1' and CLK_5Mhz'event then
+			if	write_Vp = '1' and detect_start_pulse_pixel(i) = '0' and  start_pulse_pixel(i) = '0' -- write Vp AND pulse pix (i) is not processing  
+			and detect_stop_pulse_pixel(i) = '0'  and stop_pulse_pixel(i) = '0' -- AND pulse pix (i) being stopped
+			then 
+			Mem_Vp(i)	<= Vp(i);
+			else
+				if	detect_stop_pulse_pixel(i) = '1' or stop_pulse_pixel(i) = '1'  then
+				Mem_Vp(i) <= (others=>'0');
+				end if;
+			end if;		
+		end if;  -- clock
+	end if;  -- reset 
 	end process;
 end generate label_generate_vp; 
 
@@ -257,8 +255,7 @@ label_mem_Cnt_Add_to_Add_RAM : entity work.mem_Cnt_Add_to_Add_RAM
 --RESET
 		Reset		 		=>	Reset,
 --CLOCKs
- 		CLK_4X				=>	CLK_4X,			--	--	20 MHz
-		ENABLE_CLK_1X		=>	ENABLE_CLK_1X,	--	enable on 5 MHz	
+    	CLK_5Mhz			=>	CLK_5Mhz,
 			--ENABLE_CLK_1X		: 	in  STD_LOGIC;
 --CONTROL
 		pixel				=>	pixel_delayed_2,
@@ -277,12 +274,8 @@ label_LUT_func: entity work.LUT_func
 
 	Port map( 
 		RESET				=> Reset,
-		
-		CLK_4X				=>	CLK_4X,			--	--	20 MHz
-		ENABLE_CLK_1X		=>	ENABLE_CLK_1X,	--	enable on 5 MHz	
-		
-		slow_clk			=> slow_clk,	
-		
+		CLK_5Mhz			=> CLK_5Mhz,
+		ENABLE_CLK_1X		=> ENABLE_CLK_1X,
 		WE_Pulse_Ram 		=> WE_Pulse_Ram ,
 		Pulse_Ram_ADDRESS_WR=> Pulse_Ram_ADDRESS_WR,
 		Pulse_Ram_ADDRESS_RD=> Pulse_Ram_ADDRESS_RD_internal,	
@@ -304,17 +297,16 @@ Pulse_Ram_Data_RD	<= Pulse_Ram_Data_RD_internal;
 --unsigned_Pulse_Ram_Data_RD_internal <= unsigned(Pulse_Ram_Data_RD_internal);
 --unsigned_Mem_Vp_shifte	<=	unsigned(Mem_Vp_shifte(pixel_delayed_4)(15 downto 0));
 
-process(Reset, CLK_4X)
+process(Reset, CLK_5Mhz)
 begin
 if Reset = '1' then
 unsigned_Pulse_Ram_Data_RD_internal	<= (others=>'0');
 else
-	if rising_edge(CLK_4X) then
-		if (ENABLE_CLK_1X ='1') then
+    if CLK_5Mhz='1' and CLK_5Mhz'event then
 		
 		unsigned_Pulse_Ram_Data_RD_internal	<=	unsigned(Pulse_Ram_Data_RD_internal);
 
-		end if;
+		
 	end if;  -- clock
 end if;  -- reset 
 end process;
@@ -325,17 +317,16 @@ end process;
 --	unsigned_Mem_Vp_shifte
 -------------------------------------------------------------------------------------
 
-process(Reset, CLK_4X)
+process(Reset, CLK_5Mhz)
 begin
 if Reset = '1' then
 unsigned_Mem_Vp_shifte	<= (others=>'0');
 else
-	if rising_edge(CLK_4X) then
-		if (ENABLE_CLK_1X ='1') then
+    if CLK_5Mhz='1' and CLK_5Mhz'event then
 		
 		unsigned_Mem_Vp_shifte	<=	unsigned(Mem_Vp_shifte(pixel_delayed_4)(15 downto 0));
 
-		end if;	
+		
 	end if;  -- clock
 end if;  -- reset 
 end process;
@@ -346,15 +337,13 @@ end process;
 -------------------------------------------------------------------------------------
 
 
-label_multiply : process(Reset, CLK_4X)
+label_multiply : process(Reset, CLK_5Mhz)
 begin
 if Reset = '1' then
 unsigned_multiply_to_pulse <=	(others=>'0');
 else
-	if rising_edge(CLK_4X) then
-		if (ENABLE_CLK_1X ='1') then
-		unsigned_multiply_to_pulse <= unsigned_Pulse_Ram_Data_RD_internal*unsigned_Mem_Vp_shifte;
-		end if;
+    if CLK_5Mhz='1' and CLK_5Mhz'event then
+	unsigned_multiply_to_pulse <= unsigned_Pulse_Ram_Data_RD_internal*unsigned_Mem_Vp_shifte;
 	end if;  -- clock
 end if;  -- reset 
 end process;
@@ -363,6 +352,12 @@ end process;
 unsigned_Vo	<= unsigned(Vo(pixel_delayed_6)(15 downto 0));
 Vtes	<= unsigned_Vo -	unsigned_multiply_to_pulse(31 downto 16);	--signed(15 downto 0)	:=	x"fff0" - signed(15 downto 0);	
 
+signed_Vo_signed 					<=	signed('0'&unsigned_Vo);
+signed_unsigned_multiply_to_pulse	<=	signed('0'&unsigned_multiply_to_pulse(31 downto 16));
+Vtes_out_wide	<=	signed_Vo_signed - signed_unsigned_multiply_to_pulse;
+
+Vtes_out <= '0'&Vtes_out_wide(15 downto 1);
+
 --Vtes	<=	unsigned_L_multiply_to_pulse	
 
 -------------------------------------------------------------------------------------
@@ -370,18 +365,16 @@ Vtes	<= unsigned_Vo -	unsigned_multiply_to_pulse(31 downto 16);	--signed(15 down
 -------------------------------------------------------------------------------------
 
 
-label_out_TES : process(Reset, CLK_4X)
-begin
-if Reset = '1' then
-Vtes_out	<= (others=>'0');
-else
-	if rising_edge(CLK_4X) then
-		if (ENABLE_CLK_1X ='1') then
-		Vtes_out <= signed('0'&Vtes(15 downto 1));
-		end if;
-	end if;  -- clock
-end if;  -- reset 
-end process;
+-- label_out_TES : process(Reset, CLK_5Mhz)
+-- begin
+-- if Reset = '1' then
+-- Vtes_out	<= (others=>'0');
+-- else
+    -- if CLK_5Mhz='1' and CLK_5Mhz'event then
+	-- Vtes_out <= signed('0'&Vtes(15 downto 1));
+	-- end if;  -- clock
+-- end if;  -- reset 
+-- end process;
 
 -------------------------------------------------------------------------------------
 --	shift origin signal Mem_Vp_shifte 
@@ -389,18 +382,16 @@ end process;
 
 
 label_Mem_Vp_shifte : for i in C_pixel-1 downto 0 generate
-process(Reset, CLK_4X)
+process(Reset, CLK_5Mhz)
 begin
 if Reset = '1' then
 Mem_Vp_shifte(i) <= (others=>'0');
 else
- 	if rising_edge(CLK_4X) then
-		if (ENABLE_CLK_1X ='1') then
-			if	start_pulse_pixel_shift(i) = '1' and i = (pixel_delayed_3) and detect_stop_pulse_pixel(i) = '0' and stop_pulse_pixel(i) = '0'   then
-			Mem_Vp_shifte(i) <= Mem_Vp(i);
-			else
-			Mem_Vp_shifte(i) <= (others=>'0');
-			end if;
+    if CLK_5Mhz='1' and CLK_5Mhz'event then
+		if	start_pulse_pixel_shift(i) = '1' and i = (pixel_delayed_3) and detect_stop_pulse_pixel(i) = '0' and stop_pulse_pixel(i) = '0'   then
+		Mem_Vp_shifte(i) <= Mem_Vp(i);
+		else
+		Mem_Vp_shifte(i) <= (others=>'0');
 		end if;
 	end if;  -- clock
 end if;  -- reset 
@@ -423,8 +414,7 @@ label_demux_pixel_fpa : entity work.demux_pixel_fpa
 --RESET
 		Reset		 		=>	Reset,
 --CLOCKs
-    	CLK_4X				=>	CLK_4X,			--	--	20 MHz
-		ENABLE_CLK_1X		=>	ENABLE_CLK_1X,	--	enable on 5 MHz
+    	CLK_5Mhz			=>	CLK_5Mhz,
 			--ENABLE_CLK_1X		: 	in  STD_LOGIC;
 --CONTROL
 		pixel				=>	pixel_delayed_6,

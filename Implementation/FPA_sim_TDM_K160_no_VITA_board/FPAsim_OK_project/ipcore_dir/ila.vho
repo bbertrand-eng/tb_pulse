@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- Copyright (c) 2020 Xilinx, Inc.
+-- Copyright (c) 2021 Xilinx, Inc.
 -- All Rights Reserved
 -------------------------------------------------------------------------------
 --   ____  ____
@@ -8,7 +8,7 @@
 -- \   \   \/     Version    : 14.7
 --  \   \         Application: Xilinx CORE Generator
 --  /   /         Filename   : ila.vho
--- /___/   /\     Timestamp  : Thu Jul 02 14:47:40 Paris, Madrid (heure d’été) 2020
+-- /___/   /\     Timestamp  : Thu Apr 08 14:27:23 Paris, Madrid (heure d’été) 2021
 -- \   \  /  \
 --  \___\/\___\
 --
@@ -22,7 +22,7 @@ component ila
   PORT (
     CONTROL : INOUT STD_LOGIC_VECTOR(35 DOWNTO 0);
     CLK : IN STD_LOGIC;
-    TRIG0 : IN STD_LOGIC_VECTOR(54 DOWNTO 0));
+    TRIG0 : IN STD_LOGIC_VECTOR(138 DOWNTO 0));
 
 end component;
 

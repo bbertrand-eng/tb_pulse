@@ -1,0 +1,2 @@
+vhdl work ../../CLK_MNGR_FPA.vhd
+vhdl work ../example_design/CLK_MNGR_FPA_exdes.vhd
