@@ -1,0 +1,49 @@
+
+function sendVos(Vos)
+{
+// ajustement de la taille a un multiple de 16 octets
+sizeInBytes = Vos.length/*nb 32 bits*/ * 4 /*octets */
+sizeInBytes = Math.floor((sizeInBytes+15) / 16) * 16
+// creation du tableau a envoyer
+bufferToSend = new Array(sizeInBytes)
+// init du tableau avec des 0
+for (i = 0; i < sizeInBytes;++i)
+	bufferToSend[i] = 0xFF
+ 
+ // remplissage du tableau avec les Vos
+bufferIndex = 0
+	for(var index = 0; index < Vos.length; index++) 
+	{
+		 for (var j = 3; j >=0 ;j--)
+			 bufferToSend[bufferIndex++] = (Vos[index] >> (8 * j)) & 0xFF // on met d'abort les poids forts
+	 }
+   
+ // print de debug 
+ //print (bufferToSend.length)
+ //print (bufferToSend)
+ 
+ sendToFPA_writeBlock(0x80,bufferToSend)
+ }
+ 
+
+ function buildVo(address, value)
+ {
+  return (address << 16) | value
+ }
+ 
+ 
+ 
+
+  var Vos = new Array(34)
+  for (address = 0; address < 34; address++)
+	  Vos[address] =   buildVo(address,100)
+
+	print (Vos)
+	
+	sendVos(Vos)
+
+
+
+	
+getLatestValue("FPA_WireOutValues")
+print(FPA_WireOutValues)	
